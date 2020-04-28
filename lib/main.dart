@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: new AppBar(title: new Text('BCS Charioteer')),
-        body: new Text('This is developed by Rifat'),
+        appBar: AppBar(title: Text('BCS Charioteer')),
+        body: Text('This is developed by Rifat!'),
       ),
     );
   }
