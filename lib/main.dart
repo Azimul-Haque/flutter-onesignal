@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: Text('This is developed by Rifat'),
+        body: Center(
+          child: Text('This is a test')
+        )
       ),
     );
   }
