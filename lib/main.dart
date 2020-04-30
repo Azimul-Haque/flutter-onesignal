@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 void main() => runApp(MaterialApp(
   title: 'BCS Charioteer',
   home: HomePage(),
-  theme: ThemeData(
-    primarySwatch: Colors.blue,
-  ),
+  // theme: ThemeData(
+  //   primarySwatch: Colors.blue,
+  // ),
 ));
 
 class HomePage extends StatelessWidget {
@@ -14,9 +14,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: Center(
-          child: Text('This is a test')
-        )
+        body: 
+        Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
+              textAlign: TextAlign.justify,
+              style: TextStyle(color: Colors.green, fontSize: 20),
+            ),
+          )
       );
   }
 }
