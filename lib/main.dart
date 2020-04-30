@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
           width: 150,
           decoration: BoxDecoration(
             color: Color.fromRGBO(248, 148, 3, 1),
-            borderRadius: BorderRadius.circular(10)
+            borderRadius: BorderRadius.circular(20)
           ),
           child: Text('This is a test.', 
             textAlign: TextAlign.justify,
