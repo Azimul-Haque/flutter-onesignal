@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
   title: 'BCS Charioteer',
+  home: HomePage(),
+  theme: ThemeData(
+    primarySwatch: Colors.blue,
+  ),
 ));
 
-class MyApp extends StatelessWidget {
+class HomePage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Project One',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
         body: Center(
           child: Text('This is a test')
         )
-      ),
-    );
+      );
   }
 }
 
