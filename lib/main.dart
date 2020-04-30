@@ -17,69 +17,32 @@ class HomePage extends StatelessWidget {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
         body: ListView(children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10.0),
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                
-                borderRadius: BorderRadius.circular(5),
-                boxShadow: [ 
-                  BoxShadow(
-                    color: Colors.grey[200],
-                    blurRadius: 3.0, // has the effect of softening the shadow
-                    spreadRadius: 2.0, // has the effect of extending the shadow
-                    offset: Offset(
-                      1.0, // horizontal, move right 10
-                      1.0, // vertical, move down 10
-                    ),
-                  )
-                ],
-              ),
-              child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
-                textAlign: TextAlign.justify,
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
+          Container(
+            margin: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [ 
+                BoxShadow(
+                  color: Colors.grey[200],
+                  blurRadius: 3.0, // has the effect of softening the shadow
+                  spreadRadius: 2.0, // has the effect of extending the shadow
+                  offset: Offset(
+                    1.0, // horizontal, move right 10
+                    1.0, // vertical, move down 10
+                  ),
+                )
+              ],
             ),
-            Image.asset("assets/images/test1.jpg"),
-          ]
+            child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
+              textAlign: TextAlign.justify,
+              style: TextStyle(color: Colors.black, fontSize: 16),
+            ),
           ),
-        // Column( children: <Widget>[
-        //   Row(children: <Widget>[
-        //     Container(
-        //       margin: EdgeInsets.only(left: 10, top: 10),
-        //       padding: EdgeInsets.all(10.0),
-        //       height: 80,
-        //       width: 150,
-        //       decoration: BoxDecoration(
-        //         color: Color.fromRGBO(248, 148, 3, 1),
-        //         borderRadius: BorderRadius.circular(5)
-        //       ),
-        //       child: Icon(Icons.add_a_photo)
-        //     ),
-        //     Container(
-        //       margin: EdgeInsets.only(left: 10, top: 10),
-        //       padding: EdgeInsets.all(10.0),
-        //       height: 80,
-        //       width: 150,
-        //       decoration: BoxDecoration(
-        //         color: Color.fromRGBO(248, 148, 3, 1),
-        //         borderRadius: BorderRadius.circular(5)
-        //       ),
-        //       child: Text('This is a test.', 
-        //         textAlign: TextAlign.justify,
-        //         style: TextStyle(color: Colors.black, fontSize: 16),
-        //       ),
-        //     ),],
-        //   ),
-        //   Container(
-        //     child: Text(_longText, textAlign: TextAlign.justify,),
-        //     margin: EdgeInsets.only(top: 5.0),
-        //     padding: EdgeInsets.all(10.0),
-        //   ),
-        //   Image.asset("assets/images/test1.jpg"),
-        // ],)
-        
+          Image.asset("assets/images/test1.jpg"),
+        ]),        
       );
   }
 }
