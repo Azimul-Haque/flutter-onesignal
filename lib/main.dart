@@ -14,11 +14,26 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: Container(
+        body: Column(children: <Widget>[
+          Container(
           margin: EdgeInsets.only(left: 10, top: 10),
           padding: EdgeInsets.all(10.0),
-          height: 40,
-          width: 50,
+          height: 80,
+          width: 150,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(248, 148, 3, 1),
+            borderRadius: BorderRadius.circular(5)
+          ),
+          child: Text('This is a test.', 
+            textAlign: TextAlign.justify,
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 10, top: 10),
+          padding: EdgeInsets.all(10.0),
+          height: 80,
+          width: 150,
           decoration: BoxDecoration(
             color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
@@ -27,14 +42,9 @@ class HomePage extends StatelessWidget {
           //   textAlign: TextAlign.justify,
           //   style: TextStyle(color: Colors.black, fontSize: 16),
           // ),
-        ) 
-        // Padding(
-        //   padding: EdgeInsets.all(15.0),
-        //   child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
-        //       textAlign: TextAlign.justify,
-        //       style: TextStyle(color: Colors.green, fontSize: 20),
-        //     ),
-        //   )
+        )
+        
+        ],)
       );
   }
 }
