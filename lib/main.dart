@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
           ),
-          child: Icon(Icons.)
+          child: Icon(Icons.add_a_photo)
           // Text('This is a test.', 
           //   textAlign: TextAlign.justify,
           //   style: TextStyle(color: Colors.black, fontSize: 16),
