@@ -38,10 +38,10 @@ class HomePage extends StatelessWidget {
             color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
           ),
-          // child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
-          //   textAlign: TextAlign.justify,
-          //   style: TextStyle(color: Colors.black, fontSize: 16),
-          // ),
+          child: Text('This is a test.', 
+            textAlign: TextAlign.justify,
+            style: TextStyle(color: Colors.black, fontSize: 16),
+          ),
         )
         
         ],)
