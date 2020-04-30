@@ -15,15 +15,15 @@ class HomePage extends StatelessWidget {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
         body: Container(
-          margin: EdgeInsets.only(left: 20, top: 10),
+          margin: EdgeInsets.only(left: 10, top: 10),
           padding: EdgeInsets.all(10.0),
           height: 120,
           width: 250,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
           ),
-          child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
+          child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
             textAlign: TextAlign.justify,
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
