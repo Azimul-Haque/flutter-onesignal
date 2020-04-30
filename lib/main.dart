@@ -14,14 +14,27 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: 
-        Padding(
-          padding: EdgeInsets.all(15.0),
+        body: Container(
+          margin: EdgeInsets.only(left: 20, top: 10),
+          padding: EdgeInsets.all(10.0),
+          height: 120,
+          width: 250,
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(5)
+          ),
           child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
-              textAlign: TextAlign.justify,
-              style: TextStyle(color: Colors.green, fontSize: 20),
-            ),
-          )
+            textAlign: TextAlign.justify,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ) 
+        // Padding(
+        //   padding: EdgeInsets.all(15.0),
+        //   child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
+        //       textAlign: TextAlign.justify,
+        //       style: TextStyle(color: Colors.green, fontSize: 20),
+        //     ),
+        //   )
       );
   }
 }
