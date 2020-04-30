@@ -14,37 +14,34 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: Column(children: <Widget>[
-          Container(
-          margin: EdgeInsets.only(left: 10, top: 10),
-          padding: EdgeInsets.all(10.0),
-          height: 80,
-          width: 150,
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(248, 148, 3, 1),
-            borderRadius: BorderRadius.circular(5)
-          ),
-          child: Icon(Icons.add_a_photo)
-          // Text('This is a test.', 
-          //   textAlign: TextAlign.justify,
-          //   style: TextStyle(color: Colors.black, fontSize: 16),
-          // ),
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 10, top: 10),
-          padding: EdgeInsets.all(10.0),
-          height: 80,
-          width: 150,
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(248, 148, 3, 1),
-            borderRadius: BorderRadius.circular(5)
-          ),
-          child: Text('This is a test.', 
-            textAlign: TextAlign.justify,
-            style: TextStyle(color: Colors.black, fontSize: 16),
-          ),
-        )
-        
+        body: Column( children: <Widget>[
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10),
+              padding: EdgeInsets.all(10.0),
+              height: 80,
+              width: 150,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(248, 148, 3, 1),
+                borderRadius: BorderRadius.circular(5)
+              ),
+              child: Icon(Icons.add_a_photo)
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10),
+              padding: EdgeInsets.all(10.0),
+              height: 80,
+              width: 150,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(248, 148, 3, 1),
+                borderRadius: BorderRadius.circular(5)
+              ),
+              child: Text('This is a test.', 
+                textAlign: TextAlign.justify,
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            )
+          ],)
         ],)
       );
   }
