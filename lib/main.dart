@@ -24,10 +24,11 @@ class HomePage extends StatelessWidget {
             color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
           ),
-          child: Text('This is a test.', 
-            textAlign: TextAlign.justify,
-            style: TextStyle(color: Colors.black, fontSize: 16),
-          ),
+          child: Icon(Icons.)
+          // Text('This is a test.', 
+          //   textAlign: TextAlign.justify,
+          //   style: TextStyle(color: Colors.black, fontSize: 16),
+          // ),
         ),
         Container(
           margin: EdgeInsets.only(left: 10, top: 10),
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
           width: 150,
           decoration: BoxDecoration(
             color: Color.fromRGBO(248, 148, 3, 1),
-            borderRadius: BorderRadius.circular(20)
+            borderRadius: BorderRadius.circular(5)
           ),
           child: Text('This is a test.', 
             textAlign: TextAlign.justify,
