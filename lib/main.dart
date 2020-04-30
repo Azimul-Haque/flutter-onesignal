@@ -17,16 +17,16 @@ class HomePage extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.only(left: 10, top: 10),
           padding: EdgeInsets.all(10.0),
-          height: 120,
-          width: 250,
+          height: 40,
+          width: 50,
           decoration: BoxDecoration(
             color: Color.fromRGBO(248, 148, 3, 1),
             borderRadius: BorderRadius.circular(5)
           ),
-          child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
-            textAlign: TextAlign.justify,
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
+          // child: Text('This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.', 
+          //   textAlign: TextAlign.justify,
+          //   style: TextStyle(color: Colors.black, fontSize: 16),
+          // ),
         ) 
         // Padding(
         //   padding: EdgeInsets.all(15.0),
