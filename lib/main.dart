@@ -50,30 +50,36 @@ class HomePage extends StatelessWidget {
               height: 20.0,
             ),
             Container(
-              height: 150,
-              padding: EdgeInsets.all(10.0),
-              child: ListView(children: <Widget>[
-                Text(_longText+_longText+_longText, textAlign: TextAlign.justify,),
-              ],),
+              height: 140,
+              padding: EdgeInsets.all(5.0),
+              child: ListView(
+                // scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  ListTile(
+                    leading: CircleAvatar(child: Text('R'),),
+                    title: Text("A. H. M. Azimul Haque"),
+                    subtitle: Text("Assistant Director, NSI"),
+                  ),
+                  _rowCell(),
+                  _rowCell(),
+                  _rowCell(),
+                ],
+              ),
             ),
             SizedBox(
               height: 10.0,
             ),
-            Row(children: <Widget>[
-              _rowCell(),
-              _rowCell(),
-              _rowCell(),
-            ],),
+            _rowCell(),
           ],
         ),  
       );
   }
 
   Widget _rowCell() {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.all(10.0),
-        height: 40, width: 40, 
+    return Row(children: <Widget>[
+      Container(
+        margin: EdgeInsets.all(5.0),
+        height: 100, width: 200, 
         // decoration: BoxDecoration(color: Colors.red),
         decoration: BoxDecoration(
           color: Colors.red,
@@ -90,7 +96,8 @@ class HomePage extends StatelessWidget {
         ),
         child: Icon(Icons.alarm, color: Colors.white,),
       ),
-    );
+      SizedBox(height: 20,),
+    ],);
   }
 }
 
