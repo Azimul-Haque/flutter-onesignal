@@ -35,31 +35,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        drawer: Drawer(
-          child: ListView(children: <Widget>[
-            Stack(children: <Widget>[
-              Image.asset("assets/images/drawer.jpg"),
-              Positioned(
-                left: 30,
-                bottom: 60,
-                child: Container(
-                  height: 70, 
-                  width: 70,
-                  decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50.0),
-                    child: Image.asset("assets/images/test1.jpg"),
-                  ),
-                ), 
-              ),
-              Positioned(
-                left: 30,
-                bottom: 40,
-                child: Text("A. H. M. Azimul Haque", style: TextStyle(color: Colors.blue, fontSize: 14)),
-              ),
-            ],)
-          ],)
-        ),
+        drawer: _homeDrawer(),
         body: ListView.builder(
           itemCount: people.length,
           itemBuilder: (BuildContext context, int index) {
@@ -148,19 +124,84 @@ class HomePage extends StatelessWidget {
       SizedBox(height: 20,),
     ],);
   }
+
+  Widget _homeDrawer() {
+    return Drawer(
+      child: ListView(children: <Widget>[
+        Stack(children: <Widget>[
+          Image.asset("assets/images/drawer.jpg"),
+          Positioned(
+            left: 30,
+            bottom: 65,
+            child: Container(
+              height: 70, 
+              width: 70,
+              decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50.0),
+                child: Image.asset("assets/images/test1.jpg"),
+              ),
+            ), 
+          ),
+          Positioned(
+            left: 30,
+            bottom: 45,
+            child: Text("A. H. M. Azimul Haque", style: TextStyle(color: Colors.white, fontSize: 15)),
+          ),
+          Positioned(
+            left: 30,
+            bottom: 30,
+            child: Text("Assistant Director, NSI", style: TextStyle(color: Colors.white70, fontSize: 12)),
+          ),
+          Positioned(
+            right: 3,
+            bottom: 3,
+            child: Text("Version: 1.0.5", style: TextStyle(color: Colors.white60, fontSize: 11)),
+          ),
+        ],),
+        SizedBox(height: 10,),
+        ListTile(
+          leading: Icon(Icons.home),
+          title: Text("Home"),
+          onTap: (){},
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.library_books),
+          title: Text("Subjects"),
+          onTap: (){},
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.add_to_photos),
+          title: Text("Add Questions"),
+          onTap: (){},
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text("Settings"),
+          onTap: (){},
+        ),
+        Divider(),
+      ],)
+    );
+  }
+  
+  BoxShadow _boxShadow1() {
+    return BoxShadow(
+      color: Colors.grey[700],
+      blurRadius: 10.0, // has the effect of softening the shadow
+      spreadRadius: 1.0, // has the effect of extending the shadow
+      offset: Offset(
+        3.0, // horizontal, move right 10
+        3.0, // vertical, move down 10
+      ),
+    );
+  }
+
 }
 
-BoxShadow _boxShadow1() {
-  return BoxShadow(
-    color: Colors.grey[700],
-    blurRadius: 10.0, // has the effect of softening the shadow
-    spreadRadius: 1.0, // has the effect of extending the shadow
-    offset: Offset(
-      3.0, // horizontal, move right 10
-      3.0, // vertical, move down 10
-    ),
-  );
-}
 
 // ListView(children: <Widget>[
 //           Container(
