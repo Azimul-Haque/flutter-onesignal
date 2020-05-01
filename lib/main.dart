@@ -41,11 +41,19 @@ class HomePage extends StatelessWidget {
               Image.asset("assets/images/drawer.jpg"),
               Positioned(
                 left: 30,
+                bottom: 60,
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50.0),
+                    child: Image.asset("assets/images/test1.jpg", height: 80, width: 80,),
+                  ),
+                ), 
+              ),
+              Positioned(
+                left: 30,
                 bottom: 30,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset("assets/images/test1/jpg"),
-                ),
+                child: Text("Test"),
               ),
             ],)
           ],)
@@ -138,6 +146,18 @@ class HomePage extends StatelessWidget {
       SizedBox(height: 20,),
     ],);
   }
+}
+
+BoxShadow _boxShadow1() {
+  return BoxShadow(
+    color: Colors.grey[700],
+    blurRadius: 10.0, // has the effect of softening the shadow
+    spreadRadius: 1.0, // has the effect of extending the shadow
+    offset: Offset(
+      3.0, // horizontal, move right 10
+      3.0, // vertical, move down 10
+    ),
+  );
 }
 
 // ListView(children: <Widget>[
