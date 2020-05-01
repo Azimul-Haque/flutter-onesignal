@@ -24,10 +24,10 @@ class HomePage extends StatelessWidget {
                   { "name": "Diana", "email": "veronica@richmond.cu" },
                   { "name": "Tony", "email": "bradley@desai.cg" },
                   { "name": "Rifat", "email": "beth@o.ma" },
-                  { "name": "Asif", "email": "asif@o.ma" }
-                  { "name": "Sajal", "email": "sajal@o.ma" }
-                  { "name": "Arefin", "email": "arefin@o.ma" }
-                  { "name": "Mannan", "email": "mannan@o.ma" }
+                  { "name": "Asif", "email": "asif@o.ma" },
+                  { "name": "Sajal", "email": "sajal@o.ma" },
+                  { "name": "Arefin", "email": "arefin@o.ma" },
+                  { "name": "Mannan", "email": "mannan@o.ma" },
                 ];
 
   @override
@@ -49,9 +49,15 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            Text("test"),
+            Container(
+              height: 150,
+              padding: EdgeInsets.all(10.0),
+              child: ListView(children: <Widget>[
+                Text(_longText+_longText+_longText, textAlign: TextAlign.justify,),
+              ],),
+            ),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             Row(children: <Widget>[
               _rowCell(),
@@ -115,6 +121,8 @@ class HomePage extends StatelessWidget {
 //           ),
 //           Image.asset("assets/images/test1.jpg"),
 //         ]),      
+
+
 
 
 
