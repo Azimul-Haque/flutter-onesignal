@@ -36,7 +36,9 @@ class HomePage extends StatelessWidget {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
         drawer: Drawer(
-          child: Text("This is a Drawer"),
+          child: ListView(children: <Widget>[
+            
+          ],)
         ),
         body: ListView.builder(
           itemCount: people.length,
