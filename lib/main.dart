@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
   String _shortText = "হারিয়ে গিয়েছি";
   List people = [
+                  { "name": "A. H. M. Azimul Haque", "email": "Assistant Director, NSI" },
                   { "name": "Kay", "email": "sandy@riley.dm" },
                   { "name": "Allison", "email": "kay@abbott.tt" },
                   { "name": "Rick", "email": "neal@raynor.om" },
@@ -34,56 +35,70 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Image.asset("assets/images/test2.jpg"),
-                Positioned(
-                  bottom: 20,
-                  left: 20,
-                  child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 25),),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Container(
-              height: 150,
-              padding: EdgeInsets.all(5.0),
-              child: ListView(
-                // scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  ListTile(
-                    leading: CircleAvatar(child: Text('R'),),
-                    title: Text("A. H. M. Azimul Haque"),
-                    subtitle: Text("Assistant Director, NSI"),
+        drawer: Drawer(
+          child: Text("This is a Drawer"),
+        ),
+        body: ListView.builder(
+          itemCount: people.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+                    leading: CircleAvatar(child: Text(people[index]["name"][0]),),
+                    title: Text(people[index]["name"]),
+                    subtitle: Text(people[index]["email"]),
                     onTap: (){},
-                  ),
-                  ListTile(
-                    leading: CircleAvatar(child: Text('R'),),
-                    title: Text("A. H. M. Azimul Haque"),
-                    subtitle: Text("Assistant Director, NSI"),
-                    onTap: (){},
-                  ),
-                  ListTile(
-                    leading: CircleAvatar(child: Text('R'),),
-                    title: Text("A. H. M. Azimul Haque"),
-                    subtitle: Text("Assistant Director, NSI"),
-                    onTap: (){},
-                  ),
-                  _rowCell(),
-                  _rowCell(),
-                  _rowCell(),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-          ],
-        ),  
+                  );
+          },
+        ),
+        // Column(
+        //   children: <Widget>[
+        //     Stack(
+        //       children: <Widget>[
+        //         Image.asset("assets/images/test2.jpg"),
+        //         Positioned(
+        //           bottom: 20,
+        //           left: 20,
+        //           child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 25),),
+        //         ),
+        //       ],
+        //     ),
+        //     SizedBox(
+        //       height: 20.0,
+        //     ),
+        //     Container(
+        //       height: 150,
+        //       padding: EdgeInsets.all(5.0),
+        //       child: ListView(
+        //         // scrollDirection: Axis.horizontal,
+        //         children: <Widget>[
+        //           ListTile(
+        //             leading: CircleAvatar(child: Text('R'),),
+        //             title: Text("A. H. M. Azimul Haque"),
+        //             subtitle: Text("Assistant Director, NSI"),
+        //             onTap: (){},
+        //           ),
+        //           ListTile(
+        //             leading: CircleAvatar(child: Text('R'),),
+        //             title: Text("A. H. M. Azimul Haque"),
+        //             subtitle: Text("Assistant Director, NSI"),
+        //             onTap: (){},
+        //           ),
+        //           ListTile(
+        //             leading: CircleAvatar(child: Text('R'),),
+        //             title: Text("A. H. M. Azimul Haque"),
+        //             subtitle: Text("Assistant Director, NSI"),
+        //             onTap: (){},
+        //           ),
+        //           _rowCell(),
+        //           _rowCell(),
+        //           _rowCell(),
+        //         ],
+        //       ),
+        //     ),
+        //     SizedBox(
+        //       height: 10.0,
+        //     ),
+        //   ],
+        // ),  
       );
   }
 
