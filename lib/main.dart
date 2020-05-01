@@ -10,42 +10,60 @@ void main() => runApp(MaterialApp(
 
 class HomePage extends StatelessWidget {
   final _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
-  final _shortText = "হারিয়ে গিয়েছি এই তো জরুরি খবর";
+  final _shortText = "হারিয়ে গিয়েছি";
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
-        body: ListView(children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(10.0),
-            padding: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              
-              borderRadius: BorderRadius.circular(5),
-              boxShadow: [ 
-                BoxShadow(
-                  color: Colors.grey[200],
-                  blurRadius: 3.0, // has the effect of softening the shadow
-                  spreadRadius: 2.0, // has the effect of extending the shadow
-                  offset: Offset(
-                    1.0, // horizontal, move right 10
-                    1.0, // vertical, move down 10
-                  ),
+        body: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Image.asset("assets/images/test2.jpg"),
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 30),),
                 )
-              ],
-            ),
-            child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
-              textAlign: TextAlign.justify,
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
-          Image.asset("assets/images/test1.jpg"),
-        ]),        
+              ],)
+          ],)
+          
       );
   }
 }
+
+// ListView(children: <Widget>[
+//           Container(
+//             margin: EdgeInsets.all(10.0),
+//             padding: EdgeInsets.all(10.0),
+//             decoration: BoxDecoration(
+//               color: Colors.white,
+              
+//               borderRadius: BorderRadius.circular(5),
+//               boxShadow: [ 
+//                 BoxShadow(
+//                   color: Colors.grey[200],
+//                   blurRadius: 3.0, // has the effect of softening the shadow
+//                   spreadRadius: 2.0, // has the effect of extending the shadow
+//                   offset: Offset(
+//                     1.0, // horizontal, move right 10
+//                     1.0, // vertical, move down 10
+//                   ),
+//                 )
+//               ],
+//             ),
+//             child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
+//               textAlign: TextAlign.justify,
+//               style: TextStyle(color: Colors.black, fontSize: 16),
+//             ),
+//           ),
+//           Image.asset("assets/images/test1.jpg"),
+//         ]),      
+
+
+
+
 
 // class MyHomePage extends StatefulWidget {
 //   MyHomePage({Key key, this.title}) : super(key: key);
