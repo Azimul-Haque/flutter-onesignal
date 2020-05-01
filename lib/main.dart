@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
@@ -39,9 +41,9 @@ class HomePage extends StatelessWidget {
         body: ListView(children: <Widget>[
           SizedBox(height: 5,),
 
-          _homeCard("cardimage1.jpg", "Twillight 1", "Rifat"),
-          _homeCard("cardimage2.jpg", "Twillight 2", "Asif"),
-          _homeCard("cardimage3.jpg", "Twillight 3", "Mannan"),
+          _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 300.0),
+          _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
+          _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
 
           SizedBox(height: 10,),
           Container(
@@ -150,7 +152,7 @@ class HomePage extends StatelessWidget {
     );
   }
   
-  Widget _homeCard(String image, String title, String takenby) {
+  Widget _homeCard(String image, String title, String takenby, double price) {
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,7 +167,9 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                 SizedBox(height: 5,),
-                Text("Taken by: " + takenby, style: TextStyle(fontSize: 14),),
+                Text("Prepared by: " + takenby, style: TextStyle(fontSize: 14),),
+                SizedBox(height: 5,),
+                Text("Price: ৳ " + price.toString(), style: TextStyle(color: Colors.blueGrey, fontSize: 14),),
               ],
             )
           )

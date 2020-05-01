@@ -45,6 +45,9 @@ flutter:
    - assets/images/test1.jpg
    - assets/images/test2.jpg
    - assets/images/drawer.jpg
+   - assets/images/cardimage1.jpg
+   - assets/images/cardimage2.jpg
+   - assets/images/cardimage3.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
