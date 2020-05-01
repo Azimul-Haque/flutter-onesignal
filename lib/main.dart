@@ -37,18 +37,18 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(title: Text('BCS Charioteer')),
         drawer: Drawer(
           child: ListView(children: <Widget>[
-            
+            Image.asset("assets/images/test2.jpg"),
           ],)
         ),
         body: ListView.builder(
           itemCount: people.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-                    leading: CircleAvatar(child: Text(people[index]["name"][0]),),
-                    title: Text(people[index]["name"]),
-                    subtitle: Text(people[index]["email"]),
-                    onTap: (){},
-                  );
+              leading: CircleAvatar(child: Text(people[index]["name"][0]),),
+              title: Text(people[index]["name"]),
+              subtitle: Text(people[index]["email"]),
+              onTap: (){},
+            );
           },
         ),
         // Column(
