@@ -36,18 +36,29 @@ class HomePage extends StatelessWidget {
     return  Scaffold(
         appBar: AppBar(title: Text('BCS Charioteer')),
         drawer: _homeDrawer(),
-        body: ListView.builder(
-          itemCount: people.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: CircleAvatar(child: Text(people[index]["name"][0]),),
-              title: Text(people[index]["name"]),
-              subtitle: Text(people[index]["email"]),
-              onTap: (){},
-            );
-          },
-        ),
-         
+        body: ListView(children: <Widget>[
+          SizedBox(height: 5,),
+
+          _homeCard("cardimage1.jpg", "Twillight 1", "Rifat"),
+          _homeCard("cardimage2.jpg", "Twillight 2", "Asif"),
+          _homeCard("cardimage3.jpg", "Twillight 3", "Mannan"),
+
+          SizedBox(height: 10,),
+          Container(
+            height: 300,
+            child: ListView.builder(
+              itemCount: people.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  leading: CircleAvatar(child: Text(people[index]["name"][0]),),
+                  title: Text(people[index]["name"]),
+                  subtitle: Text(people[index]["email"]),
+                  onTap: (){},
+                );
+              },
+            ),
+          ),
+        ],)
       );
   }
 
@@ -139,6 +150,32 @@ class HomePage extends StatelessWidget {
     );
   }
   
+  Widget _homeCard(String image, String title, String takenby) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Image.asset("assets/images/" + image),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                SizedBox(height: 5,),
+                Text("Taken by: " + takenby, style: TextStyle(fontSize: 14),),
+              ],
+            )
+          )
+        ],
+      ),
+      margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+    );
+    
+  }
+
   BoxShadow _boxShadow1() {
     return BoxShadow(
       color: Colors.grey[700],
