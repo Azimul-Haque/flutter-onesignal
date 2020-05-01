@@ -42,7 +42,10 @@ class HomePage extends StatelessWidget {
               Positioned(
                 left: 30,
                 bottom: 30,
-                child: Text("Test"),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset("assets/images/test1/jpg"),
+                ),
               ),
             ],)
           ],)
