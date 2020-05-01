@@ -9,8 +9,26 @@ void main() => runApp(MaterialApp(
 ));
 
 class HomePage extends StatelessWidget {
-  final _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
-  final _shortText = "হারিয়ে গিয়েছি";
+  String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
+  String _shortText = "হারিয়ে গিয়েছি";
+  List people = [
+                  { "name": "Kay", "email": "sandy@riley.dm" },
+                  { "name": "Allison", "email": "kay@abbott.tt" },
+                  { "name": "Rick", "email": "neal@raynor.om" },
+                  { "name": "Marvin", "email": "sandra@warren.um" },
+                  { "name": "Ben", "email": "tracy@olsen.fj" },
+                  { "name": "Kerry", "email": "catherine@oakley.sd" },
+                  { "name": "Nicholas", "email": "stephanie@goldman.je" },
+                  { "name": "Patricia", "email": "jennifer@strickland.bt" },
+                  { "name": "Anna", "email": "tracey@newton.la" },
+                  { "name": "Diana", "email": "veronica@richmond.cu" },
+                  { "name": "Tony", "email": "bradley@desai.cg" },
+                  { "name": "Rifat", "email": "beth@o.ma" },
+                  { "name": "Asif", "email": "asif@o.ma" }
+                  { "name": "Sajal", "email": "sajal@o.ma" }
+                  { "name": "Arefin", "email": "arefin@o.ma" }
+                  { "name": "Mannan", "email": "mannan@o.ma" }
+                ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +66,23 @@ class HomePage extends StatelessWidget {
   Widget _rowCell() {
     return Expanded(
       child: Container(
-        height: 40, width: 40, decoration: BoxDecoration(color: Colors.amber),
-        child: Icon(Icons.adb),
+        margin: EdgeInsets.all(10.0),
+        height: 40, width: 40, 
+        // decoration: BoxDecoration(color: Colors.red),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: [BoxShadow(
+            color: Colors.grey[350],
+            blurRadius: 3.0, // has the effect of softening the shadow
+            spreadRadius: 2.0, // has the effect of extending the shadow
+            offset: Offset(
+              1.0, // horizontal, move right 10
+              1.0, // vertical, move down 10
+            ),
+          )],
+        ),
+        child: Icon(Icons.alarm, color: Colors.white,),
       ),
     );
   }
