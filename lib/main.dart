@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
               height: 20.0,
             ),
             Container(
-              height: 140,
+              height: 150,
               padding: EdgeInsets.all(5.0),
               child: ListView(
                 // scrollDirection: Axis.horizontal,
@@ -59,6 +59,19 @@ class HomePage extends StatelessWidget {
                     leading: CircleAvatar(child: Text('R'),),
                     title: Text("A. H. M. Azimul Haque"),
                     subtitle: Text("Assistant Director, NSI"),
+                    onTap: (){},
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(child: Text('R'),),
+                    title: Text("A. H. M. Azimul Haque"),
+                    subtitle: Text("Assistant Director, NSI"),
+                    onTap: (){},
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(child: Text('R'),),
+                    title: Text("A. H. M. Azimul Haque"),
+                    subtitle: Text("Assistant Director, NSI"),
+                    onTap: (){},
                   ),
                   _rowCell(),
                   _rowCell(),
@@ -69,7 +82,6 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            _rowCell(),
           ],
         ),  
       );
