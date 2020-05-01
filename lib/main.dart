@@ -24,12 +24,26 @@ class HomePage extends StatelessWidget {
                 Positioned(
                   bottom: 20,
                   left: 20,
-                  child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 30),),
-                )
-              ],)
-          ],)
-          
+                  child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 25),),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text("test"),
+            Row(children: <Widget>[
+              _rowCell(),
+            ],),
+          ],
+        ),  
       );
+  }
+
+  Widget _rowCell() {
+    return Expanded(
+      child: Container(height: 40, width: 40, decoration: BoxDecoration(color: Colors.amber),),
+    )
   }
 }
 
