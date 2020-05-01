@@ -39,7 +39,11 @@ class HomePage extends StatelessWidget {
           child: ListView(children: <Widget>[
             Stack(children: <Widget>[
               Image.asset("assets/images/drawer.jpg"),
-              Text("Test SAD"),
+              Positioned(
+                left: 30,
+                bottom: 30,
+                child: Text("Test"),
+              ),
             ],)
           ],)
         ),
