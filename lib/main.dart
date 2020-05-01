@@ -43,17 +43,19 @@ class HomePage extends StatelessWidget {
                 left: 30,
                 bottom: 60,
                 child: Container(
+                  height: 70, 
+                  width: 70,
                   decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50.0),
-                    child: Image.asset("assets/images/test1.jpg", height: 80, width: 80,),
+                    child: Image.asset("assets/images/test1.jpg"),
                   ),
                 ), 
               ),
               Positioned(
                 left: 30,
-                bottom: 30,
-                child: Text("Test"),
+                bottom: 40,
+                child: Text("A. H. M. Azimul Haque", style: TextStyle(color: Colors.blue, fontSize: 14)),
               ),
             ],)
           ],)
