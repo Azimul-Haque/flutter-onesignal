@@ -37,7 +37,10 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(title: Text('BCS Charioteer')),
         drawer: Drawer(
           child: ListView(children: <Widget>[
-            Image.asset("assets/images/test2.jpg"),
+            Stack(children: <Widget>[
+              Image.asset("assets/images/drawer.jpg"),
+              Text("Test SAD"),
+            ],)
           ],)
         ),
         body: ListView.builder(
