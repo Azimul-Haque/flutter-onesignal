@@ -32,7 +32,12 @@ class HomePage extends StatelessWidget {
               height: 20.0,
             ),
             Text("test"),
+            SizedBox(
+              height: 20.0,
+            ),
             Row(children: <Widget>[
+              _rowCell(),
+              _rowCell(),
               _rowCell(),
             ],),
           ],
@@ -42,8 +47,11 @@ class HomePage extends StatelessWidget {
 
   Widget _rowCell() {
     return Expanded(
-      child: Container(height: 40, width: 40, decoration: BoxDecoration(color: Colors.amber),),
-    )
+      child: Container(
+        height: 40, width: 40, decoration: BoxDecoration(color: Colors.amber),
+        child: Icon(Icons.adb),
+      ),
+    );
   }
 }
 
