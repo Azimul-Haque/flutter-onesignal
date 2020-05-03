@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
         body: ListView(children: <Widget>[
           SizedBox(height: 5,),
 
-          _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 300.0),
+          _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
           _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
           _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
 
