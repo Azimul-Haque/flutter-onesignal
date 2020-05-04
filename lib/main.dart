@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:project1/pages/page1.dart';
+import 'package:project1/pages/page2.dart';
 
 void main() {
   var materialApp = MaterialApp(
@@ -61,10 +62,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  @override
-  void initState() {
-    this._getPosts();
-  }
+  // @override
+  // void initState() {
+  //   this._getPosts();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,25 +76,26 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
         RaisedButton(
-          child: Text("Total Count: $count"),
+          child: Text("তথ্য লোড করুন $count"),
           color: Colors.lightBlue,
           hoverElevation: 5,
           onPressed: () {
             setState(() {
               count++;
-              _showSnackbar("জেসন ডাটা এড করা হয়েছে।" + ' ' + count.toString());
-              loadJsonData();
+              _showSnackbar("লোড করা হচ্ছে...");
+              // loadJsonData();
               _getPosts();
+              _showSnackbar("জেসন ডাটা যোগ করা হয়েছে।");
             });
           },
         ),
         SizedBox(height: 5,),
         RaisedButton(
-          child: Text("Show Toast"),
+          child: Text("তথ্য মুছে দিন"),
           onPressed: () {
             setState(() {
               _showToast("তথ্য মুছে দেওয়া হয়েছে!");
-              people = [];
+              posts = [];
             });
           },
         ),
@@ -117,15 +119,17 @@ class _HomePageState extends State<HomePage> {
         // ),
         SizedBox(height: 5,),
         Container(
-          height: 300,
+          height: 350,
           child: ListView.builder(
             itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                // leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                title: Text(posts[index]["title"]),
+                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+                subtitle: Text("Tab to read more..."),
+                trailing: Icon(Icons.pageview),
                 onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageOne(posts[index]));
+                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
                   Navigator.push(context, route);
                 },
               );
