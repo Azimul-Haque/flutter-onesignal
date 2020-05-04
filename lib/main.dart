@@ -4,6 +4,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:project1/pages/page1.dart';
+
 void main() {
   var materialApp = MaterialApp(
     title: 'BCS Charioteer',
@@ -178,7 +180,10 @@ class _HomePageState extends State<HomePage> {
         ListTile(
           leading: Icon(Icons.library_books),
           title: Text("Subjects"),
-          onTap: (){},
+          onTap: (){
+            Route route = MaterialPageRoute(builder: (context) => PageOne());
+            Navigator.push(context, route);
+          },
         ),
         Divider(),
         ListTile(
