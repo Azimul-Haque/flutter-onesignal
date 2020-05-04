@@ -25,31 +25,32 @@ class _HomePageState extends State<HomePage> {
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
   int count = 0;
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-  List people;
+  List people = [];
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
     setState(() {
       people = json.decode(jsonDataText);
     });
+    return 'success';
   }
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
 
-  _showToast() {
+  _showToast(String textToast) {
     Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
+      msg: textToast,
       backgroundColor: Colors.black54,
       textColor: Colors.white,
     );
   }
 
-  @override
-  void initState() {
-    this.loadJsonData();
-  }
+  // @override
+  // void initState() {
+  //   this.loadJsonData();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,8 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             setState(() {
               count++;
-              _showSnackbar(_shortText + ' ' + count.toString());
+              _showSnackbar("জেসন ডাটা এড করা হয়েছে।" + ' ' + count.toString());
+              loadJsonData();
             });
           },
         ),
@@ -75,7 +77,8 @@ class _HomePageState extends State<HomePage> {
           child: Text("Show Toast"),
           onPressed: () {
             setState(() {
-              _showToast();
+              _showToast("তথ্য মুছে দেওয়া হয়েছে!");
+              people = [];
             });
           },
         ),
@@ -94,7 +97,7 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ),
-        
+
         SizedBox(height: 5,),
 
         _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
