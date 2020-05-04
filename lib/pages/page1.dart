@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class PageOne extends StatefulWidget {
-  var m;
-  PageOne(this.m);
+  var data;
+  PageOne(this.data);
   @override
-  _PageOneState createState() => _PageOneState(this.m);
+  _PageOneState createState() => _PageOneState(this.data);
 }
 
 class _PageOneState extends State<PageOne> {
-  var m;
-  _PageOneState(this.m);
+  var data;
+  _PageOneState(this.data);
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
@@ -31,7 +31,8 @@ class _PageOneState extends State<PageOne> {
       appBar: AppBar(title: Text('Page 1')),
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
-        Text(m),
+        Text("Name: " + data["name"]),
+        Text("Email: " + data["email"]),
         SizedBox(height: 5,),
         RaisedButton(
           child: Text("Go Back"),

@@ -94,7 +94,10 @@ class _HomePageState extends State<HomePage> {
                 leading: CircleAvatar(child: Text(people[index]["name"][0]),),
                 title: Text(people[index]["name"]),
                 subtitle: Text(people[index]["email"]),
-                onTap: (){},
+                onTap: (){
+                  Route route = MaterialPageRoute(builder: (context) => PageOne(people[index]));
+                  Navigator.push(context, route);
+                },
               );
             },
           ),
@@ -174,17 +177,16 @@ class _HomePageState extends State<HomePage> {
         ListTile(
           leading: Icon(Icons.home),
           title: Text("Home"),
-          onTap: (){},
+          onTap: (){
+            Navigator.pop(context); // this line closes the drawer
+          },
         ),
         Divider(),
         ListTile(
           leading: Icon(Icons.library_books),
           title: Text("Subjects"),
           onTap: (){
-            var message = "This is a passed value";
-            Route route = MaterialPageRoute(builder: (context) => PageOne(message));
             Navigator.pop(context); // this line closes the drawer
-            Navigator.push(context, route);
           },
         ),
         Divider(),
