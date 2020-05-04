@@ -51,7 +51,8 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 5,),
           RaisedButton(
             child: Text("Total Count: $count"),
-            c
+            color: Colors.blue,
+            hoverElevation: 5,
             onPressed: () {
               setState(() {
                 _shortText = "কাজ করে তো!";
