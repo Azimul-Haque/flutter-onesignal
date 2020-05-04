@@ -42,7 +42,10 @@ class _HomePageState extends State<HomePage> {
                   { "name": "Arefin", "email": "arefin@o.ma" },
                   { "name": "Mannan", "email": "mannan@o.ma" },
                 ];
-  
+  _showSnackbar(String textForSnackbar) {
+    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
+    _globalKey.currentState.showSnackBar(_mySnackbar);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,7 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               _shortText = "কাজ করে তো!";
               count++;
+              _showSnackbar(_shortText + ' ' + count.toString());
             });
           },
         ),
