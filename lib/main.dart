@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 import 'package:project1/pages/page1.dart';
 
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   int count = 0;
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   List people = [];
+  List posts = [];
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
@@ -35,6 +37,16 @@ class _HomePageState extends State<HomePage> {
       people = json.decode(jsonDataText);
     });
     return 'success';
+  }
+
+  Future<bool> _getPosts() async {
+    String serviceURL = "https://jsonplaceholder.typicode.com/posts";
+    var jsonDataPosts = await http.get(serviceURL);
+    setState(() {
+      posts = json.decode(jsonDataPosts.body.toString());
+      print(posts);
+    });
+    return true;
   }
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
@@ -49,10 +61,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // @override
-  // void initState() {
-  //   this.loadJsonData();
-  // }
+  @override
+  void initState() {
+    this._getPosts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +83,7 @@ class _HomePageState extends State<HomePage> {
               count++;
               _showSnackbar("জেসন ডাটা এড করা হয়েছে।" + ' ' + count.toString());
               loadJsonData();
+              _getPosts();
             });
           },
         ),
@@ -85,24 +98,40 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         SizedBox(height: 10,),
+        // Container(
+        //   height: 300,
+        //   child: ListView.builder(
+        //     itemCount: people.length,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return ListTile(
+        //         leading: CircleAvatar(child: Text(people[index]["name"][0]),),
+        //         title: Text(people[index]["name"]),
+        //         subtitle: Text(people[index]["email"]),
+        //         onTap: (){
+        //           Route route = MaterialPageRoute(builder: (context) => PageOne(people[index]));
+        //           Navigator.push(context, route);
+        //         },
+        //       );
+        //     },
+        //   ),
+        // ),
+        SizedBox(height: 5,),
         Container(
           height: 300,
           child: ListView.builder(
-            itemCount: people.length,
+            itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                leading: CircleAvatar(child: Text(people[index]["name"][0]),),
-                title: Text(people[index]["name"]),
-                subtitle: Text(people[index]["email"]),
+                // leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                title: Text(posts[index]["title"]),
                 onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageOne(people[index]));
+                  Route route = MaterialPageRoute(builder: (context) => PageOne(posts[index]));
                   Navigator.push(context, route);
                 },
               );
             },
           ),
         ),
-
         SizedBox(height: 5,),
 
         _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
