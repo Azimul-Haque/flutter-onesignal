@@ -2,13 +2,16 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
+void main() {
+  var materialApp = MaterialApp(
   title: 'BCS Charioteer',
   home: HomePage(),
-  // theme: ThemeData(
-  //   primarySwatch: Colors.blue,
-  // ),
-));
+  theme: ThemeData(
+    primarySwatch: Colors.green,
+  ),
+);
+  return runApp(materialApp);
+}
 
 class HomePage extends StatelessWidget {
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
@@ -42,7 +45,9 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 5,),
           RaisedButton(
             child: Text("Click Me"),
-            onPressed: () {},
+            onPressed: () {
+
+            },
           ),
           SizedBox(height: 5,),
           _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
