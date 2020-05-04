@@ -49,6 +49,7 @@ flutter:
    - assets/images/cardimage1.jpg
    - assets/images/cardimage2.jpg
    - assets/images/cardimage3.jpg
+   - assets/data.json
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
