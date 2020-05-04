@@ -74,7 +74,8 @@ class _HomePageState extends State<HomePage> {
             setState(() {
               _shortText = "কাজ করে তো!";
               count++;
-              _showSnackbar(_shortText + ' ' + count.toString());
+              // _showSnackbar(_shortText + ' ' + count.toString());
+              _showToast();
             });
           },
         ),
