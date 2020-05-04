@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি";
   int count = 0;
+  final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   List people = [
                   { "name": "A. H. M. Azimul Haque", "email": "Assistant Director, NSI" },
                   { "name": "Kay", "email": "sandy@riley.dm" },
@@ -45,45 +46,45 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        appBar: AppBar(title: Text('BCS Charioteer')),
-        drawer: _homeDrawer(),
-        body: ListView(children: <Widget>[
-          SizedBox(height: 5,),
-          RaisedButton(
-            child: Text("Total Count: $count"),
-            color: Colors.blue,
-            hoverElevation: 5,
-            onPressed: () {
-              setState(() {
-                _shortText = "কাজ করে তো!";
-                count++;
-              });
+      appBar: AppBar(title: Text('BCS Charioteer')),
+      drawer: _homeDrawer(),
+      body: ListView(children: <Widget>[
+        SizedBox(height: 5,),
+        RaisedButton(
+          child: Text("Total Count: $count"),
+          color: Colors.lightBlue,
+          hoverElevation: 5,
+          onPressed: () {
+            setState(() {
+              _shortText = "কাজ করে তো!";
+              count++;
+            });
+          },
+        ),
+        SizedBox(height: 5,),
+        Text(_shortText),
+        SizedBox(height: 5,),
+        _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+        _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
+        _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
+
+        SizedBox(height: 10,),
+        Container(
+          height: 300,
+          child: ListView.builder(
+            itemCount: people.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: CircleAvatar(child: Text(people[index]["name"][0]),),
+                title: Text(people[index]["name"]),
+                subtitle: Text(people[index]["email"]),
+                onTap: (){},
+              );
             },
           ),
-          SizedBox(height: 5,),
-          Text(_shortText),
-          SizedBox(height: 5,),
-          _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-          _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
-          _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
-
-          SizedBox(height: 10,),
-          Container(
-            height: 300,
-            child: ListView.builder(
-              itemCount: people.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  leading: CircleAvatar(child: Text(people[index]["name"][0]),),
-                  title: Text(people[index]["name"]),
-                  subtitle: Text(people[index]["email"]),
-                  onTap: (){},
-                );
-              },
-            ),
-          ),
-        ],)
-      );
+        ),
+      ],)
+    );
   }
 
   Widget _rowCell() {
