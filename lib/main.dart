@@ -3,12 +3,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   var materialApp = MaterialApp(
-  title: 'BCS Charioteer',
-  home: HomePage(),
-  theme: ThemeData(
-    primarySwatch: Colors.green,
-  ),
-);
+    title: 'BCS Charioteer',
+    home: HomePage(),
+    theme: ThemeData(
+      primarySwatch: Colors.green,
+    ),
+  );
   return runApp(materialApp);
 }
 
