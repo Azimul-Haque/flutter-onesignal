@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:async';
+import 'dart:convert';
 
 void main() {
   var materialApp = MaterialApp(
@@ -22,25 +25,14 @@ class _HomePageState extends State<HomePage> {
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
   int count = 0;
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-  List people = [
-                  { "name": "A. H. M. Azimul Haque", "email": "Assistant Director, NSI" },
-                  { "name": "Kay", "email": "sandy@riley.dm" },
-                  { "name": "Allison", "email": "kay@abbott.tt" },
-                  { "name": "Rick", "email": "neal@raynor.om" },
-                  { "name": "Marvin", "email": "sandra@warren.um" },
-                  { "name": "Ben", "email": "tracy@olsen.fj" },
-                  { "name": "Kerry", "email": "catherine@oakley.sd" },
-                  { "name": "Nicholas", "email": "stephanie@goldman.je" },
-                  { "name": "Patricia", "email": "jennifer@strickland.bt" },
-                  { "name": "Anna", "email": "tracey@newton.la" },
-                  { "name": "Diana", "email": "veronica@richmond.cu" },
-                  { "name": "Tony", "email": "bradley@desai.cg" },
-                  { "name": "Rifat", "email": "beth@o.ma" },
-                  { "name": "Asif", "email": "asif@o.ma" },
-                  { "name": "Sajal", "email": "sajal@o.ma" },
-                  { "name": "Arefin", "email": "arefin@o.ma" },
-                  { "name": "Mannan", "email": "mannan@o.ma" },
-                ];
+  List people;
+
+  Future<String> loadJsonData() async {
+    var jsonDataText = await rootBundle.loadString("assets/data.json");
+    setState(() {
+      people = json.decode(jsonDataText);
+    });
+  }
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
@@ -52,6 +44,11 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.black54,
       textColor: Colors.white,
     );
+  }
+
+  @override
+  void initState() {
+    this.loadJsonData();
   }
 
   @override
@@ -82,12 +79,6 @@ class _HomePageState extends State<HomePage> {
             });
           },
         ),
-        SizedBox(height: 5,),
-
-        _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-        _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
-        _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
-
         SizedBox(height: 10,),
         Container(
           height: 300,
@@ -103,6 +94,14 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ),
+        
+        SizedBox(height: 5,),
+
+        _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+        _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
+        _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
+
+        
       ],)
     );
   }
