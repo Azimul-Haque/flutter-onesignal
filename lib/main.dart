@@ -13,9 +13,15 @@ void main() {
   return runApp(materialApp);
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি";
+  int count = 0;
   List people = [
                   { "name": "A. H. M. Azimul Haque", "email": "Assistant Director, NSI" },
                   { "name": "Kay", "email": "sandy@riley.dm" },
@@ -44,11 +50,17 @@ class HomePage extends StatelessWidget {
         body: ListView(children: <Widget>[
           SizedBox(height: 5,),
           RaisedButton(
-            child: Text("Click Me"),
+            child: Text("Total Count: $count"),
+            c
             onPressed: () {
-
+              setState(() {
+                _shortText = "কাজ করে তো!";
+                count++;
+              });
             },
           ),
+          SizedBox(height: 5,),
+          Text(_shortText),
           SizedBox(height: 5,),
           _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
           _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
