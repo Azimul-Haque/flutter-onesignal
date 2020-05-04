@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
-  String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি";
+  String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
   int count = 0;
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   List people = [
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
       msg: "This is Center Short Toast",
       backgroundColor: Colors.black54,
       textColor: Colors.white,
-      fontSize: 16.0,
     );
   }
 
