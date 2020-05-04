@@ -42,10 +42,12 @@ class _HomePageState extends State<HomePage> {
                   { "name": "Arefin", "email": "arefin@o.ma" },
                   { "name": "Mannan", "email": "mannan@o.ma" },
                 ];
+  
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      key: _globalKey,
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(),
       body: ListView(children: <Widget>[
