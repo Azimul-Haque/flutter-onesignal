@@ -181,7 +181,9 @@ class _HomePageState extends State<HomePage> {
           leading: Icon(Icons.library_books),
           title: Text("Subjects"),
           onTap: (){
-            Route route = MaterialPageRoute(builder: (context) => PageOne());
+            var message = "This is a passed value";
+            Route route = MaterialPageRoute(builder: (context) => PageOne(message));
+            Navigator.pop(context); // this line closes the drawer
             Navigator.push(context, route);
           },
         ),
