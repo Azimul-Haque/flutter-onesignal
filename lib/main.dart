@@ -62,10 +62,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // @override
-  // void initState() {
-  //   this._getPosts();
-  // }
+  @override
+  void initState() {
+    this._getPosts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,33 +73,48 @@ class _HomePageState extends State<HomePage> {
       key: _globalKey,
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(),
-      body: ListView(children: <Widget>[
-        SizedBox(height: 5,),
-        RaisedButton(
-          child: Text("তথ্য লোড করুন $count"),
-          color: Colors.lightBlue,
-          hoverElevation: 5,
-          onPressed: () {
-            setState(() {
-              count++;
-              _showSnackbar("লোড করা হচ্ছে...");
-              // loadJsonData();
-              _getPosts();
-              _showSnackbar("জেসন ডাটা যোগ করা হয়েছে।");
-            });
+      body: ListView.builder(
+          itemCount: posts.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+              title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+              subtitle: Text("Tab to read more..."),
+              trailing: Icon(Icons.pageview),
+              onTap: (){
+                Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                Navigator.push(context, route);
+              },
+            );
           },
         ),
-        SizedBox(height: 5,),
-        RaisedButton(
-          child: Text("তথ্য মুছে দিন"),
-          onPressed: () {
-            setState(() {
-              _showToast("তথ্য মুছে দেওয়া হয়েছে!");
-              posts = [];
-            });
-          },
-        ),
-        SizedBox(height: 10,),
+        // ListView(children: <Widget>[
+        // SizedBox(height: 5,),
+        // RaisedButton(
+        //   child: Text("তথ্য লোড করুন $count"),
+        //   color: Colors.lightBlue,
+        //   hoverElevation: 5,
+        //   onPressed: () {
+        //     setState(() {
+        //       count++;
+        //       _showSnackbar("লোড করা হচ্ছে...");
+        //       // loadJsonData();
+        //       _getPosts();
+        //       _showSnackbar("জেসন ডাটা যোগ করা হয়েছে।");
+        //     });
+        //   },
+        // ),
+        // SizedBox(height: 5,),
+        // RaisedButton(
+        //   child: Text("তথ্য মুছে দিন"),
+        //   onPressed: () {
+        //     setState(() {
+        //       _showToast("তথ্য মুছে দেওয়া হয়েছে!");
+        //       posts = [];
+        //     });
+        //   },
+        // ),
+        // SizedBox(height: 10,),
         // Container(
         //   height: 300,
         //   child: ListView.builder(
@@ -117,33 +132,32 @@ class _HomePageState extends State<HomePage> {
         //     },
         //   ),
         // ),
-        SizedBox(height: 5,),
-        Container(
-          height: 350,
-          child: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-                subtitle: Text("Tab to read more..."),
-                trailing: Icon(Icons.pageview),
-                onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-                  Navigator.push(context, route);
-                },
-              );
-            },
-          ),
-        ),
-        SizedBox(height: 5,),
+        // SizedBox(height: 5,),
+        // Container(
+        //   height: MediaQuery.of(context).size.height - 100,
+        //   child: ListView.builder(
+        //     itemCount: posts.length,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return ListTile(
+        //         leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+        //         title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+        //         subtitle: Text("Tab to read more..."),
+        //         trailing: Icon(Icons.pageview),
+        //         onTap: (){
+        //           Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+        //           Navigator.push(context, route);
+        //         },
+        //       );
+        //     },
+        //   ),
+        // ),
 
-        _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-        _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
-        _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
+        // SizedBox(height: 5,),
 
-        
-      ],)
+        // _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+        // _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
+        // _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
+      // ],)
     );
   }
 
