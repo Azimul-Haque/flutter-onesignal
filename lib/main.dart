@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   List people = [];
   List posts = [];
+  List unfilteredPosts = [];
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
@@ -45,8 +46,8 @@ class _HomePageState extends State<HomePage> {
     var jsonDataPosts = await http.get(serviceURL);
     setState(() {
       posts = json.decode(jsonDataPosts.body.toString());
-      print(posts);
     });
+    this.unfilteredPosts = posts;
     return true;
   }
   _showSnackbar(String textForSnackbar) {
@@ -62,6 +63,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  searchData(String str) {
+    var strExist = str.length > 0 ? true : false;
+    if(strExist) {
+
+    } else {
+      
+    }
+  }
+
   @override
   void initState() {
     this._getPosts();
@@ -73,21 +83,34 @@ class _HomePageState extends State<HomePage> {
       key: _globalKey,
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(),
-      body: ListView.builder(
-          itemCount: posts.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-              title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-              subtitle: Text("Tab to read more..."),
-              trailing: Icon(Icons.pageview),
-              onTap: (){
-                Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-                Navigator.push(context, route);
-              },
-            );
+      body: Column(children: <Widget>[
+        TextField(
+          decoration: InputDecoration(
+            hintText: "Search...",
+          ),
+          onChanged: (String str) {
+            this.searchData(str);
           },
         ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+                subtitle: Text("Tab to read more..."),
+                trailing: Icon(Icons.pageview),
+                onTap: (){
+                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                  Navigator.push(context, route);
+                },
+              );
+            },
+          ),
+        ),
+      ],), 
+      
         // ListView(children: <Widget>[
         // SizedBox(height: 5,),
         // RaisedButton(
