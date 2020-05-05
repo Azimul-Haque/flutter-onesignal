@@ -66,9 +66,19 @@ class _HomePageState extends State<HomePage> {
   searchData(String str) {
     var strExist = str.length > 0 ? true : false;
     if(strExist) {
-
+      var filterData = [];
+      for(var i=0; i<this.unfilteredPosts.length; i++) {
+        if(unfilteredPosts[i]['title'].contains(str) || unfilteredPosts[i]['body'].contains(str)) {
+          filterData.add(unfilteredPosts[i]);
+        }
+      }
+      setState(() {
+        this.posts = filterData;
+      });
     } else {
-      
+      setState(() {
+        this.posts = this.unfilteredPosts;
+      });
     }
   }
 
