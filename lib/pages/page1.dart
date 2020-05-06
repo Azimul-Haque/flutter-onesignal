@@ -49,6 +49,7 @@ class _PageOneState extends State<PageOne> {
     return  Scaffold(
       appBar: AppBar(
         title: Text('Settings'),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.check), onPressed: () async{
             SharedPreferences savestngs = await SharedPreferences.getInstance();
@@ -56,7 +57,7 @@ class _PageOneState extends State<PageOne> {
               savestngs.setString('userName', userNameController.text);
             });
             _showToast("Settings saved!");
-            Navigator.pop(context);
+            Navigator.pop(context, userNameController.text);
           },),
         ],
       ),
@@ -79,7 +80,7 @@ class _PageOneState extends State<PageOne> {
           hoverElevation: 5,
           onPressed: () {
             setState(() {
-              Navigator.pop(context);
+              Navigator.pop(context, userName);
               _showToast("ফিরে যাওয়া হলো!");
             });
           },

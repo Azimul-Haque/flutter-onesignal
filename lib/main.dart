@@ -299,7 +299,11 @@ class _HomePageState extends State<HomePage> {
           onTap: (){
             Navigator.pop(context);
             Route route = MaterialPageRoute(builder: (context) => PageOne(null));
-            Navigator.push(context, route);
+            Navigator.push(context, route).then((value) {
+              setState(() {
+                userName = value;
+              });
+            });
           },
         ),
         Divider(),
