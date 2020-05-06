@@ -80,12 +80,16 @@ class _PageOneState extends State<PageOne> {
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
         Column(children: <Widget>[
+          SizedBox(height: 5,),
+          Text("User Details", style: TextStyle(color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),),
+          SizedBox(height: 5,),
+          Divider(color: Colors.grey,),
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
               controller: userNameController,
               decoration: InputDecoration(
-                hintText: "Name",
+                labelText: "Name",
               ),
               onChanged: (String str) {},
             ),
@@ -95,7 +99,7 @@ class _PageOneState extends State<PageOne> {
             child: TextField(
               controller: userDesigController,
               decoration: InputDecoration(
-                hintText: "Designation",
+                labelText: "Designation",
               ),
               onChanged: (String str) {},
             ),
@@ -105,11 +109,12 @@ class _PageOneState extends State<PageOne> {
             child: TextField(
               controller: userOrgController,
               decoration: InputDecoration(
-                hintText: "Organization",
+                labelText: "Organization",
               ),
               onChanged: (String str) {},
             ),
           ),
+          SizedBox(height: 5,),
         ],),
       ],)
     );
