@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 String _userName;
 
 class PageOne extends StatefulWidget {
+  // PageOne({Key key}) : super(key: key);
   var data;
   PageOne(this.data);
   @override
@@ -29,10 +30,14 @@ class _PageOneState extends State<PageOne> {
 
   _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String spname = (prefs.getString('_userName') ?? 'N/A');
     setState(() {
-      _userName = (prefs.getString('_userName') ?? '');
+      _userName = spname;
+      userNameController.text = _userName;
     });
   }
+
+  final userNameController = TextEditingController();
 
   @override
   void initState() {
@@ -43,10 +48,35 @@ class _PageOneState extends State<PageOne> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(title: Text('Page 1')),
+      appBar: AppBar(
+        title: Text('Settings'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.check), onPressed: () async{
+            SharedPreferences savestngs = await SharedPreferences.getInstance();
+            
+            _showToast("Settings saved!");
+            Navigator.pop(context, () {
+              setState(() {
+                savestngs.setString('_userName', userNameController.text);
+              });
+            });
+          },),
+        ],
+      ),
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
-        Text("Name: " + _userName),
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            controller: userNameController,
+            decoration: InputDecoration(
+              hintText: "Name",
+            ),
+            onChanged: (String str) {
+              // this.searchData(str);
+            },
+          ),
+        ),
         SizedBox(height: 5,),
         RaisedButton(
           child: Text("Go Back"),

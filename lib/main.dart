@@ -9,6 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
 
+String _userName;
+
 void main() {
   var materialApp = MaterialApp(
     title: 'BCS Charioteer',
@@ -21,12 +23,12 @@ void main() {
 }
 
 class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String _userName = "A. H. M. Azimul Haque";
   String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
   int count = 0;
@@ -86,8 +88,9 @@ class _HomePageState extends State<HomePage> {
 
   _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String spname = (prefs.getString('_userName') ?? 'N/A');
     setState(() {
-      _userName = (prefs.getString('_userName') ?? '');
+      _userName = spname;
     });
   }
 
@@ -104,6 +107,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(_userName),
       body: Column(children: <Widget>[
+        Text(_userName),
         Container(
           margin: EdgeInsets.all(10),
           child: TextField(
