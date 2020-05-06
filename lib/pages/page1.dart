@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+String _userName;
 
 class PageOne extends StatefulWidget {
   var data;
@@ -25,14 +27,26 @@ class _PageOneState extends State<PageOne> {
     );
   }
 
+  _loadUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _userName = (prefs.getString('_userName') ?? '');
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserName();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Page 1')),
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
-        Text("Name: " + data["name"]),
-        Text("Email: " + data["email"]),
+        Text("Name: " + _userName),
         SizedBox(height: 5,),
         RaisedButton(
           child: Text("Go Back"),
