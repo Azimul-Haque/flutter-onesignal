@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<bool> _getPosts() async {
-    String serviceURL = "https://jsonplaceholder.typicode.com/posts";
+    String serviceURL = "https://jsonplaceholder.typicode.com/posts"; // http://192.168.43.81:8000/broadcast
     var jsonDataPosts = await http.get(serviceURL);
     setState(() {
       posts = json.decode(jsonDataPosts.body.toString());
@@ -94,13 +94,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(),
       body: Column(children: <Widget>[
-        TextField(
-          decoration: InputDecoration(
-            hintText: "Search...",
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Search from posts...",
+            ),
+            onChanged: (String str) {
+              this.searchData(str);
+            },
           ),
-          onChanged: (String str) {
-            this.searchData(str);
-          },
         ),
         Expanded(
           child: ListView.builder(
