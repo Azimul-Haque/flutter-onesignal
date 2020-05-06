@@ -86,17 +86,21 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  _loadUserName() async {
+  _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String spname = (prefs.getString('userName') ?? 'N/A');
+    String spdesg = (prefs.getString('userDesig') ?? 'N/A');
+    String sporg  = (prefs.getString('userOrg') ?? 'N/A');
     setState(() {
       userName = spname;
+      userDesig = spdesg;
+      userOrg = sporg;
     });
   }
 
   @override
   void initState() {
-    this._loadUserName();
+    this._loadUserData();
     this._getPosts();
   }
 
@@ -105,7 +109,7 @@ class _HomePageState extends State<HomePage> {
     return  Scaffold(
       key: _globalKey,
       appBar: AppBar(title: Text('BCS Charioteer')),
-      drawer: _homeDrawer(userName),
+      drawer: _homeDrawer(userName, userDesig, userOrg),
       body: Column(children: <Widget>[
         Text(userName),
         Container(
@@ -236,7 +240,7 @@ class _HomePageState extends State<HomePage> {
     ],);
   }
 
-  Widget _homeDrawer(String username) {
+  Widget _homeDrawer(String username, String userdesig, String userorg) {
     return Drawer(
       child: ListView(children: <Widget>[
         Stack(children: <Widget>[
@@ -262,7 +266,7 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             left: 30,
             bottom: 30,
-            child: Text("Assistant Director, NSI", style: TextStyle(color: Colors.white70, fontSize: 12)),
+            child: Text(userdesig + ", " + userorg, style: TextStyle(color: Colors.white70, fontSize: 12)),
           ),
           Positioned(
             right: 3,
@@ -301,8 +305,11 @@ class _HomePageState extends State<HomePage> {
             Route route = MaterialPageRoute(builder: (context) => PageOne(null));
             Navigator.push(context, route).then((value) {
               setState(() {
-                userName = value;
+                userName = value[0];
+                userDesig = value[1];
+                userOrg = value[2];
               });
+              print("ASDASD");
             });
           },
         ),
