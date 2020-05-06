@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
 
-String _userName;
+import 'globals.dart';
 
 void main() {
   var materialApp = MaterialApp(
@@ -88,9 +88,9 @@ class _HomePageState extends State<HomePage> {
 
   _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String spname = (prefs.getString('_userName') ?? 'N/A');
+    String spname = (prefs.getString('userName') ?? 'N/A');
     setState(() {
-      _userName = spname;
+      userName = spname;
     });
   }
 
@@ -105,9 +105,9 @@ class _HomePageState extends State<HomePage> {
     return  Scaffold(
       key: _globalKey,
       appBar: AppBar(title: Text('BCS Charioteer')),
-      drawer: _homeDrawer(_userName),
+      drawer: _homeDrawer(userName),
       body: Column(children: <Widget>[
-        Text(_userName),
+        Text(userName),
         Container(
           margin: EdgeInsets.all(10),
           child: TextField(

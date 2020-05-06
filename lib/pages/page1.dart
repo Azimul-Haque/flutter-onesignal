@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-String _userName;
+import '../globals.dart';
 
 class PageOne extends StatefulWidget {
-  // PageOne({Key key}) : super(key: key);
   var data;
   PageOne(this.data);
   @override
@@ -30,10 +29,10 @@ class _PageOneState extends State<PageOne> {
 
   _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String spname = (prefs.getString('_userName') ?? 'N/A');
+    String spname = (prefs.getString('userName') ?? 'N/A');
     setState(() {
-      _userName = spname;
-      userNameController.text = _userName;
+      userName = spname;
+      userNameController.text = userName;
     });
   }
 
@@ -53,13 +52,11 @@ class _PageOneState extends State<PageOne> {
         actions: <Widget>[
           IconButton(icon: Icon(Icons.check), onPressed: () async{
             SharedPreferences savestngs = await SharedPreferences.getInstance();
-            
-            _showToast("Settings saved!");
-            Navigator.pop(context, () {
-              setState(() {
-                savestngs.setString('_userName', userNameController.text);
-              });
+            setState(() {
+              savestngs.setString('userName', userNameController.text);
             });
+            _showToast("Settings saved!");
+            Navigator.pop(context);
           },),
         ],
       ),
@@ -72,9 +69,7 @@ class _PageOneState extends State<PageOne> {
             decoration: InputDecoration(
               hintText: "Name",
             ),
-            onChanged: (String str) {
-              // this.searchData(str);
-            },
+            onChanged: (String str) {},
           ),
         ),
         SizedBox(height: 5,),
