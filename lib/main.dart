@@ -111,7 +111,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text('BCS Charioteer')),
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: Column(children: <Widget>[
-        Text(userName),
         Container(
           margin: EdgeInsets.all(10),
           child: TextField(
