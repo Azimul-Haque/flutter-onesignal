@@ -116,8 +116,8 @@ class _HomePageState extends State<HomePage> {
             offset: Offset(0, 55),
             itemBuilder: (BuildContext context) {
               return [
-                PopupMenuItem(value: "rating", child: Row(children: <Widget>[Icon(Icons.add), Text("Rate us")],),),
-                PopupMenuItem(value: "website", child: Row(children: <Widget>[Text("View website")],),),
+                PopupMenuItem(value: "rating", child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), Text("Rate us")],),),
+                PopupMenuItem(value: "website", child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), Text("View website")],),),
               ];
             },
           )
