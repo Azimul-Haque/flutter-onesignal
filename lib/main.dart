@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
+import 'package:project1/pages/form.dart';
 
 import 'globals.dart';
 
@@ -139,7 +140,15 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ),
-      ],), 
+      ],),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Route route = MaterialPageRoute(builder: (context) => FormPage());
+          Navigator.push(context, route);
+        },
+        tooltip: 'Open Form',
+        child: Icon(Icons.add),
+      )
       
         // ListView(children: <Widget>[
         // SizedBox(height: 5,),
@@ -485,6 +494,6 @@ class _HomePageState extends State<HomePage> {
 //         onPressed: _incrementCounter,
 //         tooltip: 'Increment',
 //         child: Icon(Icons.add),
-//     );
+//       ),
 //   }
 // }
