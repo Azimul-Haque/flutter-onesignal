@@ -109,7 +109,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       key: _globalKey,
-      appBar: AppBar(title: Text('BCS Charioteer')),
+      appBar: AppBar(
+        title: Text('BCS Charioteer'),
+        actions: <Widget>[
+          PopupMenuButton(
+            offset: Offset(0, 55),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(value: "rating", child: Row(children: <Widget>[Icon(Icons.add), Text("Rate us")],),),
+                PopupMenuItem(value: "website", child: Row(children: <Widget>[Text("View website")],),),
+              ];
+            },
+          )
+        ],
+      ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: Column(children: <Widget>[
         Container(
