@@ -14,7 +14,7 @@ import 'globals.dart';
 
 void main() {
   var materialApp = MaterialApp(
-    title: 'BCS Charioteer',
+    title: 'BCS Charioteer New',
     home: HomePage(),
     theme: ThemeData(
       primarySwatch: Colors.green,
