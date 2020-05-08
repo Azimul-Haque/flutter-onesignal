@@ -121,7 +121,15 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
-                  value: "rating", 
+                  value: "call", 
+                  child: Row(children: <Widget>[Icon(Icons.call, color: Colors.black,), SizedBox(width: 10,), Text("Call us")],)
+                ,),
+                PopupMenuItem(
+                  value: "sms", 
+                  child: Row(children: <Widget>[Icon(Icons.sms, color: Colors.black,), SizedBox(width: 10,), Text("Send message")],)
+                ,),
+                PopupMenuItem(
+                  value: "rate", 
                   child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("Rate us")],)
                 ,),
                 PopupMenuItem(
