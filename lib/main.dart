@@ -115,8 +115,30 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
-            onSelected: (value) {
-
+            onSelected: (value) async{
+              switch (value) {
+                case 'call':
+                  if (await canLaunch("tel:+8801751398392")) {
+                    await launch("tel:+8801751398392");
+                  } else {
+                    throw 'Could not launch!';
+                  }
+                  break;
+                case 'sms':
+                  if (await canLaunch("sms:+8801751398392")) {
+                    await launch("sms:+8801751398392");
+                  } else {
+                    throw 'Could not launch!';
+                  }
+                  break;
+                case 'rate':
+                  
+                  break;
+                case 'website':
+                  
+                  break;
+                default:
+              }
             },
             itemBuilder: (BuildContext context) {
               return [
