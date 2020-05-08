@@ -115,15 +115,18 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
+            onSelected: (value) {
+
+            },
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
                   value: "rating", 
-                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), Text("Rate us")],)
+                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("Rate us")],)
                 ,),
                 PopupMenuItem(
                   value: "website",
-                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), Text("View website")],),
+                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), SizedBox(width: 10,), Text("View website")],),
                 ),
               ];
             },
@@ -145,15 +148,15 @@ class _HomePageState extends State<HomePage> {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: people.length,
+            itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                leading: CircleAvatar(child: Text(people[index]["title"][0]),),
-                title: Text(people[index]["name"].length > 30 ? people[index]["title"].substring(0, 25) + "..." : people[index]["name"]),
+                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
                 subtitle: Text("Tab to read more..."),
                 trailing: Icon(Icons.pageview),
                 onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageTwo(people[index]));
+                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
                   Navigator.push(context, route);
                 },
               );
