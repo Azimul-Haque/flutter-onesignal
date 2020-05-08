@@ -145,15 +145,15 @@ class _HomePageState extends State<HomePage> {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: posts.length,
+            itemCount: people.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+                leading: CircleAvatar(child: Text(people[index]["title"][0]),),
+                title: Text(people[index]["name"].length > 30 ? people[index]["title"].substring(0, 25) + "..." : people[index]["name"]),
                 subtitle: Text("Tab to read more..."),
                 trailing: Icon(Icons.pageview),
                 onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                  Route route = MaterialPageRoute(builder: (context) => PageTwo(people[index]));
                   Navigator.push(context, route);
                 },
               );
