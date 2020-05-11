@@ -5,7 +5,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
@@ -115,39 +115,39 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
-            onSelected: (value) async{
-              switch (value) {
-                case 'call':
-                  if (await canLaunch("tel:+8801751398392")) {
-                    await launch("tel:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'sms':
-                  if (await canLaunch("sms:+8801751398392")) {
-                    await launch("sms:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'rate':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'website':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                default:
-              }
-            },
+            // onSelected: (value) async{
+            //   switch (value) {
+            //     case 'call':
+            //       if (await canLaunch("tel:+8801751398392")) {
+            //         await launch("tel:+8801751398392");
+            //       } else {
+            //         throw 'Could not launch!';
+            //       }
+            //       break;
+            //     case 'sms':
+            //       if (await canLaunch("sms:+8801751398392")) {
+            //         await launch("sms:+8801751398392");
+            //       } else {
+            //         throw 'Could not launch!';
+            //       }
+            //       break;
+            //     case 'rate':
+            //       if (await canLaunch("https://orbachinujbuk.com")) {
+            //         await launch("https://orbachinujbuk.com");
+            //       } else {
+            //         throw 'Could not launch!';
+            //       }
+            //       break;
+            //     case 'website':
+            //       if (await canLaunch("https://orbachinujbuk.com")) {
+            //         await launch("https://orbachinujbuk.com");
+            //       } else {
+            //         throw 'Could not launch!';
+            //       }
+            //       break;
+            //     default:
+            //   }
+            // },
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
