@@ -369,7 +369,7 @@ class _HomePageState extends State<HomePage> {
           leading: Icon(Icons.add_to_photos),
           title: Text("Add Questions"),
           onTap: (){
-            Route route = MaterialPageRoute(builder: (context) => NotificationPage([1, 2]));
+            Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             Navigator.push(context, route);
           },
         ),
@@ -438,10 +438,7 @@ class _HomePageState extends State<HomePage> {
     OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      var notiData = [];
-      notiData[0] = result.notification.payload.title;
-      notiData[1] = result.notification.payload.body;
-      Route route = MaterialPageRoute(builder: (context) => NotificationPage(notiData));
+      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.body]));
       Navigator.push(context, route);
     });
   }

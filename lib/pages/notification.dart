@@ -31,7 +31,7 @@ class _NotificationPageState extends State<NotificationPage> {
         Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.only(top: 15, right: 15, bottom: 7.5, left: 15),
               child: Container(
                 padding: EdgeInsets.all(15),
                 width: double.infinity,
@@ -53,7 +53,7 @@ class _NotificationPageState extends State<NotificationPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.only(top: 15, right: 15, bottom: 7.5, left: 15),
               child: Container(
                 padding: EdgeInsets.all(15),
                 width: double.infinity,
