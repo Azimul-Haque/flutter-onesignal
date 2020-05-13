@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
@@ -104,6 +105,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     this._loadUserData();
     this._getPosts();
+    this.configOneSignal();
   }
 
   @override
@@ -425,6 +427,10 @@ class _HomePageState extends State<HomePage> {
         3.0, // vertical, move down 10
       ),
     );
+  }
+
+  void configOneSignal() {
+    OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
   }
 
 }
