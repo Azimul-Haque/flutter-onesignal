@@ -71,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                   )],
                 ),
-                child: Text(data[1].trim(), style: TextStyle(color: Colors.white, fontSize: 16),),
+                child: Text(data[1].replaceAll("\n", ""), style: TextStyle(color: Colors.white, fontSize: 16),),
               ),
             ),
           ],
