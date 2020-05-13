@@ -53,7 +53,7 @@ class _NotificationPageState extends State<NotificationPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15, right: 15, bottom: 7.5, left: 15),
+              padding: EdgeInsets.only(top: 7.5, right: 15, bottom: 15, left: 15),
               child: Container(
                 padding: EdgeInsets.all(15),
                 width: double.infinity,
@@ -71,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                   )],
                 ),
-                child: Text("প্রশ্নঃ " + data[1], style: TextStyle(color: Colors.white, fontSize: 16),),
+                child: Text(data[1].trim(), style: TextStyle(color: Colors.white, fontSize: 16),),
               ),
             ),
           ],
