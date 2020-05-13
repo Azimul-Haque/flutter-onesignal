@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
+  var data;
+  NotificationPage(this.data);
   @override
-  _NotificationPageState createState() => _NotificationPageState();
+  _NotificationPageState createState() => _NotificationPageState(this.data);
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-
-  
+  var data;
+  _NotificationPageState(this.data);
 
   @override
   Widget build(BuildContext context) {
