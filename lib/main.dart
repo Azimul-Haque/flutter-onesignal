@@ -369,7 +369,7 @@ class _HomePageState extends State<HomePage> {
           leading: Icon(Icons.add_to_photos),
           title: Text("Add Questions"),
           onTap: (){
-            Route route = MaterialPageRoute(builder: (context) => NotificationPage());
+            Route route = MaterialPageRoute(builder: (context) => NotificationPage([1, 2]));
             Navigator.push(context, route);
           },
         ),
