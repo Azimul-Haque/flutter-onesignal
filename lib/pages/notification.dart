@@ -49,7 +49,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                   )],
                 ),
-                child: Text("আমি চিনি গো চিনি তোমারে", style: TextStyle(color: Colors.black87, fontSize: 16),),
+                child: Text("প্রশ্নঃ " + data[0], style: TextStyle(color: Colors.black87, fontSize: 16),),
               ),
             ),
             Padding(
@@ -71,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                   )],
                 ),
-                child: Text("আমি চিনি গো চিনি তোমারে", style: TextStyle(color: Colors.white, fontSize: 16),),
+                child: Text("প্রশ্নঃ " + data[1], style: TextStyle(color: Colors.white, fontSize: 16),),
               ),
             ),
           ],
