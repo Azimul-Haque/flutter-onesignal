@@ -39,8 +39,8 @@ class _NotificationPageState extends State<NotificationPage> {
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: [BoxShadow(
                     color: Colors.grey[350],
-                    blurRadius: 3.0, // has the effect of softening the shadow
-                    spreadRadius: 2.0, // has the effect of extending the shadow
+                    blurRadius: 1.0, // has the effect of softening the shadow
+                    spreadRadius: 1.0, // has the effect of extending the shadow
                     offset: Offset(
                       1.0, // horizontal, move right 10
                       1.0, // vertical, move down 10
@@ -61,8 +61,8 @@ class _NotificationPageState extends State<NotificationPage> {
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: [BoxShadow(
                     color: Colors.blue,
-                    blurRadius: 3.0, // has the effect of softening the shadow
-                    spreadRadius: 2.0, // has the effect of extending the shadow
+                    blurRadius: 1.0, // has the effect of softening the shadow
+                    spreadRadius: 1.0, // has the effect of extending the shadow
                     offset: Offset(
                       1.0, // horizontal, move right 10
                       1.0, // vertical, move down 10
