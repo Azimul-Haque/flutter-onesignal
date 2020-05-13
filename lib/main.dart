@@ -11,6 +11,7 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/page2.dart';
 import 'package:project1/pages/form.dart';
+import 'package:project1/pages/notification.dart';
 
 import 'globals.dart';
 
@@ -39,6 +40,8 @@ class _HomePageState extends State<HomePage> {
   List people = [];
   List posts = [];
   List unfilteredPosts = [];
+
+  GlobalKey <NavigatorState> navigatorKey = GlobalKey <NavigatorState>();
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
@@ -365,7 +368,10 @@ class _HomePageState extends State<HomePage> {
         ListTile(
           leading: Icon(Icons.add_to_photos),
           title: Text("Add Questions"),
-          onTap: (){},
+          onTap: (){
+            Route route = MaterialPageRoute(builder: (context) => NotificationPage());
+            Navigator.push(context, route);
+          },
         ),
         Divider(),
         ListTile(
@@ -380,7 +386,6 @@ class _HomePageState extends State<HomePage> {
                 userDesig = value[1];
                 userOrg = value[2];
               });
-              print("ASDASD");
             });
           },
         ),
@@ -431,7 +436,13 @@ class _HomePageState extends State<HomePage> {
 
   void configOneSignal() {
     OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
-    
+    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+      Route route = MaterialPageRoute(builder: (context) => NotificationPage());
+      Navigator.push(context, route);
+      print("Question: " + result.notification.payload.title);
+      print("Answer: " + result.notification.payload.body);
+    });
   }
 
 }
