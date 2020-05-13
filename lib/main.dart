@@ -431,6 +431,7 @@ class _HomePageState extends State<HomePage> {
 
   void configOneSignal() {
     OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
+    
   }
 
 }
