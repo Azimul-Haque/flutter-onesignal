@@ -1,4 +1,4 @@
-package com.orbachinujbuk.flutter-onesignal
+package com.emample.project1
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
