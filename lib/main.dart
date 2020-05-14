@@ -186,11 +186,19 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: ListView(children: <Widget>[
-        Row(children: <Widget>[
-          Expanded(
-            child: 
-          ),
-        ],),
+        Row(
+
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              ),
+            ),
+            Expanded(
+              child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+            ),
+          ],
+        ),
         Container(
           margin: EdgeInsets.all(10.0),
           padding: EdgeInsets.all(10.0),
@@ -373,28 +381,34 @@ class _HomePageState extends State<HomePage> {
   
   Widget _homeCard(String image, String title, String takenby, double price) {
     return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Image.asset("assets/images/" + image),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                SizedBox(height: 5,),
-                Text("Prepared by: " + takenby, style: TextStyle(fontSize: 14),),
-                SizedBox(height: 5,),
-                Text("Price: ৳ " + price.toString(), style: TextStyle(color: Colors.blueGrey, fontSize: 14),),
-              ],
+      child: new InkWell(
+        onTap: () {
+          print("tapped");
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Image.asset("assets/images/" + image),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                  SizedBox(height: 5,),
+                  Text("Prepared by: " + takenby, style: TextStyle(fontSize: 14),),
+                  SizedBox(height: 5,),
+                  Text("Price: ৳ " + price.toString(), style: TextStyle(color: Colors.blueGrey, fontSize: 14),),
+                ],
+              )
             )
-          )
-        ],
+          ],
+        ),
       ),
-      margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+      // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+      elevation: 2,
     );
     
   }
