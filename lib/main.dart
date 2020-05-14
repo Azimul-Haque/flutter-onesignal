@@ -191,12 +191,28 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান", 320.0),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
+                child: _homeCard("cardimage1.jpg", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", 320.0),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
+                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
                 child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
               ),
             ),
@@ -206,20 +222,20 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
+                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
                 child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
               ),
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
+                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
                 child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
               ),
             ),
           ],
         ),
       ]),
-      
+
       // body: RefreshIndicator(
       //   key: refreshKey,
       //   onRefresh: () async{
@@ -397,9 +413,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                   SizedBox(height: 5,),
-                  Text("Prepared by: " + takenby, style: TextStyle(fontSize: 14),),
-                  SizedBox(height: 5,),
-                  Text("Price: ৳ " + price.toString(), style: TextStyle(color: Colors.blueGrey, fontSize: 14),),
+                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 13),),
                 ],
               )
             )
