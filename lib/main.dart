@@ -37,11 +37,19 @@ class _HomePageState extends State<HomePage> {
   String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
   int count = 0;
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
+  GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
   List people = [];
   List posts = [];
   List unfilteredPosts = [];
 
   GlobalKey <NavigatorState> navigatorKey = GlobalKey <NavigatorState>();
+
+  Future<Null> refreshList() async {
+    await Future.delayed(Duration(seconds: 2));
+    this._getPosts();
+    this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+    return null;
+  }
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
@@ -177,36 +185,76 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
-      body: Column(children: <Widget>[
+      body: ListView(children: <Widget>[
+        Row(children: <Widget>[
+          Expanded(
+            child: 
+          ),
+        ],),
         Container(
-          margin: EdgeInsets.all(10),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: "Search from posts...",
-            ),
-            onChanged: (String str) {
-              this.searchData(str);
-            },
+          margin: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: [ 
+              BoxShadow(
+                color: Colors.grey[200],
+                blurRadius: 3.0, // has the effect of softening the shadow
+                spreadRadius: 2.0, // has the effect of extending the shadow
+                offset: Offset(
+                  1.0, // horizontal, move right 10
+                  1.0, // vertical, move down 10
+                ),
+              )
+            ],
+          ),
+          child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
+            textAlign: TextAlign.justify,
+            style: TextStyle(color: Colors.black, fontSize: 16),
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-                subtitle: Text("Tab to read more..."),
-                trailing: Icon(Icons.pageview),
-                onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-                  Navigator.push(context, route);
-                },
-              );
-            },
-          ),
-        ),
-      ],),
+        Image.asset("assets/images/test1.jpg"),
+      ]),
+      // body: RefreshIndicator(
+      //   key: refreshKey,
+      //   onRefresh: () async{
+      //     await refreshList();
+      //   },
+      //   child: Column(children: <Widget>[
+      //     Container(
+      //       margin: EdgeInsets.all(10),
+      //       child: TextField(
+      //         decoration: InputDecoration(
+      //           hintText: "Search from posts...",
+      //         ),
+      //         onChanged: (String str) {
+      //           this.searchData(str);
+      //         },
+      //       ),
+      //     ),
+      //     Expanded(
+      //       child: ListView.builder(
+      //         itemCount: posts.length,
+      //         itemBuilder: (BuildContext context, int index) {
+      //           return ListTile(
+      //             leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+      //             title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+      //             subtitle: Text("Tab to read more..."),
+      //             trailing: Icon(Icons.pageview),
+      //             onTap: (){
+      //               Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+      //               Navigator.push(context, route);
+      //             },
+      //           );
+      //         },
+      //       ),
+      //     ),
+      //     // _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+      //     // _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
+      //     // _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
+      //   ],),
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Route route = MaterialPageRoute(builder: (context) => FormPage());
@@ -214,78 +262,7 @@ class _HomePageState extends State<HomePage> {
         },
         tooltip: 'Open Form',
         child: Icon(Icons.add),
-      )
-      
-        // ListView(children: <Widget>[
-        // SizedBox(height: 5,),
-        // RaisedButton(
-        //   child: Text("তথ্য লোড করুন $count"),
-        //   color: Colors.lightBlue,
-        //   hoverElevation: 5,
-        //   onPressed: () {
-        //     setState(() {
-        //       count++;
-        //       _showSnackbar("লোড করা হচ্ছে...");
-        //       // loadJsonData();
-        //       _getPosts();
-        //       _showSnackbar("জেসন ডাটা যোগ করা হয়েছে।");
-        //     });
-        //   },
-        // ),
-        // SizedBox(height: 5,),
-        // RaisedButton(
-        //   child: Text("তথ্য মুছে দিন"),
-        //   onPressed: () {
-        //     setState(() {
-        //       _showToast("তথ্য মুছে দেওয়া হয়েছে!");
-        //       posts = [];
-        //     });
-        //   },
-        // ),
-        // SizedBox(height: 10,),
-        // Container(
-        //   height: 300,
-        //   child: ListView.builder(
-        //     itemCount: people.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return ListTile(
-        //         leading: CircleAvatar(child: Text(people[index]["name"][0]),),
-        //         title: Text(people[index]["name"]),
-        //         subtitle: Text(people[index]["email"]),
-        //         onTap: (){
-        //           Route route = MaterialPageRoute(builder: (context) => PageOne(people[index]));
-        //           Navigator.push(context, route);
-        //         },
-        //       );
-        //     },
-        //   ),
-        // ),
-        // SizedBox(height: 5,),
-        // Container(
-        //   height: MediaQuery.of(context).size.height - 100,
-        //   child: ListView.builder(
-        //     itemCount: posts.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return ListTile(
-        //         leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-        //         title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-        //         subtitle: Text("Tab to read more..."),
-        //         trailing: Icon(Icons.pageview),
-        //         onTap: (){
-        //           Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-        //           Navigator.push(context, route);
-        //         },
-        //       );
-        //     },
-        //   ),
-        // ),
-
-        // SizedBox(height: 5,),
-
-        // _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-        // _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
-        // _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
-      // ],)
+      ),
     );
   }
 
