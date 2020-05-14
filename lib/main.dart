@@ -18,14 +18,14 @@ import 'globals.dart';
 void main() {
   var materialApp = MaterialApp(
     title: 'BCS Charioteer',
-    home: HomePage(),
+    
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
-      '/second': (context) => FormPage(),
+      '/formpage': (context) => FormPage(),
     },
   );
   return runApp(materialApp);
@@ -196,13 +196,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান"),
+                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান", 'N/A'),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর"),
+                child: _homeCard("cardimage1.jpg", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/formpage'),
               ),
             ),
           ],
@@ -212,13 +212,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "ইতিহাস", "সংবিধানের ইতিহাস"),
+                child: _homeCard("cardimage1.jpg", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন"),
+                child: _homeCard("cardimage1.jpg", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
               ),
             ),
           ],
@@ -380,11 +380,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
   
-  Widget _homeCard(String image, String title, String takenby) {
+  Widget _homeCard(String image, String title, String takenby, String routename) {
     return Card(
       child: new InkWell(
         onTap: () {
-          print("tapped");
+          if(routename != 'N/A') {
+            Navigator.pushNamed(context, routename);
+          }
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
