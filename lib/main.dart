@@ -438,7 +438,7 @@ class _HomePageState extends State<HomePage> {
     OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.body]));
+      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
       Navigator.push(context, route);
     });
   }
