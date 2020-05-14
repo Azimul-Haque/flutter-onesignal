@@ -187,43 +187,39 @@ class _HomePageState extends State<HomePage> {
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: ListView(children: <Widget>[
         Row(
-
           children: <Widget>[
             Expanded(
               child: Container(
+                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
                 child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
               ),
             ),
             Expanded(
-              child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              child: Container(
+                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
+                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              ),
             ),
           ],
         ),
-        Container(
-          margin: EdgeInsets.all(10.0),
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            boxShadow: [ 
-              BoxShadow(
-                color: Colors.grey[200],
-                blurRadius: 3.0, // has the effect of softening the shadow
-                spreadRadius: 2.0, // has the effect of extending the shadow
-                offset: Offset(
-                  1.0, // horizontal, move right 10
-                  1.0, // vertical, move down 10
-                ),
-              )
-            ],
-          ),
-          child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
-            textAlign: TextAlign.justify,
-            style: TextStyle(color: Colors.black, fontSize: 16),
-          ),
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
+                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
+                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+              ),
+            ),
+          ],
         ),
-        Image.asset("assets/images/test1.jpg"),
       ]),
+      
       // body: RefreshIndicator(
       //   key: refreshKey,
       //   onRefresh: () async{
@@ -389,7 +385,10 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Image.asset("assets/images/" + image),
+            ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                child: Image.asset("assets/images/" + image),
+            ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Column(
@@ -408,6 +407,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
       elevation: 2,
     );
     
