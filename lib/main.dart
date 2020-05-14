@@ -22,7 +22,11 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
-
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomePage(),
+      '/second': (context) => FormPage(),
+    },
   );
   return runApp(materialApp);
 }
@@ -435,36 +439,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-}
-
-
-// ListView(children: <Widget>[
-//           Container(
-//             margin: EdgeInsets.all(10.0),
-//             padding: EdgeInsets.all(10.0),
-//             decoration: BoxDecoration(
-//               color: Colors.white,
-              
-//               borderRadius: BorderRadius.circular(5),
-//               boxShadow: [ 
-//                 BoxShadow(
-//                   color: Colors.grey[200],
-//                   blurRadius: 3.0, // has the effect of softening the shadow
-//                   spreadRadius: 2.0, // has the effect of extending the shadow
-//                   offset: Offset(
-//                     1.0, // horizontal, move right 10
-//                     1.0, // vertical, move down 10
-//                   ),
-//                 )
-//               ],
-//             ),
-//             child: Text(_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText+_longText, 
-//               textAlign: TextAlign.justify,
-//               style: TextStyle(color: Colors.black, fontSize: 16),
-//             ),
-//           ),
-//           Image.asset("assets/images/test1.jpg"),
-//         ]),      
+}      
 
 // Column(
         //   children: <Widget>[
@@ -516,53 +491,3 @@ class _HomePageState extends State<HomePage> {
         //     ),
         //   ],
         // ), 
-
-
-
-
-
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(
-//               'You have pushed the button this many times:',
-//             ),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.display1,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: Icon(Icons.add),
-//       ),
-//   }
-// }
