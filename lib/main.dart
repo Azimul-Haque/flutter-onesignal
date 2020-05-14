@@ -17,11 +17,12 @@ import 'globals.dart';
 
 void main() {
   var materialApp = MaterialApp(
-    title: 'BCS Charioteer AAA',
+    title: 'BCS Charioteer',
     home: HomePage(),
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
+
   );
   return runApp(materialApp);
 }
@@ -191,13 +192,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান", 320.0),
+                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান"),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", 320.0),
+                child: _homeCard("cardimage1.jpg", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর"),
               ),
             ),
           ],
@@ -207,29 +208,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+                child: _homeCard("cardimage1.jpg", "ইতিহাস", "সংবিধানের ইতিহাস"),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
+                child: _homeCard("cardimage1.jpg", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন"),
               ),
             ),
           ],
@@ -280,7 +265,7 @@ class _HomePageState extends State<HomePage> {
           Route route = MaterialPageRoute(builder: (context) => FormPage());
           Navigator.push(context, route);
         },
-        tooltip: 'Open Form',
+        tooltip: 'প্রশ্ন যোগ করুন',
         child: Icon(Icons.add),
       ),
     );
@@ -391,7 +376,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
   
-  Widget _homeCard(String image, String title, String takenby, double price) {
+  Widget _homeCard(String image, String title, String takenby) {
     return Card(
       child: new InkWell(
         onTap: () {
