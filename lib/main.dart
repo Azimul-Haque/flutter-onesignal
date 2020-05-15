@@ -396,7 +396,7 @@ class _HomePageState extends State<HomePage> {
                 child: Image.asset("assets/images/" + image),
             ),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(7),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
