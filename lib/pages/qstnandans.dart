@@ -34,7 +34,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       setState(() {
         questions = json.decode(jsonDataQuestions.body.toString());
       });
-    } on SocketException catch (_) {
+    } catch (_) {
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
     return true;
