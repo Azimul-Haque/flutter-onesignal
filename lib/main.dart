@@ -386,7 +386,7 @@ class _HomePageState extends State<HomePage> {
           title: Text("আমাদের সম্পর্কে"),
           onTap: (){
             Navigator.pop(context);
-            showAlertDialog(context);
+            showAlertDialog(context, "This is a test Rifat!");
           },
         ),
       ],)
@@ -400,7 +400,7 @@ class _HomePageState extends State<HomePage> {
           if(routename != 'N/A') {
             Navigator.pushNamed(context, routename);
           } else {
-            showAlertDialog(context);
+            showAlertDialog(context, "This is a test Rifat!");
           }
         },
         child: Column(
@@ -456,7 +456,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, String msg) {
 
     // set up the button
     Widget okButton = FlatButton(
