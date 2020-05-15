@@ -58,6 +58,8 @@ flutter:
    - assets/images/cardimage3.jpg
    - assets/images/constitution.png
    - assets/images/qstnandans.png
+   - assets/images/history.png
+   - assets/images/exam.png
    - assets/data.json
   #  - images/a_dot_ham.jpeg
 
