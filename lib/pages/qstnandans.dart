@@ -6,19 +6,20 @@ import 'package:http/http.dart' as http;
 import 'package:project1/pages/page2.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
+  QuestionAnswerPage({Key key}) : super(key: key);
   @override
   _QuestionAnswerPageState createState() => _QuestionAnswerPageState();
 }
 
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
-  final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
+  GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
   List posts = [];
 
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
     this._getPosts();
-    _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+    this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
   _showSnackbar(String textForSnackbar) {
@@ -42,6 +43,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         title: Text("প্রশ্নোত্তর"),
         // automaticallyImplyLeading: false,
@@ -83,8 +85,9 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                   subtitle: Text("Tab to read more..."),
                   trailing: Icon(Icons.pageview),
                   onTap: (){
-                    Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-                    Navigator.push(context, route);
+                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                    // Navigator.push(context, route);
+                    // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
                   },
                 ),
               );
