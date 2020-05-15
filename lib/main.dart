@@ -50,8 +50,6 @@ class _HomePageState extends State<HomePage> {
   List posts = [];
   List unfilteredPosts = [];
 
-  GlobalKey <NavigatorState> navigatorKey = GlobalKey <NavigatorState>();
-
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
     this._getPosts();

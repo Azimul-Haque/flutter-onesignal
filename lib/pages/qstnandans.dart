@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
 
-class QuestionAnswerPage extends StatelessWidget {
+import 'package:project1/pages/page2.dart';
+
+class QuestionAnswerPage extends StatefulWidget {
+  var data;
+  QuestionAnswerPage(this.data);
+  @override
+  _QuestionAnswerPageState createState() => _QuestionAnswerPageState(this.data);
+}
+
+class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
+  final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
+  GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
+  List posts = [];
+
+  Future<Null> refreshList() async {
+    await Future.delayed(Duration(seconds: 2));
+    this._getPosts();
+    this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+    return null;
+  }
+  _showSnackbar(String textForSnackbar) {
+    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
+    _globalKey.currentState.showSnackBar(_mySnackbar);
+  }
+  Future<bool> _getPosts() async {
+    String serviceURL = "https://jsonplaceholder.typicode.com/posts"; // http://192.168.43.81:8000/broadcast
+    var jsonDataPosts = await http.get(serviceURL);
+    setState(() {
+      posts = json.decode(jsonDataPosts.body.toString());
+    });
+    return true;
+  }
+
+  @override
+  void initState() {
+    this._getPosts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,56 +54,42 @@ class QuestionAnswerPage extends StatelessWidget {
         //   ),
         // ],
       ),
-      body: ListView(children: <Widget>[
-        Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 15, right: 15, bottom: 7.5, left: 15),
-              child: Container(
-                padding: EdgeInsets.all(15),
-                width: double.infinity,
-                // decoration: BoxDecoration(color: Colors.red),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey[350],
-                    blurRadius: 1.0, // has the effect of softening the shadow
-                    spreadRadius: 1.0, // has the effect of extending the shadow
-                    offset: Offset(
-                      1.0, // horizontal, move right 10
-                      1.0, // vertical, move down 10
-                    ),
-                  )],
-                ),
-                child: Text("প্রশ্নঃ ", style: TextStyle(color: Colors.black87, fontSize: 16),),
-              ),
+    body: RefreshIndicator(
+      key: refreshKey,
+      onRefresh: () async{
+        await refreshList();
+      },
+      child: Column(children: <Widget>[
+        Container(
+          margin: EdgeInsets.all(10),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Search from posts...",
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 7.5, right: 15, bottom: 15, left: 15),
-              child: Container(
-                padding: EdgeInsets.all(15),
-                width: double.infinity,
-                // decoration: BoxDecoration(color: Colors.red),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [BoxShadow(
-                    color: Colors.blue,
-                    blurRadius: 1.0, // has the effect of softening the shadow
-                    spreadRadius: 1.0, // has the effect of extending the shadow
-                    offset: Offset(
-                      1.0, // horizontal, move right 10
-                      1.0, // vertical, move down 10
-                    ),
-                  )],
-                ),
-                child: Text("test", style: TextStyle(color: Colors.white, fontSize: 16),),
-              ),
-            ),
-          ],
+            onChanged: (String str) {
+              // this.searchData(str);
+            },
+          ),
         ),
-      ],)
+        Expanded(
+          child: ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+                subtitle: Text("Tab to read more..."),
+                trailing: Icon(Icons.pageview),
+                onTap: (){
+                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                  Navigator.push(context, route);
+                },
+              );
+            },
+          ),
+        ),
+      ],),
+    ),
     );
   }
 }
