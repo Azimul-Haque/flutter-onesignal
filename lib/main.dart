@@ -276,19 +276,16 @@ class _HomePageState extends State<HomePage> {
       //         },
       //       ),
       //     ),
-      //     // _homeCard("cardimage1.jpg", "Chicken Grilled", "Rifat", 320.0),
-      //     // _homeCard("cardimage2.jpg", "Cupcake With Love", "Asif", 50.0),
-      //     // _homeCard("cardimage3.jpg", "Delightful Breakfast", "Mannan", 150.0),
       //   ],),
       // ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Route route = MaterialPageRoute(builder: (context) => FormPage());
-          Navigator.push(context, route);
-        },
-        tooltip: 'প্রশ্ন যোগ করুন',
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Route route = MaterialPageRoute(builder: (context) => FormPage());
+      //     Navigator.push(context, route);
+      //   },
+      //   tooltip: 'প্রশ্ন যোগ করুন',
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 
@@ -389,6 +386,7 @@ class _HomePageState extends State<HomePage> {
           title: Text("আমাদের সম্পর্কে"),
           onTap: (){
             Navigator.pop(context);
+            showAlertDialog(context);
           },
         ),
       ],)
@@ -401,6 +399,8 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           if(routename != 'N/A') {
             Navigator.pushNamed(context, routename);
+          } else {
+            showAlertDialog(context);
           }
         },
         child: Column(
@@ -454,6 +454,32 @@ class _HomePageState extends State<HomePage> {
       Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
       Navigator.push(context, route);
     });
+  }
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () { },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("My title"),
+      content: Text("This is my message."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 }      
