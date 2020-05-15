@@ -14,11 +14,11 @@ class QuestionAnswerPage extends StatefulWidget {
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
-  List posts = [];
+  List questions = [];
 
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
-    this._getPosts();
+    this._getQuestions();
     this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
@@ -26,18 +26,18 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
-  Future<bool> _getPosts() async {
-    String serviceURL = "https://jsonplaceholder.typicode.com/posts"; // http://192.168.43.81:8000/broadcast
-    var jsonDataPosts = await http.get(serviceURL);
+  Future<bool> _getQuestions() async {
+    String serviceURL = "http://192.168.43.81:8000/broadcast"; // https://jsonplaceholder.typicode.com/posts
+    var jsonDataQuestions = await http.get(serviceURL);
     setState(() {
-      posts = json.decode(jsonDataPosts.body.toString());
+      questions = json.decode(jsonDataQuestions.body.toString());
     });
     return true;
   }
 
   @override
   void initState() {
-    this._getPosts();
+    this._getQuestions();
   }
 
   @override
@@ -76,16 +76,16 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         // ),
         Expanded(
           child: ListView.builder(
-            itemCount: posts.length,
+            itemCount: questions.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 child: ListTile(
-                  leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                  title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-                  subtitle: Text("Tab to read more..."),
-                  trailing: Icon(Icons.pageview),
+                  leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+                  title: Text(questions[index]["question"]),
+                  subtitle: Text(questions[index]["answer"]),
+                  // trailing: Icon(Icons.pageview),
                   onTap: (){
-                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
                     // Navigator.push(context, route);
                     // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
                   },
