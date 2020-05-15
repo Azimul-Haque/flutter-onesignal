@@ -18,7 +18,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
     this._getPosts();
-    this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+    _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
   _showSnackbar(String textForSnackbar) {
