@@ -1,27 +1,58 @@
 import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 
+final String tableName = "questions";
+final String columnId = "id";
+final String columnQuestion = "question";
+final String columnAnswer = "answer";
 class QuestionsModel {
   final int id;
   final String question;
   final String answer;
 
-  QuestionsModel(this.id, this.question, this.answer);
+  QuestionsModel({this.id, this.question, this.answer});
 
   Map <String, dynamic> toMap() {
     return {
-      'id': this.id,
-      'question': this.question,
-      'answer': this.answer,
+      columnId: this.id,
+      columnQuestion: this.question,
+      columnAnswer: this.answer,
     };
   }
 }
 
-class QuestionsHelper() {
+class QuestionHelper{
   Database db;
+
+  QuestionHelper(){
+    initDatabase();
+  }
 
   Future<void> initDatabase() async{
     db = await openDatabase(
-      
+      join(await getDatabasesPath(), "questions.db"),
+      onCreate: (db, version){
+        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT)");
+      },
+      version: 1
     );
   }
+
+  Future<void> insertQuestion(QuestionsModel question) async{
+    try{
+      db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+    }catch(_){
+      print(_);
+    }
+  }
+
+  Future<List<QuestionsModel>> getAllQuestion () async{
+    final List<Map<String, dynamic>> questions = await db.query(tableName);
+
+    return List.generate(questions.length, (i){
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer]);
+    });
+  }
+
+
 }
