@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
+import 'package:sqflite/sqflite.dart';
 
 import 'package:project1/pages/page2.dart';
 
@@ -15,6 +16,7 @@ class QuestionAnswerPage extends StatefulWidget {
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
+  DatabaseHelper databaseHelper = DatabaseHelper();
   List questions = [];
 
   Future<Null> refreshList() async {
@@ -51,7 +53,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
 
   @override
   void initState() {
-    this.loadJsonData();
+    // this.loadJsonData();
   }
 
   @override
