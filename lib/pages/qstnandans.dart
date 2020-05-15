@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 import 'package:project1/pages/page2.dart';
 
@@ -58,17 +61,17 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         await refreshList();
       },
       child: Column(children: <Widget>[
-        Container(
-          margin: EdgeInsets.all(10),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: "Search from posts...",
-            ),
-            onChanged: (String str) {
-              // this.searchData(str);
-            },
-          ),
-        ),
+        // Container(
+        //   margin: EdgeInsets.all(10),
+        //   child: TextField(
+        //     decoration: InputDecoration(
+        //       hintText: "Search from posts...",
+        //     ),
+        //     onChanged: (String str) {
+        //       // this.searchData(str);
+        //     },
+        //   ),
+        // ),
         Expanded(
           child: ListView.builder(
             itemCount: posts.length,
