@@ -194,13 +194,13 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
+                padding: EdgeInsets.only(top: 10, left: 10, bottom: 2.5, right: 2.5),
                 child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", 'N/A'),
               ),
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 5, right: 10),
+                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 2.5, right: 10),
                 child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/formpage'),
               ),
             ),
@@ -210,13 +210,29 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
+                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
                 child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
               ),
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
+                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
+                child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
+                child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
                 child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
               ),
             ),
