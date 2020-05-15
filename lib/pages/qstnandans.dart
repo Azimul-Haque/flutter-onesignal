@@ -30,16 +30,9 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   Future<bool> _getQuestions() async {
     String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
     var jsonDataQuestions = await http.get(serviceURL);
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        setState(() {
-          questions = json.decode(jsonDataQuestions.body.toString());
-        });
-      }
-    } on SocketException catch (_) {
-      _showSnackbar("অনুগ্রহ করে ইন্টারনেট কানেকশনটি অন করুন।");
-    }
+    setState(() {
+      questions = json.decode(jsonDataQuestions.body.toString());
+    });
     return true;
   }
 
