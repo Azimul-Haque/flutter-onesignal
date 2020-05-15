@@ -17,7 +17,7 @@ import 'globals.dart';
 
 void main() {
   var materialApp = MaterialApp(
-    title: 'BCS Charioteer',
+    title: 'BCS সংবিধান',
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
     return  Scaffold(
       key: _globalKey,
       appBar: AppBar(
-        title: Text('BCS Charioteer'),
+        title: Text('BCS সংবিধান'),
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
