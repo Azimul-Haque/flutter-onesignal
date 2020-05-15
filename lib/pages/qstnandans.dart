@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'dart:io';
+import 'package:http/http.dart' as http;
 
 import 'package:project1/pages/page2.dart';
 
@@ -28,11 +28,15 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
   Future<bool> _getQuestions() async {
-    String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
-    var jsonDataQuestions = await http.get(serviceURL);
-    setState(() {
-      questions = json.decode(jsonDataQuestions.body.toString());
-    });
+    try {
+      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+      var jsonDataQuestions = await http.get(serviceURL);
+      setState(() {
+        questions = json.decode(jsonDataQuestions.body.toString());
+      });
+    } on SocketException catch (_) {
+      _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
+    }
     return true;
   }
 
