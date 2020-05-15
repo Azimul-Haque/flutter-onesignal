@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:sqflite/sqflite.dart';
 
 import 'package:project1/pages/page2.dart';
+import 'package:project1/QuestionsModel';
 
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);
