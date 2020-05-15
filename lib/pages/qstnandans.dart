@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
 import 'package:project1/pages/page2.dart';
@@ -19,10 +19,19 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
 
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
-    this._getQuestions();
+    // this._getQuestions();
+    this.loadJsonData();
     this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
+  Future<String> loadJsonData() async {
+    var jsonDataText = await rootBundle.loadString("assets/data.json");
+    setState(() {
+      questions = json.decode(jsonDataText);
+    });
+    return 'success';
+  }
+
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
@@ -42,7 +51,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
 
   @override
   void initState() {
-    this._getQuestions();
+    this.loadJsonData();
   }
 
   @override
