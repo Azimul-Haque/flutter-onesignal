@@ -3,10 +3,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
-import 'package:sqflite/sqflite.dart';
+import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/page2.dart';
-import 'package:project1/QuestionsModel';
 
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);
@@ -17,62 +16,75 @@ class QuestionAnswerPage extends StatefulWidget {
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
-  DatabaseHelper databaseHelper = DatabaseHelper();
-  List questions = [];
+
+  List<QuestionsModel> questions = [];
+  QuestionsModel currentQuestion;
+  
 
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
     // this._getQuestions();
-    this.loadJsonData();
+    // this.loadJsonData();
     this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
-  Future<String> loadJsonData() async {
-    var jsonDataText = await rootBundle.loadString("assets/data.json");
-    setState(() {
-      questions = json.decode(jsonDataText);
-    });
-    return 'success';
-  }
+  
+  // Future<List<QuestionsModel>> _loadDB() async{
+  //   List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
+  //   print("Ekhane somossa");
+  //   setState(() {
+  //     questions = newquestions;
+  //   });
+  //   return questions;
+  // }
 
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
-  Future<bool> _getQuestions() async {
-    try {
-      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
-      var jsonDataQuestions = await http.get(serviceURL);
-      setState(() {
-        questions = json.decode(jsonDataQuestions.body.toString());
-      });
-    } catch (_) {
-      _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
-    }
-    return true;
-  }
+  // Future<bool> _getQuestions() async {
+  //   try {
+  //     String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+  //     var jsonDataQuestions = await http.get(serviceURL);
+  //     setState(() {
+  //       questions = json.decode(jsonDataQuestions.body.toString());
+  //     });
+  //   } catch (_) {
+  //     _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
+  //   }
+  //   return true;
+  // }
 
   @override
   void initState() {
-    // this.loadJsonData();
+    super.initState();
+    // _loadDB();
   }
 
   @override
   Widget build(BuildContext context) {
+    QuestionHelper _questionHelper = QuestionHelper();
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
         title: Text("প্রশ্নোত্তর"),
         // automaticallyImplyLeading: false,
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.check), 
-        //     onPressed: () async{
-        //       Navigator.pop(context);
-        //     },
-        //     tooltip: "Ok",
-        //   ),
-        // ],
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.check), 
+            onPressed: () async{
+              currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
+              _questionHelper.insertQuestion(currentQuestion);
+
+              List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
+              setState(() {
+                questions = newquestions;
+              });
+              // Navigator.pop(context);
+            },
+            tooltip: "Ok",
+          ),
+        ],
       ),
     body: RefreshIndicator(
       key: refreshKey,
@@ -98,8 +110,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               return Card(
                 child: ListTile(
                   // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
-                  title: Text(questions[index]["question"]),
-                  subtitle: Text(questions[index]["answer"]),
+                  title: Text(questions[index].question),
+                  subtitle: Text(questions[index].answer),
                   // trailing: Icon(Icons.pageview),
                   onTap: (){
                     // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
@@ -111,6 +123,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             },
           ),
         ),
+        // Expanded(
+        //   child: FutureBuilder<List<QuestionsModel>>(
+        //     future: questions,
+        //   ),
+        // ),
       ],),
     ),
     );

@@ -5,7 +5,7 @@ final String tableName = "questions";
 final String columnId = "id";
 final String columnQuestion = "question";
 final String columnAnswer = "answer";
-final String columncount = "count";
+final String columnCount = "count";
 class QuestionsModel {
   final int id;
   final String question;
@@ -19,7 +19,7 @@ class QuestionsModel {
       // columnId: this.id,
       columnQuestion: this.question,
       columnAnswer: this.answer,
-      columncount: this.count,
+      columnCount: this.count,
     };
   }
 }
@@ -35,7 +35,7 @@ class QuestionHelper{
     db = await openDatabase(
       join(await getDatabasesPath(), "questions.db"),
       onCreate: (db, version){
-        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columncount INTEGER)");
+        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
       version: 1
     );
@@ -51,9 +51,8 @@ class QuestionHelper{
 
   Future<List<QuestionsModel>> getAllQuestion () async{
     final List<Map<String, dynamic>> questions = await db.query(tableName);
-
     return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columncount]);
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
     });
   }
 }
