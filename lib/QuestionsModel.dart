@@ -1,3 +1,5 @@
+import 'package:sqflite/sqflite.dart';
+
 class QuestionsModel {
   final int id;
   final String question;
@@ -12,4 +14,8 @@ class QuestionsModel {
       'answer': this.answer,
     };
   }
+}
+
+class QuestionsHelper() {
+  Database db;
 }
