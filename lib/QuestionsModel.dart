@@ -18,4 +18,10 @@ class QuestionsModel {
 
 class QuestionsHelper() {
   Database db;
+
+  Future<void> initDatabase() async{
+    db = await openDatabase(
+      
+    );
+  }
 }
