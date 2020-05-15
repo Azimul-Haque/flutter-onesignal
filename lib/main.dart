@@ -351,32 +351,22 @@ class _HomePageState extends State<HomePage> {
         ],),
         SizedBox(height: 10,),
         ListTile(
-          leading: Icon(Icons.home),
+          leading: Icon(Icons.home, color: Colors.black87,),
           title: Text("Home"),
           onTap: (){
             Navigator.pop(context); // this line closes the drawer
           },
         ),
-        Divider(),
         ListTile(
-          leading: Icon(Icons.library_books),
-          title: Text("Subjects"),
-          onTap: (){
-            Navigator.pop(context); // this line closes the drawer
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(Icons.add_to_photos),
-          title: Text("Add Questions"),
+          leading: Icon(Icons.add_to_photos, color: Colors.black87,),
+          title: Text("প্রশ্ন যোগ করুন"),
           onTap: (){
             Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             Navigator.push(context, route);
           },
         ),
-        Divider(),
         ListTile(
-          leading: Icon(Icons.settings),
+          leading: Icon(Icons.settings, color: Colors.black87,),
           title: Text("Settings"),
           onTap: (){
             Navigator.pop(context);
@@ -390,7 +380,7 @@ class _HomePageState extends State<HomePage> {
             });
           },
         ),
-        Divider(),
+        Divider(color: Colors.black26,),
       ],)
     );
   }
