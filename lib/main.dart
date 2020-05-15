@@ -18,7 +18,6 @@ import 'globals.dart';
 void main() {
   var materialApp = MaterialApp(
     title: 'BCS Charioteer',
-    
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
@@ -196,7 +195,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "সংবিধান", "পুরো সংবিধান", 'N/A'),
+                child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", 'N/A'),
               ),
             ),
             Expanded(
@@ -404,7 +403,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                   SizedBox(height: 5,),
-                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 13),),
+                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
                 ],
               )
             )
