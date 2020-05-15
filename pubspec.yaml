@@ -61,6 +61,7 @@ flutter:
    - assets/images/history.png
    - assets/images/exam.png
    - assets/images/amendment.png
+   - assets/images/qstnbank.png
    - assets/data.json
   #  - images/a_dot_ham.jpeg
 
