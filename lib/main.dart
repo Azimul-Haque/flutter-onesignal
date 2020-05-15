@@ -352,7 +352,7 @@ class _HomePageState extends State<HomePage> {
         SizedBox(height: 10,),
         ListTile(
           leading: Icon(Icons.home, color: Colors.black87,),
-          title: Text("Home"),
+          title: Text("নীড়"),
           onTap: (){
             Navigator.pop(context); // this line closes the drawer
           },
@@ -361,13 +361,14 @@ class _HomePageState extends State<HomePage> {
           leading: Icon(Icons.add_to_photos, color: Colors.black87,),
           title: Text("প্রশ্ন যোগ করুন"),
           onTap: (){
+            Navigator.pop(context);
             Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             Navigator.push(context, route);
           },
         ),
         ListTile(
           leading: Icon(Icons.settings, color: Colors.black87,),
-          title: Text("Settings"),
+          title: Text("সেটিংস"),
           onTap: (){
             Navigator.pop(context);
             Route route = MaterialPageRoute(builder: (context) => PageOne(null));
@@ -381,6 +382,13 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         Divider(color: Colors.black26,),
+        ListTile(
+          leading: Icon(Icons.info, color: Colors.black87,),
+          title: Text("আমাদের সম্পর্কে"),
+          onTap: (){
+            Navigator.pop(context);
+          },
+        ),
       ],)
     );
   }
