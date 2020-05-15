@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 
 
 import 'package:project1/pages/qstnandans.dart';
@@ -386,7 +387,7 @@ class _HomePageState extends State<HomePage> {
           title: Text("আমাদের সম্পর্কে"),
           onTap: (){
             Navigator.pop(context);
-            showAlertDialog(context, "This is a test Rifat!");
+            _showDialog();
           },
         ),
       ],)
@@ -400,7 +401,7 @@ class _HomePageState extends State<HomePage> {
           if(routename != 'N/A') {
             Navigator.pushNamed(context, routename);
           } else {
-            showAlertDialog(context, "This is a test Rifat!");
+            
           }
         },
         child: Column(
@@ -467,7 +468,7 @@ class _HomePageState extends State<HomePage> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("My title"),
-      content: Text("This is my message."),
+      content: Text(msg),
       actions: [
         okButton,
       ],
@@ -479,6 +480,16 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context) {
         return alert;
       },
+    );
+  }
+
+  void _showDialog() {
+    slideDialog.showSlideDialog(
+      context: context,
+      child: Text("Hello World"),
+      // barrierColor: Colors.white.withOpacity(0.7),
+      // pillColor: Colors.red,
+      // backgroundColor: Colors.yellow,
     );
   }
 
