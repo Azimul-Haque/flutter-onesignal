@@ -211,13 +211,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 5, right: 2.5),
-                child: _homeCard("cardimage1.jpg", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
+                child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
               ),
             ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 5, right: 10),
-                child: _homeCard("cardimage1.jpg", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
+                child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
               ),
             ),
           ],
