@@ -76,15 +76,17 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           child: ListView.builder(
             itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-                title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-                subtitle: Text("Tab to read more..."),
-                trailing: Icon(Icons.pageview),
-                onTap: (){
-                  Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-                  Navigator.push(context, route);
-                },
+              return Card(
+                child: ListTile(
+                  leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
+                  title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
+                  subtitle: Text("Tab to read more..."),
+                  trailing: Icon(Icons.pageview),
+                  onTap: (){
+                    Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
+                    Navigator.push(context, route);
+                  },
+                ),
               );
             },
           ),
