@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project1/pages/page2.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
-  var data;
-  QuestionAnswerPage(this.data);
   @override
-  _QuestionAnswerPageState createState() => _QuestionAnswerPageState(this.data);
+  _QuestionAnswerPageState createState() => _QuestionAnswerPageState();
 }
 
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
