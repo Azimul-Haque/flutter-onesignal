@@ -366,6 +366,7 @@ class _HomePageState extends State<HomePage> {
             Navigator.push(context, route);
           },
         ),
+        Divider(color: Colors.black26,),
         ListTile(
           leading: Icon(Icons.settings, color: Colors.black87,),
           title: Text("সেটিংস"),
@@ -381,7 +382,6 @@ class _HomePageState extends State<HomePage> {
             });
           },
         ),
-        Divider(color: Colors.black26,),
         ListTile(
           leading: Icon(Icons.info, color: Colors.black87,),
           title: Text("আমাদের সম্পর্কে"),
