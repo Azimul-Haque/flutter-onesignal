@@ -27,10 +27,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
   Future<bool> _getQuestions() async {
-    String serviceURL = "http://192.168.43.81:8000/broadcast"; // https://jsonplaceholder.typicode.com/posts
+    String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
     var jsonDataQuestions = await http.get(serviceURL);
     setState(() {
       questions = json.decode(jsonDataQuestions.body.toString());
+      print(questions.length);
     });
     return true;
   }
@@ -80,7 +81,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 child: ListTile(
-                  leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+                  // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
                   title: Text(questions[index]["question"]),
                   subtitle: Text(questions[index]["answer"]),
                   // trailing: Icon(Icons.pageview),
