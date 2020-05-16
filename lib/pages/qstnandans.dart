@@ -39,16 +39,15 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   _getSynced() async {
     try {
       int countinsertion = 0;
-      // String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
-      // var jsonDataQuestions = await http.get(serviceURL);
-      // setState(() {
-      //   syncquestions = json.decode(jsonDataQuestions.body.toString());
-      //   isLoading = true;
-      // });
+      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+      var jsonDataQuestions = await http.get(serviceURL);
+      setState(() {
+        syncquestions = json.decode(jsonDataQuestions.body.toString());
+        isLoading = true;
+      });
       var jsonDataText = await rootBundle.loadString("assets/data.json");
       setState(() {
-        syncquestions = json.decode(jsonDataText).cast<Map<String, dynamic>>();
-        // syncquestions = syncquestionsjson.map<QuestionsModel>((json) => QuestionsModel.fromJson(json)).toList();
+        syncquestions = json.decode(jsonDataText);
       });
 
       // syncquestions.forEach((element) {
@@ -57,7 +56,9 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       //   _questionHelper.insertQuestion(currentQuestion);
       //   countinsertion++;
       // });
-      currentQuestion = QuestionsModel(question: syncquestions.first.question, answer: syncquestions.first.answer, count: 0);
+      print(syncquestions.first["answer"]);
+      var string1 = syncquestions.first["answer"];
+      currentQuestion = QuestionsModel(question: string1, answer: string1, count: 0);
       _questionHelper.insertQuestion(currentQuestion);
       print("Inserted "+ countinsertion.toString() + " elements");
     } catch (_) {

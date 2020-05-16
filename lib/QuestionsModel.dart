@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:json_serializable/json_serializable.dart';
+import 'dart:async';
 
 final String tableName = "questions";
 final String columnId = "id";
@@ -8,7 +8,7 @@ final String columnQuestion = "question";
 final String columnAnswer = "answer";
 final String columnCount = "count";
 class QuestionsModel {
-  final int id;
+  int id;
   final String question;
   final String answer;
   final int count;
@@ -32,6 +32,14 @@ class QuestionHelper{
     initDatabase();
   }
 
+  Future<Database> get database async {
+    if (null != database) {
+      return db;
+    }
+    db = await initDatabase();
+    return db;
+  }
+
   initDatabase() async{
     db = await openDatabase(
       join(await getDatabasesPath(), "questions1.db"),
@@ -49,6 +57,12 @@ class QuestionHelper{
       // print(_);
     }
   }
+  // Future<QuestionsModel> insertQuestion(QuestionsModel question) async {
+  //   var dbClient = await database;
+  //   // this will insert the Album object to the DB after converting it to a json
+  //   question.id = await dbClient.insert(tableName, question.toMap());
+  //   return question;
+  // }
 
   Future<List<QuestionsModel>> getAllQuestion () async{
     List<Map<String, dynamic>> questions = await db.query(tableName);
