@@ -25,24 +25,28 @@ class QuestionsModel {
 }
 
 class QuestionHelper{
-  Database db;
+  Database _database;
 
   QuestionHelper(){
     initDatabase();
   }
 
-  // Future<Database> get database async {
-  //   if (db != null) return db;
-  //   // if db is null we instantiate it
-  //   db = await initDatabase();
-  //   return db;
-  // }
+QuestionHelper._();
 
-  Future<void> initDatabase() async{
-    db = await openDatabase(
+  static final QuestionHelper db = QuestionHelper._();
+
+  Future<Database> get database async {
+    if (_database != null) return _database;
+    // if _database is null we instantiate it
+    _database = await initDatabase();
+    return _database;
+  }
+
+  initDatabase() async{
+      _database = await openDatabase(
       join(await getDatabasesPath(), "questions.db"),
-      onCreate: (db, version){
-        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
+      onCreate: (_database, version){
+        return _database.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
       version: 1
     );

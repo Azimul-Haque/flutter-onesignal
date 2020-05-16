@@ -50,7 +50,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   @override
   void initState() {
     super.initState();
-    _questionHelper = QuestionHelper();
+    // _questionHelper = QuestionHelper();
+    QuestionHelper.db.initDatabase();
     _loadDB();
   }
   _loadDB() {
