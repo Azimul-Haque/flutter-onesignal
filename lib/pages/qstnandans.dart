@@ -17,7 +17,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
 
-  List<QuestionsModel> questions = [];
+  QuestionHelper _questionHelper;
+  Future<List<QuestionsModel>> questions;
   QuestionsModel currentQuestion;
   
 
@@ -29,14 +30,14 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     return null;
   }
   
-  // Future<List<QuestionsModel>> _loadDB() async{
-  //   List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
-  //   print("Ekhane somossa");
-  //   setState(() {
-  //     questions = newquestions;
-  //   });
-  //   return questions;
-  // }
+  _loadDB() {
+    // List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
+    print("Ekhane somossa");
+    setState(() {
+      questions = _questionHelper.getAllQuestion();
+    });
+    return questions;
+  }
 
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
@@ -58,12 +59,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   @override
   void initState() {
     super.initState();
-    // _loadDB();
+    _questionHelper = QuestionHelper();
   }
 
   @override
   Widget build(BuildContext context) {
-    QuestionHelper _questionHelper = QuestionHelper();
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
@@ -75,10 +75,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             onPressed: () async{
               currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
               _questionHelper.insertQuestion(currentQuestion);
-
-              List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
               setState(() {
-                questions = newquestions;
+                questions = _questionHelper.getAllQuestion();
               });
               // Navigator.pop(context);
             },
@@ -103,31 +101,31 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         //     },
         //   ),
         // ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: questions.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                child: ListTile(
-                  // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
-                  title: Text(questions[index].question),
-                  subtitle: Text(questions[index].answer),
-                  // trailing: Icon(Icons.pageview),
-                  onTap: (){
-                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-                    // Navigator.push(context, route);
-                    // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-                  },
-                ),
-              );
-            },
-          ),
-        ),
+
         // Expanded(
-        //   child: FutureBuilder<List<QuestionsModel>>(
-        //     future: questions,
+        //   child: ListView.builder(
+        //     itemCount: questions.length,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return Card(
+        //         child: ListTile(
+        //           // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+        //           title: Text(questions[index].question),
+        //           subtitle: Text(questions[index].answer),
+        //           // trailing: Icon(Icons.pageview),
+        //           onTap: (){
+        //             // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+        //             // Navigator.push(context, route);
+        //             // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+        //           },
+        //         ),
+        //       );
+        //     },
         //   ),
         // ),
+        Expanded(
+          child:
+        ),
+
       ],),
     ),
     );
