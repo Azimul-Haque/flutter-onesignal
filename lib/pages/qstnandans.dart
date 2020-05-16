@@ -42,9 +42,10 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
       });
       syncquestions.forEach((element) {
-        currentQuestion = QuestionsModel(question: syncquestions[element].question, answer: "Test A", count: 3);
+        currentQuestion = QuestionsModel(question: element.question, answer: element.answer, count: element.count);
         _questionHelper.insertQuestion(currentQuestion);
       });
+      _loadDB();
     } catch (_) {
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
@@ -58,6 +59,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       isLoading = false;
     });
     if(questions.length == 0) {
+      _getSynced();
       _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
     }
   }
@@ -81,8 +83,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           IconButton(
             icon: Icon(Icons.sync), 
             onPressed: () async{
-              // currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
-              // _questionHelper.insertQuestion(currentQuestion);
+              _getSynced();
               _loadDB();
             },
             tooltip: "সার্ভারের সাথে Sync করুন",
