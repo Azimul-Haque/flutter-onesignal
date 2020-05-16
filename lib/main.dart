@@ -195,11 +195,69 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: ListView(children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            
+        Stack(children: <Widget>[
+          Container(
+            height:140, width: double.infinity, 
+            decoration: BoxDecoration(
+              color: Colors.lightGreen,
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
+              boxShadow: [BoxShadow(
+                color: Colors.grey[350],
+                blurRadius: 3.0, // has the effect of softening the shadow
+                spreadRadius: 2.0, // has the effect of extending the shadow
+                offset: Offset(
+                  2.0, // horizontal, move right 10
+                  2.0, // vertical, move down 10
+                ),
+              )],
+            ),
           ),
-        ),
+          Positioned(
+            left: 10,
+            right: 10,
+            bottom: 20,
+            child: Container(
+              height: 100, 
+              width: double.infinity,
+              // decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 100, 
+                      width: 200,
+                      padding: EdgeInsets.only(left: 0, right: 5),
+                      child: _homeCard("constitution.png", "1", "2", 'N/A'),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 100, 
+                      width: 200,
+                      padding: EdgeInsets.only(left: 5, right:5),
+                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                    ),
+                  ),Expanded(
+                    child: Container(
+                      height: 100, 
+                      width: 200,
+                      padding: EdgeInsets.only(left: 5, right:5),
+                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                    ),
+                  ),Expanded(
+                    child: Container(
+                      height: 100, 
+                      width: 200,
+                      padding: EdgeInsets.only(left: 5, right:0),
+                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                    ),
+                  ),
+                ],
+              ),
+            ), 
+          ),
+        ],),
         Row(
           children: <Widget>[
             Expanded(
@@ -440,7 +498,6 @@ class _HomePageState extends State<HomePage> {
       ),
       elevation: 2,
     );
-    
   }
 
   BoxShadow _boxShadow1() {
