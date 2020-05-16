@@ -31,6 +31,13 @@ class QuestionHelper{
     initDatabase();
   }
 
+  // Future<Database> get database async {
+  //   if (db != null) return db;
+  //   // if db is null we instantiate it
+  //   db = await initDatabase();
+  //   return db;
+  // }
+
   Future<void> initDatabase() async{
     db = await openDatabase(
       join(await getDatabasesPath(), "questions.db"),
@@ -49,7 +56,7 @@ class QuestionHelper{
     }
   }
 
-  getAllQuestion () async{ // Future<List<QuestionsModel>> 
+  Future<List<QuestionsModel>> getAllQuestion () async{
     List<Map<String, dynamic>> questions = await db.query(tableName);
     return List.generate(questions.length, (i){
       return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
