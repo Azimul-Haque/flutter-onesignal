@@ -131,7 +131,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               }
               
               if(null == snapshot.data || snapshot.data.length == 0) {
-                
+                return Text("Not availale");
               }
             }
           ),
