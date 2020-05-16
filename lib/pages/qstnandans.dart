@@ -21,7 +21,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   List syncquestions = [];
   QuestionsModel currentQuestion;
   bool isLoading;
-
+  int countinsertion = 0;
   Future<Null> refreshList() async {
     setState(() {
       isLoading = true;
@@ -38,7 +38,6 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   }
   _getSynced() async {
     try {
-      int countinsertion = 0;
       String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
@@ -57,11 +56,12 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         countinsertion++;
       });
       print("Inserted "+ countinsertion.toString() + " elements");
+      _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে!");
     } catch (_) {
       print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
-    return true;
+    _loadDB();
   }
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
@@ -96,7 +96,6 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             icon: Icon(Icons.sync), 
             onPressed: () async{
               _getSynced();
-              _loadDB();
             },
             tooltip: "সার্ভারের সাথে Sync করুন",
           ),
@@ -121,7 +120,10 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         // ),
         Visibility(
           visible: isLoading,
-          child: LinearProgressIndicator(backgroundColor: Colors.black12),
+          child: Column(children: <Widget>[
+            LinearProgressIndicator(backgroundColor: Colors.black12),
+            Text(countinsertion.toString()),
+          ]),
         ),
         Expanded(
           child: ListView.builder(
