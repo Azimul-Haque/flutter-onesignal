@@ -25,39 +25,28 @@ class QuestionsModel {
 }
 
 class QuestionHelper{
-  Database _database;
+  Database db;
 
   QuestionHelper(){
     initDatabase();
   }
 
-QuestionHelper._();
-
-  static final QuestionHelper db = QuestionHelper._();
-
-  Future<Database> get database async {
-    if (_database != null) return _database;
-    // if _database is null we instantiate it
-    _database = await initDatabase();
-    return _database;
-  }
-
   initDatabase() async{
-      _database = await openDatabase(
+    db = await openDatabase(
       join(await getDatabasesPath(), "questions.db"),
-      onCreate: (_database, version){
-        return _database.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
+      onCreate: (db, version){
+        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
       version: 1
     );
   }
 
   Future<void> insertQuestion(QuestionsModel question) async{
-    try{
-      db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    }catch(_){
-      print(_);
-    }
+    // try{
+    //   db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+    // }catch(_){
+    //   print(_);
+    // }
   }
 
   Future<List<QuestionsModel>> getAllQuestion () async{

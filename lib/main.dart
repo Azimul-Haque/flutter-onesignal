@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
-
+import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/qstnandans.dart';
 
@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
   List people = [];
   List posts = [];
   List unfilteredPosts = [];
+  QuestionHelper _questionHelper;
 
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
@@ -121,6 +122,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    super.initState();
     this._loadUserData();
     this._getPosts();
     this.configOneSignal();

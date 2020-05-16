@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 import 'package:project1/QuestionsModel.dart';
-
-import 'package:project1/pages/page2.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);
@@ -18,14 +15,16 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
 
   QuestionHelper _questionHelper;
-  Future<List<QuestionsModel>> questions;
+  List<QuestionsModel> questions = [];
   QuestionsModel currentQuestion;
-  
+  bool isLoading;
 
   Future<Null> refreshList() async {
+    setState(() {
+      isLoading = true;
+    });
     await Future.delayed(Duration(seconds: 2));
-    // this._getQuestions();
-    // this.loadJsonData();
+    this._loadDB();
     this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
@@ -46,20 +45,21 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   //   }
   //   return true;
   // }
+  _loadDB() async{
+    await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
+    var newquestions = await _questionHelper.getAllQuestion();
+    setState(() {
+      questions = newquestions;
+      isLoading = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    // _questionHelper = QuestionHelper();
-    QuestionHelper.db.initDatabase();
+    _questionHelper = QuestionHelper();
+    isLoading = true;
     _loadDB();
-  }
-  _loadDB() {
-    // List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
-    setState(() {
-      questions = _questionHelper.getAllQuestion();
-    });
-    return questions;
   }
 
   @override
@@ -75,10 +75,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             onPressed: () async{
               currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
               _questionHelper.insertQuestion(currentQuestion);
-              setState(() {
-                questions = _questionHelper.getAllQuestion();
-              });
-              // Navigator.pop(context);
+              _loadDB();
             },
             tooltip: "Ok",
           ),
@@ -101,43 +98,46 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         //     },
         //   ),
         // ),
-
-        // Expanded(
-        //   child: ListView.builder(
-        //     itemCount: questions.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return Card(
-        //         child: ListTile(
-        //           // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
-        //           title: Text(questions[index].question),
-        //           subtitle: Text(questions[index].answer),
-        //           // trailing: Icon(Icons.pageview),
-        //           onTap: (){
-        //             // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-        //             // Navigator.push(context, route);
-        //             // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-        //           },
-        //         ),
-        //       );
-        //     },
-        //   ),
-        // ),
+        Visibility(
+          visible: isLoading,
+          child: LinearProgressIndicator(backgroundColor: Colors.black12),
+        ),
         Expanded(
-          child: FutureBuilder(
-            future: questions,
-            builder: (context, snapshot) {
-              if(snapshot.hasData) {
-                return dataList(snapshot.data);
-              }
-              
-              if(null == snapshot.data || snapshot.data.length == 0) {
-                return Text("Not availale");
-              }
-
-              return CircularProgressIndicator();
-            }
+          child: ListView.builder(
+            itemCount: questions.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                child: ListTile(
+                  // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+                  title: Text(questions[index].question),
+                  subtitle: Text(questions[index].answer),
+                  // trailing: Icon(Icons.pageview),
+                  onTap: (){
+                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+                    // Navigator.push(context, route);
+                    // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+                  },
+                ),
+              );
+            },
           ),
         ),
+        // Expanded(
+        //   child: FutureBuilder(
+        //     future: questions,
+        //     builder: (context, snapshot) {
+        //       if(snapshot.hasData) {
+        //         return dataList(snapshot.data);
+        //       }
+              
+        //       if(null == snapshot.data || snapshot.data.length == 0) {
+        //         return Text("Not availale");
+        //       }
+
+        //       return CircularProgressIndicator();
+        //     }
+        //   ),
+        // ),
 
       ],),
     ),
