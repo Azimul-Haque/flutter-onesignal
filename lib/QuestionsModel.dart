@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:json_serializable/json_serializable.dart';
 
 final String tableName = "questions";
 final String columnId = "id";
@@ -44,7 +44,7 @@ class QuestionHelper{
 
   Future<void> insertQuestion(QuestionsModel question) async{
     try{
-      db.insert(tableName, question.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+      db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
     }catch(_){
       // print(_);
     }

@@ -47,8 +47,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       // });
       var jsonDataText = await rootBundle.loadString("assets/data.json");
       setState(() {
-        var syncquestionsjson = json.decode(jsonDataText).cast<Map<String, dynamic>>();
-        syncquestions = syncquestionsjson.map<QuestionsModel>((json) => QuestionsModel.fromJson(json)).toList();
+        syncquestions = json.decode(jsonDataText).cast<Map<String, dynamic>>();
+        // syncquestions = syncquestionsjson.map<QuestionsModel>((json) => QuestionsModel.fromJson(json)).toList();
       });
 
       // syncquestions.forEach((element) {
@@ -57,7 +57,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       //   _questionHelper.insertQuestion(currentQuestion);
       //   countinsertion++;
       // });
-      currentQuestion = QuestionsModel(question: syncquestions.first.question.toString(), answer: syncquestions.first.answer.toString(), count: 0);
+      currentQuestion = QuestionsModel(question: syncquestions.first.question, answer: syncquestions.first.answer, count: 0);
       _questionHelper.insertQuestion(currentQuestion);
       print("Inserted "+ countinsertion.toString() + " elements");
     } catch (_) {
