@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:140, width: double.infinity, 
+            height:150, width: double.infinity, 
             decoration: BoxDecoration(
               color: Colors.lightGreen,
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
@@ -213,11 +213,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            left: 10,
-            right: 10,
-            bottom: 20,
+            left: 0,
+            right: 0,
+            bottom: 10,
             child: Container(
-              height: 100, 
+              height: 130,
+              padding: EdgeInsets.all(5),
               width: double.infinity,
               // decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
               child: ListView(
@@ -225,32 +226,32 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      height: 100, 
-                      width: 200,
-                      padding: EdgeInsets.only(left: 0, right: 5),
-                      child: _homeCard("constitution.png", "1", "2", 'N/A'),
+                      height: 130, 
+                      width: 250,
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      child: _scrollCard("1", "2", 'N/A'),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      height: 100, 
-                      width: 200,
+                      height: 130, 
+                      width: 250,
                       padding: EdgeInsets.only(left: 5, right:5),
-                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                      child: _scrollCard("3", "4", '/qstnanser'),
                     ),
                   ),Expanded(
                     child: Container(
-                      height: 100, 
-                      width: 200,
+                      height: 130, 
+                      width: 250,
                       padding: EdgeInsets.only(left: 5, right:5),
-                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                      child: _scrollCard("3", "4", '/qstnanser'),
                     ),
                   ),Expanded(
                     child: Container(
-                      height: 100, 
-                      width: 200,
-                      padding: EdgeInsets.only(left: 5, right:0),
-                      child: _homeCard("qstnandans.png", "3", "4", '/qstnanser'),
+                      height: 130, 
+                      width: 250,
+                      padding: EdgeInsets.only(left: 5, right:5),
+                      child: _scrollCard("3", "4", '/qstnanser'),
                     ),
                   ),
                 ],
@@ -497,6 +498,42 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(5),
       ),
       elevation: 2,
+    );
+  }
+  Widget _scrollCard(String title, String takenby, String routename) {
+    return Card(
+      child: new InkWell(
+        onTap: () {
+          if(routename != 'N/A') {
+            Navigator.pushNamed(context, routename);
+          } else {
+            
+          }
+        },
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                  SizedBox(height: 5,),
+                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+                ],
+              )
+            )
+          ],
+        ),
+      ),
+      // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+      ),
+      elevation: 10,
     );
   }
 
