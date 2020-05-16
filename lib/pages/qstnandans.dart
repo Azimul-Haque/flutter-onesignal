@@ -123,7 +123,18 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         //   ),
         // ),
         Expanded(
-          child:
+          child: FutureBuilder(
+            future: questions,
+            builder: (context, snapshot) {
+              if(snapshot.hasData) {
+
+              }
+              
+              if(null == snapshot.data || snapshot.data.length == 0) {
+                
+              }
+            }
+          ),
         ),
 
       ],),
