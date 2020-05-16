@@ -16,6 +16,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
+  List<QuestionsModel> syncquestions = [];
   QuestionsModel currentQuestion;
   bool isLoading;
 
@@ -33,18 +34,22 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
-  // Future<bool> _getQuestions() async {
-  //   try {
-  //     String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
-  //     var jsonDataQuestions = await http.get(serviceURL);
-  //     setState(() {
-  //       questions = json.decode(jsonDataQuestions.body.toString());
-  //     });
-  //   } catch (_) {
-  //     _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
-  //   }
-  //   return true;
-  // }
+  Future<bool> _getSynced() async {
+    try {
+      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+      var jsonDataQuestions = await http.get(serviceURL);
+      setState(() {
+        syncquestions = json.decode(jsonDataQuestions.body.toString());
+      });
+      syncquestions.forEach((element) {
+        currentQuestion = QuestionsModel(question: syncquestions[element].question, answer: "Test A", count: 3);
+        _questionHelper.insertQuestion(currentQuestion);
+      });
+    } catch (_) {
+      _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
+    }
+    return true;
+  }
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
     var newquestions = await _questionHelper.getAllQuestion();
