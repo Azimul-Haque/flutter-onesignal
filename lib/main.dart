@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<bool> _getPosts() async {
-    String serviceURL = "https://jsonplaceholder.typicode.com/posts"; // http://192.168.43.81:8000/broadcast
+    String serviceURL = "http://192.168.43.81:8000/broadcast"; // http://192.168.43.81:8000/broadcast
     var jsonDataPosts = await http.get(serviceURL);
     setState(() {
       posts = json.decode(jsonDataPosts.body.toString());
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
+    // super.initState();
     this._loadUserData();
     this._getPosts();
     this.configOneSignal();

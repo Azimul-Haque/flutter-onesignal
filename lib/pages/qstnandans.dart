@@ -77,7 +77,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               _questionHelper.insertQuestion(currentQuestion);
               _loadDB();
             },
-            tooltip: "Ok",
+            tooltip: "সার্ভারের সাথে Sync করুন",
           ),
         ],
       ),
