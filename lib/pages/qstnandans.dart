@@ -34,10 +34,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
-  _getSynced() async {
+  _getSynced(int lastId) async {
     try {
+      _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
       int countinsertion = 0;
-      String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
+      String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" + lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -66,8 +67,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       isLoading = false;
     });
     if(questions.length == 0) {
-      _getSynced();
-      _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
+      _getSynced(questions.length);
     }
   }
 
@@ -90,7 +90,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         //   IconButton(
         //     icon: Icon(Icons.sync), 
         //     onPressed: () async{
-        //       _getSynced();
+        //       _getSynced(questions.length);
         //     },
         //     tooltip: "সার্ভারের সাথে Sync করুন",
         //   ),
@@ -101,7 +101,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             onSelected: (value) async{
               switch (value) {
                 case 'sync':
-                  _getSynced();
+                  _getSynced(questions.length);
                   break;
                 case 'cleardb':
                   break;

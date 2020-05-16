@@ -42,7 +42,7 @@ class QuestionHelper{
 
   initDatabase() async{
     db = await openDatabase(
-      join(await getDatabasesPath(), "questions9.db"),
+      join(await getDatabasesPath(), "questions10.db"),
       onCreate: (db, version){
         return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
