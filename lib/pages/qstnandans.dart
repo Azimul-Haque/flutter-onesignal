@@ -34,19 +34,22 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
-  Future<bool> _getSynced() async {
+  _getSynced() async {
     try {
-      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+      String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
+      int countinsertion = 0;
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
+        isLoading = true;
       });
       syncquestions.forEach((element) {
         // print(element.toString());
-        currentQuestion = QuestionsModel(question: element.question, answer: element.answer, count: element.count);
+        currentQuestion = QuestionsModel(question: element.question.toString(), answer: element.answer.toString(), count: 0);
         _questionHelper.insertQuestion(currentQuestion);
+        countinsertion++;
       });
-      _loadDB();
+      print("Inserted "+ countinsertion.toString() + " elements");
     } catch (_) {
       print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
