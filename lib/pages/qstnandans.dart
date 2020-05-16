@@ -52,6 +52,9 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       questions = newquestions;
       isLoading = false;
     });
+    if(questions.length == 0) {
+      _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
+    }
   }
 
   @override

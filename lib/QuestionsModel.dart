@@ -42,11 +42,11 @@ class QuestionHelper{
   }
 
   Future<void> insertQuestion(QuestionsModel question) async{
-    // try{
-    //   db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    // }catch(_){
-    //   print(_);
-    // }
+    try{
+      db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+    }catch(_){
+      print(_);
+    }
   }
 
   Future<List<QuestionsModel>> getAllQuestion () async{
