@@ -71,7 +71,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         // automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.check), 
+            icon: Icon(Icons.sync), 
             onPressed: () async{
               currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
               _questionHelper.insertQuestion(currentQuestion);
