@@ -86,47 +86,24 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       appBar: AppBar(
         title: Text("প্রশ্নোত্তর"),
         // automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.sync), 
-            onPressed: () async{
-              _getSynced();
-            },
-            tooltip: "সার্ভারের সাথে Sync করুন",
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.sync), 
+        //     onPressed: () async{
+        //       _getSynced();
+        //     },
+        //     tooltip: "সার্ভারের সাথে Sync করুন",
+        //   ),
+        // ],
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
             onSelected: (value) async{
               switch (value) {
                 case 'sync':
-                  if (await canLaunch("tel:+8801751398392")) {
-                    await launch("tel:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
+                  _getSynced();
                   break;
-                case 'sms':
-                  if (await canLaunch("sms:+8801751398392")) {
-                    await launch("sms:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'rate':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'website':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
+                case 'cleardb':
                   break;
                 default:
               }
@@ -135,20 +112,12 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               return [
                 PopupMenuItem(
                   value: "sync", 
-                  child: Row(children: <Widget>[Icon(Icons.sync, color: Colors.black87,), SizedBox(width: 10,), Text("Call us")],)
+                  child: Row(children: <Widget>[Icon(Icons.sync, color: Colors.black87,), SizedBox(width: 10,), Text("সার্ভারের সাথে Sync করুন")],)
                 ,),
                 PopupMenuItem(
                   value: "cleardb", 
-                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("Send message")],)
+                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("মুছে দিন")],)
                 ,),
-                PopupMenuItem(
-                  value: "rate", 
-                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("Rate us")],)
-                ,),
-                PopupMenuItem(
-                  value: "website",
-                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), SizedBox(width: 10,), Text("View website")],),
-                ),
               ];
             },
           )
