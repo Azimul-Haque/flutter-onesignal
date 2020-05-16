@@ -76,8 +76,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           IconButton(
             icon: Icon(Icons.sync), 
             onPressed: () async{
-              currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
-              _questionHelper.insertQuestion(currentQuestion);
+              // currentQuestion = QuestionsModel(question: "Test Q?", answer: "Test A", count: 3);
+              // _questionHelper.insertQuestion(currentQuestion);
               _loadDB();
             },
             tooltip: "সার্ভারের সাথে Sync করুন",

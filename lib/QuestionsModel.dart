@@ -45,7 +45,7 @@ class QuestionHelper{
     try{
       db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
     }catch(_){
-      print(_);
+      // print(_);
     }
   }
 
