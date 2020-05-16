@@ -42,7 +42,7 @@ class QuestionHelper{
 
   initDatabase() async{
     db = await openDatabase(
-      join(await getDatabasesPath(), "questions5.db"),
+      join(await getDatabasesPath(), "questions8.db"),
       onCreate: (db, version){
         return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
@@ -57,12 +57,6 @@ class QuestionHelper{
       // print(_);
     }
   }
-  // Future<QuestionsModel> insertQuestion(QuestionsModel question) async {
-  //   var dbClient = await database;
-  //   // this will insert the Album object to the DB after converting it to a json
-  //   question.id = await dbClient.insert(tableName, question.toMap());
-  //   return question;
-  // }
 
   Future<List<QuestionsModel>> getAllQuestion () async{
     List<Map<String, dynamic>> questions = await db.query(tableName);

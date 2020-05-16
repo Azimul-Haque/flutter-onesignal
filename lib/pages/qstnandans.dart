@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:project1/QuestionsModel.dart';
 
@@ -21,7 +20,6 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   List syncquestions = [];
   QuestionsModel currentQuestion;
   bool isLoading;
-  int countinsertion = 0;
   Future<Null> refreshList() async {
     setState(() {
       isLoading = true;
@@ -38,24 +36,21 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   }
   _getSynced() async {
     try {
+      int countinsertion = 0;
       String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
         isLoading = true;
       });
-      var jsonDataText = await rootBundle.loadString("assets/data.json");
-      setState(() {
-        syncquestions = json.decode(jsonDataText);
-      });
 
       syncquestions.forEach((element) {
-        print(element.toString());
+        // print(element.toString());
         currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], count: 0);
         _questionHelper.insertQuestion(currentQuestion);
         countinsertion++;
       });
-      print("Inserted "+ countinsertion.toString() + " elements");
+      // print("Inserted "+ syncquestions.length.toString() + " elements");
       _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে!");
     } catch (_) {
       print(_);
@@ -120,10 +115,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         // ),
         Visibility(
           visible: isLoading,
-          child: Column(children: <Widget>[
-            LinearProgressIndicator(backgroundColor: Colors.black12),
-            Text(countinsertion.toString()),
-          ]),
+          child: LinearProgressIndicator(backgroundColor: Colors.black12),
         ),
         Expanded(
           child: ListView.builder(
