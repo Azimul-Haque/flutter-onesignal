@@ -29,15 +29,6 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
     return null;
   }
-  
-  _loadDB() {
-    // List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
-    print("Ekhane somossa");
-    setState(() {
-      questions = _questionHelper.getAllQuestion();
-    });
-    return questions;
-  }
 
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
@@ -60,6 +51,14 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   void initState() {
     super.initState();
     _questionHelper = QuestionHelper();
+    _loadDB();
+  }
+  _loadDB() {
+    // List<QuestionsModel> newquestions = await _questionHelper.getAllQuestion();
+    setState(() {
+      questions = _questionHelper.getAllQuestion();
+    });
+    return questions;
   }
 
   @override
@@ -127,18 +126,41 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             future: questions,
             builder: (context, snapshot) {
               if(snapshot.hasData) {
-
+                return dataList(snapshot.data);
               }
               
               if(null == snapshot.data || snapshot.data.length == 0) {
                 return Text("Not availale");
               }
+
+              return CircularProgressIndicator();
             }
           ),
         ),
 
       ],),
     ),
+    );
+  }
+
+    ListView dataList(List<QuestionsModel> questions) {
+    return ListView.builder(
+      itemCount: questions.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          child: ListTile(
+            // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+            title: Text(questions[index].question),
+            subtitle: Text(questions[index].answer),
+            // trailing: Icon(Icons.pageview),
+            onTap: (){
+              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+              // Navigator.push(context, route);
+              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+            },
+          ),
+        );
+      },
     );
   }
 }

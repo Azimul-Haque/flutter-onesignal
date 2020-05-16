@@ -49,7 +49,7 @@ class QuestionHelper{
     }
   }
 
-  Future<List<QuestionsModel>> getAllQuestion () async{
+  getAllQuestion () async{ // Future<List<QuestionsModel>> 
     List<Map<String, dynamic>> questions = await db.query(tableName);
     return List.generate(questions.length, (i){
       return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
