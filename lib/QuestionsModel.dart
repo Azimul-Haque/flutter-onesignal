@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:path_provider/path_provider.dart';
 
 final String tableName = "questions";
 final String columnId = "id";
