@@ -197,27 +197,33 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:150, width: double.infinity, 
-            decoration: BoxDecoration(
-              color: Colors.lightGreen,
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
-              boxShadow: [BoxShadow(
-                color: Colors.grey[350],
-                blurRadius: 3.0, // has the effect of softening the shadow
-                spreadRadius: 2.0, // has the effect of extending the shadow
-                offset: Offset(
-                  2.0, // horizontal, move right 10
-                  2.0, // vertical, move down 10
+            height:200, width: double.infinity, 
+            child: Column(children: <Widget>[
+              Container(
+                height:140, width: double.infinity, 
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen,
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
+                  boxShadow: [BoxShadow(
+                    color: Colors.grey[350],
+                    blurRadius: 3.0, // has the effect of softening the shadow
+                    spreadRadius: 2.0, // has the effect of extending the shadow
+                    offset: Offset(
+                      2.0, // horizontal, move right 10
+                      2.0, // vertical, move down 10
+                    ),
+                  )],
                 ),
-              )],
-            ),
+              ),
+              SizedBox(height: 60),
+            ],),
           ),
           Positioned(
-            left: 0,
-            right: 0,
+            left: 10,
+            right: 10,
             bottom: 10,
             child: Container(
-              height: 130,
+              height: 150,
               padding: EdgeInsets.all(5),
               width: double.infinity,
               // decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
