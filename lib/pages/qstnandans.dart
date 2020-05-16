@@ -16,7 +16,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
-  List<QuestionsModel> syncquestions = [];
+  List syncquestions = [];
   QuestionsModel currentQuestion;
   bool isLoading;
 
@@ -42,11 +42,13 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
       });
       syncquestions.forEach((element) {
+        // print(element.toString());
         currentQuestion = QuestionsModel(question: element.question, answer: element.answer, count: element.count);
         _questionHelper.insertQuestion(currentQuestion);
       });
       _loadDB();
     } catch (_) {
+      print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
     return true;
