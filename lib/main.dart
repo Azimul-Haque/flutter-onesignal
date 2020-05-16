@@ -134,6 +134,19 @@ class _HomePageState extends State<HomePage> {
       key: _globalKey,
       appBar: AppBar(
         title: Text('BCS সংবিধান'),
+        flexibleSpace: Container(
+          decoration: new BoxDecoration(
+            gradient: new LinearGradient(
+                colors: [
+                  Colors.green[600],
+                  Colors.lightGreen,
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
+        ),
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
@@ -197,12 +210,20 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:200, width: double.infinity, 
+            height:190, width: double.infinity, 
             child: Column(children: <Widget>[
               Container(
-                height:140, width: double.infinity, 
+                height:135, width: double.infinity, 
                 decoration: BoxDecoration(
-                  color: Colors.lightGreen,
+                  // color: Colors.lightGreen,
+                  gradient: new LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromARGB(255, 25,178,238),
+                      Color.fromARGB(255, 21,236,229)
+                    ],
+                  ),
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
                   boxShadow: [BoxShadow(
                     color: Colors.grey[350],
@@ -215,24 +236,24 @@ class _HomePageState extends State<HomePage> {
                   )],
                 ),
               ),
-              SizedBox(height: 60),
+              SizedBox(height: 40),
             ],),
           ),
           Positioned(
-            left: 10,
-            right: 10,
+            left: 0,
+            right: 0,
             bottom: 10,
             child: Container(
-              height: 150,
-              padding: EdgeInsets.all(5),
+              height: 160,
               width: double.infinity,
               // decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
               child: ListView(
+                padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      height: 130, 
+                      height: 140, 
                       width: 250,
                       padding: EdgeInsets.only(left: 5, right: 5),
                       child: _scrollCard("1", "2", 'N/A'),
@@ -243,21 +264,21 @@ class _HomePageState extends State<HomePage> {
                       height: 130, 
                       width: 250,
                       padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", '/qstnanser'),
+                      child: _scrollCard("3", "4", 'N/A'),
                     ),
                   ),Expanded(
                     child: Container(
                       height: 130, 
                       width: 250,
                       padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", '/qstnanser'),
+                      child: _scrollCard("3", "4", 'N/A'),
                     ),
                   ),Expanded(
                     child: Container(
                       height: 130, 
                       width: 250,
                       padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", '/qstnanser'),
+                      child: _scrollCard("3", "4", 'N/A'),
                     ),
                   ),
                 ],
@@ -521,7 +542,7 @@ class _HomePageState extends State<HomePage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -539,7 +560,8 @@ class _HomePageState extends State<HomePage> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       ),
-      elevation: 10,
+      elevation: 7,
+      color: Colors.white70,
     );
   }
 
