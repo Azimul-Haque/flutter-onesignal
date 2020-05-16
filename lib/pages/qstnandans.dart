@@ -35,16 +35,17 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
   _getSynced(int lastId) async {
+    _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
+    setState(() {
+      isLoading = true;
+    });
     try {
-      _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
       int countinsertion = 0;
       String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" + lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
-        isLoading = true;
       });
-
       syncquestions.forEach((element) {
         // print(element.toString());
         currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], count: 0);
@@ -52,7 +53,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         countinsertion++;
       });
       // print("Inserted "+ syncquestions.length.toString() + " elements");
-      _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে!");
+      if(countinsertion == 0) {
+        _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
+      } else {
+        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toString() + "KB)");
+      }
     } catch (_) {
       print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
