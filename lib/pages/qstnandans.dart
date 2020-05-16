@@ -39,7 +39,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   _getSynced() async {
     try {
       int countinsertion = 0;
-      String serviceURL = "http://192.168.43.81:8000/files/questions.html"; // https://jsonplaceholder.typicode.com/posts
+      String serviceURL = "https://killa.com.bd/broadcast"; // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -50,16 +50,12 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         syncquestions = json.decode(jsonDataText);
       });
 
-      // syncquestions.forEach((element) {
-      //   print(element.toString());
-      //   currentQuestion = QuestionsModel(question: element.question.toString(), answer: element.answer.toString(), count: 0);
-      //   _questionHelper.insertQuestion(currentQuestion);
-      //   countinsertion++;
-      // });
-      print(syncquestions.first["answer"]);
-      var string1 = syncquestions.first["answer"];
-      currentQuestion = QuestionsModel(question: string1, answer: string1, count: 0);
-      _questionHelper.insertQuestion(currentQuestion);
+      syncquestions.forEach((element) {
+        print(element.toString());
+        currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], count: 0);
+        _questionHelper.insertQuestion(currentQuestion);
+        countinsertion++;
+      });
       print("Inserted "+ countinsertion.toString() + " elements");
     } catch (_) {
       print(_);
@@ -147,46 +143,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             },
           ),
         ),
-        // Expanded(
-        //   child: FutureBuilder(
-        //     future: questions,
-        //     builder: (context, snapshot) {
-        //       if(snapshot.hasData) {
-        //         return dataList(snapshot.data);
-        //       }
-              
-        //       if(null == snapshot.data || snapshot.data.length == 0) {
-        //         return Text("Not availale");
-        //       }
-
-        //       return CircularProgressIndicator();
-        //     }
-        //   ),
-        // ),
-
       ],),
     ),
-    );
-  }
-
-    ListView dataList(List<QuestionsModel> questions) {
-    return ListView.builder(
-      itemCount: questions.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
-          child: ListTile(
-            // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
-            title: Text(questions[index].question),
-            subtitle: Text(questions[index].answer),
-            // trailing: Icon(Icons.pageview),
-            onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-            },
-          ),
-        );
-      },
     );
   }
 }
