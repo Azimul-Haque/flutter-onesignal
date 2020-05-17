@@ -458,8 +458,7 @@ class _HomePageState extends State<HomePage> {
   
   Widget _homeCard(String image, String title, String takenby, String routename) {
     return Card(
-      child: 
-      Stack(
+      child: Stack(
         children: <Widget>[
         Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -494,6 +493,7 @@ class _HomePageState extends State<HomePage> {
         
                   }
                 },
+                borderRadius: BorderRadius.circular(5),
               ),
             ),
           ),
@@ -510,37 +510,38 @@ class _HomePageState extends State<HomePage> {
       height: 130, 
       width: 130,
       child: Card(
-        child: new InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            if(routename != 'N/A') {
-              Navigator.pushNamed(context, routename);
-            } else {
-              
-            }
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    
-                    SizedBox(height: 10,),
-                    Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
-                    SizedBox(height: 10,),
-                    Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
-                  ],
+        child: Stack(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(height: 10,),
+                      Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
+                      SizedBox(height: 10,),
+                      Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                    ],
+                  )
                 )
-              )
-            ],
-          ),
+              ],
+            ),
+            Positioned.fill(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {},
+                borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+          ],
         ),
-        // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)), // only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20))
         ),
