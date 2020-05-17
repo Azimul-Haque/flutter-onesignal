@@ -197,19 +197,11 @@ class _HomePageState extends State<HomePage> {
       body: Column(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:140, width: double.infinity, 
+            height:130, width: double.infinity, 
             child: Column(children: <Widget>[
               Container(
-                height:100, width: double.infinity, 
+                height:90, width: double.infinity, 
                 decoration: BoxDecoration(
-                  // gradient: new LinearGradient(
-                  //   begin: Alignment.topCenter,
-                  //   end: Alignment.bottomCenter,
-                  //   colors: [
-                  //     Color.fromARGB(255, 25,178,238),
-                  //     Color.fromARGB(255, 21,236,229)
-                  //   ],
-                  // ),
                   gradient: new LinearGradient(
                     colors: [
                       Colors.green[800],
@@ -232,7 +224,6 @@ class _HomePageState extends State<HomePage> {
                   // )],
                 ),
               ),
-              SizedBox(height: 20),
             ],),
           ),
           Positioned(
@@ -240,7 +231,7 @@ class _HomePageState extends State<HomePage> {
             right: 0,
             bottom: 5,
             child: Container(
-              height: 140,
+              height: 130,
               width: double.infinity,
               child: ListView(
                 padding: EdgeInsets.all(10),
@@ -467,8 +458,8 @@ class _HomePageState extends State<HomePage> {
   }
   Widget _scrollCard(String iconname, String title, String subtitle) {
     return Container(
-      height: 120, 
-      width: 120,
+      height: 115, 
+      width: 115,
       child: Card(
         child: Stack(
           children: <Widget>[
@@ -476,9 +467,9 @@ class _HomePageState extends State<HomePage> {
               // mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 10, width: double.infinity,),
-                Image.asset("assets/images/" + iconname, height: 50, width: 50, alignment: Alignment.center,),
                 SizedBox(height: 7, width: double.infinity,),
+                Image.asset("assets/images/" + iconname, height: 47.5, width: 47.5, alignment: Alignment.center,),
+                SizedBox(height: 3, width: double.infinity,),
                 Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
                 Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 13, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
               ],
