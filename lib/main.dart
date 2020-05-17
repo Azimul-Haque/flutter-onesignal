@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
               colors: [
-                Colors.green[600],
+                Colors.green[800],
                 Colors.lightGreen,
               ],
               begin: const FractionalOffset(0.0, 0.0),
@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                   // ),
                   gradient: new LinearGradient(
                     colors: [
-                      Colors.green[600],
+                      Colors.green[800],
                       Colors.lightGreen,
                     ],
                     begin: const FractionalOffset(0.0, 0.0),
@@ -521,7 +521,7 @@ class _HomePageState extends State<HomePage> {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 10,),
-                    Image.asset("assets/images/icon.png", height: 40, width: 40,),
+                    Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
                     // Icon(Icons.notifications_active), 
                     SizedBox(height: 10,),
                     Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
