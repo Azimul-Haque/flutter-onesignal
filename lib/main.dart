@@ -499,38 +499,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      // new InkWell(
-      //   onTap: () {
-      //     if(routename != 'N/A') {
-      //       Navigator.pushNamed(context, routename);
-      //     } else {
-            
-      //     }
-      //   },
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: <Widget>[
-      //       ClipRRect(
-      //           borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-      //           child: Image.asset("assets/images/" + image),
-      //       ),
-      //       Padding(
-      //         padding: EdgeInsets.all(7),
-      //         child: Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           mainAxisAlignment: MainAxisAlignment.start,
-      //           children: <Widget>[
-      //             Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-      //             SizedBox(height: 5,),
-      //             Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
-      //           ],
-      //         )
-      //       )
-      //     ],
-      //   ),
-      // ),
-      // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
       ),
