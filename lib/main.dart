@@ -246,10 +246,10 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  _scrollCard("1", "2", 'N/A'),
-                  _scrollCard("1", "2", 'N/A'),
-                  _scrollCard("1", "2", 'N/A'),
-                  _scrollCard("1", "2", 'N/A'),
+                  _scrollCard("icon.png", "2", 'N/A'),
+                  _scrollCard("icon.png", "2", 'N/A'),
+                  _scrollCard("icon.png", "2", 'N/A'),
+                  _scrollCard("icon.png", "2", 'N/A'),
                 ],
               ),
             ), 
@@ -513,22 +513,13 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: <Widget>[
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 10,),
-                      Image.asset("assets/images/" + iconname, height: 50, width: 50,),
-                      SizedBox(height: 10,),
-                      Text("নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
-                    ],
-                  )
-                )
+                SizedBox(height: 10,),
+                Image.asset("assets/images/" + iconname, height: 50, width: 50,),
+                SizedBox(height: 10,),
+                Text(title, style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
               ],
             ),
             Positioned.fill(
