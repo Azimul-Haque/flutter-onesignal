@@ -13,7 +13,6 @@ import 'package:project1/QuestionsModel.dart';
 import 'package:project1/pages/qstnandans.dart';
 
 import 'package:project1/pages/page1.dart';
-import 'package:project1/pages/page2.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
 
@@ -24,6 +23,7 @@ void main() {
     title: 'BCS সংবিধান',
     theme: ThemeData(
       primarySwatch: Colors.green,
+      fontFamily: 'Kalpurush',
     ),
     initialRoute: '/',
     routes: {
@@ -427,7 +427,7 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                     SizedBox(height: 5,),
-                    Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+                    Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5, height: 1.0),),
                   ],
                 )
               )
