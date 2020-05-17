@@ -6,16 +6,16 @@ class ConstituionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("সংবিধান"),
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.check), 
-            onPressed: () async{
-              Navigator.pop(context);
-            },
-            tooltip: "Ok",
-          ),
-        ],
+        // automaticallyImplyLeading: false,
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.check), 
+        //     onPressed: () async{
+        //       Navigator.pop(context);
+        //     },
+        //     tooltip: "Ok",
+        //   ),
+        // ],
       ),
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),
