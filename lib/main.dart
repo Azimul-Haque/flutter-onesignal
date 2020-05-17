@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                     stops: [0.0, 1.0],
                     tileMode: TileMode.clamp,
                   ),
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                   boxShadow: [BoxShadow(
                     color: Colors.grey[350],
                     blurRadius: 3.0, // has the effect of softening the shadow
@@ -523,9 +523,9 @@ class _HomePageState extends State<HomePage> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(height: 10,),
-                      Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
+                      Image.asset("assets/images/" + iconname, height: 50, width: 50,),
                       SizedBox(height: 10,),
-                      Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                      Text("নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
                     ],
                   )
                 )
