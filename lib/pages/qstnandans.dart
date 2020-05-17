@@ -149,28 +149,61 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           visible: isLoading,
           child: LinearProgressIndicator(backgroundColor: Colors.black12),
         ),
+        SizedBox(height: 5,),
         Expanded(
           child: ListView.builder(
             itemCount: questions.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 child: ListTile(
-                  // leading: CircleAvatar(child: Text(questions[index]["question"][0]),),
+                  // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                   title: Text(questions[index].id.toString() + "-" + questions[index].question),
                   subtitle: Text(questions[index].answer),
-                  // trailing: Icon(Icons.pageview),
-                  onTap: (){
-                    // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-                    // Navigator.push(context, route);
-                    // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-                  },
+                  trailing: listPopUpMenu(questions[index]),
+                  // onTap: (){
+                  //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+                  //   // Navigator.push(context, route);
+                  //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+                  // },
                 ),
+                margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                elevation: 2,
               );
             },
           ),
         ),
+        SizedBox(height: 5,),
       ],),
     ),
+    );
+  }
+
+  listPopUpMenu(QuestionsModel question) {
+    return PopupMenuButton(
+      offset: Offset(0, 40),
+      onSelected: (value) async{
+        switch (value) {
+          case 'report':
+
+            break;
+          case 'makefavorite':
+          
+            break;
+          default:
+        }
+      },
+      itemBuilder: (BuildContext context) {
+        return [
+          PopupMenuItem(
+            value: "report", 
+            child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
+          ,),
+          PopupMenuItem(
+            value: "makefavorite", 
+            child: Row(children: <Widget>[Icon(Icons.favorite_border, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকায় যোগ করুন")],)
+          ,),
+        ];
+      },
     );
   }
 }
