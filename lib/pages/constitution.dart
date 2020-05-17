@@ -22,7 +22,7 @@ class ConstituionPage extends StatelessWidget {
         Card(
           child: ListTile(
             leading: CircleAvatar(child: Icon(Icons.open_in_new)),
-            title: Text("প্রথম ভাগ "),
+            title: Text("প্রথম ভাগ"),
             subtitle: Text("প্রজাতন্ত্র"),
             // trailing: listPopUpMenu(questions[index]),
             onTap: (){
@@ -31,7 +31,7 @@ class ConstituionPage extends StatelessWidget {
               // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
             },
           ),
-          color: Colors.amber,
+          color: Color.fromRGBO(241, 248, 233, 1.0),
           margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
         ),
         Card(
@@ -46,14 +46,14 @@ class ConstituionPage extends StatelessWidget {
               // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
             },
           ),
-          color: Colors.green,
+          color: Color.fromRGBO(220, 237, 200, 1.0),
           margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
         ),
         Card(
           child: ListTile(
             leading: CircleAvatar(child: Icon(Icons.open_in_new)),
-            title: Text("প্রথম ভাগ "),
-            subtitle: Text("প্রজাতন্ত্র"),
+            title: Text("তৃতীয় ভাগ"),
+            subtitle: Text("মৌলিক অধিকার"),
             // trailing: listPopUpMenu(questions[index]),
             onTap: (){
               // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
@@ -61,7 +61,37 @@ class ConstituionPage extends StatelessWidget {
               // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
             },
           ),
-          color: Colors.blue,
+          color: Color.fromRGBO(197, 225, 165, 1.0),
+          margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+        ),
+        Card(
+          child: ListTile(
+            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
+            title: Text("পঞ্চম ভাগ"),
+            subtitle: Text("আইনসভা"),
+            // trailing: listPopUpMenu(questions[index]),
+            onTap: (){
+              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+              // Navigator.push(context, route);
+              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+            },
+          ),
+          color: Color.fromRGBO(174, 213, 129, 1.0),
+          margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+        ),
+        Card(
+          child: ListTile(
+            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
+            title: Text("চতুর্থ ভাগ"),
+            subtitle: Text("নির্বাহী বিভাগ"),
+            // trailing: listPopUpMenu(questions[index]),
+            onTap: (){
+              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+              // Navigator.push(context, route);
+              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+            },
+          ),
+          color: Color.fromRGBO(174, 213, 129, 1.0),
           margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
         ),
         SizedBox(height: 5,),
