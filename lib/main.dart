@@ -515,16 +515,16 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 10,),
-                    Image.asset("assets/icon.png"),
-                    Icon(Icons.notifications_active), // notifications_active, library_add, edit, add_box, account_balance
+                    Image.asset("assets/images/icon.png", height: 40, width: 40,),
+                    // Icon(Icons.notifications_active), 
                     SizedBox(height: 10,),
-                    Text("নিয়মিত নোটিফিকেশন পান asd asd asd", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                    Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
                   ],
                 )
               )
