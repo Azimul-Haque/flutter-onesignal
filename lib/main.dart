@@ -149,22 +149,11 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           PopupMenuButton(
-            offset: Offset(0, 55),
+            offset: Offset(0, 60),
             onSelected: (value) async{
               switch (value) {
-                case 'call':
-                  if (await canLaunch("tel:+8801751398392")) {
-                    await launch("tel:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
-                  break;
-                case 'sms':
-                  if (await canLaunch("sms:+8801751398392")) {
-                    await launch("sms:+8801751398392");
-                  } else {
-                    throw 'Could not launch!';
-                  }
+                case 'addqstn':
+                  
                   break;
                 case 'rate':
                   if (await canLaunch("https://orbachinujbuk.com")) {
@@ -186,20 +175,16 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
-                  value: "call", 
-                  child: Row(children: <Widget>[Icon(Icons.call, color: Colors.black,), SizedBox(width: 10,), Text("Call us")],)
-                ,),
-                PopupMenuItem(
-                  value: "sms", 
-                  child: Row(children: <Widget>[Icon(Icons.sms, color: Colors.black,), SizedBox(width: 10,), Text("Send message")],)
+                  value: "addqstn", 
+                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black,), SizedBox(width: 10,), Text("নতুন প্রশ্ন যোগ করুন")],)
                 ,),
                 PopupMenuItem(
                   value: "rate", 
-                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("Rate us")],)
+                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("আমাদের রেটিং দিন")],)
                 ,),
                 PopupMenuItem(
                   value: "website",
-                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), SizedBox(width: 10,), Text("View website")],),
+                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), SizedBox(width: 10,), Text("ওয়েবসাইট দেখুন")],),
                 ),
               ];
             },
@@ -251,35 +236,29 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      height: 140, 
-                      width: 250,
-                      padding: EdgeInsets.only(left: 5, right: 5),
-                      child: _scrollCard("1", "2", 'N/A'),
-                    ),
+                  Container(
+                    height: 140, 
+                    width: 250,
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    child: _scrollCard("1", "2", 'N/A'),
                   ),
-                  Expanded(
-                    child: Container(
-                      height: 130, 
-                      width: 250,
-                      padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", 'N/A'),
-                    ),
-                  ),Expanded(
-                    child: Container(
-                      height: 130, 
-                      width: 250,
-                      padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", 'N/A'),
-                    ),
-                  ),Expanded(
-                    child: Container(
-                      height: 130, 
-                      width: 250,
-                      padding: EdgeInsets.only(left: 5, right:5),
-                      child: _scrollCard("3", "4", 'N/A'),
-                    ),
+                  Container(
+                    height: 140, 
+                    width: 250,
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    child: _scrollCard("1", "2", 'N/A'),
+                  ),
+                  Container(
+                    height: 140, 
+                    width: 250,
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    child: _scrollCard("1", "2", 'N/A'),
+                  ),
+                  Container(
+                    height: 140, 
+                    width: 250,
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    child: _scrollCard("1", "2", 'N/A'),
                   ),
                 ],
               ),

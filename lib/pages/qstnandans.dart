@@ -56,7 +56,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       if(countinsertion == 0) {
         _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
       } else {
-        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toString() + "KB)");
+        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).ceil().toString() + "KB)");
       }
     } catch (_) {
       print(_);
