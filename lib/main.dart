@@ -10,6 +10,7 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 import 'package:project1/QuestionsModel.dart';
 
+import 'package:project1/pages/constitution.dart';
 import 'package:project1/pages/qstnandans.dart';
 
 import 'package:project1/pages/page1.dart';
@@ -29,6 +30,7 @@ void main() {
     routes: {
       '/': (context) => HomePage(),
       '/formpage': (context) => FormPage(),
+      '/constitution': (context) => ConstituionPage(),
       '/qstnanser': (context) => QuestionAnswerPage(),
     },
   );
@@ -178,15 +180,15 @@ class _HomePageState extends State<HomePage> {
               return [
                 PopupMenuItem(
                   value: "addqstn", 
-                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black,), SizedBox(width: 10,), Text("নতুন প্রশ্ন যোগ করুন")],)
+                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black87,), SizedBox(width: 10,), Text("নতুন প্রশ্ন যোগ করুন")],)
                 ,),
                 PopupMenuItem(
                   value: "rate", 
-                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black,), SizedBox(width: 10,), Text("আমাদের রেটিং দিন")],)
+                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black87,), SizedBox(width: 10,), Text("আমাদের রেটিং দিন")],)
                 ,),
                 PopupMenuItem(
                   value: "website",
-                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black,), SizedBox(width: 10,), Text("ওয়েবসাইট দেখুন")],),
+                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black87,), SizedBox(width: 10,), Text("ওয়েবসাইট দেখুন")],),
                 ),
               ];
             },
@@ -254,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 10, left: 10, bottom: 2.5, right: 2.5),
-                    child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", 'N/A'),
+                    child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", '/constitution'),
                   ),
                 ),
                 Expanded(
