@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 30),
             ],),
           ),
-          Positioned(
+          Positioned.fill(
             left: 0,
             right: 0,
             bottom: 5,
@@ -496,7 +496,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 2,
     );
   }
-  Widget _scrollCard(String title, String iconname, String routename) {
+  Widget _scrollCard(String iconname, String title, String routename) {
     return Container(
       height: 130, 
       width: 130,
@@ -522,7 +522,6 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     SizedBox(height: 10,),
                     Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
-                    // Icon(Icons.notifications_active), 
                     SizedBox(height: 10,),
                     Text("নিয়মিত নোটিফিকেশন নিয়মিত নোটিফিকেশন", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
                   ],
