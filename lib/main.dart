@@ -133,18 +133,20 @@ class _HomePageState extends State<HomePage> {
     return  Scaffold(
       key: _globalKey,
       appBar: AppBar(
+        elevation: 0,
         title: Text('BCS সংবিধান'),
         flexibleSpace: Container(
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
-                colors: [
-                  Colors.green[600],
-                  Colors.lightGreen,
-                ],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0, 0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp),
+              colors: [
+                Colors.green[600],
+                Colors.lightGreen,
+              ],
+              begin: const FractionalOffset(0.0, 0.0),
+              end: const FractionalOffset(1.0, 0.0),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.clamp,
+            ),
           ),
         ),
         actions: <Widget>[
@@ -195,19 +197,28 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:190, width: double.infinity, 
+            height:160, width: double.infinity, 
             child: Column(children: <Widget>[
               Container(
-                height:135, width: double.infinity, 
+                height:110, width: double.infinity, 
                 decoration: BoxDecoration(
-                  // color: Colors.lightGreen,
+                  // gradient: new LinearGradient(
+                  //   begin: Alignment.topCenter,
+                  //   end: Alignment.bottomCenter,
+                  //   colors: [
+                  //     Color.fromARGB(255, 25,178,238),
+                  //     Color.fromARGB(255, 21,236,229)
+                  //   ],
+                  // ),
                   gradient: new LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 25,178,238),
-                      Color.fromARGB(255, 21,236,229)
+                      Colors.green[600],
+                      Colors.lightGreen,
                     ],
+                    begin: const FractionalOffset(0.0, 0.0),
+                    end: const FractionalOffset(1.0, 0.0),
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
                   boxShadow: [BoxShadow(
@@ -221,45 +232,24 @@ class _HomePageState extends State<HomePage> {
                   )],
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 30),
             ],),
           ),
           Positioned(
             left: 0,
             right: 0,
-            bottom: 10,
+            bottom: 5,
             child: Container(
-              height: 160,
+              height: 140,
               width: double.infinity,
-              // decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
               child: ListView(
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Container(
-                    height: 140, 
-                    width: 250,
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    child: _scrollCard("1", "2", 'N/A'),
-                  ),
-                  Container(
-                    height: 140, 
-                    width: 250,
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    child: _scrollCard("1", "2", 'N/A'),
-                  ),
-                  Container(
-                    height: 140, 
-                    width: 250,
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    child: _scrollCard("1", "2", 'N/A'),
-                  ),
-                  Container(
-                    height: 140, 
-                    width: 250,
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    child: _scrollCard("1", "2", 'N/A'),
-                  ),
+                  _scrollCard("1", "2", 'N/A'),
+                  _scrollCard("1", "2", 'N/A'),
+                  _scrollCard("1", "2", 'N/A'),
+                  _scrollCard("1", "2", 'N/A'),
                 ],
               ),
             ), 
@@ -507,40 +497,45 @@ class _HomePageState extends State<HomePage> {
     );
   }
   Widget _scrollCard(String title, String takenby, String routename) {
-    return Card(
-      child: new InkWell(
-        onTap: () {
-          if(routename != 'N/A') {
-            Navigator.pushNamed(context, routename);
-          } else {
-            
-          }
-        },
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 5,),
-                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
-                ],
+    return Container(
+      height: 140, 
+      width: 140,
+      child: Card(
+        child: new InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            if(routename != 'N/A') {
+              Navigator.pushNamed(context, routename);
+            } else {
+              
+            }
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Icon(Icons.library_add),
+                    SizedBox(height: 5,),
+                    Text("ASDsd ASDAS d ASD ASd", style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+                  ],
+                )
               )
-            )
-          ],
+            ],
+          ),
         ),
+        // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)), // only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20))
+        ),
+        elevation: 7,
+        color: Colors.white,
       ),
-      // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-      ),
-      elevation: 7,
-      color: Colors.white70,
     );
   }
 
