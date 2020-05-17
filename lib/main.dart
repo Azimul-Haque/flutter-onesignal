@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:130, width: double.infinity, 
+            height:120, width: double.infinity, 
             child: Column(children: <Widget>[
               Container(
                 height:90, width: double.infinity, 
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 5,
+            bottom: 0,
             child: Container(
               height: 130,
               width: double.infinity,
@@ -485,6 +485,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        margin: EdgeInsets.all(5),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
