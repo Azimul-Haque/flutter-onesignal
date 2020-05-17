@@ -513,13 +513,13 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: <Widget>[
             Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 10,),
-                Image.asset("assets/images/" + iconname, height: 50, width: 50,),
-                SizedBox(height: 10,),
-                Text(title, style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                SizedBox(height: 5, width: double.infinity,),
+                Image.asset("assets/images/" + iconname, height: 50, width: 50, alignment: Alignment.center,),
+                SizedBox(height: 10, width: double.infinity,),
+                Text("৭ টি\nআসদ", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
               ],
             ),
             Positioned.fill(
@@ -534,7 +534,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)), // only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20))
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         elevation: 7,
         color: Colors.white,
