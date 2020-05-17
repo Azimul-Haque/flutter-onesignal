@@ -56,9 +56,6 @@ flutter:
    - assets/images/test1.jpg
    - assets/images/test2.jpg
    - assets/images/drawer.jpg
-   - assets/images/cardimage1.jpg
-   - assets/images/cardimage2.jpg
-   - assets/images/cardimage3.jpg
    - assets/images/constitution.png
    - assets/images/qstnandans.png
    - assets/images/history.png
@@ -69,9 +66,7 @@ flutter:
    - assets/images/agreement.png
    - assets/images/law.png
    - assets/images/seal.png
-   - assets/images/shield.png
    - assets/images/search.png
-   - assets/data.json
   #  - images/a_dot_ham.jpeg
   fonts:
   - family: Kalpurush
