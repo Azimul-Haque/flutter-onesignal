@@ -231,17 +231,17 @@ class _HomePageState extends State<HomePage> {
             right: 0,
             bottom: 0,
             child: Container(
-              height: 130,
+              height: 125,
               width: double.infinity,
               child: ListView(
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  _scrollCard("icon.png", "১ টি", 'প্রস্তাবনা'),
-                  _scrollCard("icon.png", "১১ টি", 'ভাগ'),
-                  _scrollCard("icon.png", "১৫৩ টি", 'অনুচ্ছেদ'),
-                  _scrollCard("icon.png", "৭ টি", 'তফসিল'),
-                  _scrollCard("icon.png", "১৭ টি", 'সংশোধনী'),
+                  _scrollCard("prostabona.png", "১ টি", 'প্রস্তাবনা'),
+                  _scrollCard("agreement.png", "১১ টি", 'ভাগ'),
+                  _scrollCard("law.png", "১৫৩ টি", 'অনুচ্ছেদ'),
+                  _scrollCard("seal.png", "৭ টি", 'তফসিল'),
+                  _scrollCard("search.png", "১৭ টি", 'সংশোধনী'),
                 ],
               ),
             ), 
@@ -458,8 +458,8 @@ class _HomePageState extends State<HomePage> {
   }
   Widget _scrollCard(String iconname, String title, String subtitle) {
     return Container(
-      height: 115, 
-      width: 115,
+      height: 110, 
+      width: 110,
       child: Card(
         child: Stack(
           children: <Widget>[
@@ -467,11 +467,11 @@ class _HomePageState extends State<HomePage> {
               // mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 7, width: double.infinity,),
-                Image.asset("assets/images/" + iconname, height: 47.5, width: 47.5, alignment: Alignment.center,),
-                SizedBox(height: 3, width: double.infinity,),
-                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
-                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 13, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
+                SizedBox(height: 9, width: double.infinity,),
+                Image.asset("assets/images/" + iconname, height: 45, width: 45, alignment: Alignment.center,),
+                SizedBox(height: 8, width: double.infinity,),
+                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Kalpurush', height: 1,), textAlign: TextAlign.center,),
+                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 13, fontFamily: 'Kalpurush', height: 1.1,), textAlign: TextAlign.center,),
               ],
             ),
             Positioned.fill(

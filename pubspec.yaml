@@ -65,6 +65,12 @@ flutter:
    - assets/images/exam.png
    - assets/images/amendment.png
    - assets/images/qstnbank.png
+   - assets/images/prostabona.png
+   - assets/images/agreement.png
+   - assets/images/law.png
+   - assets/images/seal.png
+   - assets/images/shield.png
+   - assets/images/search.png
    - assets/data.json
   #  - images/a_dot_ham.jpeg
   fonts:
