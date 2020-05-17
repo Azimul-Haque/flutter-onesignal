@@ -467,8 +467,8 @@ class _HomePageState extends State<HomePage> {
   }
   Widget _scrollCard(String iconname, String title, String subtitle) {
     return Container(
-      height: 130, 
-      width: 130,
+      height: 120, 
+      width: 120,
       child: Card(
         child: Stack(
           children: <Widget>[
@@ -478,9 +478,9 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 SizedBox(height: 10, width: double.infinity,),
                 Image.asset("assets/images/" + iconname, height: 50, width: 50, alignment: Alignment.center,),
-                SizedBox(height: 10, width: double.infinity,),
-                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
-                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                SizedBox(height: 7, width: double.infinity,),
+                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
+                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 13, fontFamily: 'Kalpurush'), textAlign: TextAlign.center,),
               ],
             ),
             Positioned.fill(
