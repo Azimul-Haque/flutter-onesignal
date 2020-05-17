@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
-      body: ListView(children: <Widget>[
+      body: Column(children: <Widget>[
         Stack(children: <Widget>[
           Container(
             height:145, width: double.infinity, 
@@ -221,15 +221,15 @@ class _HomePageState extends State<HomePage> {
                     tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey[350],
-                    blurRadius: 10.0, // has the effect of softening the shadow
-                    spreadRadius: 5.0, // has the effect of extending the shadow
-                    offset: Offset(
-                      5.0, // horizontal, move right 10
-                      5.0, // vertical, move down 10
-                    ),
-                  )],
+                  // boxShadow: [BoxShadow(
+                  //   color: Colors.grey[350],
+                  //   blurRadius: 10.0, // has the effect of softening the shadow
+                  //   spreadRadius: 5.0, // has the effect of extending the shadow
+                  //   offset: Offset(
+                  //     5.0, // horizontal, move right 10
+                  //     5.0, // vertical, move down 10
+                  //   ),
+                  // )],
                 ),
               ),
               SizedBox(height: 30),
@@ -256,54 +256,56 @@ class _HomePageState extends State<HomePage> {
             ), 
           ),
         ],),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 10, left: 10, bottom: 2.5, right: 2.5),
-                child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", 'N/A'),
+        ListView(children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 10, left: 10, bottom: 2.5, right: 2.5),
+                  child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", 'N/A'),
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 2.5, right: 10),
-                child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanser'),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 2.5, right: 10),
+                  child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanser'),
+                ),
               ),
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
-                child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
+                  child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
-                child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
+                  child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", 'N/A'),
+                ),
               ),
-            ),
-          ],
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
-                child: _homeCard("amendment.png", "সংশোধনী", "সংবিধানের সংশোধনীসমূহ", 'N/A'),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
+                  child: _homeCard("amendment.png", "সংশোধনী", "সংবিধানের সংশোধনীসমূহ", 'N/A'),
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
-                child: _homeCard("qstnbank.png", "প্রশ্নব্যাংক (আসছে)", "বিসিএসে সংবিধানের প্রশ্নাবলী", 'N/A'),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
+                  child: _homeCard("qstnbank.png", "প্রশ্নব্যাংক (আসছে)", "বিসিএসে সংবিধানের প্রশ্নাবলী", 'N/A'),
+                ),
               ),
-            ),
-          ],
-        ),        
+            ],
+          ),        
+        ]),
       ]),
     );
   }
