@@ -197,10 +197,10 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: <Widget>[
         Stack(children: <Widget>[
           Container(
-            height:160, width: double.infinity, 
+            height:145, width: double.infinity, 
             child: Column(children: <Widget>[
               Container(
-                height:110, width: double.infinity, 
+                height:100, width: double.infinity, 
                 decoration: BoxDecoration(
                   // gradient: new LinearGradient(
                   //   begin: Alignment.topCenter,
@@ -223,11 +223,11 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                   boxShadow: [BoxShadow(
                     color: Colors.grey[350],
-                    blurRadius: 3.0, // has the effect of softening the shadow
-                    spreadRadius: 2.0, // has the effect of extending the shadow
+                    blurRadius: 10.0, // has the effect of softening the shadow
+                    spreadRadius: 5.0, // has the effect of extending the shadow
                     offset: Offset(
-                      2.0, // horizontal, move right 10
-                      2.0, // vertical, move down 10
+                      5.0, // horizontal, move right 10
+                      5.0, // vertical, move down 10
                     ),
                   )],
                 ),
@@ -246,10 +246,11 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(10),
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  _scrollCard("icon.png", "2", 'N/A'),
-                  _scrollCard("icon.png", "2", 'N/A'),
-                  _scrollCard("icon.png", "2", 'N/A'),
-                  _scrollCard("icon.png", "2", 'N/A'),
+                  _scrollCard("icon.png", "১ টি", 'প্রস্তাবনা'),
+                  _scrollCard("icon.png", "১১ টি", 'ভাগ'),
+                  _scrollCard("icon.png", "১৫৩ টি", 'অনুচ্ছেদ'),
+                  _scrollCard("icon.png", "৭ টি", 'তফসিল'),
+                  _scrollCard("icon.png", "১৭ টি", 'সংশোধনী'),
                 ],
               ),
             ), 
@@ -304,51 +305,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),        
       ]),
-
-      // body: RefreshIndicator(
-      //   key: refreshKey,
-      //   onRefresh: () async{
-      //     await refreshList();
-      //   },
-      //   child: Column(children: <Widget>[
-      //     Container(
-      //       margin: EdgeInsets.all(10),
-      //       child: TextField(
-      //         decoration: InputDecoration(
-      //           hintText: "Search from posts...",
-      //         ),
-      //         onChanged: (String str) {
-      //           this.searchData(str);
-      //         },
-      //       ),
-      //     ),
-      //     Expanded(
-      //       child: ListView.builder(
-      //         itemCount: posts.length,
-      //         itemBuilder: (BuildContext context, int index) {
-      //           return ListTile(
-      //             leading: CircleAvatar(child: Text(posts[index]["title"][0]),),
-      //             title: Text(posts[index]["title"].length > 30 ? posts[index]["title"].substring(0, 25) + "..." : posts[index]["title"]),
-      //             subtitle: Text("Tab to read more..."),
-      //             trailing: Icon(Icons.pageview),
-      //             onTap: (){
-      //               Route route = MaterialPageRoute(builder: (context) => PageTwo(posts[index]));
-      //               Navigator.push(context, route);
-      //             },
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //   ],),
-      // ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Route route = MaterialPageRoute(builder: (context) => FormPage());
-      //     Navigator.push(context, route);
-      //   },
-      //   tooltip: 'প্রশ্ন যোগ করুন',
-      //   child: Icon(Icons.add),
-      // ),
     );
   }
 
@@ -505,7 +461,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 2,
     );
   }
-  Widget _scrollCard(String iconname, String title, String routename) {
+  Widget _scrollCard(String iconname, String title, String subtitle) {
     return Container(
       height: 130, 
       width: 130,
@@ -513,13 +469,14 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: <Widget>[
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 5, width: double.infinity,),
+                SizedBox(height: 10, width: double.infinity,),
                 Image.asset("assets/images/" + iconname, height: 50, width: 50, alignment: Alignment.center,),
                 SizedBox(height: 10, width: double.infinity,),
-                Text("৭ টি\nআসদ", style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
+                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 12), textAlign: TextAlign.center,),
               ],
             ),
             Positioned.fill(
@@ -640,8 +597,6 @@ class _HomePageState extends State<HomePage> {
         //             subtitle: Text("Assistant Director, NSI"),
         //             onTap: (){},
         //           ),
-        //           _rowCell(),
-        //           _rowCell(),
         //           _rowCell(),
         //         ],
         //       ),
