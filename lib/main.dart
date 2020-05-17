@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 30),
             ],),
           ),
-          Positioned.fill(
+          Positioned(
             left: 0,
             right: 0,
             bottom: 5,
@@ -458,37 +458,78 @@ class _HomePageState extends State<HomePage> {
   
   Widget _homeCard(String image, String title, String takenby, String routename) {
     return Card(
-      child: new InkWell(
-        onTap: () {
-          if(routename != 'N/A') {
-            Navigator.pushNamed(context, routename);
-          } else {
-            
-          }
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.asset("assets/images/" + image),
-            ),
-            Padding(
-              padding: EdgeInsets.all(7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 5,),
-                  Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
-                ],
+      child: 
+      Stack(
+        children: <Widget>[
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              ClipRRect(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                  child: Image.asset("assets/images/" + image),
+              ),
+              Padding(
+                padding: EdgeInsets.all(7),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                    SizedBox(height: 5,),
+                    Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+                  ],
+                )
               )
-            )
-          ],
-        ),
+            ],
+          ),
+          Positioned.fill(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  if(routename != 'N/A') {
+                    Navigator.pushNamed(context, routename);
+                  } else {
+        
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
       ),
+      // new InkWell(
+      //   onTap: () {
+      //     if(routename != 'N/A') {
+      //       Navigator.pushNamed(context, routename);
+      //     } else {
+            
+      //     }
+      //   },
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: <Widget>[
+      //       ClipRRect(
+      //           borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+      //           child: Image.asset("assets/images/" + image),
+      //       ),
+      //       Padding(
+      //         padding: EdgeInsets.all(7),
+      //         child: Column(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           mainAxisAlignment: MainAxisAlignment.start,
+      //           children: <Widget>[
+      //             Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+      //             SizedBox(height: 5,),
+      //             Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+      //           ],
+      //         )
+      //       )
+      //     ],
+      //   ),
+      // ),
       // margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
@@ -520,6 +561,7 @@ class _HomePageState extends State<HomePage> {
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
+                    
                     SizedBox(height: 10,),
                     Image.asset("assets/images/qstnandans.png", height: 40, width: 40,),
                     SizedBox(height: 10,),
