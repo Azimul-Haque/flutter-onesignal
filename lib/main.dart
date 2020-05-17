@@ -496,10 +496,10 @@ class _HomePageState extends State<HomePage> {
       elevation: 2,
     );
   }
-  Widget _scrollCard(String title, String takenby, String routename) {
+  Widget _scrollCard(String title, String iconname, String routename) {
     return Container(
-      height: 140, 
-      width: 140,
+      height: 130, 
+      width: 130,
       child: Card(
         child: new InkWell(
           borderRadius: BorderRadius.circular(20),
@@ -520,9 +520,9 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Icon(Icons.library_add),
-                    SizedBox(height: 5,),
-                    Text("ASDsd ASDAS d ASD ASd", style: TextStyle(color: Colors.blueGrey, fontSize: 11.5),),
+                    Icon(Icons.notifications_active), // notifications_active, library_add, edit, add_box, account_balance
+                    SizedBox(height: 15,),
+                    Text("নিয়মিত নোটিফিকেশন পান", style: TextStyle(color: Colors.blueGrey, fontSize: 12),),
                   ],
                 )
               )
