@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
               return [
                 PopupMenuItem(
                   value: "addqstn", 
-                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black87,), SizedBox(width: 10,), Text("নতুন প্রশ্ন যোগ করুন")],)
+                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্ন যোগ করুন")],)
                 ,),
                 PopupMenuItem(
                   value: "rate", 
