@@ -58,17 +58,11 @@ class _FormPageState extends State<FormPage> {
         },
         body: jsonEncode(data),
       );
-      // if (response.statusCode == 201) {
-      //   // return json.decode(response.body);
-      //   // print("kaaj kore!");
-      // } else {
-      //   throw Exception('Failed to load album');
-      // }
       print(response.statusCode);
       if(response.statusCode == 200) {
-
+        var body = json.decode(response.body);
       } 
-      json.decode(response.body);
+      
     } catch (_) {
       print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
