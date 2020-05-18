@@ -21,7 +21,7 @@ class ConstituionPage extends StatelessWidget {
         SizedBox(height: 5,),
         Card(
           child: ListTile(
-            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
+            leading: CircleAvatar(child: Icon(Icons.people_outline)),
             title: Text("প্রথম ভাগ"),
             subtitle: Text("প্রজাতন্ত্র"),
             // trailing: listPopUpMenu(questions[index]),
@@ -36,7 +36,7 @@ class ConstituionPage extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
+            leading: CircleAvatar(child: Icon(Icons.settings)),
             title: Text("দ্বিতীয় ভাগ রাষ্ট্র"),
             subtitle: Text("পরিচালনার মূলনীতি"),
             // trailing: listPopUpMenu(questions[index]),
@@ -51,7 +51,7 @@ class ConstituionPage extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
+            leading: CircleAvatar(child: Icon(Icons.fastfood)),
             title: Text("তৃতীয় ভাগ"),
             subtitle: Text("মৌলিক অধিকার"),
             // trailing: listPopUpMenu(questions[index]),
@@ -66,9 +66,9 @@ class ConstituionPage extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
-            title: Text("পঞ্চম ভাগ"),
-            subtitle: Text("আইনসভা"),
+            leading: CircleAvatar(child: Icon(Icons.business_center)),
+            title: Text("চতুর্থ ভাগ"),
+            subtitle: Text("নির্বাহী বিভাগ"),
             // trailing: listPopUpMenu(questions[index]),
             onTap: (){
               // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
@@ -81,9 +81,9 @@ class ConstituionPage extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            leading: CircleAvatar(child: Icon(Icons.open_in_new)),
-            title: Text("চতুর্থ ভাগ"),
-            subtitle: Text("নির্বাহী বিভাগ"),
+            leading: CircleAvatar(child: Icon(Icons.account_balance)),
+            title: Text("পঞ্চম ভাগ"),
+            subtitle: Text("আইনসভা"),
             // trailing: listPopUpMenu(questions[index]),
             onTap: (){
               // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));

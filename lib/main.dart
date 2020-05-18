@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
@@ -12,10 +11,10 @@ import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
 import 'package:project1/pages/qstnandans.dart';
-
-import 'package:project1/pages/page1.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
+
+import 'package:project1/pages/page1.dart';
 
 import 'globals.dart';
 
@@ -81,14 +80,6 @@ class _HomePageState extends State<HomePage> {
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
-  }
-
-  _showToast(String textToast) {
-    Fluttertoast.showToast(
-      msg: textToast,
-      backgroundColor: Colors.black54,
-      textColor: Colors.white,
-    );
   }
 
   searchData(String str) {
@@ -157,7 +148,7 @@ class _HomePageState extends State<HomePage> {
             onSelected: (value) async{
               switch (value) {
                 case 'addqstn':
-                  
+                  Navigator.pushNamed(context, '/formpage');
                   break;
                 case 'rate':
                   if (await canLaunch("https://orbachinujbuk.com")) {
@@ -377,8 +368,9 @@ class _HomePageState extends State<HomePage> {
           title: Text("প্রশ্ন যোগ করুন"),
           onTap: (){
             Navigator.pop(context);
-            Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
-            Navigator.push(context, route);
+            // Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
+            // Navigator.push(context, route);
+            Navigator.pushNamed(context, '/formpage');
           },
         ),
         Divider(color: Colors.black26,),
