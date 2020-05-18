@@ -151,18 +151,18 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, '/formpage');
                   break;
                 case 'rate':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
+                  // if (await canLaunch("https://orbachinujbuk.com")) {
+                  //   await launch("https://orbachinujbuk.com");
+                  // } else {
+                  //   throw 'Could not launch!';
+                  // }
                   break;
                 case 'website':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
-                    await launch("https://orbachinujbuk.com");
-                  } else {
-                    throw 'Could not launch!';
-                  }
+                  // if (await canLaunch("https://orbachinujbuk.com")) {
+                  //   await launch("https://orbachinujbuk.com");
+                  // } else {
+                  //   throw 'Could not launch!';
+                  // }
                   break;
                 default:
               }

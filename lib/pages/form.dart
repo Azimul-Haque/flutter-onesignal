@@ -17,9 +17,8 @@ class _FormPageState extends State<FormPage> {
     );
   }
 
-  var nameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var addressController = TextEditingController();
+  var questionController = TextEditingController();
+  var answerController = TextEditingController();
 
   var name, phone, address;
 
@@ -33,23 +32,22 @@ class _FormPageState extends State<FormPage> {
     }
   }
   void handleReset() {
-    nameController.clear();
-    phoneController.clear();
-    addressController.clear();
+    questionController.clear();
+    answerController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Form Page"),
+        title: Text("প্রশ্ন যোগ করুন"),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.delete_outline), 
             onPressed: () async{
               handleReset();
-              _showToast('Form Cleared.');
+              _showToast('মুছে দেওয়া হয়েছে!');
             },
             tooltip: "Clear Form",
           ),
@@ -72,7 +70,7 @@ class _FormPageState extends State<FormPage> {
                 key: formKey,
                 child: Column(children: <Widget>[
                   TextFormField(
-                    controller: nameController,
+                    controller: questionController,
                     maxLength: 50,
                     decoration: InputDecoration(
                       labelText: "Name",
@@ -81,29 +79,30 @@ class _FormPageState extends State<FormPage> {
                       if(value.length == 0) {
                         return "Name is required";
                       }
+                      return null;
                     },
                     onSaved: (value) {
                       this.name = value;
                     },
                   ),
+                  // TextFormField(
+                  //   controller: phoneController,
+                  //   keyboardType: TextInputType.number,
+                  //   maxLength: 11,
+                  //   decoration: InputDecoration(
+                  //     labelText: "Phone Number",
+                  //   ),
+                  //   validator: (value) {
+                  //     if(value.length < 11) {
+                  //       return "Phone Number must be 11 digits";
+                  //     }
+                  //   },
+                  //   onSaved: (value) {
+                  //     this.phone = value;
+                  //   },
+                  // ),
                   TextFormField(
-                    controller: phoneController,
-                    keyboardType: TextInputType.number,
-                    maxLength: 11,
-                    decoration: InputDecoration(
-                      labelText: "Phone Number",
-                    ),
-                    validator: (value) {
-                      if(value.length < 11) {
-                        return "Phone Number must be 11 digits";
-                      }
-                    },
-                    onSaved: (value) {
-                      this.phone = value;
-                    },
-                  ),
-                  TextFormField(
-                    controller: addressController,
+                    controller: answerController,
                     maxLength: 100,
                     decoration: InputDecoration(
                       labelText: "Address",
@@ -112,6 +111,7 @@ class _FormPageState extends State<FormPage> {
                       if(value.length == 0) {
                         return "Address is required";
                       }
+                      return null;
                     },
                     onSaved: (value) {
                       this.address = value;
