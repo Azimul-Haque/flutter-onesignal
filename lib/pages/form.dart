@@ -194,7 +194,13 @@ class _FormPageState extends State<FormPage> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('সার্ভারে পাঠানো হচ্ছে...')),
-      content: CircularProgressIndicator(backgroundColor: Colors.black12),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
     );
 
     // show the dialog
