@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'dart:async';
 import 'dart:convert';
 
 class FormPage extends StatefulWidget {
@@ -12,12 +11,7 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   var formKey = GlobalKey<FormState>();
-  bool isLoading = false;
-  @override
-  void initState() {
-    super.initState();
-    isLoading = false;
-  }
+
   _showToast(String textToast) {
     Fluttertoast.showToast(
       msg: textToast,
@@ -40,9 +34,6 @@ class _FormPageState extends State<FormPage> {
   void handleSubmit() {
     if(formKey.currentState.validate()) {
       showAlertDialog(context);
-      setState(() {
-        isLoading = true;
-      });
       formKey.currentState.save();
       this.postQuestion(this.question, this.answer);
     }
@@ -72,7 +63,6 @@ class _FormPageState extends State<FormPage> {
         if(body["success"] == true) {
           print(body);
           setState(() {
-            isLoading = false;
             Navigator.of(context, rootNavigator: true).pop();
           });
           this._showToast('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
@@ -180,10 +170,6 @@ class _FormPageState extends State<FormPage> {
                 ],),
               ),
             ),
-            // Visibility(
-            //   visible: isLoading,
-            //   child: showAlertDialog(context),
-            // ),
           ],
         ),
       ],)
