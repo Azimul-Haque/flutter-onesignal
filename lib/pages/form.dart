@@ -12,11 +12,19 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   var formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    isLoading = false;
+  }
   _showToast(String textToast) {
     Fluttertoast.showToast(
       msg: textToast,
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.green[900],
       textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT,
+      fontSize: 14.0,
     );
   }
   _showSnackbar(String textForSnackbar) {
@@ -31,13 +39,12 @@ class _FormPageState extends State<FormPage> {
 
   void handleSubmit() {
     if(formKey.currentState.validate()) {
+      showAlertDialog(context);
+      setState(() {
+        isLoading = true;
+      });
       formKey.currentState.save();
-      // do the rest
-      // print("question is: ${this.question}");
-      // print("answer is: ${this.answer}");
       this.postQuestion(this.question, this.answer);
-      // this._showToast('Form Saved');
-      // Navigator.pop(context);
     }
   }
   void handleReset() {
@@ -50,6 +57,7 @@ class _FormPageState extends State<FormPage> {
       'answer': answer,
     };
     try {
+      FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
         'https://killa.com.bd/onesignal/post/question/api',
         headers: <String, String>{
@@ -61,8 +69,18 @@ class _FormPageState extends State<FormPage> {
       print(response.statusCode);
       if(response.statusCode == 200) {
         var body = json.decode(response.body);
-      } 
-      
+        if(body["success"] == true) {
+          print(body);
+          setState(() {
+            isLoading = false;
+            Navigator.of(context, rootNavigator: true).pop();
+          });
+          this._showToast('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
+          Navigator.pop(context);
+        }
+      } else {
+        _showSnackbar("সমস্যা হচ্ছে, আবার চেষ্টা করুন।");
+      }
     } catch (_) {
       print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
@@ -162,9 +180,30 @@ class _FormPageState extends State<FormPage> {
                 ],),
               ),
             ),
+            // Visibility(
+            //   visible: isLoading,
+            //   child: showAlertDialog(context),
+            // ),
           ],
         ),
       ],)
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('সার্ভারে পাঠানো হচ্ছে...')),
+      content: CircularProgressIndicator(backgroundColor: Colors.black12),
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

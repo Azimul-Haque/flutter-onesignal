@@ -511,7 +511,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   showAlertDialog(BuildContext context, String msg) {
-
     // set up the button
     Widget okButton = FlatButton(
       child: Text("OK"),
@@ -545,54 +544,4 @@ class _HomePageState extends State<HomePage> {
       // backgroundColor: Colors.yellow,
     );
   }
-
-}      
-
-// Column(
-        //   children: <Widget>[
-        //     Stack(
-        //       children: <Widget>[
-        //         Image.asset("assets/images/test2.jpg"),
-        //         Positioned(
-        //           bottom: 20,
-        //           left: 20,
-        //           child: Text(_shortText, textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 25),),
-        //         ),
-        //       ],
-        //     ),
-        //     SizedBox(
-        //       height: 20.0,
-        //     ),
-        //     Container(
-        //       height: 150,
-        //       padding: EdgeInsets.all(5.0),
-        //       child: ListView(
-        //         // scrollDirection: Axis.horizontal,
-        //         children: <Widget>[
-        //           ListTile(
-        //             leading: CircleAvatar(child: Text('R'),),
-        //             title: Text("A. H. M. Azimul Haque"),
-        //             subtitle: Text("Assistant Director, NSI"),
-        //             onTap: (){},
-        //           ),
-        //           ListTile(
-        //             leading: CircleAvatar(child: Text('R'),),
-        //             title: Text("A. H. M. Azimul Haque"),
-        //             subtitle: Text("Assistant Director, NSI"),
-        //             onTap: (){},
-        //           ),
-        //           ListTile(
-        //             leading: CircleAvatar(child: Text('R'),),
-        //             title: Text("A. H. M. Azimul Haque"),
-        //             subtitle: Text("Assistant Director, NSI"),
-        //             onTap: (){},
-        //           ),
-        //           _rowCell(),
-        //         ],
-        //       ),
-        //     ),
-        //     SizedBox(
-        //       height: 10.0,
-        //     ),
-        //   ],
-        // ), 
+}
