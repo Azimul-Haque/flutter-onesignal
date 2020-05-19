@@ -103,7 +103,7 @@ class _FormPageState extends State<FormPage> {
         ],
       ),
       body: ListView(children: <Widget>[
-        SizedBox(height: 5,),
+        SizedBox(height: 10,),
         Column(
           children: <Widget>[
             SizedBox(height: 5,),
