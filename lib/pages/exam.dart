@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
+import 'dart:async';
 
 class ExamPage extends StatefulWidget {
   @override
@@ -7,6 +8,35 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
+  int _counter = 100;
+  String formattedtime = '00:00:00';
+  Timer _timer;
+
+  void _startTimer() {
+    // _counter = 100;
+    if (_timer != null) {
+      _timer.cancel();
+    }
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_counter > 0) {
+          _counter--;
+        } else {
+          _timer.cancel();
+        }
+      });
+      var now = Duration(seconds: _counter);
+      formattedtime = "${formatDuration(now)}";
+    });
+  }
+  String formatDuration(Duration duration) {
+    return duration.toString().split('.').first.padLeft(8, '0');
+  }
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -19,10 +49,21 @@ class _ExamPageState extends State<ExamPage> {
           title: Text("ইতিহাস"),
           automaticallyImplyLeading: false,
           actions: <Widget>[
+            FlatButton(
+              child: Text(
+                formattedtime,
+                style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Raleway'),
+              ),
+              onPressed: () async{},
+            ),
             IconButton(
               icon: Icon(Icons.check), 
               onPressed: () async{
-                Navigator.pop(context);
+                _timer.cancel();
+                setState(() {
+                  formattedtime = '00:00:00';
+                });
+                // Navigator.pop(context);
               },
               tooltip: "দাখিল করুন",
             ),
@@ -52,12 +93,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Text("শেষ করুন"),
           color: Colors.green,
           onPressed: () {
+            _timer.cancel();
+            setState(() {
+              formattedtime = '00:00:00';
+            });
             Navigator.of(context).pop();
             Navigator.pop(context);
           },
         ),
         RaisedButton(
-          child: Text("পরীক্ষা দিতে থাকুন"),
+          child: Text("পরীক্ষা অবিরত রাখুন"),
           color: Colors.white,
           onPressed: () {
             Navigator.of(context).pop();
