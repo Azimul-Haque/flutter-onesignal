@@ -40,7 +40,7 @@ class _ExamPageState extends State<ExamPage> {
   }
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
-    var newquestions = await _questionHelper.getSomeQuestions(10); // kaaj ache...
+    var newquestions = await _questionHelper.getSomeQuestions('10'); // kaaj ache...
     setState(() {
       questions = newquestions;
       isLoading = false;
@@ -91,9 +91,31 @@ class _ExamPageState extends State<ExamPage> {
           ],
           flexibleSpace: appBarStyle(),
         ),
-        body: ListView(children: <Widget>[
-          Text("Exam Page"),
-        ],),
+        body: Column(children: <Widget>[
+          SizedBox(height: 5,),
+          Expanded(
+            child: ListView.builder(
+              itemCount: questions.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                    // leading: CircleAvatar(child: Text(questions[index].question[0]),),
+                    title: Text(questions[index].id.toString() + "-" + questions[index].question),
+                    subtitle: Text(questions[index].answer),
+                    // onTap: (){
+                    //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+                    //   // Navigator.push(context, route);
+                    //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+                    // },
+                  ),
+                  margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                  elevation: 2,
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 5,),
+        ]),
       ),
     );
   }
