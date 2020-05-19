@@ -67,7 +67,7 @@ class _ExamPageState extends State<ExamPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("ইতিহাস"),
+          title: Text("পরীক্ষা"),
           automaticallyImplyLeading: false,
           actions: <Widget>[
             FlatButton(

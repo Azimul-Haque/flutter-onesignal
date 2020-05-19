@@ -48,7 +48,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       });
       syncquestions.forEach((element) {
         // print(element.toString());
-        currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], count: 0);
+        currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], incanswer: ['1', '2', '3']);
         _questionHelper.insertQuestion(currentQuestion);
         countinsertion++;
       });

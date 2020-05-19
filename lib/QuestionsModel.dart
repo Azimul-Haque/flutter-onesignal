@@ -6,21 +6,21 @@ final String tableName = "questions";
 final String columnId = "id";
 final String columnQuestion = "question";
 final String columnAnswer = "answer";
-final String columnCount = "count";
+final Object columnIncAnswers = {};
 class QuestionsModel {
   int id;
   final String question;
   final String answer;
-  final int count;
+  final Object incanswer;
 
-  QuestionsModel({this.id, this.question, this.answer, this.count});
+  QuestionsModel({this.id, this.question, this.answer, this.incanswer});
 
   Map <String, dynamic> toMap() {
     return {
       // columnId: this.id,
       columnQuestion: this.question,
       columnAnswer: this.answer,
-      columnCount: this.count,
+      columnIncAnswers: this.incanswer,
     };
   }
 }
@@ -42,7 +42,7 @@ class QuestionHelper{
 
   initDatabase() async{
     db = await openDatabase(
-      join(await getDatabasesPath(), "questions15.db"),
+      join(await getDatabasesPath(), "questions16.db"),
       onCreate: (db, version){
         return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
       },
