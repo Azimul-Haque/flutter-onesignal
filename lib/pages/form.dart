@@ -112,7 +112,7 @@ class _FormPageState extends State<FormPage> {
             Divider(),
             Padding(
               padding: EdgeInsets.only(left: 15, right: 15),
-              child: Text("আপনার পাঠানো প্রশ্নটি যাচাই করে সার্ভারে অনুমোদন করা হবে। আপনার প্রশ্নটি অনুমোদিত হলে সকল ব্যবহারকারী (আপনিসহ) 'প্রশ্নোত্তর' পাতায় গিয়ে 'Sync' করে নিলেই প্রশ্নটি উক্ত তালিকায় যোগ হয়ে যাবে।", style: TextStyle(color:Colors.green[900], fontSize: 14, height: 1.0), textAlign: TextAlign.justify,),
+              child: Text("আপনার পাঠানো প্রশ্নটি যাচাই করে সার্ভারে অনুমোদন করা হবে। আপনার প্রশ্নটি অনুমোদিত হলে সকল ব্যবহারকারী (আপনিসহ) 'প্রশ্নোত্তর' পাতায় গিয়ে 'Sync' করে নিলেই প্রশ্নটি উক্ত তালিকায় যোগ হয়ে যাবে।", style: TextStyle(color:Colors.green[900], fontSize: 14, height: 1.2), textAlign: TextAlign.justify,),
             ),
             Padding(
               padding: EdgeInsets.only(left: 15, right: 15),
