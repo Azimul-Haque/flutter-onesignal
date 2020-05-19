@@ -101,7 +101,7 @@ class _ExamPageState extends State<ExamPage> {
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].id.toString() + "-" + questions[index].question),
-                    subtitle: Text(questions[index].answer),
+                    subtitle: Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
                     //   // Navigator.push(context, route);

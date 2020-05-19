@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
-import 'package:project1/QuestionsModel.dart';
+// import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
 import 'package:project1/pages/qstnandans.dart';
@@ -492,6 +492,15 @@ class _HomePageState extends State<HomePage>
   }
 
   void _showDialog() {
+    slideDialog.showSlideDialog(
+      context: context,
+      child: Text("Hello World"),
+      // barrierColor: Colors.white.withOpacity(0.7),
+      // pillColor: Colors.red,
+      // backgroundColor: Colors.yellow,
+    );
+  }
+  void _showExamDialog() {
     slideDialog.showSlideDialog(
       context: context,
       child: Text("Hello World"),

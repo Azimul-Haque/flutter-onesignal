@@ -6,12 +6,12 @@ final String tableName = "questions";
 final String columnId = "id";
 final String columnQuestion = "question";
 final String columnAnswer = "answer";
-final Object columnIncAnswers = {};
+final String columnIncAnswers = "incanswer";
 class QuestionsModel {
   int id;
   final String question;
   final String answer;
-  final Object incanswer;
+  final String incanswer;
 
   QuestionsModel({this.id, this.question, this.answer, this.incanswer});
 
@@ -42,9 +42,9 @@ class QuestionHelper{
 
   initDatabase() async{
     db = await openDatabase(
-      join(await getDatabasesPath(), "questions16.db"),
+      join(await getDatabasesPath(), "questions22.db"),
       onCreate: (db, version){
-        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnCount INTEGER)");
+        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT)");
       },
       version: 1
     );
@@ -61,14 +61,14 @@ class QuestionHelper{
   Future<List<QuestionsModel>> getAllQuestion () async{
     List<Map<String, dynamic>> questions = await db.query(tableName);
     return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers]);
     });
   }
 
   Future<List<QuestionsModel>> getSomeQuestions (String amount) async{
     List<Map<String, dynamic>> questions = await db.rawQuery("SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount, null);
     return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers]);
     });
   }
 }
