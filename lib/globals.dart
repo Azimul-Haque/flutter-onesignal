@@ -6,7 +6,7 @@ String userDesig;
 String userOrg;
 
 appBarStyle() {
-  return Container(
+  return Ink(
     decoration: new BoxDecoration(
       gradient: new LinearGradient(
         colors: [
