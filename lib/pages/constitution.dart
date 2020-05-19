@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
+import 'package:project1/pages/constitution/preamble.dart';
+import 'package:project1/pages/constitution/part1.dart';
+
 class ConstituionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,9 +30,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("সংবিধানের প্রস্তাবনা"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PreamblePage());
+              Navigator.push(context, route);
             },
           ),
           // color: Color.fromRGBO(241, 248, 233, 1.0),
@@ -42,9 +44,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("প্রজাতন্ত্র"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(241, 248, 233, 1.0),
