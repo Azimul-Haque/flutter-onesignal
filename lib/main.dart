@@ -74,8 +74,6 @@ class _HomePageState extends State<HomePage>
   //   this.unfilteredPosts = posts;
   //   return true;
   // }
-  
-
   // searchData(String str) {
   //   var strExist = str.length > 0 ? true : false;
   //   if(strExist) {
@@ -94,22 +92,21 @@ class _HomePageState extends State<HomePage>
   //     });
   //   }
   // }
-
-  // _loadUserData() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String spname = (prefs.getString('userName') ?? 'N/A');
-  //   String spdesg = (prefs.getString('userDesig') ?? 'N/A');
-  //   String sporg  = (prefs.getString('userOrg') ?? 'N/A');
-  //   setState(() {
-  //     userName = spname;
-  //     userDesig = spdesg;
-  //     userOrg = sporg;
-  //   });
-  // }
+  _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String spname = (prefs.getString('userName') ?? 'N/A');
+    String spdesg = (prefs.getString('userDesig') ?? 'N/A');
+    String sporg  = (prefs.getString('userOrg') ?? 'N/A');
+    setState(() {
+      userName = spname;
+      userDesig = spdesg;
+      userOrg = sporg;
+    });
+  }
 
   @override
   void initState() {
-    // super.initState();
+    super.initState();
     this._loadUserData();
     this.configOneSignal();
   }
@@ -243,7 +240,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
-                    child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", 'N/A'),
+                    child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", '/history'),
                   ),
                 ),
                 Expanded(
@@ -274,31 +271,6 @@ class _HomePageState extends State<HomePage>
         ),
       ]),
     );
-  }
-
-  Widget _rowCell() {
-    return Row(children: <Widget>[
-      Container(
-        margin: EdgeInsets.all(5.0),
-        height: 100, width: 200, 
-        // decoration: BoxDecoration(color: Colors.red),
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(5),
-          boxShadow: [BoxShadow(
-            color: Colors.grey[350],
-            blurRadius: 3.0, // has the effect of softening the shadow
-            spreadRadius: 2.0, // has the effect of extending the shadow
-            offset: Offset(
-              1.0, // horizontal, move right 10
-              1.0, // vertical, move down 10
-            ),
-          )],
-        ),
-        child: Icon(Icons.alarm, color: Colors.white,),
-      ),
-      SizedBox(height: 20,),
-    ],);
   }
 
   Widget _homeDrawer(String username, String userdesig, String userorg) {
