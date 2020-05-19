@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../globals.dart';
 class ConstituionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class ConstituionPage extends StatelessWidget {
         //     tooltip: "Ok",
         //   ),
         // ],
+        flexibleSpace: appBarStyle(),
       ),
       body: ListView(children: <Widget>[
         SizedBox(height: 5,),

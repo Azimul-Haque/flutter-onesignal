@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import '../globals.dart';
 class PageTwo extends StatefulWidget {
   var data;
   PageTwo(this.data);

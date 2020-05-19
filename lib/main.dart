@@ -128,20 +128,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         title: Text('BCS সংবিধান'),
-        flexibleSpace: Container(
-          decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-              colors: [
-                Colors.green[800],
-                Colors.lightGreen,
-              ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            ),
-          ),
-        ),
+        flexibleSpace: appBarStyle(),
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 60),

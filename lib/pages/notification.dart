@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../globals.dart';
 class NotificationPage extends StatefulWidget {
   var data;
   NotificationPage(this.data);
@@ -26,6 +26,7 @@ class _NotificationPageState extends State<NotificationPage> {
             tooltip: "Ok",
           ),
         ],
+        flexibleSpace: appBarStyle(),
       ),
       body: ListView(children: <Widget>[
         Column(

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:project1/QuestionsModel.dart';
-
+import '../globals.dart';
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);
   @override
@@ -127,6 +127,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             },
           )
         ],
+        flexibleSpace: appBarStyle(),
       ),
     body: RefreshIndicator(
       key: refreshKey,

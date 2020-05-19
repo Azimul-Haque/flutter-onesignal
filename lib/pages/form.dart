@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import '../globals.dart';
 class FormPage extends StatefulWidget {
   @override
   _FormPageState createState() => _FormPageState();
@@ -101,14 +101,15 @@ class _FormPageState extends State<FormPage> {
             tooltip: "পাঠিয়ে দিন",
           ),
         ],
+        flexibleSpace: appBarStyle(),
       ),
       body: ListView(children: <Widget>[
-        SizedBox(height: 10,),
+        SizedBox(height: 7,),
         Column(
           children: <Widget>[
             SizedBox(height: 5,),
             Text("সংবিধান থেকে প্রশ্ন যোগ করুন", style: TextStyle(color:Colors.green[800], fontSize: 18)),
-            SizedBox(height: 5,),
+            SizedBox(height: 3,),
             Divider(),
             Padding(
               padding: EdgeInsets.only(left: 15, right: 15),
