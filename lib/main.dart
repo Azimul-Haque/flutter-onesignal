@@ -500,13 +500,4 @@ class _HomePageState extends State<HomePage>
       // backgroundColor: Colors.yellow,
     );
   }
-  void _showExamDialog() {
-    slideDialog.showSlideDialog(
-      context: context,
-      child: Text("Hello World"),
-      // barrierColor: Colors.white.withOpacity(0.7),
-      // pillColor: Colors.red,
-      // backgroundColor: Colors.yellow,
-    );
-  }
 }

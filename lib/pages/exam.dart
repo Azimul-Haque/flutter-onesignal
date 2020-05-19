@@ -52,10 +52,12 @@ class _ExamPageState extends State<ExamPage> {
   @override
   void initState() {
     super.initState();
-    _startTimer();
+    showExamDialog();
+    // _startTimer();
     _questionHelper = QuestionHelper();
     isLoading = true;
-    _loadDB();
+    // _loadDB();
+    
   }
 
   @override
@@ -120,6 +122,37 @@ class _ExamPageState extends State<ExamPage> {
     );
   }
 
+  showExamDialog() async{
+    await Future.delayed(Duration(seconds: 1)); 
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('সংবিধান থেকে পরীক্ষা')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
+      actions: <Widget>[
+        RaisedButton(
+          child: Text("শেষ করুন"),
+          color: Colors.green,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   showAlertDialog() {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
