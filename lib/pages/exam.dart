@@ -13,7 +13,6 @@ class _ExamPageState extends State<ExamPage> {
   int _counter = 0;
   String formattedtime = '00:00:00';
   Timer _timer;
-  bool isQALoading = false;
   bool isLoading;
   
   var examFormKey = GlobalKey<FormState>();
@@ -64,9 +63,6 @@ class _ExamPageState extends State<ExamPage> {
   }
   void handleSubmit() {
     if(examFormKey.currentState.validate()) {
-      setState(() {
-        isQALoading = true;
-      });
       FocusScope.of(context).unfocus();
       examFormKey.currentState.save();
       _loadDB(this.questionamnt, this.duration);
@@ -106,7 +102,9 @@ class _ExamPageState extends State<ExamPage> {
             IconButton(
               icon: Icon(Icons.check), 
               onPressed: () async{
-                _timer.cancel();
+                if (_timer != null) {
+                  _timer.cancel();
+                }
                 setState(() {
                   formattedtime = '00:00:00';
                 });
@@ -195,20 +193,12 @@ class _ExamPageState extends State<ExamPage> {
         ),
       ),
       actions: <Widget>[
-        (isQALoading == false)
-        ? RaisedButton(
+        RaisedButton(
           child: Text("শুরু করুন"),
           color: Colors.green,
           onPressed: () {
             handleSubmit();
           },
-        )
-        : Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children : <Widget>[
-            CircularProgressIndicator(),
-          ],
         ),
       ],
     );
@@ -238,7 +228,9 @@ class _ExamPageState extends State<ExamPage> {
           child: Text("শেষ করুন"),
           color: Colors.green,
           onPressed: () {
-            _timer.cancel();
+            if (_timer != null) {
+              _timer.cancel();
+            }
             setState(() {
               formattedtime = '00:00:00';
             });

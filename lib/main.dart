@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
-                    child: _homeCard("exam.png", "পরীক্ষা (আসছে)", "সংবিধান থেকে পরীক্ষা দিন", '/exam'),
+                    child: _homeCard("exam.png", "পরীক্ষা", "সংবিধান থেকে পরীক্ষা দিন", '/exam'),
                   ),
                 ),
               ],
