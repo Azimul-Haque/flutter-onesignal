@@ -64,4 +64,11 @@ class QuestionHelper{
       return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
     });
   }
+  
+  Future<List<QuestionsModel>> getSomeQuestions (amount) async{
+    List<Map<String, dynamic>> questions = await db.query(tableName);db.rawQuery("SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount, null);
+    return List.generate(questions.length, (i){
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], count: questions[i][columnCount]);
+    });
+  }
 }

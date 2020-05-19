@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../globals.dart';
 import 'dart:async';
 
+import 'package:project1/QuestionsModel.dart';
+
 class ExamPage extends StatefulWidget {
   @override
   _ExamPageState createState() => _ExamPageState();
@@ -11,6 +13,10 @@ class _ExamPageState extends State<ExamPage> {
   int _counter = 100;
   String formattedtime = '00:00:00';
   Timer _timer;
+  bool isLoading;
+
+  QuestionHelper _questionHelper;
+  List<QuestionsModel> questions = [];
 
   void _startTimer() {
     // _counter = 100;
@@ -32,11 +38,26 @@ class _ExamPageState extends State<ExamPage> {
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
+  _loadDB() async{
+    await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
+    var newquestions = await _questionHelper.getSomeQuestions(10); // kaaj ache...
+    setState(() {
+      questions = newquestions;
+      isLoading = false;
+    });
+    if(questions.length == 0) {
+      // ekhane kaaj ache...
+    }
+  }
   @override
   void initState() {
     super.initState();
     _startTimer();
+    _questionHelper = QuestionHelper();
+    isLoading = true;
+    _loadDB();
   }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

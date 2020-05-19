@@ -129,53 +129,53 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         ],
         flexibleSpace: appBarStyle(),
       ),
-    body: RefreshIndicator(
-      key: refreshKey,
-      onRefresh: () async{
-        await refreshList();
-      },
-      child: Column(children: <Widget>[
-        // Container(
-        //   margin: EdgeInsets.all(10),
-        //   child: TextField(
-        //     decoration: InputDecoration(
-        //       hintText: "Search from posts...",
-        //     ),
-        //     onChanged: (String str) {
-        //       // this.searchData(str);
-        //     },
-        //   ),
-        // ),
-        Visibility(
-          visible: isLoading,
-          child: LinearProgressIndicator(backgroundColor: Colors.black12),
-        ),
-        SizedBox(height: 5,),
-        Expanded(
-          child: ListView.builder(
-            itemCount: questions.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                child: ListTile(
-                  // leading: CircleAvatar(child: Text(questions[index].question[0]),),
-                  title: Text(questions[index].id.toString() + "-" + questions[index].question),
-                  subtitle: Text(questions[index].answer),
-                  trailing: listPopUpMenu(questions[index]),
-                  // onTap: (){
-                  //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-                  //   // Navigator.push(context, route);
-                  //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-                  // },
-                ),
-                margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
-                elevation: 2,
-              );
-            },
+      body: RefreshIndicator(
+        key: refreshKey,
+        onRefresh: () async{
+          await refreshList();
+        },
+        child: Column(children: <Widget>[
+          // Container(
+          //   margin: EdgeInsets.all(10),
+          //   child: TextField(
+          //     decoration: InputDecoration(
+          //       hintText: "Search from posts...",
+          //     ),
+          //     onChanged: (String str) {
+          //       // this.searchData(str);
+          //     },
+          //   ),
+          // ),
+          Visibility(
+            visible: isLoading,
+            child: LinearProgressIndicator(backgroundColor: Colors.black12),
           ),
-        ),
-        SizedBox(height: 5,),
-      ],),
-    ),
+          SizedBox(height: 5,),
+          Expanded(
+            child: ListView.builder(
+              itemCount: questions.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                    // leading: CircleAvatar(child: Text(questions[index].question[0]),),
+                    title: Text(questions[index].id.toString() + "-" + questions[index].question),
+                    subtitle: Text(questions[index].answer),
+                    trailing: listPopUpMenu(questions[index]),
+                    // onTap: (){
+                    //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+                    //   // Navigator.push(context, route);
+                    //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+                    // },
+                  ),
+                  margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                  elevation: 2,
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 5,),
+        ],),
+      ),
     );
   }
 
