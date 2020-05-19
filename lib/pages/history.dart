@@ -6,7 +6,7 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("সংবিধানের ইতিহাস"),
+        title: Text("ইতিহাস"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(

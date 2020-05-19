@@ -12,6 +12,7 @@ import 'package:project1/QuestionsModel.dart';
 import 'package:project1/pages/constitution.dart';
 import 'package:project1/pages/qstnandans.dart';
 import 'package:project1/pages/history.dart';
+import 'package:project1/pages/ammendments.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
 
@@ -32,6 +33,7 @@ void main() {
       '/formpage': (context) => FormPage(),
       '/constitution': (context) => ConstituionPage(),
       '/history': (context) => HistoryPage(),
+      '/ammendments': (context) => AmmendmentsPage(),
       '/qstnanser': (context) => QuestionAnswerPage(),
     },
   );
@@ -256,7 +258,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 10, right: 2.5),
-                    child: _homeCard("amendment.png", "সংশোধনী", "সংবিধানের সংশোধনীসমূহ", 'N/A'),
+                    child: _homeCard("amendment.png", "সংশোধনী", "সংবিধানের সংশোধনীসমূহ", '/ammendments'),
                   ),
                 ),
                 Expanded(
