@@ -11,6 +11,7 @@ import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
 import 'package:project1/pages/qstnandans.dart';
+import 'package:project1/pages/history.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
 
@@ -30,6 +31,7 @@ void main() {
       '/': (context) => HomePage(),
       '/formpage': (context) => FormPage(),
       '/constitution': (context) => ConstituionPage(),
+      '/history': (context) => HistoryPage(),
       '/qstnanser': (context) => QuestionAnswerPage(),
     },
   );
@@ -42,23 +44,14 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  String _longText = "গান শুনতে যে আমার ভালো লাগে এটা বুঝতে পারি প্রথম আমি ক্লাস সিক্স বা সেভেনে। এর আগে গান শোনা বলতে যতটুকু মনে আছে তা হচ্ছে, আমাদের নেকমরদের বাসার সামনের জুতার দোকানগুলোতে বাজানো গানগুলো। অর্থাৎ, সে দোকানি ভাইদের গান শোনার অভিরুচিই ছিল পরোক্ষভাবে আমার গান শোনার 'টেস্ট'। কিছু গান শোনা হতো বাসার বেশ পেছনে তেলের মিল থেকে; হিন্দিতে বাজানো গানগুলো। ভরদুপুরে হয়তো ঘুমানোর জন্য শুয়েছি, ঘুম আসছে না।";
-  String _shortText = "হারিয়ে গিয়েছি এইতো জরুরি খবর";
+class _HomePageState extends State<HomePage>
+{
   int count = 0;
-  final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
+  GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
   List people = [];
   List posts = [];
   List unfilteredPosts = [];
-  QuestionHelper _questionHelper;
-
-  Future<Null> refreshList() async {
-    await Future.delayed(Duration(seconds: 2));
-    this._getPosts();
-    this._showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-    return null;
-  }
 
   Future<String> loadJsonData() async {
     var jsonDataText = await rootBundle.loadString("assets/data.json");
@@ -68,56 +61,56 @@ class _HomePageState extends State<HomePage> {
     return 'success';
   }
 
-  Future<bool> _getPosts() async {
-    String serviceURL = "http://192.168.43.81:8000/broadcast"; // http://192.168.43.81:8000/broadcast
-    var jsonDataPosts = await http.get(serviceURL);
-    setState(() {
-      posts = json.decode(jsonDataPosts.body.toString());
-    });
-    this.unfilteredPosts = posts;
-    return true;
-  }
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
+  // Future<bool> _getPosts() async {
+  //   String serviceURL = "http://192.168.43.81:8000/broadcast"; // http://192.168.43.81:8000/broadcast
+  //   var jsonDataPosts = await http.get(serviceURL);
+  //   setState(() {
+  //     posts = json.decode(jsonDataPosts.body.toString());
+  //   });
+  //   this.unfilteredPosts = posts;
+  //   return true;
+  // }
+  
 
-  searchData(String str) {
-    var strExist = str.length > 0 ? true : false;
-    if(strExist) {
-      var filterData = [];
-      for(var i=0; i<this.unfilteredPosts.length; i++) {
-        if(unfilteredPosts[i]['title'].contains(str) || unfilteredPosts[i]['body'].contains(str)) {
-          filterData.add(unfilteredPosts[i]);
-        }
-      }
-      setState(() {
-        this.posts = filterData;
-      });
-    } else {
-      setState(() {
-        this.posts = this.unfilteredPosts;
-      });
-    }
-  }
+  // searchData(String str) {
+  //   var strExist = str.length > 0 ? true : false;
+  //   if(strExist) {
+  //     var filterData = [];
+  //     for(var i=0; i<this.unfilteredPosts.length; i++) {
+  //       if(unfilteredPosts[i]['title'].contains(str) || unfilteredPosts[i]['body'].contains(str)) {
+  //         filterData.add(unfilteredPosts[i]);
+  //       }
+  //     }
+  //     setState(() {
+  //       this.posts = filterData;
+  //     });
+  //   } else {
+  //     setState(() {
+  //       this.posts = this.unfilteredPosts;
+  //     });
+  //   }
+  // }
 
-  _loadUserData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String spname = (prefs.getString('userName') ?? 'N/A');
-    String spdesg = (prefs.getString('userDesig') ?? 'N/A');
-    String sporg  = (prefs.getString('userOrg') ?? 'N/A');
-    setState(() {
-      userName = spname;
-      userDesig = spdesg;
-      userOrg = sporg;
-    });
-  }
+  // _loadUserData() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String spname = (prefs.getString('userName') ?? 'N/A');
+  //   String spdesg = (prefs.getString('userDesig') ?? 'N/A');
+  //   String sporg  = (prefs.getString('userOrg') ?? 'N/A');
+  //   setState(() {
+  //     userName = spname;
+  //     userDesig = spdesg;
+  //     userOrg = sporg;
+  //   });
+  // }
 
   @override
   void initState() {
     // super.initState();
     this._loadUserData();
-    this._getPosts();
     this.configOneSignal();
   }
 
