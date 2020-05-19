@@ -10,16 +10,25 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
-  int _counter = 100;
+  int _counter = 0;
   String formattedtime = '00:00:00';
   Timer _timer;
+  bool isQALoading = false;
   bool isLoading;
+  
+  var examFormKey = GlobalKey<FormState>();
+  var qstnAmntController = TextEditingController();
+  var durationController = TextEditingController();
+
+  var questionamnt, duration;
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
 
-  void _startTimer() {
-    // _counter = 100;
+  void _startTimer(tmrdrtn) {
+    setState(() {
+      _counter = int.tryParse(tmrdrtn) * 60; // convert into seconds
+    });
     if (_timer != null) {
       _timer.cancel();
     }
@@ -38,17 +47,32 @@ class _ExamPageState extends State<ExamPage> {
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
-  _loadDB() async{
+  _loadDB(amnt, drtn) async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
-    var newquestions = await _questionHelper.getSomeQuestions('10'); // kaaj ache...
+    var newquestions = await _questionHelper.getSomeQuestions(amnt); // kaaj ache...
     setState(() {
       questions = newquestions;
       isLoading = false;
     });
     if(questions.length == 0) {
       // ekhane kaaj ache...
+    } else if(questions.length > 0) {
+      _startTimer(drtn);
+      Navigator.of(context).pop();
+    }
+
+  }
+  void handleSubmit() {
+    if(examFormKey.currentState.validate()) {
+      setState(() {
+        isQALoading = true;
+      });
+      FocusScope.of(context).unfocus();
+      examFormKey.currentState.save();
+      _loadDB(this.questionamnt, this.duration);
     }
   }
+
   @override
   void initState() {
     super.initState();
@@ -126,20 +150,65 @@ class _ExamPageState extends State<ExamPage> {
     await Future.delayed(Duration(seconds: 1)); 
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('সংবিধান থেকে পরীক্ষা')),
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
-          CircularProgressIndicator(),
-        ],
+      content: Form(
+        key: examFormKey,
+        child: Container(
+          height: 200,
+          child: Column(children: <Widget>[
+            TextFormField(
+              controller: qstnAmntController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "প্রশ্নের সংখ্যা",
+              ),
+              validator: (value) {
+                if(value.length == 0) {
+                  return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
+                } else if(int.tryParse(value) > 50) {
+                  return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
+                }
+                return null;
+              },
+              onSaved: (value) {
+                this.questionamnt = value;
+              },
+            ),
+            TextFormField(
+              controller: durationController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "সময় (মিনিট)",
+              ),
+              validator: (value) {
+                if(value.length == 0) {
+                  return "সময় পূরণ আবশ্যক";
+                } else if(int.tryParse(value) > 15) {
+                  return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
+                }
+                return null;
+              },
+              onSaved: (value) {
+                this.duration = value;
+              },
+            ),
+          ],),
+        ),
       ),
       actions: <Widget>[
-        RaisedButton(
-          child: Text("শেষ করুন"),
+        (isQALoading == false)
+        ? RaisedButton(
+          child: Text("শুরু করুন"),
           color: Colors.green,
           onPressed: () {
-            Navigator.of(context).pop();
+            handleSubmit();
           },
+        )
+        : Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children : <Widget>[
+            CircularProgressIndicator(),
+          ],
         ),
       ],
     );
