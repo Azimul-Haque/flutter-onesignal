@@ -68,10 +68,7 @@ class AmmendmentsPage extends StatelessWidget {
               style: TextStyle(color:Colors.black, fontSize: 15, height: 1.5), textAlign: TextAlign.justify,
             ),
             SizedBox(height: 5,),
-            Text(
-              "মন্তব্যঃ সুপ্রীম কোর্ট কর্তৃক অবৈধ ঘোষিত এবং বাতিলকৃত।", 
-              style: TextStyle(color:Colors.red, fontSize: 13, height: 1.5), textAlign: TextAlign.justify,
-            ),
+            Text( "মন্তব্যঃ সুপ্রীম কোর্ট কর্তৃক অবৈধ ঘোষিত এবং বাতিলকৃত।", style: TextStyle(color:Colors.red, fontSize: 13, height: 1.5), textAlign: TextAlign.justify,),
             Divider(height: 25,),
             
             Text( "ষষ্ঠ  সংশোধনী, ১৯৮১", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
@@ -85,9 +82,11 @@ class AmmendmentsPage extends StatelessWidget {
             Text( "সপ্তম সংশোধনী, ১৯৮৬", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
             SizedBox(height: 10,),
             Text(
-              "১৯৮২ সালের ২৪ মার্চ থেকে ১৯৮৬ সালের ১০ নভেম্বর পর্যন্ত দেশে সামরিক শাসন বহাল ছিল। ১৯৮৬ সালের ১১ নভেম্বর জাতীয় সংসদে সপ্তম সংশোধনীর মাধ্যমে এরশাদের ওই সামরিক শাসনে বৈধতা দেওয়া হয়। ১৯৮২ সালের ২৪শে মার্চ থেকে ১৯৮৬ সালের ৯ নভেম্বর পর্যন্ত সামরিক আইন বলবৎ থাকাকালীন সময়ে প্রণীত সব ফরমান, প্রধান সামরিক আইন প্রশাসকের আদেশ, নির্দেশ ও অধ্যাদেশসহ অন্যান্য  আইন অনুমোদন দেওয়া হয় এই সংশোধনীর মাধ্যমে। আইনমন্ত্রী বিচারপতি কে এম নুরুল ইসলাম উত্থাপিত সংবিধান সংশোধনী বিলটি ২২৩-০ ভোটে পাস হয়। ১০ নভেম্বরই এটি রাষ্ট্রপতির অনুমোদন পায়। ৫ম সংশোধনীর মত  ২০১০ সালের ২৬ আগস্ট এ সংশোধনীকে আদালত অবৈধ ঘোষণা করে।", 
+              "১৯৮২ সালের ২৪ মার্চ থেকে ১৯৮৬ সালের ১০ নভেম্বর পর্যন্ত দেশে সামরিক শাসন বহাল ছিল। ১৯৮৬ সালের ১১ নভেম্বর জাতীয় সংসদে সপ্তম সংশোধনীর মাধ্যমে এরশাদের ওই সামরিক শাসনে বৈধতা দেওয়া হয়। ১৯৮২ সালের ২৪শে মার্চ থেকে ১৯৮৬ সালের ৯ নভেম্বর পর্যন্ত সামরিক আইন বলবৎ থাকাকালীন সময়ে প্রণীত সব ফরমান, প্রধান সামরিক আইন প্রশাসকের আদেশ, নির্দেশ ও অধ্যাদেশসহ অন্যান্য  আইন অনুমোদন দেওয়া হয় এই সংশোধনীর মাধ্যমে। আইনমন্ত্রী বিচারপতি কে এম নুরুল ইসলাম উত্থাপিত সংবিধান সংশোধনী বিলটি ২২৩-০ ভোটে পাস হয়। ১০ নভেম্বরই এটি রাষ্ট্রপতির অনুমোদন পায়।", 
               style: TextStyle(color:Colors.black, fontSize: 15, height: 1.5), textAlign: TextAlign.justify,
             ),
+            SizedBox(height: 5,),
+            Text( "মন্তব্যঃ সুপ্রীম কোর্ট কর্তৃক অবৈধ ঘোষিত এবং বাতিলকৃত।", style: TextStyle(color:Colors.red, fontSize: 13, height: 1.5), textAlign: TextAlign.justify,),
             Divider(height: 25,),
             
             Text( "অষ্টম  সংশোধনী, ১৯৮৮", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
@@ -133,9 +132,11 @@ class AmmendmentsPage extends StatelessWidget {
             Text( "ত্রয়োদশ সংশোধনী, ১৯৯৬", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
             SizedBox(height: 10,),
             Text(
-              "১৯৯৬ সালের ২৭ মার্চ এ সংশোধনীর মাধ্যমে সংবিধানে অবাধ ও সুষ্ঠু নির্বাচন অনুষ্ঠানের জন্য নিরপেক্ষ-নিদর্লীয় তত্ত্বাবধায়ক সরকার ব্যবস্থা প্রবর্তন করা হয়। আইন বিচার ও সংসদ বিষয়ক মন্ত্রী জমির উদ্দিন সরকার এই সংশোধনীটি উত্থাপন করেন। এটি ২৬৮-০ ভোটি পাস হয়। রাষ্ট্রপতির অনুমোদন পায় ২৮ মার্চ। উচ্চ আদালতের আদেশে ২০১১ সালে এই সংশোধনীটি বাতিল হয়।", 
+              "১৯৯৬ সালের ২৭ মার্চ এ সংশোধনীর মাধ্যমে সংবিধানে অবাধ ও সুষ্ঠু নির্বাচন অনুষ্ঠানের জন্য নিরপেক্ষ-নিদর্লীয় তত্ত্বাবধায়ক সরকার ব্যবস্থা প্রবর্তন করা হয়। আইন বিচার ও সংসদ বিষয়ক মন্ত্রী জমির উদ্দিন সরকার এই সংশোধনীটি উত্থাপন করেন। এটি ২৬৮-০ ভোটি পাস হয়। রাষ্ট্রপতির অনুমোদন পায় ২৮ মার্চ।", 
               style: TextStyle(color:Colors.black, fontSize: 15, height: 1.5), textAlign: TextAlign.justify,
             ),
+            SizedBox(height: 5,),
+            Text( "মন্তব্যঃ সুপ্রীম কোর্ট কর্তৃক অবৈধ ঘোষিত এবং বাতিলকৃত।", style: TextStyle(color:Colors.red, fontSize: 13, height: 1.5), textAlign: TextAlign.justify,),
             Divider(height: 25,),
             
             Text( "চতুর্দশ  সংশোধনী, ২০০৪", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
@@ -157,9 +158,11 @@ class AmmendmentsPage extends StatelessWidget {
             Text( "ষোড়শ সংশোধনী, ২০১৪", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
             SizedBox(height: 10,),
             Text(
-              "২০১৪ সালের ১৭ সেপ্টেম্বরে এই সংশোধনী আনা হয়। ৭২ এর সংবিধানের ৯৬ অনুচ্ছেদ পুনঃস্থাপনের মাধ্যমে বিচারপতিদের অপসারণের ক্ষমতা সংসদকে ফিরিয়ে দেওয়ার বিধান পাস করা হয় এই সংশোধনীর মাধ্যমে। এটি উত্থাপন করেন আইনমন্ত্রী অ্যাডভোকেট আনিসুল হক। ৩৫০ জন সংসদ সদস্যের মধ্যে ৩২৭-০ জনের ভোটে সর্বসম্মতভাবে পাস হয় বিলটি। বিরোধী দল জাতীয় পার্টি বিলটির পক্ষে ভোট দেয়। পরে হাইকোর্ট একে অবৈধ ঘোষণা করে রায় দেয়। আপিল বিভাগও ওই রায় বহাল রাখে। তবে, বর্তমানে এই রায়টি রিভিউতে রয়েছে।", 
+              "২০১৪ সালের ১৭ সেপ্টেম্বরে এই সংশোধনী আনা হয়। ৭২ এর সংবিধানের ৯৬ অনুচ্ছেদ পুনঃস্থাপনের মাধ্যমে বিচারপতিদের অপসারণের ক্ষমতা সংসদকে ফিরিয়ে দেওয়ার বিধান পাস করা হয় এই সংশোধনীর মাধ্যমে। এটি উত্থাপন করেন আইনমন্ত্রী অ্যাডভোকেট আনিসুল হক। ৩৫০ জন সংসদ সদস্যের মধ্যে ৩২৭-০ জনের ভোটে সর্বসম্মতভাবে পাস হয় বিলটি। বিরোধী দল জাতীয় পার্টি বিলটির পক্ষে ভোট দেয়। পরে হাইকোর্ট একে অবৈধ ঘোষণা করে রায় দেয়। আপিল বিভাগও ওই রায় বহাল রাখে।", 
               style: TextStyle(color:Colors.black, fontSize: 15, height: 1.5), textAlign: TextAlign.justify,
             ),
+            SizedBox(height: 5,),
+            Text( "মন্তব্যঃ সুপ্রীম কোর্ট কর্তৃক অবৈধ ঘোষিত এবং বাতিলকৃত।", style: TextStyle(color:Colors.red, fontSize: 13, height: 1.5), textAlign: TextAlign.justify,),
             Divider(height: 25,),
             
             Text( "সপ্তদশ সংশোধনী, ২০১৮", style: TextStyle(color:Colors.black, fontSize: 16, fontWeight: FontWeight.bold, height: 1.5),),
