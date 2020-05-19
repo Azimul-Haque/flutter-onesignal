@@ -61,18 +61,18 @@ class _FormPageState extends State<FormPage> {
       if(response.statusCode == 200) {
         var body = json.decode(response.body);
         if(body["success"] == true) {
-          print(body);
-          setState(() {
-            Navigator.of(context, rootNavigator: true).pop();
-          });
+          // print(body);
+          Navigator.of(context, rootNavigator: true).pop();
           this._showToast('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
           Navigator.pop(context);
         }
       } else {
+        Navigator.of(context, rootNavigator: true).pop();
         _showSnackbar("সমস্যা হচ্ছে, আবার চেষ্টা করুন।");
       }
     } catch (_) {
-      print(_);
+      // print(_);
+      Navigator.of(context, rootNavigator: true).pop();
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
   }
