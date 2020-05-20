@@ -293,23 +293,25 @@ class _ExamPageState extends State<ExamPage> {
     
     for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
       options.add(
-        Flexible(
-          fit: FlexFit.tight,
-          child: RadioListTile(
-            groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
-            value: i,
-            title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
-            onChanged: (val) {
-              setState(() {
-                myOptionsMap['qstn' + _qstn.id.toString()] = val;
-              });
-              // print(myOptionsMap['qstn' + _qstn.id.toString()]);
-              // print(myOptionsListMap['list' + _qstn.id.toString()]);
-            },
-            activeColor: Colors.green,
+        Row(
+          children: <Widget>[
+            Flexible(
+            fit: FlexFit.loose,
+            child: RadioListTile(
+              groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
+              value: i,
+              title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
+              onChanged: (val) {
+                setState(() {
+                  myOptionsMap['qstn' + _qstn.id.toString()] = val;
+                });
+                // print(myOptionsMap['qstn' + _qstn.id.toString()]);
+                // print(myOptionsListMap['list' + _qstn.id.toString()]);
+              },
+              activeColor: Colors.green,
+            ),
           ),
-        ),
-        
+        ]),
       );
     }
     return options;
