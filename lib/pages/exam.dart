@@ -304,6 +304,11 @@ class _ExamPageState extends State<ExamPage> {
               onChanged: (val) {
                 setState(() {
                   myOptionsMap['qstn' + _qstn.id.toString()] = val;
+                  if(myOptionsListMap['list' + _qstn.id.toString()][val] == _qstn.answer) {
+                    print('Right Answer');
+                  } else {
+                    print('Wrong Answer');
+                  }
                 });
                 // print(myOptionsMap['qstn' + _qstn.id.toString()]);
                 // print(myOptionsListMap['list' + _qstn.id.toString()]);
