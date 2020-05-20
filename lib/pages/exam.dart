@@ -37,6 +37,7 @@ class _ExamPageState extends State<ExamPage> {
           _counter--;
         } else {
           _timer.cancel();
+          Navigator.pop(context);
         }
       });
       var now = Duration(seconds: _counter);
@@ -57,9 +58,8 @@ class _ExamPageState extends State<ExamPage> {
       // ekhane kaaj ache...
     } else if(questions.length > 0) {
       _startTimer(drtn);
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
     }
-
   }
   void handleSubmit() {
     if(examFormKey.currentState.validate()) {
@@ -72,11 +72,10 @@ class _ExamPageState extends State<ExamPage> {
   @override
   void initState() {
     super.initState();
-    showExamDialog();
-    // _startTimer();
+    // showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
-    // _loadDB();
+    _loadDB('5', '20');
     
   }
 
@@ -125,7 +124,17 @@ class _ExamPageState extends State<ExamPage> {
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].id.toString() + "-" + questions[index].question),
-                    subtitle: Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 10,),
+                        Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        createRadioListOptions(),
+                      ],
+                    ),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
                     //   // Navigator.push(context, route);
@@ -257,4 +266,27 @@ class _ExamPageState extends State<ExamPage> {
       },
     );
   }
+
+  List<Widget> createRadioListOptions() {
+    List<Widget> options = [];
+    var selected;
+    for(var i=0; i <4; i++) {
+      options.add(
+        RadioListTile(
+          value: i,
+          groupValue: selected,
+          title: Text(i.toString()),
+          onChanged: (val) {
+            setState(() {
+              selected = val;
+            });
+          },
+          selected: selected == i,
+          activeColor: Colors.green,
+        ),
+      );
+    }
+    return options;
+  }
+
 }

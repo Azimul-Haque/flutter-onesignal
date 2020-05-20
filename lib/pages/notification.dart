@@ -23,7 +23,7 @@ class _NotificationPageState extends State<NotificationPage> {
             onPressed: () async{
               Navigator.pop(context);
             },
-            tooltip: "Ok",
+            tooltip: "ঠিক আছে",
           ),
         ],
         flexibleSpace: appBarStyle(),
