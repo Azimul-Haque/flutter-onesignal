@@ -32,7 +32,7 @@ class _ExamPageState extends State<ExamPage> {
     if (_timer != null) {
       _timer.cancel();
     }
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) { 
       setState(() {
         if (_counter > 0) {
           _counter--;
@@ -45,6 +45,19 @@ class _ExamPageState extends State<ExamPage> {
       formattedtime = "${formatDuration(now)}";
     });
   }
+
+  countDownTimer(drtn) async {
+    for (int x = drtn; x > 0; x--) {
+      await Future.delayed(Duration(seconds: 1)).then((_) {
+        setState(() {
+          _counter -= 1;
+        });
+        var now = Duration(seconds: _counter);
+        formattedtime = "${formatDuration(now)}";
+      });
+    }
+  }
+
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
@@ -58,7 +71,7 @@ class _ExamPageState extends State<ExamPage> {
     if(questions.length == 0) {
       // ekhane kaaj ache...
     } else if(questions.length > 0) {
-      _startTimer(drtn);
+      // _startTimer(drtn);
       // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
     }
   }
@@ -76,6 +89,7 @@ class _ExamPageState extends State<ExamPage> {
     // showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
+    // _startTimer('20');
     _loadDB('3', '20');
     
   }
@@ -121,6 +135,7 @@ class _ExamPageState extends State<ExamPage> {
             child: ListView.builder(
               itemCount: questions.length,
               itemBuilder: (BuildContext context, int index) {
+                print(questions.length);
                 return Card(
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
@@ -265,18 +280,26 @@ class _ExamPageState extends State<ExamPage> {
 
   List<Widget> createRadioListOptions(_qstn) {
     List<Widget> options = [];
+    List tempoptions = [];
+    tempoptions.add(_qstn.answer);
+    tempoptions.add(_qstn.incanswer.split(',')[0]);
+    tempoptions.add(_qstn.incanswer.split(',')[1]);
+    tempoptions.add(_qstn.incanswer.split(',')[2]);
+    // tempoptions.shuffle();
     
-    for(var i=2; i <6; i++) {
+    for(var i=0; i<tempoptions.length; i++) {
       options.add(
         RadioListTile(
           groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
           value: i,
-          title: Text(_qstn.answer),
+          title: Text(tempoptions[i]),
           onChanged: (val) {
             setState(() {
               myOptionsMap['qstn' + _qstn.id.toString()] = val;
             });
             print(myOptionsMap['qstn' + _qstn.id.toString()]);
+            print(tempoptions[i]);
+            print('Test');
           },
           activeColor: Colors.green,
         ),
