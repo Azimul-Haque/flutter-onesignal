@@ -63,6 +63,14 @@ class _ExamPageState extends State<ExamPage> {
     if(questions.length == 0) {
       // ekhane kaaj ache...
     } else if(questions.length > 0) {
+      List tempoptions = [];
+      questions.forEach((element) {
+        tempoptions.add(_qstn.answer);
+        tempoptions.add(_qstn.incanswer.split(',')[0]);
+        tempoptions.add(_qstn.incanswer.split(',')[1]);
+        tempoptions.add(_qstn.incanswer.split(',')[2]);
+        // tempoptions.shuffle();
+      });
       _startTimer(drtn);
       // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
     }
@@ -127,23 +135,21 @@ class _ExamPageState extends State<ExamPage> {
             child: ListView.builder(
               itemCount: questions.length,
               itemBuilder: (BuildContext context, int index) {
-                print(questions.length);
                 return Card(
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].id.toString() + "-" + questions[index].question),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: 
-                      // createRadioListOptions(questions[index]),
-                      <Widget>[
-                        SizedBox(height: 10,),
-                        Text(test),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      ],
+                      children: createRadioListOptions(questions[index]),
+                      // <Widget>[
+                      //   SizedBox(height: 10,),
+                      //   Text(test),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      // ],
                     ),
                   ),
                   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
