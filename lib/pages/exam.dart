@@ -121,11 +121,12 @@ class _ExamPageState extends State<ExamPage> {
               icon: Icon(Icons.check), 
               onPressed: () async{
                 if (_timer != null) {
-                  _timer.cancel();
+                  showAlertDialog();
+                  // _timer.cancel();
                 }
-                setState(() {
-                  formattedtime = '00:00:00';
-                });
+                // setState(() {
+                //   // formattedtime = '00:00:00';
+                // });
                 // Navigator.pop(context);
               },
               tooltip: "দাখিল করুন",
@@ -142,16 +143,13 @@ class _ExamPageState extends State<ExamPage> {
                 return Card(
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
-                    title: Text(questions[index].id.toString() + "-" + questions[index].question),
+                    title: Text(questions[index].question),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: createRadioListOptions(questions[index]),
                       // <Widget>[
                       //   SizedBox(height: 10,),
                       //   Text(test),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
                       //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
                       // ],
                     ),
@@ -244,7 +242,8 @@ class _ExamPageState extends State<ExamPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children : <Widget>[
-          CircularProgressIndicator(),
+          Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
+          // CircularProgressIndicator(),
         ],
       ),
       actions: <Widget>[
@@ -282,6 +281,29 @@ class _ExamPageState extends State<ExamPage> {
     );
   }
 
+  showCalculatetDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('সার্ভারে পাঠানো হচ্ছে...')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   List<Widget> createRadioListOptions(_qstn) {
     List<Widget> options = [];
     // List tempoptions = [];
@@ -304,7 +326,7 @@ class _ExamPageState extends State<ExamPage> {
               onChanged: (val) {
                 setState(() {
                   myOptionsMap['qstn' + _qstn.id.toString()] = val;
-                  if(myOptionsListMap['list' + _qstn.id.toString()][val] == _qstn.answer) {
+                  if(myOptionsListMap['list' + _qstn.id.toString()][i] == _qstn.answer) {
                     print('Right Answer');
                   } else {
                     print('Wrong Answer');

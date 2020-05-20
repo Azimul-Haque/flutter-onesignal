@@ -158,7 +158,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                 return Card(
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
-                    title: Text(questions[index].id.toString() + "-" + questions[index].question),
+                    title: Text(questions[index].question),
                     subtitle: Text(questions[index].answer),
                     trailing: listPopUpMenu(questions[index]),
                     // onTap: (){
