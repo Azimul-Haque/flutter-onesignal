@@ -27,6 +27,7 @@ class _ExamPageState extends State<ExamPage> {
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
   Map myOptionsMap = {};
+  Map myOptionsListMap = {};
 
   void _startTimer(tmrdrtn) {
     setState(() {
@@ -63,14 +64,17 @@ class _ExamPageState extends State<ExamPage> {
     if(questions.length == 0) {
       // ekhane kaaj ache...
     } else if(questions.length > 0) {
-      List tempoptions = [];
-      questions.forEach((element) {
-        tempoptions.add(_qstn.answer);
-        tempoptions.add(_qstn.incanswer.split(',')[0]);
-        tempoptions.add(_qstn.incanswer.split(',')[1]);
-        tempoptions.add(_qstn.incanswer.split(',')[2]);
-        // tempoptions.shuffle();
-      });
+      for(var j=0; j<questions.length; j++) {
+        List tempoptions = [];
+        tempoptions.add(questions[j].answer);
+        tempoptions.add(questions[j].incanswer.split(',')[0]);
+        tempoptions.add(questions[j].incanswer.split(',')[1]);
+        tempoptions.add(questions[j].incanswer.split(',')[2]);
+        tempoptions.shuffle();
+        myOptionsListMap['list' + questions[j].id.toString()] = tempoptions;
+        // print(tempoptions);
+        // print(myOptionsListMap['list' + questions[j].id.toString()][0]);
+      }
       _startTimer(drtn);
       // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
     }
@@ -280,26 +284,25 @@ class _ExamPageState extends State<ExamPage> {
 
   List<Widget> createRadioListOptions(_qstn) {
     List<Widget> options = [];
-    List tempoptions = [];
-    tempoptions.add(_qstn.answer);
-    tempoptions.add(_qstn.incanswer.split(',')[0]);
-    tempoptions.add(_qstn.incanswer.split(',')[1]);
-    tempoptions.add(_qstn.incanswer.split(',')[2]);
+    // List tempoptions = [];
+    // tempoptions.add(_qstn.answer);
+    // tempoptions.add(_qstn.incanswer.split(',')[0]);
+    // tempoptions.add(_qstn.incanswer.split(',')[1]);
+    // tempoptions.add(_qstn.incanswer.split(',')[2]);
     // tempoptions.shuffle();
     
-    for(var i=0; i<tempoptions.length; i++) {
+    for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
       options.add(
         RadioListTile(
           groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
           value: i,
-          title: Text(tempoptions[i]),
+          title: Text(myOptionsListMap['list' + _qstn.id.toString()].),
           onChanged: (val) {
             setState(() {
               myOptionsMap['qstn' + _qstn.id.toString()] = val;
             });
             print(myOptionsMap['qstn' + _qstn.id.toString()]);
-            print(tempoptions[i]);
-            print('Test');
+            print(myOptionsListMap['list' + _qstn.id.toString()]);
           },
           activeColor: Colors.green,
         ),
