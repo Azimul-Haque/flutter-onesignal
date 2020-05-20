@@ -90,11 +90,11 @@ class _ExamPageState extends State<ExamPage> {
   @override
   void initState() {
     super.initState();
-    // showExamDialog();
+    showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
     // _startTimer('20');
-    _loadDB('3', '20');
+    // _loadDB('3', '20');
     
   }
 
@@ -293,16 +293,17 @@ class _ExamPageState extends State<ExamPage> {
     
     for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
       options.add(
+        Flexible(fit: FlexFit.loose,)
         RadioListTile(
           groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
           value: i,
-          title: Text(myOptionsListMap['list' + _qstn.id.toString()].),
+          title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
           onChanged: (val) {
             setState(() {
               myOptionsMap['qstn' + _qstn.id.toString()] = val;
             });
-            print(myOptionsMap['qstn' + _qstn.id.toString()]);
-            print(myOptionsListMap['list' + _qstn.id.toString()]);
+            // print(myOptionsMap['qstn' + _qstn.id.toString()]);
+            // print(myOptionsListMap['list' + _qstn.id.toString()]);
           },
           activeColor: Colors.green,
         ),
