@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
 import 'dart:async';
+import 'dart:math';
 
 import 'package:project1/QuestionsModel.dart';
 
@@ -14,6 +15,8 @@ class _ExamPageState extends State<ExamPage> {
   String formattedtime = '00:00:00';
   Timer _timer;
   bool isLoading;
+  Random random = new Random();
+  String test;
   
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
@@ -46,18 +49,6 @@ class _ExamPageState extends State<ExamPage> {
     });
   }
 
-  countDownTimer(drtn) async {
-    for (int x = drtn; x > 0; x--) {
-      await Future.delayed(Duration(seconds: 1)).then((_) {
-        setState(() {
-          _counter -= 1;
-        });
-        var now = Duration(seconds: _counter);
-        formattedtime = "${formatDuration(now)}";
-      });
-    }
-  }
-
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
@@ -67,11 +58,12 @@ class _ExamPageState extends State<ExamPage> {
     setState(() {
       questions = newquestions;
       isLoading = false;
+      test = random.nextInt(100).toString();
     });
     if(questions.length == 0) {
       // ekhane kaaj ache...
     } else if(questions.length > 0) {
-      // _startTimer(drtn);
+      _startTimer(drtn);
       // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
     }
   }
@@ -142,14 +134,16 @@ class _ExamPageState extends State<ExamPage> {
                     title: Text(questions[index].id.toString() + "-" + questions[index].question),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: createRadioListOptions(questions[index]),
-                      // <Widget>[
-                      //   SizedBox(height: 10,),
-                      //   Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                      // ],
+                      children: 
+                      // createRadioListOptions(questions[index]),
+                      <Widget>[
+                        SizedBox(height: 10,),
+                        Text(test),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      ],
                     ),
                   ),
                   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
