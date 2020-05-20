@@ -23,6 +23,7 @@ class _ExamPageState extends State<ExamPage> {
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
+  Map myOptionsMap = {};
 
   void _startTimer(tmrdrtn) {
     setState(() {
@@ -75,7 +76,7 @@ class _ExamPageState extends State<ExamPage> {
     // showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
-    _loadDB('5', '20');
+    _loadDB('3', '20');
     
   }
 
@@ -126,20 +127,15 @@ class _ExamPageState extends State<ExamPage> {
                     title: Text(questions[index].id.toString() + "-" + questions[index].question),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(height: 10,),
-                        Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                        createRadioListOptions(),
-                      ],
+                      children: createRadioListOptions(questions[index]),
+                      // <Widget>[
+                      //   SizedBox(height: 10,),
+                      //   Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
+                      // ],
                     ),
-                    // onTap: (){
-                    //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-                    //   // Navigator.push(context, route);
-                    //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-                    // },
                   ),
                   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
                   elevation: 2,
@@ -267,21 +263,21 @@ class _ExamPageState extends State<ExamPage> {
     );
   }
 
-  List<Widget> createRadioListOptions() {
+  List<Widget> createRadioListOptions(_qstn) {
     List<Widget> options = [];
-    var selected;
-    for(var i=0; i <4; i++) {
+    
+    for(var i=2; i <6; i++) {
       options.add(
         RadioListTile(
+          groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
           value: i,
-          groupValue: selected,
-          title: Text(i.toString()),
+          title: Text(_qstn.answer),
           onChanged: (val) {
             setState(() {
-              selected = val;
+              myOptionsMap['qstn' + _qstn.id.toString()] = val;
             });
+            print(myOptionsMap['qstn' + _qstn.id.toString()]);
           },
-          selected: selected == i,
           activeColor: Colors.green,
         ),
       );
