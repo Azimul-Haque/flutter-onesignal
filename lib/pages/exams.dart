@@ -88,51 +88,113 @@ class _ExamsPageState extends State<ExamsPage> {
           SizedBox(height: 5,),
           Expanded(
             child: ListView.builder(
+              // padding: EdgeInsets.all(5),
               itemCount: exams.length,
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  color: Colors.blue[50],
-                  child: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Row(children: <Widget>[
-                      Flexible(
-                        flex: 4,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(DateFormat('MMMM d, y kk:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway', color: Colors.purple[700]),),
-                            Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
-                            Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
-                            Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
-                          ]
-                        ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            CircularPercentIndicator(
-                              radius: 75.0,
-                              lineWidth: 5.0,
-                              animation: true,
-                              animationDuration: 1200,
-                              percent: ((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn >= 0) ? (exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn : 0,
-                              center: new Text(
-                                (((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
-                                style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14, fontFamily: 'Raleway'),
-                              ),
-                              circularStrokeCap: CircularStrokeCap.round,
-                              progressColor: Colors.purple[700],
+                return 
+                Card(
+                  child: Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Row(children: <Widget>[
+                          Flexible(
+                            flex: 4,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(DateFormat('MMMM d, y kk:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway', color: Colors.purple[700]),),
+                                Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
+                                Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
+                                Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                              ]
                             ),
-                          ],
+                          ),
+                          Flexible(
+                            flex: 2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                CircularPercentIndicator(
+                                  radius: 75.0,
+                                  lineWidth: 5.0,
+                                  animation: true,
+                                  animationDuration: 1400,
+                                  percent: ((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn >= 0) ? (exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn : 0,
+                                  center: new Text(
+                                    (((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
+                                    style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14, fontFamily: 'Raleway'),
+                                  ),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.purple[700],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],),
+                      ),
+                      Positioned.fill(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {},
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                         ),
                       ),
-                    ],),
+                    ],
                   ),
                   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
-                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  elevation: 3,
+                  color: Colors.white,
                 );
+                
+                // Card(
+                //   color: Colors.blue[50],
+                //   child: Padding(
+                //     padding: EdgeInsets.all(15),
+                //     child: Row(children: <Widget>[
+                //       Flexible(
+                //         flex: 4,
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: <Widget>[
+                //             Text(DateFormat('MMMM d, y kk:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway', color: Colors.purple[700]),),
+                //             Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
+                //             Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
+                //             Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                //           ]
+                //         ),
+                //       ),
+                //       Flexible(
+                //         flex: 2,
+                //         child: Row(
+                //           mainAxisAlignment: MainAxisAlignment.end,
+                //           children: <Widget>[
+                //             CircularPercentIndicator(
+                //               radius: 75.0,
+                //               lineWidth: 5.0,
+                //               animation: true,
+                //               animationDuration: 1400,
+                //               percent: ((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn >= 0) ? (exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn : 0,
+                //               center: new Text(
+                //                 (((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
+                //                 style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14, fontFamily: 'Raleway'),
+                //               ),
+                //               circularStrokeCap: CircularStrokeCap.round,
+                //               progressColor: Colors.purple[700],
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ],),
+                //   ),
+                //   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                //   elevation: 2,
+                // );
               },
             ),
           ),

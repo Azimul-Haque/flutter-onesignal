@@ -454,10 +454,8 @@ class _HomePageState extends State<HomePage>
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {
-
-                  },
-                borderRadius: BorderRadius.circular(20),
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
