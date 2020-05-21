@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:project1/QuestionsModel.dart';
+import 'package:project1/pages/examresult.dart';
 
 class ExamPage extends StatefulWidget {
   @override
@@ -243,7 +244,7 @@ class _ExamPageState extends State<ExamPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children : <Widget>[
           Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
-          // CircularProgressIndicator(),
+          // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
         ],
       ),
       actions: <Widget>[
@@ -257,8 +258,12 @@ class _ExamPageState extends State<ExamPage> {
             setState(() {
               formattedtime = '00:00:00';
             });
-            Navigator.of(context).pop();
-            Navigator.pop(context);
+            Navigator.of(context).pop(); // close the dialogue
+            Navigator.pop(context); // close the page
+
+            // open new page
+            Route route = MaterialPageRoute(builder: (context) => ExamResultPage(questions));
+            Navigator.push(context, route);
           },
         ),
         RaisedButton(
@@ -269,29 +274,6 @@ class _ExamPageState extends State<ExamPage> {
           },
         ),
       ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
-  showCalculatetDialog(BuildContext context) {
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Center(child: Text('সার্ভারে পাঠানো হচ্ছে...')),
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
-          CircularProgressIndicator(),
-        ],
-      ),
     );
 
     // show the dialog
