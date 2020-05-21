@@ -104,7 +104,7 @@ class _ExamsPageState extends State<ExamsPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(DateFormat('MMMM d, y kk:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway', color: Colors.purple[700]),),
+                                Text(DateFormat('MMMM d, y KK:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway', color: Colors.purple[700]),),
                                 Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
                                 Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
                                 Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),

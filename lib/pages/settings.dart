@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import '../globals.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -82,9 +83,9 @@ class _SettingsPageState extends State<SettingsPage> {
         SizedBox(height: 3,),
         Divider(),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-          Padding(padding: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10), child: Text("নোটিফিকেশন সেটিংস", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green[800]),),),
+          Padding(padding: EdgeInsets.only(right: 10, left: 10), child: Text("ব্যবহারকারীর নাম", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green[800]),),),
           Container(
-            margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+            margin: EdgeInsets.only(right: 10, left: 10),
             child: TextField(
               controller: userNameController,
               decoration: InputDecoration(
@@ -106,7 +107,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text("নোটিফিকেশন সেটিংস", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green[800]),),
-                        Text("নোটিফিকেশনে প্রশ্ন/ উত্তর পাঠানো"),
+                        Text("নোটিফিকেশনে প্রশ্ন/ উত্তর পাঠানো পরিষেবা"),
                       ],
                     ),
                   ),
@@ -121,6 +122,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         sasetosstatus.setBool('isOsSwitched', value);
                         isOsSwitched = value;
                       });
+                      OneSignal.shared.setSubscription(isOsSwitched);
                       print(isOsSwitched);
                     },
                     activeTrackColor: Colors.lightGreenAccent,

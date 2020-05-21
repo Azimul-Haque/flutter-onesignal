@@ -197,6 +197,8 @@ class _ExamPageState extends State<ExamPage> {
               validator: (value) {
                 if(value.length == 0) {
                   return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
+                } else if(int.tryParse(value) <= 0) {
+                  return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
                 } else if(int.tryParse(value) > 50) {
                   return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
                 }
@@ -215,6 +217,8 @@ class _ExamPageState extends State<ExamPage> {
               validator: (value) {
                 if(value.length == 0) {
                   return "সময় পূরণ আবশ্যক";
+                } else if(int.tryParse(value) <= 0) {
+                  return "সময় ০ থেকে বেশি সেট করতে হবে!";
                 } else if(int.tryParse(value) > 15) {
                   return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
                 }
@@ -229,7 +233,7 @@ class _ExamPageState extends State<ExamPage> {
       ),
       actions: <Widget>[
         RaisedButton(
-          child: Text("শুরু করুন"),
+          child: Text("পরীক্ষা শুরু করুন"),
           color: Colors.green,
           onPressed: () {
             handleSubmit();
