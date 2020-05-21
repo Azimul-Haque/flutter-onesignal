@@ -23,15 +23,18 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
+  bool isOsSwitched = true;
   _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String spname = (prefs.getString('userName') ?? 'N/A');
     String spdesg = (prefs.getString('userDesig') ?? 'N/A');
     String sporg  = (prefs.getString('userOrg') ?? 'N/A');
+    bool isosswitched  = (prefs.getBool('isOsSwitched') ?? true);
     setState(() {
       userName = spname;
       userDesig = spdesg;
       userOrg = sporg;
+      isOsSwitched = isosswitched;
 
       userNameController.text = userName;
       userDesigController.text = userDesig;
@@ -78,9 +81,10 @@ class _SettingsPageState extends State<SettingsPage> {
         Text("সেটিংস", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
         SizedBox(height: 3,),
         Divider(),
-        Column(children: <Widget>[
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+          Padding(padding: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10), child: Text("নোটিফিকেশন সেটিংস", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green[800]),),),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
             child: TextField(
               controller: userNameController,
               decoration: InputDecoration(
@@ -89,7 +93,43 @@ class _SettingsPageState extends State<SettingsPage> {
               onChanged: (String str) {},
             ),
           ),
-          SizedBox(height: 5,),
+          Divider(),
+          Padding(
+            padding: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  flex: 5,
+                  child: Container(
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("নোটিফিকেশন সেটিংস", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green[800]),),
+                        Text("নোটিফিকেশনে প্রশ্ন/ উত্তর পাঠানো"),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Switch(
+                    value: isOsSwitched,
+                    onChanged: (value) async{
+                      SharedPreferences sasetosstatus = await SharedPreferences.getInstance();
+                      setState(() {
+                        sasetosstatus.setBool('isOsSwitched', value);
+                        isOsSwitched = value;
+                      });
+                      print(isOsSwitched);
+                    },
+                    activeTrackColor: Colors.lightGreenAccent,
+                    activeColor: Colors.green,
+                  ),
+                ),
+              ]
+            ),
+          ),
         ],),
       ],)
     );
