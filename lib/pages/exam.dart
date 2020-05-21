@@ -30,6 +30,7 @@ class _ExamPageState extends State<ExamPage> {
   Map myOptionsMap = {};
   Map myOptionsListMap = {};
   Map isRadioSelected = {};
+  Map optionsSelected = {};
 
   int rightanswer = 0;
   int wronganswer = 0;
@@ -51,7 +52,7 @@ class _ExamPageState extends State<ExamPage> {
 
           // open new page
           var totalmarks = rightanswer - wronganswer * 0.5;
-          Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
+          Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
           Navigator.push(context, route);
         }
       });
@@ -82,8 +83,6 @@ class _ExamPageState extends State<ExamPage> {
         tempoptions.shuffle();
         myOptionsListMap['list' + questions[j].id.toString()] = tempoptions;
         isRadioSelected['selected' + questions[j].id.toString()] = false;
-        // print(tempoptions);
-        // print(myOptionsListMap['list' + questions[j].id.toString()][0]);
       }
       _startTimer(drtn);
       Navigator.of(context).pop(); // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
@@ -269,7 +268,7 @@ class _ExamPageState extends State<ExamPage> {
             // open new page
             if(questions.length > 0) {
               var totalmarks = rightanswer - wronganswer * 0.5;
-              Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
+              Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
               Navigator.push(context, route);
             }
           },
@@ -310,14 +309,15 @@ class _ExamPageState extends State<ExamPage> {
                 setState(() {
                   isRadioSelected['selected' + _qstn.id.toString()] = true;
                   myOptionsMap['qstn' + _qstn.id.toString()] = val;
+                  optionsSelected['selected' + _qstn.id.toString()] = myOptionsListMap['list' + _qstn.id.toString()][i];
                   if(myOptionsListMap['list' + _qstn.id.toString()][i] == _qstn.answer) {
                     rightanswer++;
                   } else {
                     wronganswer++;
                   }
                 });
-                print('Right Answer: ' + rightanswer.toString());
-                print('Wrong Answer: ' + wronganswer.toString());
+                // print('Right Answer: ' + rightanswer.toString());
+                // print('Wrong Answer: ' + wronganswer.toString());
                 // print(myOptionsListMap['list' + _qstn.id.toString()]);
               } : null,
               activeColor: Colors.green,
