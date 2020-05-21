@@ -117,9 +117,9 @@ class _ExamsPageState extends State<ExamsPage> {
                               lineWidth: 5.0,
                               animation: true,
                               animationDuration: 1200,
-                              percent: (exams[index].rightanswer/exams[index].totalqstn >= 0) ? exams[index].rightanswer/exams[index].totalqstn : 0,
+                              percent: ((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn >= 0) ? (exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn : 0,
                               center: new Text(
-                                ((exams[index].rightanswer/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
+                                (((exams[index].rightanswer - (exams[index].wronganswer * 0.5))/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
                                 style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14, fontFamily: 'Raleway'),
                               ),
                               circularStrokeCap: CircularStrokeCap.round,
