@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
+import 'package:share/share.dart';
 // import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
@@ -351,6 +352,28 @@ class _HomePageState extends State<HomePage>
           onTap: (){
             Navigator.pop(context);
             _showDialog();
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.share, color: Colors.black87,),
+          title: Text("শেয়ার করুন"),
+          onTap: (){
+            Navigator.pop(context);
+            Builder(
+              builder: (BuildContext context) {
+                return RaisedButton(
+                  child: const Text('Share'),
+                  onPressed: () {
+                    final RenderBox box = context.findRenderObject();
+                    Share.share("https://orbachinujbuk.com/",
+                        subject: "অ্যাপটি শেয়ার করুন!",
+                        sharePositionOrigin:
+                            box.localToGlobal(Offset.zero) &
+                                box.size);
+                  }, 
+                );
+              },
+            );
           },
         ),
       ],)
