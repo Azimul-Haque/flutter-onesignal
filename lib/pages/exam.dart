@@ -17,7 +17,6 @@ class _ExamPageState extends State<ExamPage> {
   Timer _timer;
   bool isLoading;
   Random random = new Random();
-  String test;
   
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
@@ -29,6 +28,10 @@ class _ExamPageState extends State<ExamPage> {
   List<QuestionsModel> questions = [];
   Map myOptionsMap = {};
   Map myOptionsListMap = {};
+  Map isRadioSelected = {};
+
+  int rightanswer = 0;
+  int wronganswer = 0;
 
   void _startTimer(tmrdrtn) {
     setState(() {
@@ -64,7 +67,6 @@ class _ExamPageState extends State<ExamPage> {
     setState(() {
       questions = newquestions;
       isLoading = false;
-      test = random.nextInt(100).toString();
     });
     if(questions.length == 0) {
       // ekhane kaaj ache...
@@ -77,6 +79,7 @@ class _ExamPageState extends State<ExamPage> {
         tempoptions.add(questions[j].incanswer.split(',')[2]);
         tempoptions.shuffle();
         myOptionsListMap['list' + questions[j].id.toString()] = tempoptions;
+        isRadioSelected['selected' + questions[j].id.toString()] = false;
         // print(tempoptions);
         // print(myOptionsListMap['list' + questions[j].id.toString()][0]);
       }
@@ -154,7 +157,6 @@ class _ExamPageState extends State<ExamPage> {
                       children: createRadioListOptions(questions[index]),
                       // <Widget>[
                       //   SizedBox(height: 10,),
-                      //   Text(test),
                       //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
                       // ],
                     ),
@@ -309,18 +311,20 @@ class _ExamPageState extends State<ExamPage> {
               groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
               value: i,
               title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
-              onChanged: (val) {
+              onChanged: !isRadioSelected['selected' + _qstn.id.toString()] ? (val) {
                 setState(() {
+                  isRadioSelected['selected' + _qstn.id.toString()] = true;
                   myOptionsMap['qstn' + _qstn.id.toString()] = val;
                   if(myOptionsListMap['list' + _qstn.id.toString()][i] == _qstn.answer) {
-                    print('Right Answer');
+                    rightanswer++;
                   } else {
-                    print('Wrong Answer');
+                    wronganswer++;
                   }
                 });
-                // print(myOptionsMap['qstn' + _qstn.id.toString()]);
+                print('Right Answer: ' + rightanswer.toString());
+                print('Wrong Answer: ' + wronganswer.toString());
                 // print(myOptionsListMap['list' + _qstn.id.toString()]);
-              },
+              } : null,
               activeColor: Colors.green,
             ),
           ),

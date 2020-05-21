@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
 
+import 'package:percent_indicator/percent_indicator.dart';
+
 class ExamResultPage extends StatefulWidget {
   var questions;
   ExamResultPage(this.questions);
@@ -64,33 +66,41 @@ class _ExamResultPageState extends State<ExamResultPage> {
           Expanded(
             child: Card(
               child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('মোট প্রশ্নঃ 20টি, সময়ঃ 5 মিনিট'),
-                    Text('উত্তর প্রদানঃ 18টি, সঠিকঃ 15টি, ভুলঃ 3টি'),
-                    Text('প্রাপ্ত নম্বরঃ 13.5', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                    // CircularPercentIndicator(
-                    //   radius: 120.0,
-                    //   lineWidth: 13.0,
-                    //   animation: true,
-                    //   percent: 0.7,
-                    //   center: new Text(
-                    //     "70.0%",
-                    //     style:
-                    //         new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                    //   ),
-                    //   footer: new Text(
-                    //     "Sales this week",
-                    //     style:
-                    //         new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-                    //   ),
-                    //   circularStrokeCap: CircularStrokeCap.round,
-                    //   progressColor: Colors.purple,
-                    // ),
-                  ]
-                ),
+                padding: EdgeInsets.all(15),
+                child: Row(children: <Widget>[
+                  Flexible(
+                    flex: 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('মোট প্রশ্নঃ 20টি, সময়ঃ 5 মিনিট'),
+                        Text('উত্তর প্রদানঃ 18টি, সঠিকঃ 15টি, ভুলঃ 3টি'),
+                        Text('প্রাপ্ত নম্বরঃ 13.5', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      ]
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        CircularPercentIndicator(
+                          radius: 80.0,
+                          lineWidth: 7.0,
+                          animation: true,
+                          animationDuration: 1200,
+                          percent: 0.7,
+                          center: new Text(
+                            "70.0%",
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: Colors.purple,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],),
               ),
               margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
               elevation: 2,
@@ -142,20 +152,11 @@ class _ExamResultPageState extends State<ExamResultPage> {
             Flexible(
             fit: FlexFit.loose,
             child: RadioListTile(
-              groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
-              value: i,
+              groupValue: _qstn.answer,
+              value: myOptionsListMap['list' + _qstn.id.toString()][i],
               title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
               onChanged: (val) {
-                setState(() {
-                  myOptionsMap['qstn' + _qstn.id.toString()] = val;
-                  if(myOptionsListMap['list' + _qstn.id.toString()][i] == _qstn.answer) {
-                    print('Right Answer');
-                  } else {
-                    print('Wrong Answer');
-                  }
-                });
-                // print(myOptionsMap['qstn' + _qstn.id.toString()]);
-                // print(myOptionsListMap['list' + _qstn.id.toString()]);
+                
               },
               activeColor: Colors.green,
             ),
