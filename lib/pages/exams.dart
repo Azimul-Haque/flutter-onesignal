@@ -93,6 +93,7 @@ class _ExamsPageState extends State<ExamsPage> {
               itemBuilder: (BuildContext context, int index) {
                 return 
                 Card(
+                  color: Colors.blue[50],
                   child: Stack(
                     children: <Widget>[
                       Padding(
@@ -138,18 +139,17 @@ class _ExamsPageState extends State<ExamsPage> {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {},
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(3),
                           ),
                         ),
                       ),
                     ],
                   ),
                   margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                  ),
-                  elevation: 3,
-                  color: Colors.white,
+                  // shape: RoundedRectangleBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(5)),
+                  // ),
+                  elevation: 2,
                 );
                 
                 // Card(
