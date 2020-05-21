@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage>
   Future<void> share() async {
     await FlutterShare.share(
         title: 'শেয়ার করুন',
-        text: 'অ্যাপটি শেয়ার করুন!',
+        text: 'BCS সংবিধান',
         linkUrl: 'https://orbachinujbuk.com/',
         chooserTitle: 'অ্যাপটি শেয়ার করুন!');
   }
@@ -511,9 +511,25 @@ class _HomePageState extends State<HomePage>
   void _showDialog() {
     slideDialog.showSlideDialog(
       context: context,
-      child: Text("Hello World"),
-      // barrierColor: Colors.white.withOpacity(0.7),
-      // pillColor: Colors.red,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/images/android-icon.png", width: 80, height: 80,),
+            SizedBox(height: 10,),
+            Text('BCS সংবিধান', style: TextStyle(color: Colors.green[800], fontSize: 20)),
+            SizedBox(height: 10,),
+            Text('একটি Innova Tech Inc. পণ্য'),
+            SizedBox(height: 10,),
+            Text("Version: 1.0.5", style: TextStyle(color: Colors.black54, fontSize: 13)),
+          ],
+        ),
+      ),
+      // barrierColor: Colors.black.withOpacity(0.7),
+      pillColor: Colors.green,
       // backgroundColor: Colors.yellow,
     );
   }
