@@ -28,7 +28,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.check), 
+            icon: Icon(Icons.done_all), 
             onPressed: () async{
               Navigator.pop(context);
             },
