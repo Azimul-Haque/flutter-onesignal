@@ -82,9 +82,10 @@ class _ExamPageState extends State<ExamPage> {
         tempoptions.shuffle();
         myOptionsListMap['list' + questions[j].id.toString()] = tempoptions;
         isRadioSelected['selected' + questions[j].id.toString()] = false;
-        // print(tempoptions);
+        
         // print(myOptionsListMap['list' + questions[j].id.toString()][0]);
       }
+      // print(myOptionsListMap);
       _startTimer(drtn);
       Navigator.of(context).pop(); // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
     }
