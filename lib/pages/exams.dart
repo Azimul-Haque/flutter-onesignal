@@ -100,7 +100,7 @@ class _ExamsPageState extends State<ExamsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(DateFormat(' d, y kk:mm a').parse(exams[index].createdat).toString()),
+                            Text(DateFormat('MMMM d, y kk:mm a').format(DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)), style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Raleway'),), // DateFormat('yyyy-MM-dd hh:mm:ss').parse(exams[index].createdat)
                             Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
                             Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
                             Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
@@ -120,7 +120,7 @@ class _ExamsPageState extends State<ExamsPage> {
                               percent: (exams[index].rightanswer/exams[index].totalqstn >= 0) ? exams[index].rightanswer/exams[index].totalqstn : 0,
                               center: new Text(
                                 ((exams[index].rightanswer/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
-                                style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
+                                style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14, fontFamily: 'Raleway'),
                               ),
                               circularStrokeCap: CircularStrokeCap.round,
                               progressColor: Colors.purple[700],
