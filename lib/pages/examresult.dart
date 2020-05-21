@@ -65,6 +65,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
         Row(children: <Widget>[
           Expanded(
             child: Card(
+              color: Colors.green[100],
               child: Padding(
                 padding: EdgeInsets.all(15),
                 child: Row(children: <Widget>[
@@ -75,7 +76,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
                       children: <Widget>[
                         Text('মোট প্রশ্নঃ ' + data[0].length.toString() + 'টি, সময়ঃ ' + data[1].toString() + ' মিনিট'),
                         Text('উত্তর প্রদানঃ ' + (data[2] + data[3]).toString() + 'টি, সঠিকঃ ' + data[2].toString() + 'টি, ভুলঃ ' + data[3].toString() + 'টি'),
-                        Text('প্রাপ্ত নম্বরঃ 13.5', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                        Text('প্রাপ্ত নম্বরঃ ' + data[4].toString() + ' / ' + data[0].length.toString(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                       ]
                     ),
                   ),
@@ -85,14 +86,14 @@ class _ExamResultPageState extends State<ExamResultPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         CircularPercentIndicator(
-                          radius: 80.0,
-                          lineWidth: 7.0,
+                          radius: 75.0,
+                          lineWidth: 5.0,
                           animation: true,
                           animationDuration: 1200,
-                          percent: 0.7,
+                          percent: data[4]/data[0].length,
                           center: new Text(
-                            "70.0%",
-                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                            ((data[4]/data[0].length) * 100).toString() + '%',
+                            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
                           progressColor: Colors.purple,
@@ -116,12 +117,12 @@ class _ExamResultPageState extends State<ExamResultPage> {
                   title: Text(data[0][index].question),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: createRadioListOptions(data[0][index]),
-                    // <Widget>[
-                    //   SizedBox(height: 10,),
-                    //   Text(test),
-                    //   // Text(questions[index].answer + ", " + questions[index].incanswer.split(',')[0]),
-                    // ],
+                    children: 
+                    // createRadioListOptions(data[0][index]),
+                    <Widget>[
+                      SizedBox(height: 10,),
+                      Text('সঠিক উত্তরঃ ' + data[0][index].answer),
+                    ],
                   ),
                 ),
                 margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),

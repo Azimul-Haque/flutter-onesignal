@@ -50,7 +50,8 @@ class _ExamPageState extends State<ExamPage> {
           Navigator.pop(context); // close exam page
 
           // open new page
-          Route route = MaterialPageRoute(builder: (context) => ExamResultPage(questions));
+          var totalmarks = rightanswer - wronganswer * 0.5;
+          Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
           Navigator.push(context, route);
         }
       });
@@ -85,7 +86,7 @@ class _ExamPageState extends State<ExamPage> {
         // print(myOptionsListMap['list' + questions[j].id.toString()][0]);
       }
       _startTimer(drtn);
-      // Navigator.of(context).pop(); // KAAJ ACHE KINTU, APATOT COMMENTED...
+      Navigator.of(context).pop(); // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
     }
   }
   void handleSubmit() {
@@ -99,11 +100,11 @@ class _ExamPageState extends State<ExamPage> {
   @override
   void initState() {
     super.initState();
-    // showExamDialog();
+    showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
     // _startTimer('20');
-    _loadDB('3', '20');
+    // _loadDB('3', '20');
     
   }
 
@@ -269,7 +270,8 @@ class _ExamPageState extends State<ExamPage> {
             Navigator.pop(context); // close the page
 
             // open new page
-            Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer]));
+            var totalmarks = rightanswer - wronganswer * 0.5;
+            Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
             Navigator.push(context, route);
           },
         ),
