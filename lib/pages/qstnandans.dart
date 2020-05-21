@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:project1/QuestionsModel.dart';
+import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);

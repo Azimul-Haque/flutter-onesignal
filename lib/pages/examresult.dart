@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../globals.dart';
 
 import 'package:percent_indicator/percent_indicator.dart';
@@ -51,6 +52,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        Text(DateFormat('MMMM d, y kk:mm a').format(DateTime.now())),
                         Text('মোট প্রশ্নঃ ' + data[0].length.toString() + 'টি, সময়ঃ ' + data[1].toString() + ' মিনিট'),
                         Text('উত্তর প্রদানঃ ' + (data[2] + data[3]).toString() + 'টি, সঠিকঃ ' + data[2].toString() + 'টি, ভুলঃ ' + data[3].toString() + 'টি'),
                         Text('প্রাপ্ত নম্বরঃ ' + data[4].toString() + ' / ' + data[0].length.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),

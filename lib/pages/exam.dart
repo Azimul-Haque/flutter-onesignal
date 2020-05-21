@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
 import 'dart:async';
-import 'dart:math';
 
-import 'package:project1/QuestionsModel.dart';
+
+import 'package:project1/models/QuestionsModel.dart';
 import 'package:project1/pages/examresult.dart';
 
 class ExamPage extends StatefulWidget {
@@ -16,7 +16,6 @@ class _ExamPageState extends State<ExamPage> {
   String formattedtime = '00:00:00';
   Timer _timer;
   bool isLoading;
-  Random random = new Random();
   
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
