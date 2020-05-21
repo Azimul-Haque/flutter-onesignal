@@ -3,21 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart';
 
-class PageOne extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   var data;
-  PageOne(this.data);
+  SettingsPage(this.data);
   @override
-  _PageOneState createState() => _PageOneState(this.data);
+  _SettingsPageState createState() => _SettingsPageState(this.data);
 }
 
-class _PageOneState extends State<PageOne> {
+class _SettingsPageState extends State<SettingsPage> {
   var data;
-  _PageOneState(this.data);
+  _SettingsPageState(this.data);
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-  _showSnackbar(String textForSnackbar) {
-    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
-    _globalKey.currentState.showSnackBar(_mySnackbar);
-  }
 
   _showToast(String textToast) {
     Fluttertoast.showToast(
@@ -58,7 +54,7 @@ class _PageOneState extends State<PageOne> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('সেটিংস'),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
@@ -73,43 +69,22 @@ class _PageOneState extends State<PageOne> {
               _showToast("Settings saved!");
               Navigator.pop(context, [userNameController.text, userDesigController.text, userOrgController.text]);
             },
-            tooltip: "Save",
+            tooltip: "দাখিল করুন",
           ),
         ],
       ),
       body: ListView(children: <Widget>[
-        SizedBox(height: 5,),
+        SizedBox(height: 10,),
+        Text("সেটিংস", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
+        SizedBox(height: 3,),
+        Divider(),
         Column(children: <Widget>[
-          SizedBox(height: 5,),
-          Text("User Details", style: TextStyle(color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),),
-          SizedBox(height: 5,),
-          Divider(color: Colors.grey,),
           Container(
             margin: EdgeInsets.all(10),
             child: TextField(
               controller: userNameController,
               decoration: InputDecoration(
-                labelText: "Name",
-              ),
-              onChanged: (String str) {},
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextField(
-              controller: userDesigController,
-              decoration: InputDecoration(
-                labelText: "Designation",
-              ),
-              onChanged: (String str) {},
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            child: TextField(
-              controller: userOrgController,
-              decoration: InputDecoration(
-                labelText: "Organization",
+                labelText: "ব্যবহারকারীর নাম",
               ),
               onChanged: (String str) {},
             ),

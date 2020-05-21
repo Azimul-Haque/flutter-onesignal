@@ -18,8 +18,7 @@ import 'package:project1/pages/ammendments.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
 
-import 'package:project1/pages/page1.dart';
-
+import 'package:project1/pages/settings.dart';
 import 'globals.dart';
 
 void main() {
@@ -104,6 +103,9 @@ class _HomePageState extends State<HomePage>
   //     });
   //   }
   // }
+  var userName = '';
+  var userDesig = '';
+  var userOrg = '';
   _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String spname = (prefs.getString('userName') ?? 'N/A');
@@ -292,26 +294,26 @@ class _HomePageState extends State<HomePage>
           Image.asset("assets/images/drawer.jpg"),
           Positioned(
             left: 30,
-            bottom: 65,
+            bottom: 70,
             child: Container(
               height: 70, 
               width: 70,
               decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(50.0),
-                child: Image.asset("assets/images/test1.jpg"),
+                child: Image.asset("assets/images/withouttext.png"),
               ),
             ), 
           ),
           Positioned(
             left: 30,
-            bottom: 45,
-            child: Text(username, style: TextStyle(color: Colors.white, fontSize: 15)),
+            bottom: 40,
+            child: Text('BCS সংবিধান', style: TextStyle(color: Colors.white, fontSize: 16)),
           ),
           Positioned(
             left: 30,
-            bottom: 30,
-            child: Text(userdesig + ", " + userorg, style: TextStyle(color: Colors.white70, fontSize: 12)),
+            bottom: 25,
+            child: Text(username, style: TextStyle(color: Colors.white70, fontSize: 13)),
           ),
           Positioned(
             right: 3,
@@ -343,7 +345,7 @@ class _HomePageState extends State<HomePage>
           title: Text("সেটিংস"),
           onTap: (){
             Navigator.pop(context);
-            Route route = MaterialPageRoute(builder: (context) => PageOne(null));
+            Route route = MaterialPageRoute(builder: (context) => SettingsPage(null));
             Navigator.push(context, route).then((value) {
               setState(() {
                 userName = value[0];
@@ -450,7 +452,9 @@ class _HomePageState extends State<HomePage>
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    
+                  },
                 borderRadius: BorderRadius.circular(20),
                 ),
               ),
@@ -478,16 +482,7 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-
-  void configOneSignal() {
-    OneSignal.shared.init("5fd2b20d-d0d7-496d-b6fc-d211fef5e34e");
-    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
-    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
-      Navigator.push(context, route);
-    });
-  }
-
+  
   showAlertDialog(BuildContext context, String msg) {
     // set up the button
     Widget okButton = FlatButton(
@@ -521,5 +516,15 @@ class _HomePageState extends State<HomePage>
       // pillColor: Colors.red,
       // backgroundColor: Colors.yellow,
     );
+  }
+
+  // onesignal configuration
+  void configOneSignal() {
+    OneSignal.shared.init("d5202a9d-fc79-4e35-990c-bfc18333fafa");
+    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
+      Navigator.push(context, route);
+    });
   }
 }
