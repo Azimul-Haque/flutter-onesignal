@@ -68,7 +68,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
                           lineWidth: 5.0,
                           animation: true,
                           animationDuration: 1200,
-                          percent: data[4]/data[0].length,
+                          percent: (data[4]/data[0].length >= 0) ? data[4]/data[0].length : 0,
                           center: new Text(
                             ((data[4]/data[0].length) * 100).toStringAsFixed(2) + '%',
                             style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),

@@ -33,6 +33,7 @@ class _ExamsPageState extends State<ExamsPage> {
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
     var newexans = await _examHelper.getAllExams();
+    newexans = newexans.reversed.toList();
     setState(() {
       exams = newexans;
       isLoading = false;
@@ -99,10 +100,10 @@ class _ExamsPageState extends State<ExamsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(DateFormat('MMMM d, y kk:mm a').format(DateTime.now())),
+                            Text(DateFormat(' d, y kk:mm a').parse(exams[index].createdat).toString()),
                             Text('মোট প্রশ্নঃ ' + exams[index].totalqstn.toString() + 'টি, সময়ঃ ' + exams[index].duration.toString() + ' মিনিট'),
-                            Text('উত্তর প্রদানঃ ' + (data[2] + data[3]).toString() + 'টি, সঠিকঃ ' + data[2].toString() + 'টি, ভুলঃ ' + data[3].toString() + 'টি'),
-                            Text('প্রাপ্ত নম্বরঃ ' + data[4].toString() + ' / ' + data[0].length.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                            Text('উত্তর প্রদানঃ ' + (exams[index].rightanswer + exams[index].wronganswer).toString() + 'টি, সঠিকঃ ' + exams[index].rightanswer.toString() + 'টি, ভুলঃ ' + exams[index].wronganswer.toString() + 'টি'),
+                            Text('প্রাপ্ত নম্বরঃ ' + (exams[index].rightanswer - (exams[index].wronganswer * 0.5)).toString() + ' / ' + exams[index].totalqstn.toString(), style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
                           ]
                         ),
                       ),
@@ -116,9 +117,9 @@ class _ExamsPageState extends State<ExamsPage> {
                               lineWidth: 5.0,
                               animation: true,
                               animationDuration: 1200,
-                              percent: data[4]/data[0].length,
+                              percent: (exams[index].rightanswer/exams[index].totalqstn >= 0) ? exams[index].rightanswer/exams[index].totalqstn : 0,
                               center: new Text(
-                                ((data[4]/data[0].length) * 100).toStringAsFixed(2) + '%',
+                                ((exams[index].rightanswer/exams[index].totalqstn) * 100).toStringAsFixed(2) + '%',
                                 style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
                               ),
                               circularStrokeCap: CircularStrokeCap.round,
