@@ -15,6 +15,7 @@ import 'package:project1/pages/qstnandans.dart';
 import 'package:project1/pages/history.dart';
 import 'package:project1/pages/exam.dart';
 import 'package:project1/pages/ammendments.dart';
+import 'package:project1/pages/exams.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/notification.dart';
 
@@ -32,11 +33,12 @@ void main() {
     routes: {
       '/': (context) => HomePage(),
       '/formpage': (context) => FormPage(),
+      '/qstnanser': (context) => QuestionAnswerPage(),
       '/constitution': (context) => ConstituionPage(),
       '/history': (context) => HistoryPage(),
       '/exam': (context) => ExamPage(),
       '/ammendments': (context) => AmmendmentsPage(),
-      '/qstnanser': (context) => QuestionAnswerPage(),
+      '/exams': (context) => ExamsPage(),
     },
   );
   return runApp(materialApp);
@@ -276,7 +278,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 10, right: 10),
-                    child: _homeCard("qstnbank.png", "ফলাফলসমূহ (আসছে)", "আপনার পুর্ববর্তী পরীক্ষাসমূহ", 'N/A'),
+                    child: _homeCard("qstnbank.png", "ফলাফলসমূহ", "আপনার পুর্ববর্তী পরীক্ষাসমূহ", '/exams'),
                   ),
                 ),
               ],
@@ -453,7 +455,7 @@ class _HomePageState extends State<HomePage>
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                    
+
                   },
                 borderRadius: BorderRadius.circular(20),
                 ),

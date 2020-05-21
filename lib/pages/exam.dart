@@ -4,6 +4,7 @@ import 'dart:async';
 
 
 import 'package:project1/models/QuestionsModel.dart';
+import 'package:project1/models/ExamModel.dart';
 import 'package:project1/pages/examresult.dart';
 
 class ExamPage extends StatefulWidget {
@@ -34,6 +35,9 @@ class _ExamPageState extends State<ExamPage> {
   int rightanswer = 0;
   int wronganswer = 0;
 
+  ExamHelper _examHelper;
+  ExamModel currentExam;
+
   void _startTimer(tmrdrtn) {
     setState(() {
       _counter = int.tryParse(tmrdrtn) * 60; // convert into seconds
@@ -51,6 +55,7 @@ class _ExamPageState extends State<ExamPage> {
 
           // open new page
           var totalmarks = rightanswer - wronganswer * 0.5;
+          _insertExam(questions.length, duration, rightanswer, wronganswer);
           Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
           Navigator.push(context, route);
         }
@@ -95,15 +100,19 @@ class _ExamPageState extends State<ExamPage> {
     }
   }
 
+  _insertExam(totalqstn, duration, rightanswer, wronganswer) {
+    currentExam = ExamModel(totalqstn: totalqstn, duration: int.parse(duration), rightanswer: rightanswer, wronganswer: wronganswer, createdat: DateTime.now().toString());
+    _examHelper.insertExam(currentExam);
+    print("DB insertion done");
+  }
+
   @override
   void initState() {
     super.initState();
     showExamDialog();
     _questionHelper = QuestionHelper();
     isLoading = true;
-    // _startTimer('20');
-    // _loadDB('3', '20');
-    
+    _examHelper = ExamHelper();
   }
 
   @override
@@ -267,6 +276,7 @@ class _ExamPageState extends State<ExamPage> {
             // open new page
             if(questions.length > 0) {
               var totalmarks = rightanswer - wronganswer * 0.5;
+              _insertExam(questions.length, duration, rightanswer, wronganswer);
               Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
               Navigator.push(context, route);
             }

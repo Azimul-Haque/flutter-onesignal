@@ -31,10 +31,10 @@ class ExamModel {
   }
 }
 
-class QuestionHelper{
+class ExamHelper{
   Database db;
 
-  QuestionHelper(){
+  ExamHelper(){
     initDatabase();
   }
 
