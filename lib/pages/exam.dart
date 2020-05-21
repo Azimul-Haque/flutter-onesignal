@@ -130,10 +130,7 @@ class _ExamPageState extends State<ExamPage> {
             IconButton(
               icon: Icon(Icons.check), 
               onPressed: () async{
-                if (_timer != null) {
-                  showAlertDialog();
-                  // _timer.cancel();
-                }
+                showAlertDialog();
                 // setState(() {
                 //   // formattedtime = '00:00:00';
                 // });
@@ -270,9 +267,11 @@ class _ExamPageState extends State<ExamPage> {
             Navigator.pop(context); // close the page
 
             // open new page
-            var totalmarks = rightanswer - wronganswer * 0.5;
-            Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
-            Navigator.push(context, route);
+            if(questions.length > 0) {
+              var totalmarks = rightanswer - wronganswer * 0.5;
+              Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks]));
+              Navigator.push(context, route);
+            }
           },
         ),
         RaisedButton(

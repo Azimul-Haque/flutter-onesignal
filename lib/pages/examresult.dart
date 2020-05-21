@@ -65,7 +65,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
         Row(children: <Widget>[
           Expanded(
             child: Card(
-              color: Colors.green[100],
+              color: Colors.blue[50],
               child: Padding(
                 padding: EdgeInsets.all(15),
                 child: Row(children: <Widget>[
@@ -92,11 +92,11 @@ class _ExamResultPageState extends State<ExamResultPage> {
                           animationDuration: 1200,
                           percent: data[4]/data[0].length,
                           center: new Text(
-                            ((data[4]/data[0].length) * 100).toString() + '%',
+                            ((data[4]/data[0].length) * 100).toStringAsFixed(2) + '%',
                             style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Colors.purple,
+                          progressColor: Colors.purple[700],
                         ),
                       ],
                     ),
@@ -108,6 +108,8 @@ class _ExamResultPageState extends State<ExamResultPage> {
             ),
           ),
         ],),
+        SizedBox(height: 5,),
+        Text('সঠিক উত্তরসমূহ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
         Expanded(
           child: ListView.builder(
             itemCount: data[0].length,
@@ -118,11 +120,11 @@ class _ExamResultPageState extends State<ExamResultPage> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: 
-                    // createRadioListOptions(data[0][index]),
-                    <Widget>[
-                      SizedBox(height: 10,),
-                      Text('সঠিক উত্তরঃ ' + data[0][index].answer),
-                    ],
+                    createRadioListOptions(data[0][index]),
+                    // <Widget>[
+                    //   SizedBox(height: 10,),
+                    //   Text('সঠিক উত্তরঃ ' + data[0][index].answer),
+                    // ],
                   ),
                 ),
                 margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
