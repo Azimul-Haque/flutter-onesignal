@@ -76,6 +76,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.5"
+  flutter_share:
+    dependency: "direct main"
+    description:
+      name: flutter_share
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -184,13 +191,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-  share:
-    dependency: "direct main"
-    description:
-      name: share
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.4+2"
   shared_preferences:
     dependency: "direct main"
     description:

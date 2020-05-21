@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
-import 'package:share/share.dart';
+import 'package:flutter_share/flutter_share.dart';
 // import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
@@ -64,6 +64,13 @@ class _HomePageState extends State<HomePage>
       people = json.decode(jsonDataText);
     });
     return 'success';
+  }
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'শেয়ার করুন',
+        text: 'অ্যাপটি শেয়ার করুন!',
+        linkUrl: 'https://orbachinujbuk.com/',
+        chooserTitle: 'অ্যাপটি শেয়ার করুন!');
   }
 
   _showSnackbar(String textForSnackbar) {
@@ -134,7 +141,7 @@ class _HomePageState extends State<HomePage>
                   break;
                 case 'rate':
                   // if (await canLaunch("https://orbachinujbuk.com")) {
-                  //   await launch("https://orbachinujbuk.com");
+                  //   await launch("https://play.google.com/store/apps/details?id=com.madladsInc.boi_mela");
                   // } else {
                   //   throw 'Could not launch!';
                   // }
@@ -267,7 +274,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 10, right: 10),
-                    child: _homeCard("qstnbank.png", "ফলাফল", "আপনার পুর্ববর্তী পরীক্ষাসমূহ", 'N/A'),
+                    child: _homeCard("qstnbank.png", "ফলাফলসমূহ (আসছে)", "আপনার পুর্ববর্তী পরীক্ষাসমূহ", 'N/A'),
                   ),
                 ),
               ],
@@ -359,21 +366,13 @@ class _HomePageState extends State<HomePage>
           title: Text("শেয়ার করুন"),
           onTap: (){
             Navigator.pop(context);
-            Builder(
-              builder: (BuildContext context) {
-                return RaisedButton(
-                  child: const Text('Share'),
-                  onPressed: () {
-                    final RenderBox box = context.findRenderObject();
-                    Share.share("https://orbachinujbuk.com/",
-                        subject: "অ্যাপটি শেয়ার করুন!",
-                        sharePositionOrigin:
-                            box.localToGlobal(Offset.zero) &
-                                box.size);
-                  }, 
-                );
-              },
-            );
+            share();
+            // final RenderBox box = context.findRenderObject();
+            // Share.share("https://orbachinujbuk.com/",
+            //   subject: "অ্যাপটি শেয়ার করুন!",
+            //   sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
+            // );
+            // Share.share('check out my website https://example.com', subject: 'Look what I made!');
           },
         ),
       ],)
