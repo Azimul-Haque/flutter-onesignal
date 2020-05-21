@@ -1,3 +1,4 @@
+import 'package:project1/models/QuestionsModel.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
@@ -67,7 +68,7 @@ class QuestionHelper{
   Future<List<ExamModel>> getAllExams () async{
     List<Map<String, dynamic>> exams = await db.query(tableName);
     return List.generate(exams.length, (i){
-      return ExamModel(id: exams[i][columnId], question: exams[i][columnQuestion], answer: exams[i][columnAnswer], incanswer: exams[i][columnIncAnswers]);
+      return ExamModel(id: exams[i][columnId], totalqstn: exams[i][columnTotalQstn], duration: exams[i][columnDuration], rightanswer: exams[i][columnRightAnswer], wronganswer: exams[i][columnWrongAnswer], createdat: exams[i][columnCreatedAt]);
     });
   }
 
