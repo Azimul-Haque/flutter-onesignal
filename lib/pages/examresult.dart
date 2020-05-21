@@ -46,20 +46,57 @@ class _ExamResultPageState extends State<ExamResultPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("পরীক্ষার ফলাফল"),
-        // automaticallyImplyLeading: false,
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.check), 
-        //     onPressed: () async{
-        //       Navigator.pop(context);
-        //     },
-        //     tooltip: "Ok",
-        //   ),
-        // ],
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.check), 
+            onPressed: () async{
+              Navigator.pop(context);
+            },
+            tooltip: "ঠিক আছে",
+          ),
+        ],
         flexibleSpace: appBarStyle(),
       ),
       body: Column(children: <Widget>[
         SizedBox(height: 5,),
+        Row(children: <Widget>[
+          Expanded(
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('মোট প্রশ্নঃ 20টি, সময়ঃ 5 মিনিট'),
+                    Text('উত্তর প্রদানঃ 18টি, সঠিকঃ 15টি, ভুলঃ 3টি'),
+                    Text('প্রাপ্ত নম্বরঃ 13.5', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                    // CircularPercentIndicator(
+                    //   radius: 120.0,
+                    //   lineWidth: 13.0,
+                    //   animation: true,
+                    //   percent: 0.7,
+                    //   center: new Text(
+                    //     "70.0%",
+                    //     style:
+                    //         new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                    //   ),
+                    //   footer: new Text(
+                    //     "Sales this week",
+                    //     style:
+                    //         new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
+                    //   ),
+                    //   circularStrokeCap: CircularStrokeCap.round,
+                    //   progressColor: Colors.purple,
+                    // ),
+                  ]
+                ),
+              ),
+              margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+              elevation: 2,
+            ),
+          ),
+        ],),
         Expanded(
           child: ListView.builder(
             itemCount: questions.length,

@@ -99,7 +99,7 @@ class _ExamPageState extends State<ExamPage> {
     _questionHelper = QuestionHelper();
     isLoading = true;
     // _startTimer('20');
-    _loadDB('3', '1');
+    _loadDB('3', '20');
     
   }
 
