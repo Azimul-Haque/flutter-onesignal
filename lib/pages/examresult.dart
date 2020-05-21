@@ -38,19 +38,14 @@ class _ExamResultPageState extends State<ExamResultPage> {
   @override
   void initState() {
     super.initState();
-    // showExamDialog();
-    _questionHelper = QuestionHelper();
-    isLoading = true;
-    // _startTimer('20');
     _loadOptions(questions);
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("সংবিধান"),
+        title: Text("পরীক্ষার ফলাফল"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(

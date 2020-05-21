@@ -43,7 +43,11 @@ class _ExamPageState extends State<ExamPage> {
           _counter--;
         } else {
           _timer.cancel();
-          Navigator.pop(context);
+          Navigator.pop(context); // close exam page
+
+          // open new page
+          Route route = MaterialPageRoute(builder: (context) => ExamResultPage(questions));
+          Navigator.push(context, route);
         }
       });
       var now = Duration(seconds: _counter);
@@ -95,7 +99,7 @@ class _ExamPageState extends State<ExamPage> {
     _questionHelper = QuestionHelper();
     isLoading = true;
     // _startTimer('20');
-    _loadDB('3', '20');
+    _loadDB('3', '1');
     
   }
 
