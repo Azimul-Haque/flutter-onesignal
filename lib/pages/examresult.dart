@@ -5,15 +5,15 @@ import '../globals.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ExamResultPage extends StatefulWidget {
-  var questions;
-  ExamResultPage(this.questions);
+  var data;
+  ExamResultPage(this.data);
   @override
-  _ExamResultPageState createState() => _ExamResultPageState(this.questions);
+  _ExamResultPageState createState() => _ExamResultPageState(this.data);
 }
 
 class _ExamResultPageState extends State<ExamResultPage> {
-  var questions;
-  _ExamResultPageState(this.questions);
+  var data;
+  _ExamResultPageState(this.data);
 
   Map myOptionsMap = {};
   Map myOptionsListMap = {};
@@ -40,7 +40,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
   @override
   void initState() {
     super.initState();
-    _loadOptions(questions);
+    _loadOptions(data[0]);
   }
 
   @override
@@ -73,8 +73,8 @@ class _ExamResultPageState extends State<ExamResultPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('মোট প্রশ্নঃ 20টি, সময়ঃ 5 মিনিট'),
-                        Text('উত্তর প্রদানঃ 18টি, সঠিকঃ 15টি, ভুলঃ 3টি'),
+                        Text('মোট প্রশ্নঃ ' + data[0].length.toString() + 'টি, সময়ঃ ' + data[1].toString() + ' মিনিট'),
+                        Text('উত্তর প্রদানঃ ' + (data[2] + data[3]).toString() + 'টি, সঠিকঃ ' + data[2].toString() + 'টি, ভুলঃ ' + data[3].toString() + 'টি'),
                         Text('প্রাপ্ত নম্বরঃ 13.5', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                       ]
                     ),
@@ -109,15 +109,14 @@ class _ExamResultPageState extends State<ExamResultPage> {
         ],),
         Expanded(
           child: ListView.builder(
-            itemCount: questions.length,
+            itemCount: data[0].length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 child: ListTile(
-                  // leading: CircleAvatar(child: Text(questions[index].question[0]),),
-                  title: Text(questions[index].question),
+                  title: Text(data[0][index].question),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: createRadioListOptions(questions[index]),
+                    children: createRadioListOptions(data[0][index]),
                     // <Widget>[
                     //   SizedBox(height: 10,),
                     //   Text(test),
@@ -138,12 +137,6 @@ class _ExamResultPageState extends State<ExamResultPage> {
 
   List<Widget> createRadioListOptions(_qstn) {
     List<Widget> options = [];
-    // List tempoptions = [];
-    // tempoptions.add(_qstn.answer);
-    // tempoptions.add(_qstn.incanswer.split(',')[0]);
-    // tempoptions.add(_qstn.incanswer.split(',')[1]);
-    // tempoptions.add(_qstn.incanswer.split(',')[2]);
-    // tempoptions.shuffle();
     
     for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
       options.add(
@@ -156,7 +149,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
               value: myOptionsListMap['list' + _qstn.id.toString()][i],
               title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
               onChanged: (val) {
-                
+
               },
               activeColor: Colors.green,
             ),

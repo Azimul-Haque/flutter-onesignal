@@ -22,7 +22,8 @@ class _ExamPageState extends State<ExamPage> {
   var qstnAmntController = TextEditingController();
   var durationController = TextEditingController();
 
-  var questionamnt, duration;
+  var questionamnt = '0';
+  var duration = '0';
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
@@ -268,7 +269,7 @@ class _ExamPageState extends State<ExamPage> {
             Navigator.pop(context); // close the page
 
             // open new page
-            Route route = MaterialPageRoute(builder: (context) => ExamResultPage(questions));
+            Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer]));
             Navigator.push(context, route);
           },
         ),
@@ -293,14 +294,7 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   List<Widget> createRadioListOptions(_qstn) {
-    List<Widget> options = [];
-    // List tempoptions = [];
-    // tempoptions.add(_qstn.answer);
-    // tempoptions.add(_qstn.incanswer.split(',')[0]);
-    // tempoptions.add(_qstn.incanswer.split(',')[1]);
-    // tempoptions.add(_qstn.incanswer.split(',')[2]);
-    // tempoptions.shuffle();
-    
+    List<Widget> options = [];    
     for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
       options.add(
         Row(
