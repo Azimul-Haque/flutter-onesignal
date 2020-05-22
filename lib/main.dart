@@ -19,6 +19,7 @@ import 'package:project1/pages/exams.dart';
 import 'package:project1/pages/form.dart';
 import 'package:project1/pages/favorites.dart';
 import 'package:project1/pages/notification.dart';
+import 'package:project1/pages/updateqstns.dart';
 
 import 'package:project1/pages/settings.dart';
 import 'globals.dart';
@@ -552,7 +553,8 @@ class _HomePageState extends State<HomePage>
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
       if(result.notification.payload.additionalData.values.first == 'update') {
-        print("this is an update");
+        Route route = MaterialPageRoute(builder: (context) => UpdateQstnPage());
+        Navigator.push(context, route);
       } else {
         Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
         Navigator.push(context, route);
