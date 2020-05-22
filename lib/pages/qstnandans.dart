@@ -281,9 +281,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         var body = json.decode(response.body);
         if(body["success"] == true) {
           // print(body);
-          Navigator.of(context, rootNavigator: true).pop();
-          this._showToast('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
-          Navigator.pop(context);
+          // Navigator.of(context, rootNavigator: true).pop();
+          this._showSnackbar('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
         }
       } else {
         Navigator.of(context, rootNavigator: true).pop();
@@ -291,7 +290,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       }
     } catch (_) {
       // print(_);
-      Navigator.of(context, rootNavigator: true).pop();
+      // Navigator.of(context, rootNavigator: true).pop();
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
   }
