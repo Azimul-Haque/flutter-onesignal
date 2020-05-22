@@ -17,6 +17,7 @@ import 'package:project1/pages/exam.dart';
 import 'package:project1/pages/ammendments.dart';
 import 'package:project1/pages/exams.dart';
 import 'package:project1/pages/form.dart';
+import 'package:project1/pages/favorites.dart';
 import 'package:project1/pages/notification.dart';
 
 import 'package:project1/pages/settings.dart';
@@ -33,6 +34,7 @@ void main() {
     routes: {
       '/': (context) => HomePage(),
       '/formpage': (context) => FormPage(),
+      '/favorites': (context) => FavoritesPage(),
       '/qstnanser': (context) => QuestionAnswerPage(),
       '/constitution': (context) => ConstituionPage(),
       '/history': (context) => HistoryPage(),
@@ -339,6 +341,16 @@ class _HomePageState extends State<HomePage>
             // Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             // Navigator.push(context, route);
             Navigator.pushNamed(context, '/formpage');
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.favorite, color: Colors.black87,),
+          title: Text("প্রিয় তালিকা"),
+          onTap: (){
+            Navigator.pop(context);
+            // Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
+            // Navigator.push(context, route);
+            Navigator.pushNamed(context, '/favorites');
           },
         ),
         Divider(color: Colors.black26,),

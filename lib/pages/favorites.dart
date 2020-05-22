@@ -5,13 +5,13 @@ import 'package:http/http.dart' as http;
 
 import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
-class QuestionAnswerPage extends StatefulWidget {
-  QuestionAnswerPage({Key key}) : super(key: key);
+class FavoritesPage extends StatefulWidget {
+  FavoritesPage({Key key}) : super(key: key);
   @override
-  _QuestionAnswerPageState createState() => _QuestionAnswerPageState();
+  _FavoritesPageState createState() => _FavoritesPageState();
 }
 
-class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
+class _FavoritesPageState extends State<FavoritesPage> {
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
 
@@ -89,7 +89,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
-        title: Text("প্রশ্নোত্তর"),
+        title: Text("প্রিয় তালিকা"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(
@@ -160,14 +160,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].question),
                     subtitle: Text(questions[index].answer),
-                    trailing: Wrap(
-                      spacing: 12, // space between two icons
-                      children: <Widget>[
-                        Icon(Icons.call), // icon-1
-                        // listPopUpMenu(questions[index]),
-                      ],
-                    ),
-                    // listPopUpMenu(questions[index]),
+                    trailing: listPopUpMenu(questions[index]),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
                     //   // Navigator.push(context, route);
