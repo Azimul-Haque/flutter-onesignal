@@ -331,11 +331,13 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   void makeFavorite(QuestionsModel question) {
     _questionHelper.makeFav(question);
     _showSnackbar("প্রিয় তালিকায় যোগ করা হয়েছে!");
+    this._loadDB();
   }
 
   void makeUnfavorite(QuestionsModel question) {
     _questionHelper.makeUnfav(question);
     _showSnackbar("প্রিয় তালিকা থেকে অপসারণ করা হয়েছে!");
+    this._loadDB();
   }
 
 }
