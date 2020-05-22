@@ -20,6 +20,9 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   List syncquestions = [];
   QuestionsModel currentQuestion;
   bool isLoading;
+
+  var qstnReportController = TextEditingController();
+
   Future<Null> refreshList() async {
     setState(() {
       isLoading = true;
@@ -185,7 +188,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       onSelected: (value) async{
         switch (value) {
           case 'report':
-            print(question.question);
+            qstnReportController.clear();
+            showReportDialog(question);
             break;
           case 'makefavorite':
           
@@ -207,41 +211,39 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       },
     );
   }
-
   showReportDialog(QuestionsModel question) async{
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('প্রশ্নটি রিপোর্ট করুন')),
       content: Container(
+        height: 150,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(question.question),
+            Text(question.answer),
             TextField(
-              controller: qstnAmntController,
+              controller: qstnReportController,
               decoration: InputDecoration(
-                labelText: "প্রশ্নের সংখ্যা",
+                labelText: "ব্যাখ্যা/ মন্তব্য (ঐচ্ছিক)",
               ),
-              validator: (value) {
-                if(value.length == 0) {
-                  return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
-                } else if(int.tryParse(value) <= 0) {
-                  return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
-                } else if(int.tryParse(value) > 50) {
-                  return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
-                }
-                return null;
-              },
-              onSaved: (value) {
-                this.questionamnt = value;
-              },
+              onChanged: (String str) {},
             ),
           ],
         ),
       ),
       actions: <Widget>[
         RaisedButton(
-          child: Text("পরীক্ষা শুরু করুন"),
+          child: Text("রিপোর্ট করুন"),
           color: Colors.green,
           onPressed: () {
-            handleSubmit();
+            handleReportSubmit(question);
+          },
+        ),
+        RaisedButton(
+          child: Text("ফিরে যান"),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.of(context).pop();
           },
         ),
       ],
@@ -255,6 +257,43 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         return alert;
       },
     );
+  }
+  handleReportSubmit(QuestionsModel question) async{
+    print(question.question);
+    print(qstnReportController.text);
+    var data = {
+      'question': question.question,
+      'answer': question.answer,
+      'report': qstnReportController.text ?? 'N/A',
+    };
+    try {
+      FocusScope.of(context).unfocus(); // hide the keyboard
+      http.Response response = await http.post(
+        'https://killa.com.bd/onesignal/post/question/api',
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=utf-8',
+          'Accept' : 'application/json',
+        },
+        body: jsonEncode(data),
+      );
+      print(response.statusCode);
+      if(response.statusCode == 200) {
+        var body = json.decode(response.body);
+        if(body["success"] == true) {
+          // print(body);
+          Navigator.of(context, rootNavigator: true).pop();
+          this._showToast('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
+          Navigator.pop(context);
+        }
+      } else {
+        Navigator.of(context, rootNavigator: true).pop();
+        _showSnackbar("সমস্যা হচ্ছে, আবার চেষ্টা করুন।");
+      }
+    } catch (_) {
+      // print(_);
+      Navigator.of(context, rootNavigator: true).pop();
+      _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
+    }
   }
 
 }
