@@ -259,8 +259,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     );
   }
   handleReportSubmit(QuestionsModel question) async{
-    print(question.question);
-    print(qstnReportController.text);
+    showLoadingDialog(context);
     var data = {
       'question': question.question,
       'answer': question.answer,
@@ -269,7 +268,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        'https://killa.com.bd/onesignal/post/question/api',
+        'https://killa.com.bd/onesignal/report/question/api',
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept' : 'application/json',
@@ -281,18 +280,44 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         var body = json.decode(response.body);
         if(body["success"] == true) {
           // print(body);
-          // Navigator.of(context, rootNavigator: true).pop();
-          this._showSnackbar('আপনার প্রশ্ন সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
+          Navigator.of(context, rootNavigator: true).pop();
+          Navigator.of(context, rootNavigator: true).pop();
+          this._showSnackbar('আপনার রিপোর্ট সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
         }
       } else {
+        Navigator.of(context, rootNavigator: true).pop();
         Navigator.of(context, rootNavigator: true).pop();
         _showSnackbar("সমস্যা হচ্ছে, আবার চেষ্টা করুন।");
       }
     } catch (_) {
       // print(_);
-      // Navigator.of(context, rootNavigator: true).pop();
+      Navigator.of(context, rootNavigator: true).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
+  }
+
+  showLoadingDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('সার্ভারে পাঠানো হচ্ছে...')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 }
