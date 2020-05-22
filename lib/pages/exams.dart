@@ -38,6 +38,9 @@ class _ExamsPageState extends State<ExamsPage> {
       exams = newexans;
       isLoading = false;
     });
+    if(exams.length == 0) {
+      _showSnackbar("আপনি এখনও কোন পরীক্ষা দেননি!");
+    }
   }
 
   @override

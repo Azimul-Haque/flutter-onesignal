@@ -71,7 +71,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
     var newquestions = await _questionHelper.getAllQuestion();
     setState(() {
-      questions = newquestions;
+      questions = newquestions.reversed.toList();
       isLoading = false;
     });
     if(questions.length == 0) {
