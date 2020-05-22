@@ -551,8 +551,12 @@ class _HomePageState extends State<HomePage>
     OneSignal.shared.init("d5202a9d-fc79-4e35-990c-bfc18333fafa");
     OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
-      Navigator.push(context, route);
+      if(result.notification.payload.additionalData.values.first == 'update') {
+        print("this is an update");
+      } else {
+        Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
+        Navigator.push(context, route);
+      }
     });
   }
 }
