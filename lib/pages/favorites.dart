@@ -73,7 +73,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     });
     if(questions.length == 0) {
       // _getSynced(questions.length);
-      _showSnackbar("আপনার প্রিয় তালিকা খালি! প্রশ্নোত্তর পাতায় গিয়ে প্রিত তালিকায় যোগ করুন।");
+      _showSnackbar("আপনার প্রিয় তালিকা খালি! প্রশ্নোত্তর পাতায় গিয়ে প্রিয় তালিকায় যোগ করুন।");
     }
   }
 
