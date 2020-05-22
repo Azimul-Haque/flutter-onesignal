@@ -192,7 +192,10 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             showReportDialog(question);
             break;
           case 'makefavorite':
-          
+            makeFavorite(question);
+            break;
+          case 'makeunfavorite':
+            makeUnfavorite(question);
             break;
           default:
         }
@@ -204,8 +207,13 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
           ,),
           PopupMenuItem(
-            value: "makefavorite", 
-            child: Row(children: <Widget>[Icon(Icons.favorite_border, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকায় যোগ করুন")],)
+            value: (question.isfav == 0) ? "makefavorite" : "makeunfavorite", 
+            child: 
+              (question.isfav == 0)
+              ? 
+                Row(children: <Widget>[Icon(Icons.favorite_border, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকায় যোগ করুন")],)
+              :
+                Row(children: <Widget>[Icon(Icons.remove_circle_outline, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকা থেকে অপসারণ করুন")],)
           ,),
         ];
       },
@@ -318,6 +326,16 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         return alert;
       },
     );
+  }
+
+  void makeFavorite(QuestionsModel question) {
+    _questionHelper.makeFav(question);
+    _showSnackbar("প্রিয় তালিকায় যোগ করা হয়েছে!");
+  }
+
+  void makeUnfavorite(QuestionsModel question) {
+    _questionHelper.makeUnfav(question);
+    _showSnackbar("প্রিয় তালিকা থেকে অপসারণ করা হয়েছে!");
   }
 
 }

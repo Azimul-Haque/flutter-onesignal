@@ -66,13 +66,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
   }
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
-    var newquestions = await _questionHelper.getSomeQuestions('5');
+    var newquestions = await _questionHelper.getFavQuestions();
     setState(() {
       questions = newquestions;
       isLoading = false;
     });
     if(questions.length == 0) {
-      _getSynced(questions.length);
+      // _getSynced(questions.length);
+      _showSnackbar("আপনার প্রিয় তালিকা খালি! প্রশ্নোত্তর পাতায় গিয়ে প্রিত তালিকায় যোগ করুন।");
     }
   }
 
@@ -187,8 +188,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
           case 'report':
 
             break;
-          case 'makefavorite':
-          
+          case 'makeunfavorite':
+            makeUnfavorite(question);
             break;
           default:
         }
@@ -200,11 +201,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
           //   child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
           // ,),
           PopupMenuItem(
-            value: "makefavorite", 
+            value: "makeunfavorite", 
             child: Row(children: <Widget>[Icon(Icons.remove_circle_outline, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকা থেকে অপসারণ করুণ")],)
           ,),
         ];
       },
     );
+  }
+  void makeUnfavorite(QuestionsModel question) {
+    _questionHelper.makeUnfav(question);
+    _showSnackbar("প্রিয় তালিকা থেকে অপসারণ করা হয়েছে!");
+    this._loadDB();
   }
 }
