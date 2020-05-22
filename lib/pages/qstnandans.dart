@@ -62,7 +62,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).ceil().toString() + "KB)");
       }
     } catch (_) {
-      print(_);
+      // print(_);
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
     _loadDB();
@@ -275,7 +275,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         },
         body: jsonEncode(data),
       );
-      print(response.statusCode);
+      // print(response.statusCode);
       if(response.statusCode == 200) {
         var body = json.decode(response.body);
         if(body["success"] == true) {

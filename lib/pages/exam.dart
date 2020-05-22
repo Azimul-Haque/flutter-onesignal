@@ -46,15 +46,12 @@ class _ExamPageState extends State<ExamPage> {
       _timer.cancel();
     }
     _timer = Timer.periodic(Duration(seconds: 1), (timer) { 
-      setState(()  {
-        if (_counter > 0) {
+      setState(() {
+        if (_counter > 1) {
           _counter--;
         } else {
           _timer.cancel();
-          showLoadingDialog();
-          Future.delayed(Duration(seconds: 1));
-          Navigator.of(context).pop(); // close the loading dialogue
-          Navigator.pop(context); // close exam page
+          Navigator.pop(context); // close exam page        
 
           // open new page
           var totalmarks = rightanswer - wronganswer * 0.5;
@@ -106,7 +103,7 @@ class _ExamPageState extends State<ExamPage> {
   _insertExam(totalqstn, duration, rightanswer, wronganswer) {
     currentExam = ExamModel(totalqstn: totalqstn, duration: int.parse(duration), rightanswer: rightanswer, wronganswer: wronganswer, createdat: DateTime.now().toString());
     _examHelper.insertExam(currentExam);
-    print("DB insertion done");
+    // print("DB insertion done");
   }
 
   @override
