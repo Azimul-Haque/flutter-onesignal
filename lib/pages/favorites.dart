@@ -66,7 +66,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   }
   _loadDB() async{
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
-    var newquestions = await _questionHelper.getAllQuestion();
+    var newquestions = await _questionHelper.getSomeQuestions('5');
     setState(() {
       questions = newquestions;
       isLoading = false;
@@ -115,13 +115,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
             },
             itemBuilder: (BuildContext context) {
               return [
-                PopupMenuItem(
-                  value: "sync", 
-                  child: Row(children: <Widget>[Icon(Icons.sync, color: Colors.black87,), SizedBox(width: 10,), Text("সার্ভারের সাথে Sync করুন")],)
-                ,),
+                // PopupMenuItem(
+                //   value: "sync", 
+                //   child: Row(children: <Widget>[Icon(Icons.sync, color: Colors.black87,), SizedBox(width: 10,), Text("সার্ভারের সাথে Sync করুন")],)
+                // ,),
                 PopupMenuItem(
                   value: "cleardb", 
-                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("মুছে দিন")],)
+                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("তালিকা মুছে দিন")],)
                 ,),
               ];
             },
@@ -195,13 +195,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
       },
       itemBuilder: (BuildContext context) {
         return [
-          PopupMenuItem(
-            value: "report", 
-            child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
-          ,),
+          // PopupMenuItem(
+          //   value: "report", 
+          //   child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
+          // ,),
           PopupMenuItem(
             value: "makefavorite", 
-            child: Row(children: <Widget>[Icon(Icons.favorite_border, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকায় যোগ করুন")],)
+            child: Row(children: <Widget>[Icon(Icons.remove_circle_outline, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকা থেকে অপসারণ করুণ")],)
           ,),
         ];
       },

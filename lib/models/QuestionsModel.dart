@@ -7,13 +7,15 @@ final String columnId = "id";
 final String columnQuestion = "question";
 final String columnAnswer = "answer";
 final String columnIncAnswers = "incanswer";
+final String columnIsFav = "isfav";
 class QuestionsModel {
   int id;
   final String question;
   final String answer;
   final String incanswer;
+  final int isfav;
 
-  QuestionsModel({this.id, this.question, this.answer, this.incanswer});
+  QuestionsModel({this.id, this.question, this.answer, this.incanswer, this.isfav});
 
   Map <String, dynamic> toMap() {
     return {
@@ -21,6 +23,7 @@ class QuestionsModel {
       columnQuestion: this.question,
       columnAnswer: this.answer,
       columnIncAnswers: this.incanswer,
+      columnIsFav: this.isfav,
     };
   }
 }
@@ -42,9 +45,9 @@ class QuestionHelper{
 
   initDatabase() async{
     db = await openDatabase(
-      join(await getDatabasesPath(), "questions22.db"),
+      join(await getDatabasesPath(), "questions23.db"),
       onCreate: (db, version){
-        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT)");
+        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0)");
       },
       version: 1
     );
@@ -61,14 +64,21 @@ class QuestionHelper{
   Future<List<QuestionsModel>> getAllQuestion () async{
     List<Map<String, dynamic>> questions = await db.query(tableName);
     return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers]);
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
     });
   }
 
   Future<List<QuestionsModel>> getSomeQuestions (String amount) async{
     List<Map<String, dynamic>> questions = await db.rawQuery("SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount, null);
     return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers]);
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
+    });
+  }
+
+  Future<List<QuestionsModel>> getFavQuestions () async{
+    List<Map<String, dynamic>> questions = await db.rawQuery("SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount, null);
+    return List.generate(questions.length, (i){
+      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
     });
   }
 }
