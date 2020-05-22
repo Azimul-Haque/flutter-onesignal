@@ -160,14 +160,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].question),
                     subtitle: Text(questions[index].answer),
-                    trailing: Wrap(
-                      spacing: 12, // space between two icons
-                      children: <Widget>[
-                        Icon(Icons.call), // icon-1
-                        // listPopUpMenu(questions[index]),
-                      ],
-                    ),
-                    // listPopUpMenu(questions[index]),
+                    trailing:  listPopUpMenu(questions[index]),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
                     //   // Navigator.push(context, route);
@@ -192,7 +185,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       onSelected: (value) async{
         switch (value) {
           case 'report':
-
+            print(question.question);
             break;
           case 'makefavorite':
           
@@ -214,4 +207,54 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       },
     );
   }
+
+  showReportDialog(QuestionsModel question) async{
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('প্রশ্নটি রিপোর্ট করুন')),
+      content: Container(
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: qstnAmntController,
+              decoration: InputDecoration(
+                labelText: "প্রশ্নের সংখ্যা",
+              ),
+              validator: (value) {
+                if(value.length == 0) {
+                  return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
+                } else if(int.tryParse(value) <= 0) {
+                  return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
+                } else if(int.tryParse(value) > 50) {
+                  return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
+                }
+                return null;
+              },
+              onSaved: (value) {
+                this.questionamnt = value;
+              },
+            ),
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        RaisedButton(
+          child: Text("পরীক্ষা শুরু করুন"),
+          color: Colors.green,
+          onPressed: () {
+            handleSubmit();
+          },
+        ),
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
