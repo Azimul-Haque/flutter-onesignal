@@ -280,8 +280,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         var body = json.decode(response.body);
         if(body["success"] == true) {
           // print(body);
-          Navigator.of(context, rootNavigator: true).pop();
-          Navigator.of(context, rootNavigator: true).pop();
+          Navigator.of(context, rootNavigator: true).pop(); // close the loading dialog
+          Navigator.of(context, rootNavigator: true).pop(); // close the popup dialogue
           this._showSnackbar('আপনার রিপোর্ট সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
         }
       } else {

@@ -46,11 +46,14 @@ class _ExamPageState extends State<ExamPage> {
       _timer.cancel();
     }
     _timer = Timer.periodic(Duration(seconds: 1), (timer) { 
-      setState(() {
+      setState(()  {
         if (_counter > 0) {
           _counter--;
         } else {
           _timer.cancel();
+          showLoadingDialog();
+          Future.delayed(Duration(seconds: 1));
+          Navigator.of(context).pop(); // close the loading dialogue
           Navigator.pop(context); // close exam page
 
           // open new page
@@ -267,14 +270,17 @@ class _ExamPageState extends State<ExamPage> {
         RaisedButton(
           child: Text("শেষ করুন"),
           color: Colors.green,
-          onPressed: () {
+          onPressed: () async{
             if (_timer != null) {
               _timer.cancel();
             }
             setState(() {
               formattedtime = '00:00:00';
             });
-            Navigator.of(context).pop(); // close the dialogue
+            showLoadingDialog();
+            await Future.delayed(Duration(seconds: 1));
+            Navigator.of(context).pop(); // close the loading dialogue
+            Navigator.of(context).pop(); // close the alert dialogue
             Navigator.pop(context); // close the page
 
             // open new page
@@ -294,6 +300,29 @@ class _ExamPageState extends State<ExamPage> {
           },
         ),
       ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  showLoadingDialog() {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('নম্বর হিসাব হচ্ছে...')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
     );
 
     // show the dialog

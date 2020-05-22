@@ -15,10 +15,12 @@ class _ExamResultPageState extends State<ExamResultPage> {
   var data;
   _ExamResultPageState(this.data);
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
