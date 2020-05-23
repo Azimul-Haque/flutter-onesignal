@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../globals.dart';
 import 'package:project1/pages/constitution/preamble.dart';
 import 'package:project1/pages/constitution/part1.dart';
+import 'package:project1/pages/constitution/part2.dart';
 
 class ConstituionPage extends StatelessWidget {
   @override
@@ -58,9 +59,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("রাষ্ট্র পরিচালনার মূলনীতি"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartTwo());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(220, 237, 200, 1.0),
@@ -73,9 +73,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("মৌলিক অধিকার"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(197, 225, 165, 1.0),
@@ -88,9 +87,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("নির্বাহী বিভাগ"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(174, 213, 129, 1.0),
@@ -103,9 +101,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("আইনসভা"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(156, 204, 101, 1.0),
@@ -118,9 +115,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("বিচারবিভাগ"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(139, 195, 74, 1.0),
@@ -133,9 +129,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("নির্বাচন"),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(124, 179, 69, 1.0),
@@ -148,9 +143,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("মহা হিসাব-নিরীক্ষক ও নিয়ন্ত্রক", style: TextStyle(color: Colors.white70),),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(104, 159, 56, 1.0),
@@ -163,9 +157,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("বাংলাদেশের কর্মবিভাগ", style: TextStyle(color: Colors.white70),),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(85, 139, 47, 1.0),
@@ -178,9 +171,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("সংবিধান-সংশোধন", style: TextStyle(color: Colors.white70),),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(51, 105, 30, 1.0),
@@ -193,9 +185,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("বিবিধ", style: TextStyle(color: Colors.white70),),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(27, 94, 32, 1.0),
@@ -208,9 +199,8 @@ class ConstituionPage extends StatelessWidget {
             subtitle: Text("৭ টি তফসিল", style: TextStyle(color: Colors.white70),),
             trailing: Icon(Icons.arrow_forward),
             onTap: (){
-              // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-              // Navigator.push(context, route);
-              // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+              Route route = MaterialPageRoute(builder: (context) => PartOne());
+              Navigator.push(context, route);
             },
           ),
           color: Color.fromRGBO(25, 88, 30, 1.0),
