@@ -36,7 +36,7 @@ class _ContactPageState extends State<ContactPage> {
     if(formKey.currentState.validate()) {
       showAlertDialog(context);
       formKey.currentState.save();
-      this.postMessage(this.question, this.email, this.message);
+      this.postMessage(this.name, this.email, this.message);
     }
   }
   void handleReset() {
@@ -123,12 +123,16 @@ class _ContactPageState extends State<ContactPage> {
               child: Form(
                 key: formKey,
                 child: Column(children: <Widget>[
+                  SizedBox(height: 10,),
                   TextFormField(
-                    controller: nameController,
-                    maxLength: 100,
+                    // style: TextStyle( fontSize: 14.0, height: 1.0, color: Colors.black ),
                     decoration: InputDecoration(
                       labelText: "আপনার নাম",
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
                     ),
+                    controller: nameController,
+                    maxLength: 100,
                     validator: (value) {
                       if(value.length == 0) {
                         return "নাম পূরণ আবশ্যক";
@@ -139,11 +143,14 @@ class _ContactPageState extends State<ContactPage> {
                       this.name = value;
                     },
                   ),
+                  SizedBox(height: 5,),
                   TextFormField(
-                    controller: nameController,
+                    controller: emailController,
                     maxLength: 100,
                     decoration: InputDecoration(
                       labelText: "আপনার ইমেইল এড্রেস",
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
                     ),
                     validator: (value) {
                       if(value.length == 0) {
@@ -155,13 +162,16 @@ class _ContactPageState extends State<ContactPage> {
                       this.email = value;
                     },
                   ),
+                  SizedBox(height: 5,),
                   TextFormField(
                     controller: messageController,
                     maxLength: 255,
                     keyboardType: TextInputType.multiline, 
-                    maxLines: 4,
+                    maxLines: 3,
                     decoration: InputDecoration(
                       labelText: "মতামত লিখুন",
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
                     ),
                     validator: (value) {
                       if(value.length == 0) {

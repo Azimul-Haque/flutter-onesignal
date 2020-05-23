@@ -373,19 +373,19 @@ class _HomePageState extends State<HomePage>
           },
         ),
         ListTile(
-          leading: Icon(Icons.info, color: Colors.black87,),
-          title: Text("আমাদের সম্পর্কে"),
-          onTap: (){
-            Navigator.pop(context);
-            _showDialog();
-          },
-        ),
-        ListTile(
           leading: Icon(Icons.mail, color: Colors.black87,),
           title: Text("মতামত জানান"),
           onTap: (){
             Navigator.pop(context);
             Navigator.pushNamed(context, '/contact');
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.info, color: Colors.black87,),
+          title: Text("আমাদের সম্পর্কে"),
+          onTap: (){
+            Navigator.pop(context);
+            _showDialog();
           },
         ),
         ListTile(
