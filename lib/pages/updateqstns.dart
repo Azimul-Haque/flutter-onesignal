@@ -30,7 +30,8 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
       await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
       var newquestions = await _questionHelper.getAllQuestion();
       
-      String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" + newquestions.length.toString(); // https://jsonplaceholder.typicode.com/posts
+      String _apiKey = "rifat2020";
+      String serviceURL = "https://killa.com.bd/broadcast?api_key="+ _apiKey +"&last_id=" + newquestions.length.toString();
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -46,7 +47,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
         _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
         Navigator.of(context).pop();
       } else {
-        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).ceil().toString() + "KB)");
+        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toStringAsFixed(2) + "KB)");
         Navigator.of(context).pop();
       }
     } catch (_) {

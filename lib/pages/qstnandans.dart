@@ -44,7 +44,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     });
     try {
       int countinsertion = 0;
-      String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" + lastId.toString(); // https://jsonplaceholder.typicode.com/posts
+      String _apiKey = "rifat2020";
+      String serviceURL = "https://killa.com.bd/broadcast?api_key="+ _apiKey +"&last_id=" + lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -59,7 +60,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       if(countinsertion == 0) {
         _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
       } else {
-        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).ceil().toString() + "KB)");
+        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toStringAsFixed(2) + "KB)");
       }
     } catch (_) {
       // print(_);
@@ -162,7 +163,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].question),
-                    subtitle: Text(questions[index].answer),
+                    subtitle: Text('- ' + questions[index].answer),
                     trailing:  listPopUpMenu(questions[index]),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));

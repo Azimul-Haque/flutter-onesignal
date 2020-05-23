@@ -160,7 +160,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].question),
-                    subtitle: Text(questions[index].answer),
+                    subtitle: Text('- ' + questions[index].answer),
                     trailing: listPopUpMenu(questions[index]),
                     // onTap: (){
                     //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
