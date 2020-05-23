@@ -6,7 +6,7 @@ class PartTen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("প্রথম ভাগঃ প্রজাতন্ত্র"),
+        title: Text("দশম ভাগঃ সংবিধান-সংশোধন"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(
@@ -21,7 +21,7 @@ class PartTen extends StatelessWidget {
       ),
       body: ListView(children: <Widget>[
         SizedBox(height: 10,),
-        Text("(প্রথম ভাগ) প্রজাতন্ত্র", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
+        Text("(দশম ভাগ) সংবিধান-সংশোধন", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
         SizedBox(height: 3,),
         Divider(),
         Padding(
