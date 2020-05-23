@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart';
 
-class PartTwo extends StatelessWidget {
+class PartSix extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

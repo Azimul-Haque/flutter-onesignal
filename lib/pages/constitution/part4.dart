@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart';
 
-class PartTwo extends StatelessWidget {
+class PartFour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("প্রথম ভাগঃ প্রজাতন্ত্র"),
+        title: Text("চতুর্থ ভাগঃ নির্বাহী বিভাগ"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(
@@ -21,7 +21,7 @@ class PartTwo extends StatelessWidget {
       ),
       body: ListView(children: <Widget>[
         SizedBox(height: 10,),
-        Text("(প্রথম ভাগ) প্রজাতন্ত্র", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
+        Text("(চতুর্থ ভাগ) নির্বাহী বিভাগ", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
         SizedBox(height: 3,),
         Divider(),
         Padding(
