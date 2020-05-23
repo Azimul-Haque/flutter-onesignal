@@ -6,7 +6,7 @@ class PartEight extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("প্রথম ভাগঃ প্রজাতন্ত্র"),
+        title: Text("অষ্টম ভাগঃ মহা হিসাব-নিরীক্ষক ও নিয়ন্ত্রক"),
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(
@@ -21,14 +21,14 @@ class PartEight extends StatelessWidget {
       ),
       body: ListView(children: <Widget>[
         SizedBox(height: 10,),
-        Text("(প্রথম ভাগ) প্রজাতন্ত্র", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
+        Text("(অষ্টম ভাগ) মহা হিসাব-নিরীক্ষক ও নিয়ন্ত্রক", style: TextStyle(color:Colors.green[800], fontSize: 18), textAlign: TextAlign.center,),
         SizedBox(height: 3,),
         Divider(),
         Padding(
           padding: EdgeInsets.all(15),
           child: Column(children: <Widget>[
             Text(
-              "১৷ প্রজাতন্ত্র \n\n২৷ প্রজাতন্ত্রের রাষ্ট্রীয় সীমানা \n\n২ক৷ রাষ্ট্রধর্ম \n\n৩৷ রাষ্ট্রভাষা \n\n৪৷ জাতীয় সঙ্গীত, পতাকা ও প্রতীক \n\n৪ক। জাতির পিতার প্রতিকৃতি \n\n৫৷ রাজধানী \n\n৬৷ নাগরিকত্ব \n\n৭৷ সংবিধানের প্রাধান্য \n\n৭ক। সংবিধান বাতিল, স্থগিতকরণ, ইত্যাদি অপরাধ \n\n৭খ। সংবিধানের মৌলিক বিধানাবলী সংশোধন অযোগ্য", 
+              "১২৭। মহা হিসাব-নিরীক্ষক পদের প্রতিষ্ঠা \n\n১২৮। মহা-হিসাব নিরীক্ষকের দায়িত্ব \n\n১২৯। মহা হিসাব-নিরীক্ষকের কর্মের মেয়াদ \n\n১৩০। অস্থায়ী মহা হিসাব-নিরীক্ষক \n\n১৩১। প্রজাতন্ত্রের হিসাব-রক্ষার আকার ও পদ্ধতি \n\n১৩২। সংসদে মহা হিসাব-নিরীক্ষকের রিপোর্ট উপস্থাপন", 
               style: TextStyle(color:Colors.black87, fontSize: 15, height: 1.5), textAlign: TextAlign.justify,
             ),
             SizedBox(height: 10,),
