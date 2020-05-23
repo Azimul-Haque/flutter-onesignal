@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
 
 class UpdateQstnPage extends StatefulWidget {
@@ -7,9 +12,61 @@ class UpdateQstnPage extends StatefulWidget {
 }
 
 class _UpdateQstnPageState extends State<UpdateQstnPage> {
+  GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
+  QuestionHelper _questionHelper;
+  List syncquestions = [];
+  QuestionsModel currentQuestion;
+
+  _showSnackbar(String textForSnackbar) {
+    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
+    _globalKey.currentState.showSnackBar(_mySnackbar);
+  }
+
+  _getSynced() async {
+    showAlertDialog(context);
+    try {
+      int countinsertion = 0;
+
+      await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
+      var newquestions = await _questionHelper.getAllQuestion();
+      
+      String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" + newquestions.length.toString(); // https://jsonplaceholder.typicode.com/posts
+      var jsonDataQuestions = await http.get(serviceURL);
+      setState(() {
+        syncquestions = json.decode(jsonDataQuestions.body.toString());
+      });
+      syncquestions.forEach((element) {
+        // print(element.toString());
+        currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], incanswer: element["incanswer"]);
+        _questionHelper.insertQuestion(currentQuestion);
+        countinsertion++;
+      });
+      // print("Inserted "+ syncquestions.length.toString() + " elements");
+      if(countinsertion == 0) {
+        _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
+        Navigator.of(context).pop();
+      } else {
+        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).ceil().toString() + "KB)");
+        Navigator.of(context).pop();
+      }
+    } catch (_) {
+      // print(_);
+      _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
+      Navigator.of(context).pop();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _questionHelper = QuestionHelper();
+    _getSynced();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         title: Text("নোটিফিকেশনে প্রাপ্ত আপডেট"),
         automaticallyImplyLeading: false,
@@ -45,7 +102,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
                 ),
                 color: Colors.green,
                 onPressed: () {
-                  
+                  _getSynced();
                 },
               ),
             ),
@@ -54,4 +111,29 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
       ],)
     );
   }
+
+  showAlertDialog(BuildContext context) {
+    // await Future.delayed(Duration(seconds: 1));
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('সার্ভার থেকে আপডেট হচ্ছে...')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children : <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
