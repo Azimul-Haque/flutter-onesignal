@@ -22,6 +22,7 @@ import 'package:project1/pages/notification.dart';
 import 'package:project1/pages/updateqstns.dart';
 
 import 'package:project1/pages/settings.dart';
+import 'package:project1/pages/contact.dart';
 import 'globals.dart';
 
 void main() {
@@ -36,12 +37,13 @@ void main() {
       '/': (context) => HomePage(),
       '/formpage': (context) => FormPage(),
       '/favorites': (context) => FavoritesPage(),
-      '/qstnanser': (context) => QuestionAnswerPage(),
+      '/qstnanswer': (context) => QuestionAnswerPage(),
       '/constitution': (context) => ConstituionPage(),
       '/history': (context) => HistoryPage(),
       '/exam': (context) => ExamPage(),
       '/ammendments': (context) => AmmendmentsPage(),
       '/exams': (context) => ExamsPage(),
+      '/contact': (context) => ContactPage(),
     },
   );
   return runApp(materialApp);
@@ -249,7 +251,7 @@ class _HomePageState extends State<HomePage>
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 2.5, right: 10),
-                    child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanser'),
+                    child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanswer'),
                   ),
                 ),
               ],
@@ -383,6 +385,7 @@ class _HomePageState extends State<HomePage>
           title: Text("মতামত জানান"),
           onTap: (){
             Navigator.pop(context);
+            Navigator.pushNamed(context, '/contact');
           },
         ),
         ListTile(
