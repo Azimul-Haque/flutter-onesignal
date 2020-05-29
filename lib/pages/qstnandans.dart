@@ -241,6 +241,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               maxLength: 100,
               decoration: InputDecoration(
                 labelText: "ব্যাখ্যা/ মন্তব্য (ঐচ্ছিক)",
+                // contentPadding: EdgeInsets.all(10),
+                // border: OutlineInputBorder(borderRadius: BorderRadius.circular(0)),
               ),
               onChanged: (String str) {},
             ),
