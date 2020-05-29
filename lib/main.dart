@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 // import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 import 'package:flutter_share/flutter_share.dart';
@@ -27,7 +27,7 @@ import 'globals.dart';
 
 void main() {
   var materialApp = MaterialApp(
-    title: 'BCS সংবিধান',
+    title: 'সংবিধান সারথি',
     theme: ThemeData(
       primarySwatch: Colors.green,
       fontFamily: 'Kalpurush',
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage>
   Future<void> share() async {
     await FlutterShare.share(
         title: 'শেয়ার করুন',
-        text: 'BCS সংবিধান',
+        text: 'সংবিধান সারথি',
         linkUrl: 'https://orbachinujbuk.com/',
         chooserTitle: 'অ্যাপটি শেয়ার করুন!');
   }
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage>
       key: _globalKey,
       appBar: AppBar(
         elevation: 0,
-        title: Text('BCS সংবিধান'),
+        title: Text('সংবিধান সারথি'),
         flexibleSpace: appBarStyle(),
         actions: <Widget>[
           PopupMenuButton(
@@ -315,7 +315,7 @@ class _HomePageState extends State<HomePage>
           Positioned(
             left: 30,
             bottom: 40,
-            child: Text('BCS সংবিধান', style: TextStyle(color: Colors.white, fontSize: 16)),
+            child: Text('সংবিধান সারথি', style: TextStyle(color: Colors.white, fontSize: 16)),
           ),
           Positioned(
             left: 30,
@@ -543,7 +543,7 @@ class _HomePageState extends State<HomePage>
           children: <Widget>[
             Image.asset("assets/images/android-icon.png", width: 80, height: 80,),
             SizedBox(height: 10,),
-            Text('BCS সংবিধান', style: TextStyle(color: Colors.green[800], fontSize: 20)),
+            Text('সংবিধান সারথি', style: TextStyle(color: Colors.green[800], fontSize: 20)),
             SizedBox(height: 10,),
             Text('একটি Innova Tech Inc. পণ্য'),
             SizedBox(height: 10,),

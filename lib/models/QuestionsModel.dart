@@ -53,6 +53,12 @@ class QuestionHelper{
     );
   }
 
+  Future<void> clearQstnTable() async 
+  {
+      await db.execute("DROP TABLE IF EXISTS $tableName");
+      await db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0 NOT NULL)");
+  }
+
   Future<void> insertQuestion(QuestionsModel question) async{
     try{
       db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
