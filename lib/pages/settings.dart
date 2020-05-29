@@ -66,7 +66,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 savestngs.setString('userDesig', userDesigController.text);
                 savestngs.setString('userOrg', userOrgController.text);
               });
-              _showToast("Settings saved!");
+              _showToast("সেটিংস সংরক্ষণ করা হয়েছে!");
               Navigator.pop(context, [userNameController.text, userDesigController.text, userOrgController.text]);
             },
             tooltip: "দাখিল করুন",
