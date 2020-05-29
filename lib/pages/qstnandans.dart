@@ -230,14 +230,15 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('প্রশ্নটি রিপোর্ট করুন')),
       content: Container(
-        height: 150,
+        height: 170,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(question.question),
-            Text(question.answer),
+            Text(question.question, style: TextStyle(fontSize: 15.5, height: 1.2),),
+            Text('-' + question.answer, style: TextStyle(color: Colors.green, fontSize: 15.5, height: 1.0),),
             TextField(
               controller: qstnReportController,
+              maxLength: 100,
               decoration: InputDecoration(
                 labelText: "ব্যাখ্যা/ মন্তব্য (ঐচ্ছিক)",
               ),
