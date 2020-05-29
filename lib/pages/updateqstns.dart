@@ -28,6 +28,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
       int countinsertion = 0;
 
       await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
+      await _questionHelper.clearQstnTable(); // WE ARE CLEARING THE WHOLE TABLE...
       var newquestions = await _questionHelper.getAllQuestion();
       
       String _apiKey = "rifat2020";
@@ -47,7 +48,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
         _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
         Navigator.of(context).pop();
       } else {
-        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toStringAsFixed(2) + "KB)");
+        _showSnackbar(countinsertion.toString() + " টি প্রশ্ন হালনাগাদ করা হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toStringAsFixed(2) + "KB)");
         Navigator.of(context).pop();
       }
     } catch (_) {

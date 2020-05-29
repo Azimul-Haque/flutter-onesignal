@@ -79,11 +79,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       _getSynced(questions.length);
     }
   }
-  _clearDB() async{
-    await _questionHelper.clearQstnTable();
-    _showSnackbar("সকল তথ্য মুছে দেওয়া হয়েছে!");
-    _loadDB();
-  }
+  // _clearDB() async{
+  //   await _questionHelper.clearQstnTable();
+  //   _showSnackbar("সকল তথ্য মুছে দেওয়া হয়েছে!");
+  //   _loadDB();
+  // }
 
   @override
   void initState() {
@@ -118,7 +118,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                   _getSynced(questions.length);
                   break;
                 case 'cleardb':
-                  _clearDB();
+                  // _clearDB();
                   break;
                 default:
               }
