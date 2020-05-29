@@ -79,11 +79,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       _getSynced(questions.length);
     }
   }
-  // _clearDB() async{
-  //   await _questionHelper.clearQstnTable();
-  //   _showSnackbar("সকল তথ্য মুছে দেওয়া হয়েছে!");
-  //   _loadDB();
-  // }
+  _clearDBandHotReload() async{
+    await _questionHelper.clearQstnTable();
+    _showSnackbar("সকল তথ্য মুছে দেওয়া হয়েছে!");
+    _loadDB();
+  }
 
   @override
   void initState() {
@@ -118,7 +118,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                   _getSynced(questions.length);
                   break;
                 case 'cleardb':
-                  // _clearDB();
+                  _clearDBandHotReload();
                   break;
                 default:
               }
@@ -131,7 +131,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                 ,),
                 PopupMenuItem(
                   value: "cleardb", 
-                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("মুছে দিন")],)
+                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("মুছে দিয়ে পুনরায় Sync করুন")],)
                 ,),
               ];
             },
