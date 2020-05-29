@@ -5,22 +5,18 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import '../globals.dart';
 
 class SettingsPage extends StatefulWidget {
-  var data;
-  SettingsPage(this.data);
   @override
-  _SettingsPageState createState() => _SettingsPageState(this.data);
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  var data;
-  _SettingsPageState(this.data);
-  final GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-
   _showToast(String textToast) {
     Fluttertoast.showToast(
       msg: textToast,
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.green[900],
       textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT,
+      fontSize: 14.0,
     );
   }
 

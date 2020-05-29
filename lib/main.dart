@@ -43,7 +43,6 @@ void main() {
       '/exam': (context) => ExamPage(),
       '/ammendments': (context) => AmmendmentsPage(),
       '/exams': (context) => ExamsPage(),
-      '/contact': (context) => ContactPage(),
     },
   );
   return runApp(materialApp);
@@ -362,7 +361,7 @@ class _HomePageState extends State<HomePage>
           title: Text("সেটিংস"),
           onTap: (){
             Navigator.pop(context);
-            Route route = MaterialPageRoute(builder: (context) => SettingsPage(null));
+            Route route = MaterialPageRoute(builder: (context) => SettingsPage());
             Navigator.push(context, route).then((value) {
               setState(() {
                 userName = value[0];
@@ -377,7 +376,8 @@ class _HomePageState extends State<HomePage>
           title: Text("মতামত জানান"),
           onTap: (){
             Navigator.pop(context);
-            Navigator.pushNamed(context, '/contact');
+            Route route = MaterialPageRoute(builder: (context) => ContactPage(userName));
+            Navigator.push(context, route);
           },
         ),
         ListTile(

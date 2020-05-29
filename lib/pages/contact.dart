@@ -4,13 +4,18 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../globals.dart';
 class ContactPage extends StatefulWidget {
+  var data;
+  ContactPage(this.data);
   @override
-  _ContactPageState createState() => _ContactPageState();
+  _ContactPageState createState() => _ContactPageState(this.data);
 }
 
 class _ContactPageState extends State<ContactPage> {
+  var data;
+  _ContactPageState(this.data);
   GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
   var formKey = GlobalKey<FormState>();
+  String userName = 'N/A';
 
   _showToast(String textToast) {
     Fluttertoast.showToast(
@@ -43,6 +48,12 @@ class _ContactPageState extends State<ContactPage> {
     nameController.clear();
     emailController.clear();
     messageController.clear();
+  }
+  _loadName() async{
+    setState(() {
+      userName = this.data ?? 'N/A';
+      nameController.text = userName;
+    });
   }
   postMessage(String name, String email, String message) async{
     var data = {
@@ -78,6 +89,12 @@ class _ContactPageState extends State<ContactPage> {
       Navigator.of(context, rootNavigator: true).pop();
       _showSnackbar("ইন্টারনেট সংযোগ চালু করুন।");
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadName();
   }
 
   @override
