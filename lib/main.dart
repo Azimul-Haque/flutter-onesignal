@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
@@ -27,6 +28,9 @@ import 'globals.dart';
 
 void main() {
   // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.blue
+  ));
   var materialApp = MaterialApp(
     title: 'সংবিধান সারথি',
     theme: ThemeData(
