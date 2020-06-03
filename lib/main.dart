@@ -26,6 +26,7 @@ import 'package:project1/pages/contact.dart';
 import 'globals.dart';
 
 void main() {
+  // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
   var materialApp = MaterialApp(
     title: 'সংবিধান সারথি',
     theme: ThemeData(

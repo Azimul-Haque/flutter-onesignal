@@ -51,8 +51,8 @@ class _ExamPageState extends State<ExamPage> {
           _counter--;
         } else {
           _timer.cancel();
-          Navigator.pop(context); // close exam page        
-
+          Navigator.pop(context); // close exam page
+          
           // open new page
           var totalmarks = rightanswer - wronganswer * 0.5;
           _insertExam(questions.length, duration, rightanswer, wronganswer);
@@ -64,7 +64,6 @@ class _ExamPageState extends State<ExamPage> {
       formattedtime = "${formatDuration(now)}";
     });
   }
-
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
@@ -274,9 +273,12 @@ class _ExamPageState extends State<ExamPage> {
             setState(() {
               formattedtime = '00:00:00';
             });
-            showLoadingDialog();
-            await Future.delayed(Duration(seconds: 1));
-            Navigator.of(context).pop(); // close the loading dialogue
+            
+            if(questions.length > 0) {
+              showLoadingDialog();
+              await Future.delayed(Duration(seconds: 1));
+              Navigator.of(context).pop(); // close the loading dialogue
+            }
             Navigator.of(context).pop(); // close the alert dialogue
             Navigator.pop(context); // close the page
 
