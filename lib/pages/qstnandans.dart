@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
+
 class QuestionAnswerPage extends StatefulWidget {
   QuestionAnswerPage({Key key}) : super(key: key);
   @override
@@ -12,8 +13,9 @@ class QuestionAnswerPage extends StatefulWidget {
 }
 
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
-  GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-  GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
+  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  GlobalKey<RefreshIndicatorState> refreshKey =
+      GlobalKey<RefreshIndicatorState>();
 
   QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
@@ -34,9 +36,12 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   }
 
   _showSnackbar(String textForSnackbar) {
-    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
+    var _mySnackbar = SnackBar(
+      content: Text(textForSnackbar),
+    );
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
+
   _getSynced(int lastId) async {
     _showSnackbar("সার্ভারের সাথে তথ্য Sync হচ্ছে...");
     setState(() {
@@ -45,22 +50,32 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     try {
       int countinsertion = 0;
       String _apiKey = "rifat2020";
-      String serviceURL = "https://killa.com.bd/broadcast?api_key="+ _apiKey +"&last_id=" + lastId.toString(); // https://jsonplaceholder.typicode.com/posts
+      String serviceURL = "https://killa.com.bd/broadcast?api_key=" +
+          _apiKey +
+          "&last_id=" +
+          lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(serviceURL);
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
       });
       syncquestions.forEach((element) {
         // print(element.toString());
-        currentQuestion = QuestionsModel(question: element["question"], answer: element["answer"], incanswer: element["incanswer"]);
+        currentQuestion = QuestionsModel(
+            question: element["question"],
+            answer: element["answer"],
+            incanswer: element["incanswer"]);
         _questionHelper.insertQuestion(currentQuestion);
         countinsertion++;
       });
       // print("Inserted "+ syncquestions.length.toString() + " elements");
-      if(countinsertion == 0) {
+      if (countinsertion == 0) {
         _showSnackbar("সার্ভারের সর্বশেষ সকল প্রশ্ন ইতোমধ্যে উপস্থিত!");
       } else {
-        _showSnackbar("নতুন " + countinsertion.toString() + "  টি প্রশ্ন যোগ হয়েছে! (" + (jsonDataQuestions.contentLength/1000).toStringAsFixed(2) + "KB)");
+        _showSnackbar("নতুন " +
+            countinsertion.toString() +
+            "  টি প্রশ্ন যোগ হয়েছে! (" +
+            (jsonDataQuestions.contentLength / 1000).toStringAsFixed(2) +
+            "KB)");
       }
     } catch (_) {
       // print(_);
@@ -68,18 +83,20 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     }
     _loadDB();
   }
-  _loadDB() async{
+
+  _loadDB() async {
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
     var newquestions = await _questionHelper.getAllQuestion();
     setState(() {
       questions = newquestions.reversed.toList();
       isLoading = false;
     });
-    if(questions.length == 0) {
+    if (questions.length == 0) {
       _getSynced(questions.length);
     }
   }
-  _clearDBandHotReload() async{
+
+  _clearDBandHotReload() async {
     await _questionHelper.clearQstnTable();
     _showSnackbar("সকল তথ্য মুছে দেওয়া হয়েছে!");
     _loadDB();
@@ -102,7 +119,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         // automaticallyImplyLeading: false,
         // actions: <Widget>[
         //   IconButton(
-        //     icon: Icon(Icons.sync), 
+        //     icon: Icon(Icons.sync),
         //     onPressed: () async{
         //       _getSynced(questions.length);
         //     },
@@ -112,7 +129,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 55),
-            onSelected: (value) async{
+            onSelected: (value) async {
               switch (value) {
                 case 'sync':
                   _getSynced(questions.length);
@@ -126,13 +143,35 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
-                  value: "sync", 
-                  child: Row(children: <Widget>[Icon(Icons.sync, color: Colors.black87,), SizedBox(width: 10,), Text("সার্ভারের সাথে Sync করুন")],)
-                ,),
+                  value: "sync",
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.sync,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("সার্ভারের সাথে Sync করুন")
+                    ],
+                  ),
+                ),
                 PopupMenuItem(
-                  value: "cleardb", 
-                  child: Row(children: <Widget>[Icon(Icons.delete_outline, color: Colors.black87,), SizedBox(width: 10,), Text("মুছে দিয়ে পুনরায় Sync করুন")],)
-                ,),
+                  value: "cleardb",
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.delete_outline,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("মুছে দিয়ে পুনরায় Sync করুন")
+                    ],
+                  ),
+                ),
               ];
             },
           )
@@ -141,50 +180,57 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       ),
       body: RefreshIndicator(
         key: refreshKey,
-        onRefresh: () async{
+        onRefresh: () async {
           await refreshList();
         },
-        child: Column(children: <Widget>[
-          // Container(
-          //   margin: EdgeInsets.all(10),
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //       hintText: "Search from posts...",
-          //     ),
-          //     onChanged: (String str) {
-          //       // this.searchData(str);
-          //     },
-          //   ),
-          // ),
-          Visibility(
-            visible: isLoading,
-            child: LinearProgressIndicator(backgroundColor: Colors.black12),
-          ),
-          SizedBox(height: 5,),
-          Expanded(
-            child: ListView.builder(
-              itemCount: questions.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: ListTile(
-                    // leading: CircleAvatar(child: Text(questions[index].question[0]),),
-                    title: Text(questions[index].question),
-                    subtitle: Text('- ' + questions[index].answer),
-                    trailing:  listPopUpMenu(questions[index]),
-                    // onTap: (){
-                    //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
-                    //   // Navigator.push(context, route);
-                    //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
-                    // },
-                  ),
-                  margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
-                  elevation: 2,
-                );
-              },
+        child: Column(
+          children: <Widget>[
+            // Container(
+            //   margin: EdgeInsets.all(10),
+            //   child: TextField(
+            //     decoration: InputDecoration(
+            //       hintText: "Search from posts...",
+            //     ),
+            //     onChanged: (String str) {
+            //       // this.searchData(str);
+            //     },
+            //   ),
+            // ),
+            Visibility(
+              visible: isLoading,
+              child: LinearProgressIndicator(backgroundColor: Colors.black12),
             ),
-          ),
-          SizedBox(height: 5,),
-        ],),
+            SizedBox(
+              height: 5,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: questions.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    child: ListTile(
+                      // leading: CircleAvatar(child: Text(questions[index].question[0]),),
+                      title: Text(questions[index].question),
+                      subtitle: Text('- ' + questions[index].answer),
+                      trailing: listPopUpMenu(questions[index]),
+                      // onTap: (){
+                      //   // Route route = MaterialPageRoute(builder: (context) => PageTwo(questions[index]));
+                      //   // Navigator.push(context, route);
+                      //   // _showSnackbar("তথ্য হালনাগাদ হয়েছে!");
+                      // },
+                    ),
+                    margin:
+                        EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                    elevation: 2,
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -192,7 +238,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   listPopUpMenu(QuestionsModel question) {
     return PopupMenuButton(
       offset: Offset(0, 40),
-      onSelected: (value) async{
+      onSelected: (value) async {
         switch (value) {
           case 'report':
             qstnReportController.clear();
@@ -210,23 +256,54 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       itemBuilder: (BuildContext context) {
         return [
           PopupMenuItem(
-            value: "report", 
-            child: Row(children: <Widget>[Icon(Icons.report, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্নটি রিপোর্ট করুন")],)
-          ,),
+            value: "report",
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.report,
+                  color: Colors.black87,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text("প্রশ্নটি রিপোর্ট করুন")
+              ],
+            ),
+          ),
           PopupMenuItem(
-            value: (question.isfav == 0) ? "makefavorite" : "makeunfavorite", 
-            child: 
-              (question.isfav == 0)
-              ? 
-                Row(children: <Widget>[Icon(Icons.favorite_border, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকায় যোগ করুন")],)
-              :
-                Row(children: <Widget>[Icon(Icons.remove_circle_outline, color: Colors.black87,), SizedBox(width: 10,), Text("প্রিয় তালিকা থেকে অপসারণ করুন")],)
-          ,),
+            value: (question.isfav == 0) ? "makefavorite" : "makeunfavorite",
+            child: (question.isfav == 0)
+                ? Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("প্রিয় তালিকায় যোগ করুন")
+                    ],
+                  )
+                : Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.remove_circle_outline,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("প্রিয় তালিকা থেকে অপসারণ করুন")
+                    ],
+                  ),
+          ),
         ];
       },
     );
   }
-  showReportDialog(QuestionsModel question) async{
+
+  showReportDialog(QuestionsModel question) async {
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('প্রশ্নটি রিপোর্ট করুন')),
       content: Container(
@@ -234,8 +311,15 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(question.question, style: TextStyle(fontSize: 15.5, height: 1.2),),
-            Text('-' + question.answer, style: TextStyle(color: Colors.green, fontSize: 15.5, height: 1.0),),
+            Text(
+              question.question,
+              style: TextStyle(fontSize: 15.5, height: 1.2),
+            ),
+            Text(
+              '-' + question.answer,
+              style:
+                  TextStyle(color: Colors.green, fontSize: 15.5, height: 1.0),
+            ),
             TextField(
               controller: qstnReportController,
               maxLength: 100,
@@ -276,7 +360,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       },
     );
   }
-  handleReportSubmit(QuestionsModel question) async{
+
+  handleReportSubmit(QuestionsModel question) async {
     showLoadingDialog(context);
     var data = {
       'question': question.question,
@@ -289,17 +374,19 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         'https://killa.com.bd/onesignal/report/question/api',
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
-          'Accept' : 'application/json',
+          'Accept': 'application/json',
         },
         body: jsonEncode(data),
       );
       // print(response.statusCode);
-      if(response.statusCode == 200) {
+      if (response.statusCode == 200) {
         var body = json.decode(response.body);
-        if(body["success"] == true) {
+        if (body["success"] == true) {
           // print(body);
-          Navigator.of(context, rootNavigator: true).pop(); // close the loading dialog
-          Navigator.of(context, rootNavigator: true).pop(); // close the popup dialogue
+          Navigator.of(context, rootNavigator: true)
+              .pop(); // close the loading dialog
+          Navigator.of(context, rootNavigator: true)
+              .pop(); // close the popup dialogue
           this._showSnackbar('আপনার রিপোর্ট সার্ভারে পাঠানো হয়েছে। ধন্যবাদ!');
         }
       } else {
@@ -322,7 +409,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
+        children: <Widget>[
           CircularProgressIndicator(),
         ],
       ),
@@ -349,5 +436,4 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     _showSnackbar("প্রিয় তালিকা থেকে অপসারণ করা হয়েছে!");
     this._loadDB();
   }
-
 }
