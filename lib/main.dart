@@ -55,11 +55,11 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-{
+class _HomePageState extends State<HomePage> {
   int count = 0;
-  GlobalKey <ScaffoldState> _globalKey = GlobalKey <ScaffoldState>();
-  GlobalKey <RefreshIndicatorState> refreshKey = GlobalKey <RefreshIndicatorState>();
+  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  GlobalKey<RefreshIndicatorState> refreshKey =
+      GlobalKey<RefreshIndicatorState>();
   List people = [];
   List posts = [];
   List unfilteredPosts = [];
@@ -71,6 +71,7 @@ class _HomePageState extends State<HomePage>
     });
     return 'success';
   }
+
   Future<void> share() async {
     await FlutterShare.share(
         title: 'শেয়ার করুন',
@@ -80,9 +81,12 @@ class _HomePageState extends State<HomePage>
   }
 
   _showSnackbar(String textForSnackbar) {
-    var _mySnackbar = SnackBar(content: Text(textForSnackbar),);
+    var _mySnackbar = SnackBar(
+      content: Text(textForSnackbar),
+    );
     _globalKey.currentState.showSnackBar(_mySnackbar);
   }
+
   // Future<bool> _getPosts() async {
   //   String serviceURL = "http://192.168.43.81:8000/broadcast"; // http://192.168.43.81:8000/broadcast
   //   var jsonDataPosts = await http.get(serviceURL);
@@ -117,7 +121,7 @@ class _HomePageState extends State<HomePage>
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String spname = (prefs.getString('userName') ?? 'N/A');
     String spdesg = (prefs.getString('userDesig') ?? 'N/A');
-    String sporg  = (prefs.getString('userOrg') ?? 'N/A');
+    String sporg = (prefs.getString('userOrg') ?? 'N/A');
     setState(() {
       userName = spname;
       userDesig = spdesg;
@@ -134,7 +138,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       key: _globalKey,
       appBar: AppBar(
         elevation: 0,
@@ -143,7 +147,7 @@ class _HomePageState extends State<HomePage>
         actions: <Widget>[
           PopupMenuButton(
             offset: Offset(0, 60),
-            onSelected: (value) async{
+            onSelected: (value) async {
               switch (value) {
                 case 'addqstn':
                   Navigator.pushNamed(context, '/formpage');
@@ -168,16 +172,49 @@ class _HomePageState extends State<HomePage>
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
-                  value: "addqstn", 
-                  child: Row(children: <Widget>[Icon(Icons.library_add, color: Colors.black87,), SizedBox(width: 10,), Text("প্রশ্ন যোগ করুন")],)
-                ,),
+                  value: "addqstn",
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.library_add,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("প্রশ্ন যোগ করুন")
+                    ],
+                  ),
+                ),
                 PopupMenuItem(
-                  value: "rate", 
-                  child: Row(children: <Widget>[Icon(Icons.star, color: Colors.black87,), SizedBox(width: 10,), Text("আমাদের রেটিং দিন")],)
-                ,),
+                  value: "rate",
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.star,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("আমাদের রেটিং দিন")
+                    ],
+                  ),
+                ),
                 PopupMenuItem(
                   value: "website",
-                  child: Row(children: <Widget>[Icon(Icons.open_in_browser, color: Colors.black87,), SizedBox(width: 10,), Text("ওয়েবসাইট দেখুন")],),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.open_in_browser,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("ওয়েবসাইট দেখুন")
+                    ],
+                  ),
                 ),
               ];
             },
@@ -186,72 +223,84 @@ class _HomePageState extends State<HomePage>
       ),
       drawer: _homeDrawer(userName, userDesig, userOrg),
       body: Column(children: <Widget>[
-        Stack(children: <Widget>[
-          Container(
-            height:120, width: double.infinity, 
-            child: Column(children: <Widget>[
-              Container(
-                height:90, width: double.infinity, 
-                decoration: BoxDecoration(
-                  gradient: new LinearGradient(
-                    colors: [
-                      Colors.green[800],
-                      Colors.lightGreen,
-                    ],
-                    begin: const FractionalOffset(0.0, 0.0),
-                    end: const FractionalOffset(1.0, 0.0),
-                    stops: [0.0, 1.0],
-                    tileMode: TileMode.clamp,
-                  ),
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                  // boxShadow: [BoxShadow(
-                  //   color: Colors.grey[350],
-                  //   blurRadius: 10.0, // has the effect of softening the shadow
-                  //   spreadRadius: 5.0, // has the effect of extending the shadow
-                  //   offset: Offset(
-                  //     5.0, // horizontal, move right 10
-                  //     5.0, // vertical, move down 10
-                  //   ),
-                  // )],
-                ),
-              ),
-            ],),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: 125,
+        Stack(
+          children: <Widget>[
+            Container(
+              height: 120,
               width: double.infinity,
-              child: ListView(
-                padding: EdgeInsets.all(10),
-                scrollDirection: Axis.horizontal,
+              child: Column(
                 children: <Widget>[
-                  _scrollCard("prostabona.png", "১ টি", 'প্রস্তাবনা'),
-                  _scrollCard("agreement.png", "১১ টি", 'ভাগ'),
-                  _scrollCard("law.png", "১৫৩ টি", 'অনুচ্ছেদ'),
-                  _scrollCard("seal.png", "৭ টি", 'তফসিল'),
-                  _scrollCard("search.png", "১৭ টি", 'সংশোধনী'),
+                  Container(
+                    height: 90,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: new LinearGradient(
+                        colors: [
+                          Colors.green[800],
+                          Colors.lightGreen,
+                        ],
+                        begin: const FractionalOffset(0.0, 0.0),
+                        end: const FractionalOffset(1.0, 0.0),
+                        stops: [0.0, 1.0],
+                        tileMode: TileMode.clamp,
+                      ),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                      // boxShadow: [BoxShadow(
+                      //   color: Colors.grey[350],
+                      //   blurRadius: 10.0, // has the effect of softening the shadow
+                      //   spreadRadius: 5.0, // has the effect of extending the shadow
+                      //   offset: Offset(
+                      //     5.0, // horizontal, move right 10
+                      //     5.0, // vertical, move down 10
+                      //   ),
+                      // )],
+                    ),
+                  ),
                 ],
               ),
-            ), 
-          ),
-        ],),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                height: 125,
+                width: double.infinity,
+                child: ListView(
+                  padding: EdgeInsets.all(10),
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    _scrollCard("prostabona.png", "১ টি", 'প্রস্তাবনা'),
+                    _scrollCard("agreement.png", "১১ টি", 'ভাগ'),
+                    _scrollCard("law.png", "১৫৩ টি", 'অনুচ্ছেদ'),
+                    _scrollCard("seal.png", "৭ টি", 'তফসিল'),
+                    _scrollCard("search.png", "১৭ টি", 'সংশোধনী'),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
         Expanded(
           child: ListView(children: <Widget>[
             Row(
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 10, left: 10, bottom: 2.5, right: 2.5),
-                    child: _homeCard("constitution.png", "সংবিধান", "পুরো সংবিধান", '/constitution'),
+                    padding: EdgeInsets.only(
+                        top: 10, left: 10, bottom: 2.5, right: 2.5),
+                    child: _homeCard("constitution.png", "সংবিধান",
+                        "পুরো সংবিধান", '/constitution'),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 10, left: 2.5, bottom: 2.5, right: 10),
-                    child: _homeCard("qstnandans.png", "প্রশ্নোত্তর", "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanswer'),
+                    padding: EdgeInsets.only(
+                        top: 10, left: 2.5, bottom: 2.5, right: 10),
+                    child: _homeCard("qstnandans.png", "প্রশ্নোত্তর",
+                        "সংবিধান থেকে প্রশ্ন ও উত্তর", '/qstnanswer'),
                   ),
                 ),
               ],
@@ -260,14 +309,18 @@ class _HomePageState extends State<HomePage>
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 2.5, right: 2.5),
-                    child: _homeCard("history.png", "ইতিহাস", "সংবিধানের ইতিহাস", '/history'),
+                    padding: EdgeInsets.only(
+                        top: 2.5, left: 10, bottom: 2.5, right: 2.5),
+                    child: _homeCard("history.png", "ইতিহাস",
+                        "সংবিধানের ইতিহাস", '/history'),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 2.5, right: 10),
-                    child: _homeCard("exam.png", "পরীক্ষা", "সংবিধান থেকে পরীক্ষা দিন", '/exam'),
+                    padding: EdgeInsets.only(
+                        top: 2.5, left: 2.5, bottom: 2.5, right: 10),
+                    child: _homeCard("exam.png", "পরীক্ষা",
+                        "সংবিধান থেকে পরীক্ষা দিন", '/exam'),
                   ),
                 ),
               ],
@@ -276,18 +329,22 @@ class _HomePageState extends State<HomePage>
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 2.5, left: 10, bottom: 10, right: 2.5),
-                    child: _homeCard("amendment.png", "সংশোধনী", "সংবিধানের সংশোধনীসমূহ", '/ammendments'),
+                    padding: EdgeInsets.only(
+                        top: 2.5, left: 10, bottom: 10, right: 2.5),
+                    child: _homeCard("amendment.png", "সংশোধনী",
+                        "সংবিধানের সংশোধনীসমূহ", '/ammendments'),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(top: 2.5, left: 2.5, bottom: 10, right: 10),
-                    child: _homeCard("qstnbank.png", "ফলাফলসমূহ", "আপনার পুর্ববর্তী পরীক্ষাসমূহ", '/exams'),
+                    padding: EdgeInsets.only(
+                        top: 2.5, left: 2.5, bottom: 10, right: 10),
+                    child: _homeCard("qstnbank.png", "ফলাফলসমূহ",
+                        "আপনার পুর্ববর্তী পরীক্ষাসমূহ", '/exams'),
                   ),
                 ),
               ],
-            ),        
+            ),
           ]),
         ),
       ]),
@@ -296,50 +353,67 @@ class _HomePageState extends State<HomePage>
 
   Widget _homeDrawer(String username, String userdesig, String userorg) {
     return Drawer(
-      child: ListView(children: <Widget>[
-        Stack(children: <Widget>[
-          Image.asset("assets/images/drawer.jpg"),
-          Positioned(
-            left: 30,
-            bottom: 70,
-            child: Container(
-              height: 70, 
-              width: 70,
-              decoration: BoxDecoration(boxShadow: [_boxShadow1()], borderRadius: BorderRadius.circular(50),),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image.asset("assets/images/withouttext.png"),
+        child: ListView(
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            Image.asset("assets/images/drawer.jpg"),
+            Positioned(
+              left: 30,
+              bottom: 70,
+              child: Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                  boxShadow: [_boxShadow1()],
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  child: Image.asset("assets/images/withouttext.png"),
+                ),
               ),
-            ), 
-          ),
-          Positioned(
-            left: 30,
-            bottom: 40,
-            child: Text('সংবিধান সারথি', style: TextStyle(color: Colors.white, fontSize: 16)),
-          ),
-          Positioned(
-            left: 30,
-            bottom: 25,
-            child: Text(username, style: TextStyle(color: Colors.white70, fontSize: 13)),
-          ),
-          Positioned(
-            right: 3,
-            bottom: 3,
-            child: Text("Version: 1.0.5", style: TextStyle(color: Colors.white60, fontSize: 11)),
-          ),
-        ],),
-        SizedBox(height: 10,),
+            ),
+            Positioned(
+              left: 30,
+              bottom: 40,
+              child: Text('সংবিধান সারথি',
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
+            ),
+            Positioned(
+              left: 30,
+              bottom: 25,
+              child: Text(username,
+                  style: TextStyle(color: Colors.white70, fontSize: 13)),
+            ),
+            Positioned(
+              right: 3,
+              bottom: 3,
+              child: Text("Version: 1.0.5",
+                  style: TextStyle(color: Colors.white60, fontSize: 11)),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
         ListTile(
-          leading: Icon(Icons.home, color: Colors.black87,),
+          leading: Icon(
+            Icons.home,
+            color: Colors.black87,
+          ),
           title: Text("নীড়"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context); // this line closes the drawer
           },
         ),
         ListTile(
-          leading: Icon(Icons.add_to_photos, color: Colors.black87,),
+          leading: Icon(
+            Icons.add_to_photos,
+            color: Colors.black87,
+          ),
           title: Text("প্রশ্ন যোগ করুন"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
             // Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             // Navigator.push(context, route);
@@ -347,22 +421,31 @@ class _HomePageState extends State<HomePage>
           },
         ),
         ListTile(
-          leading: Icon(Icons.favorite, color: Colors.black87,),
+          leading: Icon(
+            Icons.favorite,
+            color: Colors.black87,
+          ),
           title: Text("প্রিয় তালিকা"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
             // Route route = MaterialPageRoute(builder: (context) => NotificationPage(["1", "2"]));
             // Navigator.push(context, route);
             Navigator.pushNamed(context, '/favorites');
           },
         ),
-        Divider(color: Colors.black26,),
+        Divider(
+          color: Colors.black26,
+        ),
         ListTile(
-          leading: Icon(Icons.settings, color: Colors.black87,),
+          leading: Icon(
+            Icons.settings,
+            color: Colors.black87,
+          ),
           title: Text("সেটিংস"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
-            Route route = MaterialPageRoute(builder: (context) => SettingsPage());
+            Route route =
+                MaterialPageRoute(builder: (context) => SettingsPage());
             Navigator.push(context, route).then((value) {
               setState(() {
                 userName = value[0];
@@ -373,26 +456,36 @@ class _HomePageState extends State<HomePage>
           },
         ),
         ListTile(
-          leading: Icon(Icons.mail, color: Colors.black87,),
+          leading: Icon(
+            Icons.mail,
+            color: Colors.black87,
+          ),
           title: Text("মতামত জানান"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
-            Route route = MaterialPageRoute(builder: (context) => ContactPage(userName));
+            Route route =
+                MaterialPageRoute(builder: (context) => ContactPage(userName));
             Navigator.push(context, route);
           },
         ),
         ListTile(
-          leading: Icon(Icons.info, color: Colors.black87,),
+          leading: Icon(
+            Icons.info,
+            color: Colors.black87,
+          ),
           title: Text("আমাদের সম্পর্কে"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
             _showDialog();
           },
         ),
         ListTile(
-          leading: Icon(Icons.share, color: Colors.black87,),
+          leading: Icon(
+            Icons.share,
+            color: Colors.black87,
+          ),
           title: Text("শেয়ার করুন"),
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
             share();
             // final RenderBox box = context.findRenderObject();
@@ -403,34 +496,47 @@ class _HomePageState extends State<HomePage>
             // Share.share('check out my website https://example.com', subject: 'Look what I made!');
           },
         ),
-      ],)
-    );
+      ],
+    ));
   }
-  
-  Widget _homeCard(String image, String title, String takenby, String routename) {
+
+  Widget _homeCard(
+      String image, String title, String takenby, String routename) {
     return Card(
       child: Stack(
         children: <Widget>[
-        Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               ClipRRect(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                  child: Image.asset("assets/images/" + image),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                child: Image.asset("assets/images/" + image),
               ),
               Padding(
-                padding: EdgeInsets.all(7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                    SizedBox(height: 5,),
-                    Text(takenby, style: TextStyle(color: Colors.blueGrey, fontSize: 11.5, height: 1.0),),
-                  ],
-                )
-              )
+                  padding: EdgeInsets.all(7),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        takenby,
+                        style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 11.5,
+                            height: 1.0),
+                      ),
+                    ],
+                  ))
             ],
           ),
           Positioned.fill(
@@ -438,11 +544,9 @@ class _HomePageState extends State<HomePage>
               color: Colors.transparent,
               child: InkWell(
                 onTap: () {
-                  if(routename != 'N/A') {
+                  if (routename != 'N/A') {
                     Navigator.pushNamed(context, routename);
-                  } else {
-        
-                  }
+                  } else {}
                 },
                 borderRadius: BorderRadius.circular(5),
               ),
@@ -456,9 +560,10 @@ class _HomePageState extends State<HomePage>
       elevation: 2,
     );
   }
+
   Widget _scrollCard(String iconname, String title, String subtitle) {
     return Container(
-      height: 110, 
+      height: 110,
       width: 110,
       child: Card(
         child: Stack(
@@ -467,11 +572,41 @@ class _HomePageState extends State<HomePage>
               // mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 9, width: double.infinity,),
-                Image.asset("assets/images/" + iconname, height: 45, width: 45, alignment: Alignment.center,),
-                SizedBox(height: 8, width: double.infinity,),
-                Text(title, style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.bold, fontFamily: 'Kalpurush', height: 1,), textAlign: TextAlign.center,),
-                Text(subtitle, style: TextStyle(color: Colors.blueGrey, fontSize: 13, fontFamily: 'Kalpurush', height: 1.1,), textAlign: TextAlign.center,),
+                SizedBox(
+                  height: 9,
+                  width: double.infinity,
+                ),
+                Image.asset(
+                  "assets/images/" + iconname,
+                  height: 45,
+                  width: 45,
+                  alignment: Alignment.center,
+                ),
+                SizedBox(
+                  height: 8,
+                  width: double.infinity,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Kalpurush',
+                    height: 1,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 13,
+                    fontFamily: 'Kalpurush',
+                    height: 1.1,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
             Positioned.fill(
@@ -506,12 +641,12 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-  
+
   showAlertDialog(BuildContext context, String msg) {
     // set up the button
     Widget okButton = FlatButton(
       child: Text("OK"),
-      onPressed: () { },
+      onPressed: () {},
     );
 
     // set up the AlertDialog
@@ -542,13 +677,25 @@ class _HomePageState extends State<HomePage>
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("assets/images/android-icon.png", width: 80, height: 80,),
-            SizedBox(height: 10,),
-            Text('সংবিধান সারথি', style: TextStyle(color: Colors.green[800], fontSize: 20)),
-            SizedBox(height: 10,),
+            Image.asset(
+              "assets/images/android-icon.png",
+              width: 80,
+              height: 80,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text('সংবিধান সারথি',
+                style: TextStyle(color: Colors.green[800], fontSize: 20)),
+            SizedBox(
+              height: 10,
+            ),
             Text('একটি Innova Tech Inc. পণ্য'),
-            SizedBox(height: 10,),
-            Text("Version: 1.0.5", style: TextStyle(color: Colors.black54, fontSize: 13)),
+            SizedBox(
+              height: 10,
+            ),
+            Text("Version: 1.0.5",
+                style: TextStyle(color: Colors.black54, fontSize: 13)),
           ],
         ),
       ),
@@ -561,13 +708,19 @@ class _HomePageState extends State<HomePage>
   // onesignal configuration
   void configOneSignal() {
     OneSignal.shared.init("d5202a9d-fc79-4e35-990c-bfc18333fafa");
-    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
-    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      if(result.notification.payload.additionalData.values.first == 'update') {
+    OneSignal.shared
+        .setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared
+        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+      if (result.notification.payload.additionalData.values.first == 'update') {
         Route route = MaterialPageRoute(builder: (context) => UpdateQstnPage());
         Navigator.push(context, route);
       } else {
-        Route route = MaterialPageRoute(builder: (context) => NotificationPage([result.notification.payload.title, result.notification.payload.additionalData.values.first]));
+        Route route = MaterialPageRoute(
+            builder: (context) => NotificationPage([
+                  result.notification.payload.title,
+                  result.notification.payload.additionalData.values.first
+                ]));
         Navigator.push(context, route);
       }
     });
