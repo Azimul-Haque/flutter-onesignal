@@ -76,7 +76,8 @@ class _HomePageState extends State<HomePage> {
     await FlutterShare.share(
         title: 'শেয়ার করুন',
         text: 'সংবিধান সারথি',
-        linkUrl: 'https://orbachinujbuk.com/',
+        linkUrl:
+            'https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution',
         chooserTitle: 'অ্যাপটি শেয়ার করুন!');
   }
 
