@@ -36,7 +36,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   }
 
   _showSnackbar(String textForSnackbar) {
-    var _mySnackbar = SnackBar(
+    var _mySnackbar = SnackBar(r
       content: Text(textForSnackbar),
     );
     _globalKey.currentState.showSnackBar(_mySnackbar);
