@@ -8,6 +8,7 @@ final String columnQuestion = "question";
 final String columnAnswer = "answer";
 final String columnIncAnswers = "incanswer";
 final String columnIsFav = "isfav";
+
 class QuestionsModel {
   int id;
   final String question;
@@ -15,9 +16,10 @@ class QuestionsModel {
   final String incanswer;
   final int isfav;
 
-  QuestionsModel({this.id, this.question, this.answer, this.incanswer, this.isfav});
+  QuestionsModel(
+      {this.id, this.question, this.answer, this.incanswer, this.isfav});
 
-  Map <String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       // columnId: this.id,
       columnQuestion: this.question,
@@ -28,10 +30,10 @@ class QuestionsModel {
   }
 }
 
-class QuestionHelper{
+class QuestionHelper {
   Database db;
 
-  QuestionHelper(){
+  QuestionHelper() {
     initDatabase();
   }
 
@@ -43,48 +45,65 @@ class QuestionHelper{
     return db;
   }
 
-  initDatabase() async{
-    db = await openDatabase(
-      join(await getDatabasesPath(), "questions28.db"),
-      onCreate: (db, version){
-        return db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0 NOT NULL)");
-      },
-      version: 1
-    );
+  initDatabase() async {
+    db = await openDatabase(join(await getDatabasesPath(), "questions28.db"),
+        onCreate: (db, version) {
+      return db.execute(
+          "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0 NOT NULL)");
+    }, version: 1);
   }
 
-  Future<void> clearQstnTable() async 
-  {
-      await db.execute("DROP TABLE IF EXISTS $tableName");
-      await db.execute("CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0 NOT NULL)");
+  Future<void> clearQstnTable() async {
+    await db.execute("DROP TABLE IF EXISTS $tableName");
+    await db.execute(
+        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnQuestion TEXT, $columnAnswer TEXT, $columnIncAnswers TEXT, $columnIsFav INTEGER DEFAULT 0 NOT NULL)");
   }
 
-  Future<void> insertQuestion(QuestionsModel question) async{
-    try{
-      db.insert(tableName, question.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    }catch(_){
+  Future<void> insertQuestion(QuestionsModel question) async {
+    try {
+      db.insert(tableName, question.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    } catch (_) {
       // print(_);
     }
   }
 
-  Future<List<QuestionsModel>> getAllQuestion () async{
+  Future<List<QuestionsModel>> getAllQuestion() async {
     List<Map<String, dynamic>> questions = await db.query(tableName);
-    return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
+    return List.generate(questions.length, (i) {
+      return QuestionsModel(
+          id: questions[i][columnId],
+          question: questions[i][columnQuestion],
+          answer: questions[i][columnAnswer],
+          incanswer: questions[i][columnIncAnswers],
+          isfav: questions[i][columnIsFav]);
     });
   }
 
-  Future<List<QuestionsModel>> getSomeQuestions (String amount) async{
-    List<Map<String, dynamic>> questions = await db.rawQuery("SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount, null);
-    return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
+  Future<List<QuestionsModel>> getSomeQuestions(String amount) async {
+    List<Map<String, dynamic>> questions = await db.rawQuery(
+        "SELECT * FROM " + tableName + " ORDER BY RANDOM() LIMIT " + amount,
+        null);
+    return List.generate(questions.length, (i) {
+      return QuestionsModel(
+          id: questions[i][columnId],
+          question: questions[i][columnQuestion],
+          answer: questions[i][columnAnswer],
+          incanswer: questions[i][columnIncAnswers],
+          isfav: questions[i][columnIsFav]);
     });
   }
 
-  Future<List<QuestionsModel>> getFavQuestions () async{
-    List<Map<String, dynamic>> questions = await db.rawQuery("SELECT * FROM " + tableName + " WHERE isfav=1");
-    return List.generate(questions.length, (i){
-      return QuestionsModel(id: questions[i][columnId], question: questions[i][columnQuestion], answer: questions[i][columnAnswer], incanswer: questions[i][columnIncAnswers], isfav: questions[i][columnIsFav]);
+  Future<List<QuestionsModel>> getFavQuestions() async {
+    List<Map<String, dynamic>> questions =
+        await db.rawQuery("SELECT * FROM " + tableName + " WHERE isfav=1");
+    return List.generate(questions.length, (i) {
+      return QuestionsModel(
+          id: questions[i][columnId],
+          question: questions[i][columnQuestion],
+          answer: questions[i][columnAnswer],
+          incanswer: questions[i][columnIncAnswers],
+          isfav: questions[i][columnIsFav]);
     });
   }
 
@@ -95,10 +114,10 @@ class QuestionHelper{
     ''';
 
     List<dynamic> params = [question.id];
-    
-    try{
+
+    try {
       await db.rawUpdate(sql, params);
-    }catch(_){
+    } catch (_) {
       print(_);
     }
   }
@@ -110,10 +129,10 @@ class QuestionHelper{
     ''';
 
     List<dynamic> params = [question.id];
-    
-    try{
+
+    try {
       await db.rawUpdate(sql, params);
-    }catch(_){
+    } catch (_) {
       print(_);
     }
   }
