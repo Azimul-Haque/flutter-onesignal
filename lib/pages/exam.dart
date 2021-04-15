@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../globals.dart';
 import 'dart:async';
 
-
 import 'package:project1/models/QuestionsModel.dart';
 import 'package:project1/models/ExamModel.dart';
 import 'package:project1/pages/examresult.dart';
@@ -17,7 +16,7 @@ class _ExamPageState extends State<ExamPage> {
   String formattedtime = '00:00:00';
   Timer _timer;
   bool isLoading;
-  
+
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
   var durationController = TextEditingController();
@@ -45,18 +44,27 @@ class _ExamPageState extends State<ExamPage> {
     if (_timer != null) {
       _timer.cancel();
     }
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) { 
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_counter > 1) {
           _counter--;
         } else {
           _timer.cancel();
           Navigator.pop(context); // close exam page
-          
+
           // open new page
           var totalmarks = rightanswer - wronganswer * 0.5;
           _insertExam(questions.length, duration, rightanswer, wronganswer);
-          Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
+          Route route = MaterialPageRoute(
+              builder: (context) => ExamResultPage([
+                    questions,
+                    duration,
+                    rightanswer,
+                    wronganswer,
+                    totalmarks,
+                    myOptionsListMap,
+                    optionsSelected
+                  ]));
           Navigator.push(context, route);
         }
       });
@@ -64,20 +72,32 @@ class _ExamPageState extends State<ExamPage> {
       formattedtime = "${formatDuration(now)}";
     });
   }
+
   String formatDuration(Duration duration) {
     return duration.toString().split('.').first.padLeft(8, '0');
   }
-  _loadDB(amnt, drtn) async{
+
+  _loadDB(amnt, drtn) async {
     await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
-    var newquestions = await _questionHelper.getSomeQuestions(amnt); // kaaj ache...
+
+    var newquestions =
+        await _questionHelper.getSomeQuestions(amnt); // kaaj ache...
     setState(() {
       questions = newquestions;
       isLoading = false;
     });
-    if(questions.length == 0) {
+
+    if (questions.length == 0) {
       // ekhane kaaj ache...
-    } else if(questions.length > 0) {
-      for(var j=0; j<questions.length; j++) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content:
+              const Text('অনুগ্রহ করে প্রশ্নোত্তর অংশে গিয়ে প্রশ্ন লোড করুন।'),
+        ),
+      );
+    } else if (questions.length > 0) {
+      for (var j = 0; j < questions.length; j++) {
         List tempoptions = [];
         tempoptions.add(questions[j].answer);
         tempoptions.add(questions[j].incanswer.split(',')[0]);
@@ -88,11 +108,13 @@ class _ExamPageState extends State<ExamPage> {
         isRadioSelected['selected' + questions[j].id.toString()] = false;
       }
       _startTimer(drtn);
-      Navigator.of(context).pop(); // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
+      Navigator.of(context).pop();
+      // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
     }
   }
+
   void handleSubmit() {
-    if(examFormKey.currentState.validate()) {
+    if (examFormKey.currentState.validate()) {
       FocusScope.of(context).unfocus();
       examFormKey.currentState.save();
       _loadDB(this.questionamnt, this.duration);
@@ -100,7 +122,12 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   _insertExam(totalqstn, duration, rightanswer, wronganswer) {
-    currentExam = ExamModel(totalqstn: totalqstn, duration: int.parse(duration), rightanswer: rightanswer, wronganswer: wronganswer, createdat: DateTime.now().toString());
+    currentExam = ExamModel(
+        totalqstn: totalqstn,
+        duration: int.parse(duration),
+        rightanswer: rightanswer,
+        wronganswer: wronganswer,
+        createdat: DateTime.now().toString());
     _examHelper.insertExam(currentExam);
     // print("DB insertion done");
   }
@@ -129,13 +156,14 @@ class _ExamPageState extends State<ExamPage> {
             FlatButton(
               child: Text(
                 formattedtime,
-                style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Raleway'),
+                style: TextStyle(
+                    color: Colors.white, fontSize: 18, fontFamily: 'Raleway'),
               ),
-              onPressed: () async{},
+              onPressed: () async {},
             ),
             IconButton(
-              icon: Icon(Icons.check), 
-              onPressed: () async{
+              icon: Icon(Icons.check),
+              onPressed: () async {
                 showAlertDialog();
                 // setState(() {
                 //   // formattedtime = '00:00:00';
@@ -148,7 +176,9 @@ class _ExamPageState extends State<ExamPage> {
           flexibleSpace: appBarStyle(),
         ),
         body: Column(children: <Widget>[
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: questions.length,
@@ -166,19 +196,22 @@ class _ExamPageState extends State<ExamPage> {
                       // ],
                     ),
                   ),
-                  margin: EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                  margin:
+                      EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
                   elevation: 2,
                 );
               },
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
         ]),
       ),
     );
   }
 
-  showExamDialog() async{
+  showExamDialog() async {
     await Future.delayed(Duration(seconds: 1));
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('সংবিধান থেকে পরীক্ষা')),
@@ -186,48 +219,50 @@ class _ExamPageState extends State<ExamPage> {
         key: examFormKey,
         child: Container(
           height: 200,
-          child: Column(children: <Widget>[
-            TextFormField(
-              controller: qstnAmntController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "প্রশ্নের সংখ্যা",
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: qstnAmntController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "প্রশ্নের সংখ্যা",
+                ),
+                validator: (value) {
+                  if (value.length == 0) {
+                    return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
+                  } else if (int.tryParse(value) <= 0) {
+                    return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
+                  } else if (int.tryParse(value) > 50) {
+                    return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  this.questionamnt = value;
+                },
               ),
-              validator: (value) {
-                if(value.length == 0) {
-                  return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
-                } else if(int.tryParse(value) <= 0) {
-                  return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
-                } else if(int.tryParse(value) > 50) {
-                  return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
-                }
-                return null;
-              },
-              onSaved: (value) {
-                this.questionamnt = value;
-              },
-            ),
-            TextFormField(
-              controller: durationController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "সময় (মিনিট)",
+              TextFormField(
+                controller: durationController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "সময় (মিনিট)",
+                ),
+                validator: (value) {
+                  if (value.length == 0) {
+                    return "সময় পূরণ আবশ্যক";
+                  } else if (int.tryParse(value) <= 0) {
+                    return "সময় ০ থেকে বেশি সেট করতে হবে!";
+                  } else if (int.tryParse(value) > 15) {
+                    return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  this.duration = value;
+                },
               ),
-              validator: (value) {
-                if(value.length == 0) {
-                  return "সময় পূরণ আবশ্যক";
-                } else if(int.tryParse(value) <= 0) {
-                  return "সময় ০ থেকে বেশি সেট করতে হবে!";
-                } else if(int.tryParse(value) > 15) {
-                  return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
-                }
-                return null;
-              },
-              onSaved: (value) {
-                this.duration = value;
-              },
-            ),
-          ],),
+            ],
+          ),
         ),
       ),
       actions: <Widget>[
@@ -250,6 +285,7 @@ class _ExamPageState extends State<ExamPage> {
       },
     );
   }
+
   showAlertDialog() {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
@@ -257,7 +293,7 @@ class _ExamPageState extends State<ExamPage> {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
+        children: <Widget>[
           Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
           // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
         ],
@@ -266,15 +302,15 @@ class _ExamPageState extends State<ExamPage> {
         RaisedButton(
           child: Text("শেষ করুন"),
           color: Colors.green,
-          onPressed: () async{
+          onPressed: () async {
             if (_timer != null) {
               _timer.cancel();
             }
             setState(() {
               formattedtime = '00:00:00';
             });
-            
-            if(questions.length > 0) {
+
+            if (questions.length > 0) {
               showLoadingDialog();
               await Future.delayed(Duration(seconds: 1));
               Navigator.of(context).pop(); // close the loading dialogue
@@ -283,10 +319,19 @@ class _ExamPageState extends State<ExamPage> {
             Navigator.pop(context); // close the page
 
             // open new page
-            if(questions.length > 0) {
+            if (questions.length > 0) {
               var totalmarks = rightanswer - wronganswer * 0.5;
               _insertExam(questions.length, duration, rightanswer, wronganswer);
-              Route route = MaterialPageRoute(builder: (context) => ExamResultPage([questions, duration, rightanswer, wronganswer, totalmarks, myOptionsListMap, optionsSelected]));
+              Route route = MaterialPageRoute(
+                  builder: (context) => ExamResultPage([
+                        questions,
+                        duration,
+                        rightanswer,
+                        wronganswer,
+                        totalmarks,
+                        myOptionsListMap,
+                        optionsSelected
+                      ]));
               Navigator.push(context, route);
             }
           },
@@ -318,7 +363,7 @@ class _ExamPageState extends State<ExamPage> {
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children : <Widget>[
+        children: <Widget>[
           CircularProgressIndicator(),
         ],
       ),
@@ -335,32 +380,38 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   List<Widget> createRadioListOptions(_qstn) {
-    List<Widget> options = [];    
-    for(var i=0; i<myOptionsListMap['list' + _qstn.id.toString()].length; i++) {
+    List<Widget> options = [];
+    for (var i = 0;
+        i < myOptionsListMap['list' + _qstn.id.toString()].length;
+        i++) {
       options.add(
-        Row(
-          children: <Widget>[
-            Flexible(
+        Row(children: <Widget>[
+          Flexible(
             fit: FlexFit.loose,
             child: RadioListTile(
               groupValue: myOptionsMap['qstn' + _qstn.id.toString()],
               value: i,
               title: Text(myOptionsListMap['list' + _qstn.id.toString()][i]),
-              onChanged: !isRadioSelected['selected' + _qstn.id.toString()] ? (val) {
-                setState(() {
-                  isRadioSelected['selected' + _qstn.id.toString()] = true;
-                  myOptionsMap['qstn' + _qstn.id.toString()] = val;
-                  optionsSelected['selected' + _qstn.id.toString()] = myOptionsListMap['list' + _qstn.id.toString()][i];
-                  if(myOptionsListMap['list' + _qstn.id.toString()][i] == _qstn.answer) {
-                    rightanswer++;
-                  } else {
-                    wronganswer++;
-                  }
-                });
-                // print('Right Answer: ' + rightanswer.toString());
-                // print('Wrong Answer: ' + wronganswer.toString());
-                // print(myOptionsListMap['list' + _qstn.id.toString()]);
-              } : null,
+              onChanged: !isRadioSelected['selected' + _qstn.id.toString()]
+                  ? (val) {
+                      setState(() {
+                        isRadioSelected['selected' + _qstn.id.toString()] =
+                            true;
+                        myOptionsMap['qstn' + _qstn.id.toString()] = val;
+                        optionsSelected['selected' + _qstn.id.toString()] =
+                            myOptionsListMap['list' + _qstn.id.toString()][i];
+                        if (myOptionsListMap['list' + _qstn.id.toString()][i] ==
+                            _qstn.answer) {
+                          rightanswer++;
+                        } else {
+                          wronganswer++;
+                        }
+                      });
+                      // print('Right Answer: ' + rightanswer.toString());
+                      // print('Wrong Answer: ' + wronganswer.toString());
+                      // print(myOptionsListMap['list' + _qstn.id.toString()]);
+                    }
+                  : null,
               activeColor: Colors.green,
             ),
           ),
@@ -369,5 +420,4 @@ class _ExamPageState extends State<ExamPage> {
     }
     return options;
   }
-
 }

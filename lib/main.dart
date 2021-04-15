@@ -24,6 +24,7 @@ import 'package:project1/pages/updateqstns.dart';
 
 import 'package:project1/pages/settings.dart';
 import 'package:project1/pages/contact.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'globals.dart';
 
 void main() {
@@ -154,18 +155,19 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, '/formpage');
                   break;
                 case 'rate':
-                  // if (await canLaunch("https://orbachinujbuk.com")) {
-                  //   await launch("https://play.google.com/store/apps/details?id=com.madladsInc.boi_mela");
-                  // } else {
-                  //   throw 'Could not launch!';
-                  // }
+                  if (await canLaunch("https://orbachinujbuk.com")) {
+                    await launch(
+                        "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution");
+                  } else {
+                    throw 'Could not launch!';
+                  }
                   break;
                 case 'website':
-                  // if (await canLaunch("https://orbachinujbuk.com")) {
-                  //   await launch("https://orbachinujbuk.com");
-                  // } else {
-                  //   throw 'Could not launch!';
-                  // }
+                  if (await canLaunch("https://orbachinujbuk.com")) {
+                    await launch("https://orbachinujbuk.com");
+                  } else {
+                    throw 'Could not launch!';
+                  }
                   break;
                 default:
               }
