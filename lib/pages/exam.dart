@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:project1/models/QuestionsModel.dart';
 import 'package:project1/models/ExamModel.dart';
 import 'package:project1/pages/examresult.dart';
+import 'package:http/http.dart' as http;
 
 class ExamPage extends StatefulWidget {
   @override
@@ -66,6 +67,10 @@ class _ExamPageState extends State<ExamPage> {
                     optionsSelected
                   ]));
           Navigator.push(context, route);
+
+          // just call it
+          http.get(Uri.parse(
+              'https://killa.com.bd/onesignal/examcount/complete/api'));
         }
       });
       var now = Duration(seconds: _counter);
@@ -111,6 +116,9 @@ class _ExamPageState extends State<ExamPage> {
       Navigator.of(context).pop();
       // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
     }
+    // just call it
+    http.get(
+        Uri.parse('https://killa.com.bd/onesignal/examcount/initiate/api'));
   }
 
   void handleSubmit() {
@@ -333,6 +341,10 @@ class _ExamPageState extends State<ExamPage> {
                         optionsSelected
                       ]));
               Navigator.push(context, route);
+
+              // just call it
+              http.get(Uri.parse(
+                  'https://killa.com.bd/onesignal/examcount/complete/api'));
             }
           },
         ),
