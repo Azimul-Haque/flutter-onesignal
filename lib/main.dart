@@ -392,7 +392,7 @@ class _HomePageState extends State<HomePage> {
             Positioned(
               right: 3,
               bottom: 3,
-              child: Text("Version: 1.0.5",
+              child: Text("Version: 1.2.0",
                   style: TextStyle(color: Colors.white60, fontSize: 11)),
             ),
           ],
