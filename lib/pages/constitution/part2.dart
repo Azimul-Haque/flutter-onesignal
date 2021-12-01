@@ -297,7 +297,8 @@ class PartTwo extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text('২৩ক। উপজাতি, ক্ষুদ্র জাতিসত্তা, নৃ-গোষ্ঠী ও সম্প্রদায়ের সংস্কৃতি'),
+            title: Text(
+                '২৩ক। উপজাতি, ক্ষুদ্র জাতিসত্তা, নৃ-গোষ্ঠী ও সম্প্রদায়ের সংস্কৃতি'),
             children: <Widget>[
               ListTile(
                   title: Text(
