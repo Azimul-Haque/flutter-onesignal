@@ -9,6 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
 import 'package:flutter_share/flutter_share.dart';
+import 'package:blinking_text/blinking_text.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:http/http.dart' as http;
 // import 'package:project1/QuestionsModel.dart';
 
 import 'package:project1/pages/constitution.dart';
@@ -61,17 +64,11 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
-  List people = [];
-  List posts = [];
-  List unfilteredPosts = [];
-
-  Future<String> loadJsonData() async {
-    var jsonDataText = await rootBundle.loadString("assets/data.json");
-    setState(() {
-      people = json.decode(jsonDataText);
-    });
-    return 'success';
-  }
+  // List people = [];
+  // List posts = [];
+  // List unfilteredPosts = [];
+  bool updateVisibilityTag = false;
+  String versionFromServer = "";
 
   Future<void> share() async {
     await FlutterShare.share(
@@ -131,11 +128,35 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
+
+  Future<void> _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+    String serviceUR = "https://killa.com.bd/broadcast/version";
+    var versionData = await http.get(serviceUR);
+    versionFromServer = json.decode(versionData.body.toString());
+    // print(versionFromServer);
+    if (versionFromServer != _packageInfo.version) {
+      setState(() {
+        updateVisibilityTag = true;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     this._loadUserData();
     this.configOneSignal();
+    _initPackageInfo();
   }
 
   @override
@@ -155,7 +176,8 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, '/formpage');
                   break;
                 case 'rate':
-                  if (await canLaunch("https://orbachinujbuk.com")) {
+                  if (await canLaunch(
+                      "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution")) {
                     await launch(
                         "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution");
                   } else {
@@ -286,6 +308,50 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        updateVisibilityTag
+            ? Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          top: 0, left: 10, bottom: 0, right: 10),
+                      child: Card(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            child:
+                                Icon(Icons.new_releases, color: Colors.white),
+                            backgroundColor: Color.fromRGBO(255, 165, 0, 1.0),
+                          ),
+                          title: BlinkText(
+                            'একটি নতুন আপডেট আছে',
+                            style:
+                                TextStyle(fontSize: 18.0, color: Colors.black),
+                            endColor: Colors.orange,
+                          ),
+                          subtitle: Text("আপডেট (" +
+                              versionFromServer +
+                              ") পেতে ক্লিক করুন!"),
+                          trailing: Icon(Icons.update),
+                          onTap: () async {
+                            if (await canLaunch(
+                                    "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution") !=
+                                null) {
+                              await launch(
+                                  "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution");
+                            } else {
+                              // throw 'Could not launch!';
+                            }
+                          },
+                        ),
+                        // color: Color.fromRGBO(241, 248, 233, 1.0),
+                        // margin:
+                        //     EdgeInsets.only(top: 5, right: 10, bottom: 5, left: 10),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : new Container(),
         Expanded(
           child: ListView(children: <Widget>[
             Row(
