@@ -154,6 +154,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    asdasd
     this._loadUserData();
     this.configOneSignal();
     _initPackageInfo();
