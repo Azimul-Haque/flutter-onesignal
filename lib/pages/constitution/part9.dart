@@ -259,20 +259,6 @@ class PartNine extends StatelessWidget {
               )),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.all(15),
-            child: Column(children: <Widget>[
-              Text(
-                " \n\n \n\n",
-                style:
-                    TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-            ]),
-          ),
         ],
       ),
     );
