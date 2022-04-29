@@ -767,7 +767,11 @@ class _HomePageState extends State<HomePage> {
             // Text(
             //   'এ. এইচ. এম. আজিমুল হক (রিফাত)',
             // ),
-
+            Image.asset(
+              "assets/images/android-icon.png",
+              width: 60,
+              height: 60,
+            ),
             TextButton(
               onPressed: () async {
                 var url =
