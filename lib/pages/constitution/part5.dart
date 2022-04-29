@@ -422,7 +422,7 @@ class PartFive extends StatelessWidget {
             children: <Widget>[
               ListTile(
                   title: SelectableText(
-                '৮০। (১) আইনপ্রণয়নের উদ্দেশ্যে সংসদে আনীত প্রত্যেকটি প্রস্তাব বিল আকারে উত্থাপিত হইবে।',
+                '৮১। (১) এই ভাগে "অর্থবিল" বলিতে কেবল নিম্নলিখিত বিষয়সমূহের সকল বা যে কোন একটি সম্পর্কিত বিধানাবলী-সংবলিত বিল বুঝাইবে:',
                 textAlign: TextAlign.justify,
               )),
               ListTile(
