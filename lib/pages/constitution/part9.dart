@@ -62,6 +62,16 @@ class PartNine extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১৩৪। কর্মের মেয়াদ'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '১৩৪। এই সংবিধানের দ্বারা অন্যরূপ বিধান না করা হইয়া থাকিলে প্রজাতন্ত্রের কর্মে নিযুক্ত প্রত্যেক ব্যক্তি রাষ্ট্রপতির সন্তোষানুযায়ী সময়সীমা পর্যন্ত স্বীয় পদে বহাল থাকিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
