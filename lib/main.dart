@@ -763,6 +763,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
+            Text('এ. এইচ. এম. আজিমুল হক (রিফাত)'),
             Text('একটি Innova Tech Inc. পণ্য'),
             SizedBox(
               height: 10,
