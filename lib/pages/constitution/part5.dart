@@ -537,11 +537,26 @@ class PartFive extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('৯০। নির্দিষ্টকরণ আইন'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '৯০। (১) সংসদ কর্তৃক এই সংবিধানের ৮৯ অনুচ্ছেদের অধীন মঞ্জুরী-দানের পর সংযুক্ত তহবিল হইতে নিম্নলিখিত ব্যয় নির্বাহের জন্য প্রয়োজনীয় সকল অর্থ নির্দিষ্টকরণের বিধান-সংবলিত একটি বিল যথাশীঘ্র সংসদে উত্থাপন করা হইবে: (ক) সংসদ কর্তৃক প্রদত্ত অনুরূপ মঞ্জুরী; এবং (খ) সংসদে উপস্থাপিত বিবৃতিতে প্রদর্শিত অর্থের অনধিক সংযুক্ত তহবিলের দায়যুক্ত ব্যয়।',
+                textAlign: TextAlign.justify,
+              )),
+              ListTile(
+                  title: SelectableText(
+                '(৩) রাষ্ট্রপতির সুপারিশ ব্যতীত কোন মঞ্জুরী দাবী করা যাইবে না।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "\n\n \n\n \n\n \n\n \n\n \n\n৯০। নির্দিষ্টকরণ আইন \n\n৯১। সম্পূরক ও অতিরিক্ত মঞ্জুরী \n\n৯২। হিসাব, ঋণ প্রভৃতির উপর ভোট \n\n৯২ক। [বিলুপ্ত] \n\n\n৩য় পরিচ্ছেদঃ অধ্যাদেশপ্রণয়ন-ক্ষমতা \n\n৯৩। অধ্যাদেশপ্রণয়ন-ক্ষমতা",
+                "\n\n \n\n \n\n \n\n \n\n \n\n \n\n৯১। সম্পূরক ও অতিরিক্ত মঞ্জুরী \n\n৯২। হিসাব, ঋণ প্রভৃতির উপর ভোট \n\n৯২ক। [বিলুপ্ত] \n\n\n৩য় পরিচ্ছেদঃ অধ্যাদেশপ্রণয়ন-ক্ষমতা \n\n৯৩। অধ্যাদেশপ্রণয়ন-ক্ষমতা",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
