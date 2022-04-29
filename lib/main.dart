@@ -759,7 +759,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Text('একটি Innova Tech Inc. পণ্য'),
+            Text('নির্মাতা - '),
             SizedBox(
               height: 10,
             ),
