@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <application
-        android:name="${applicationName}"
+        android:name="io.flutter.app.FlutterApplication"
         android:label="BCS Constitution - বিসিএস সংবিধান"
         android:icon="@mipmap/ic_launcher">
         <activity
