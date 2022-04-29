@@ -402,8 +402,7 @@ class PartSix extends StatelessWidget {
           ),
           Divider(),
           ExpansionTile(
-            title: Text(
-                '১১৬ক। বিচারবিভাগীয় কর্মচারীগণ বিচারকার্য পালনের ক্ষেত্রে স্বাধীন'),
+            title: Text('১১৭। প্রশাসনিক ট্রাইব্যুনালসমূহ'),
             children: <Widget>[
               ListTile(
                   title: Text(
