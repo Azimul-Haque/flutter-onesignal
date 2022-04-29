@@ -767,8 +767,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 5,
             ),
-            Text('৪০তম বিসিএসে প্রশাসন ক্যাডারে সুপারিশপ্রাপ্ত'),
-            Text('মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
+            Text('প্রশাসন ক্যাডার, মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
             SizedBox(
               height: 5,
             ),
