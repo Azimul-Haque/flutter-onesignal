@@ -74,6 +74,7 @@ flutter:
    - assets/images/law.png
    - assets/images/seal.png
    - assets/images/search.png
+   - assets/images/rifat.jpg
   #  - images/a_dot_ham.jpeg
   fonts:
   - family: Kalpurush
