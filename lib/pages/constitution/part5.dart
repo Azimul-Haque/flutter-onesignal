@@ -597,6 +597,19 @@ class PartFive extends StatelessWidget {
               )),
             ],
           ),
+          SizedBox(
+            height: 3,
+          ),
+          Divider(),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            "২য় পরিচ্ছেদঃ আইন প্রনয়ন ও অর্থসংক্রান্ত পদ্ধতি",
+            style: TextStyle(color: Colors.green[900], fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          Divider(),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
