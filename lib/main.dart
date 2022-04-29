@@ -764,8 +764,11 @@ class _HomePageState extends State<HomePage> {
               height: 10,
             ),
             Text('এ. এইচ. এম. আজিমুল হক (রিফাত)'),
+            SizedBox(
+              height: 5,
+            ),
             Text('৪০তম বিসিএসে প্রশাসন ক্যাডারে সুপারিশপ্রাপ্ত'),
-            Text('মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস।'),
+            Text('মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
             Text('সহকারী পরিচালক, প্রধানমন্ত্রীর কার্যালয়'),
             Text('একটি Innova Tech Inc. পণ্য'),
             SizedBox(
