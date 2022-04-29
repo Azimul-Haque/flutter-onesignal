@@ -33,6 +33,15 @@ class PartNine extends StatelessWidget {
             height: 3,
           ),
           Divider(),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            "১ম পরিচ্ছেদঃ সুপ্রীম কোর্ট",
+            style: TextStyle(color: Colors.green[900], fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          Divider(),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
