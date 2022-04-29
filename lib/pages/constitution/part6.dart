@@ -388,11 +388,35 @@ class PartSix extends StatelessWidget {
               )),
             ],
           ),
+          SizedBox(
+            height: 3,
+          ),
+          Divider(),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            "৩য় পরিচ্ছেদঃ প্রশাসনিক ট্রাইব্যুনাল",
+            style: TextStyle(color: Colors.green[900], fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          Divider(),
+          ExpansionTile(
+            title: Text(
+                '১১৬ক। বিচারবিভাগীয় কর্মচারীগণ বিচারকার্য পালনের ক্ষেত্রে স্বাধীন'),
+            children: <Widget>[
+              ListTile(
+                  title: Text(
+                '১১৬ক। এই সংবিধানের বিধানাবলী সাপেক্ষে বিচার-কর্মবিভাগে নিযুক্ত ব্যক্তিগণ এবং ম্যাজিষ্ট্রেটগণ বিচারকার্য পালনের ক্ষেত্রে স্বাধীন থাকিবেন',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "\n\n\n \n\n \n\n \n\n \n\n \n\n\n৩য় পরিচ্ছেদঃ প্রশাসনিক ট্রাইব্যুনাল \n\n১১৭। প্রশাসনিক ট্রাইব্যুনালসমূহ \n\n\nষষ্ঠ ক ভাগ-জাতীয়দল [সংবিধান (পঞ্চদশ সংশোধন) আইন, ২০১১ (২০১১ সনের ১৪ নং আইন)-এর ৪১ ধারাবলে বিলুপ্ত।]",
+                "\n\n\n \n\n \n\n \n\n \n\n \n\n\n \n\n \n\n\nষষ্ঠ ক ভাগ-জাতীয়দল [সংবিধান (পঞ্চদশ সংশোধন) আইন, ২০১১ (২০১১ সনের ১৪ নং আইন)-এর ৪১ ধারাবলে বিলুপ্ত।]",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
