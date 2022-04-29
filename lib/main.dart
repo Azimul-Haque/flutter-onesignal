@@ -768,7 +768,7 @@ class _HomePageState extends State<HomePage> {
             //   'এ. এইচ. এম. আজিমুল হক (রিফাত)',
             // ),
             Image.asset(
-              "assets/images/android-icon.png",
+              "assets/images/rifat.jpg",
               width: 60,
               height: 60,
             ),
