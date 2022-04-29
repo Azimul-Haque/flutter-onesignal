@@ -133,7 +133,7 @@ class PartSix extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text('৯৮। সুপ্রীম কোর্টের অতিরিক্ত বিচারকগণ'),
+            title: Text('৯৯। অবসর গ্রহণের পর বিচারগণের অক্ষমতা'),
             children: <Widget>[
               ListTile(
                   title: Text(
