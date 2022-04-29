@@ -769,8 +769,8 @@ class _HomePageState extends State<HomePage> {
             // ),
             Image.asset(
               "assets/images/rifat.jpg",
-              width: 120,
-              height: 120,
+              width: 130,
+              height: 130,
             ),
             TextButton(
               onPressed: () async {
