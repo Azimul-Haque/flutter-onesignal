@@ -86,6 +86,11 @@ class PartEight extends StatelessWidget {
                 '(২) সুপ্রীম কোর্টের কোন বিচারক যেরূপ পদ্ধতি ও কারণে অপসারিত হইতে পারেন, সেইরূপ পদ্ধতি ও কারণ ব্যতীত মহা হিসাব-নিরীক্ষক অপসারিত হইবেন না।',
                 textAlign: TextAlign.justify,
               )),
+              ListTile(
+                  title: SelectableText(
+                '(৪) কর্মাবসানের পর মহা হিসাব-নিরীক্ষক প্রজাতন্ত্রের কর্মে অন্য কোন পদে নিযুক্ত হইবার যোগ্য হইবেন না।',
+                textAlign: TextAlign.justify,
+              )),
             ],
           ),
           Padding(
