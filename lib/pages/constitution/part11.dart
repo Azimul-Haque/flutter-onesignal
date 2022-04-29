@@ -144,6 +144,16 @@ class PartEleven extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১৪৮। পদের শপথ'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '১৪৮। (১) তৃতীয় তফসিলে উল্লিখিত যে কোন পদে নির্বাচিত বা নিযুক্ত ব্যক্তি কার্যভার গ্রহণের পূর্বে উক্ত তফসিল-অনুযায়ী শপথগ্রহণ বা ঘোষণা (এই অনুচ্ছেদে "শপথ" বলিয়া অভিহিত) করিবেন এবং অনুরূপ শপথপত্রে বা ঘোষণাপত্রে স্বাক্ষরদান করিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
