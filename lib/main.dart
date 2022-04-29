@@ -39,6 +39,7 @@ void main() {
       primarySwatch: Colors.green,
       fontFamily: 'Kalpurush',
     ),
+    debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
