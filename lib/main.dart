@@ -759,7 +759,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Text('নির্মাতা - '),
+            Text('নির্মাতা তথ্য'),
             SizedBox(
               height: 10,
             ),
