@@ -769,7 +769,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Text('৪০তম বিসিএসে প্রশাসন ক্যাডারে সুপারিশপ্রাপ্ত'),
             Text('মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
+            SizedBox(
+              height: 5,
+            ),
             Text('সহকারী পরিচালক, প্রধানমন্ত্রীর কার্যালয়'),
+            SizedBox(
+              height: 10,
+            ),
             Text('একটি Innova Tech Inc. পণ্য'),
             SizedBox(
               height: 10,
