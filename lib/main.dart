@@ -770,8 +770,8 @@ class _HomePageState extends State<HomePage> {
               style: TextButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 20),
               ),
-              onPressed: () {
-                if (await canLaunch("https://orbachinujbuk.com")) {
+              onPressed: () async {
+                if (await canLaunch("https://orbachinujbuk.com") != null) {
                   await launch("https://orbachinujbuk.com");
                 } else {
                   throw 'Could not launch!';
