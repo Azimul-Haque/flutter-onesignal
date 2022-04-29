@@ -203,7 +203,7 @@ class PartNine extends StatelessWidget {
             height: 3,
           ),
           Text(
-            "২য় পরিচ্ছেদঃ অধস্তন আদালত",
+            "নবম-ক ভাগ জরুরী বিধানাবলী",
             style: TextStyle(color: Colors.green[900], fontSize: 16),
             textAlign: TextAlign.center,
           ),
