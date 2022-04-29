@@ -748,8 +748,8 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Image.asset(
               "assets/images/android-icon.png",
-              width: 80,
-              height: 80,
+              width: 60,
+              height: 60,
             ),
             SizedBox(
               height: 10,
