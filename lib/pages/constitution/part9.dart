@@ -254,7 +254,7 @@ class PartNine extends StatelessWidget {
               )),
               ListTile(
                   title: SelectableText(
-                '(২) সমগ্র বাংলাদেশ বা উহার যে কোন অংশে এই অনুচ্ছেদের অধীন প্রণীত আদেশ প্রযোজ্য হইতে পারিবে।',
+                '(৩) এই অনুচ্ছেদের অধীন প্রণীত প্রত্যেক আদেশ যথাসম্ভব শীঘ্র সংসদে উপস্থাপিত হইবে।',
                 textAlign: TextAlign.justify,
               )),
             ],
