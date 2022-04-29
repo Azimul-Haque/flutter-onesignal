@@ -755,11 +755,11 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Text('সংবিধান সারথি',
-                style: TextStyle(color: Colors.green[800], fontSize: 18)),
-            SizedBox(
-              height: 10,
-            ),
+            // Text('সংবিধান সারথি',
+            //     style: TextStyle(color: Colors.green[800], fontSize: 18)),
+            // SizedBox(
+            //   height: 10,
+            // ),
             Text('নির্মাতা তথ্য'),
             SizedBox(
               height: 5,
@@ -769,8 +769,8 @@ class _HomePageState extends State<HomePage> {
             // ),
             Image.asset(
               "assets/images/rifat.jpg",
-              width: 100,
-              height: 100,
+              width: 120,
+              height: 120,
             ),
             TextButton(
               onPressed: () async {
