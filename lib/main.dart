@@ -761,7 +761,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Text('নির্মাতা তথ্য'),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             // Text(
             //   'এ. এইচ. এম. আজিমুল হক (রিফাত)',
@@ -779,9 +779,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 18),
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
+
             Text('প্রশাসন ক্যাডার, মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
             SizedBox(
               height: 5,
