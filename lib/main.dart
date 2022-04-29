@@ -8,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 // import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
-import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart' as slideDialog;
+import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
+    as slideDialog;
 import 'package:flutter_share/flutter_share.dart';
 import 'package:blinking_text/blinking_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -802,8 +803,10 @@ class _HomePageState extends State<HomePage> {
               height: 30,
             ),
             Text('একটি Innova Tech Inc. পণ্য'),
-            Text("Version: " + _packageInfo.version,
-                style: TextStyle(color: Colors.black54, fontSize: 13),
+            Text(
+              "Version: " + _packageInfo.version,
+              style: TextStyle(color: Colors.black54, fontSize: 13),
+            )
           ],
         ),
       ),
