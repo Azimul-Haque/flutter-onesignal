@@ -768,8 +768,9 @@ class _HomePageState extends State<HomePage> {
             // ),
             TextButton(
               onPressed: () async {
-                if (await canLaunch("https://orbachinujbuk.com") != null) {
-                  await launch("https://orbachinujbuk.com");
+                if (await canLaunch("https://www.facebook.com/orbachinujbuk") !=
+                    null) {
+                  await launch("https://www.facebook.com/orbachinujbuk");
                 } else {
                   throw 'Could not launch!';
                 }
