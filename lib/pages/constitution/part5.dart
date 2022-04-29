@@ -605,7 +605,7 @@ class PartFive extends StatelessWidget {
             height: 3,
           ),
           Text(
-            "২য় পরিচ্ছেদঃ আইন প্রনয়ন ও অর্থসংক্রান্ত পদ্ধতি",
+            "৩য় পরিচ্ছেদঃ অধ্যাদেশ প্রণয়ন-ক্ষমতা",
             style: TextStyle(color: Colors.green[900], fontSize: 16),
             textAlign: TextAlign.center,
           ),
