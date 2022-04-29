@@ -756,7 +756,7 @@ class _HomePageState extends State<HomePage> {
               height: 10,
             ),
             Text('সংবিধান সারথি',
-                style: TextStyle(color: Colors.green[800], fontSize: 20)),
+                style: TextStyle(color: Colors.green[800], fontSize: 18)),
             SizedBox(
               height: 10,
             ),
