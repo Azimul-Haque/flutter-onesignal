@@ -610,11 +610,21 @@ class PartFive extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Divider(),
+          ExpansionTile(
+            title: Text('৯৩। অধ্যাদেশপ্রণয়ন-ক্ষমতা'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '৯২ক। [কতিপয় ক্ষেত্রে ব্যয়ের কর্তৃত্ব প্রদান- সংবিধান (দ্বাদশ সংশোধন) আইন, ১৯৯১ (১৯৯১ সনের ২৮ নং আইন)- এর ১০ ধারাবলে বিলুপ্ত।]',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n\n৩য় পরিচ্ছেদঃ অধ্যাদেশপ্রণয়ন-ক্ষমতা \n\n৯৩। অধ্যাদেশপ্রণয়ন-ক্ষমতা",
+                "\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n\n৩য় পরিচ্ছেদঃ অধ্যাদেশপ্রণয়ন-ক্ষমতা \n\n",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
