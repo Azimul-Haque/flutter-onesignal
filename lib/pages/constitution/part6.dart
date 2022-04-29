@@ -378,7 +378,8 @@ class PartSix extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text('১১৬। অধস্তন আদালতসমূহের নিয়ন্ত্রণ ও শৃঙ্খলা'),
+            title: Text(
+                '১১৬ক। বিচারবিভাগীয় কর্মচারীগণ বিচারকার্য পালনের ক্ষেত্রে স্বাধীন'),
             children: <Widget>[
               ListTile(
                   title: Text(
@@ -391,7 +392,7 @@ class PartSix extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "\n\n\n \n\n \n\n \n\n \n\n১১৬ক। বিচারবিভাগীয় কর্মচারীগণ বিচারকার্য পালনের ক্ষেত্রে স্বাধীন \n\n\n৩য় পরিচ্ছেদঃ প্রশাসনিক ট্রাইব্যুনাল \n\n১১৭। প্রশাসনিক ট্রাইব্যুনালসমূহ \n\n\nষষ্ঠ ক ভাগ-জাতীয়দল [সংবিধান (পঞ্চদশ সংশোধন) আইন, ২০১১ (২০১১ সনের ১৪ নং আইন)-এর ৪১ ধারাবলে বিলুপ্ত।]",
+                "\n\n\n \n\n \n\n \n\n \n\n \n\n\n৩য় পরিচ্ছেদঃ প্রশাসনিক ট্রাইব্যুনাল \n\n১১৭। প্রশাসনিক ট্রাইব্যুনালসমূহ \n\n\nষষ্ঠ ক ভাগ-জাতীয়দল [সংবিধান (পঞ্চদশ সংশোধন) আইন, ২০১১ (২০১১ সনের ১৪ নং আইন)-এর ৪১ ধারাবলে বিলুপ্ত।]",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
