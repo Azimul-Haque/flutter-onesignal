@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       Icon(
-                        Icons.open_in_browser,
+                        Icons.code,
                         color: Colors.black87,
                       ),
                       SizedBox(
