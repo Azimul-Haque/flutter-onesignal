@@ -97,6 +97,19 @@ class PartNine extends StatelessWidget {
               )),
             ],
           ),
+          SizedBox(
+            height: 3,
+          ),
+          Divider(),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            "২য় পরিচ্ছেদঃ অধস্তন আদালত",
+            style: TextStyle(color: Colors.green[900], fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          Divider(),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
