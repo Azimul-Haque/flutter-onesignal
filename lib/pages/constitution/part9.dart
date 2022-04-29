@@ -240,8 +240,7 @@ class PartNine extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text(
-                '১৪১খ। জরুরী-অবস্থার সময় সংবিধানের কতিপয় অনুচ্ছেদের বিধান স্থগিতকরণ'),
+            title: Text('১৪১গ। জরুরী-অবস্থার সময় মৌলিক অধিকারসমূহ স্থগিতকরণ'),
             children: <Widget>[
               ListTile(
                   title: SelectableText(
@@ -254,7 +253,7 @@ class PartNine extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                " \n\n \n\n১৪১গ। জরুরী-অবস্থার সময় মৌলিক অধিকারসমূহ স্থগিতকরণ",
+                " \n\n \n\n",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
