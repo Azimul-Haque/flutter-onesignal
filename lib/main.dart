@@ -739,6 +739,7 @@ class _HomePageState extends State<HomePage> {
 
   void _showDialog() {
     slideDialog.showSlideDialog(
+      clipBehavior: Clip.hardEdge,
       context: context,
       child: Container(
         width: double.infinity,
