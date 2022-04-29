@@ -458,7 +458,7 @@ class _HomePageState extends State<HomePage> {
             Positioned(
               right: 3,
               bottom: 3,
-              child: Text("Version: 1.2.0",
+              child: Text("Version: " + _packageInfo.version,
                   style: TextStyle(color: Colors.white60, fontSize: 11)),
             ),
           ],
