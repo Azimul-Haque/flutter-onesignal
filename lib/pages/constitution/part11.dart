@@ -114,7 +114,7 @@ class PartEleven extends StatelessWidget {
               )),
               ListTile(
                   title: SelectableText(
-                '(৪) এই অনুচ্ছেদ নিম্নলিখিত পদসমূহে প্রযোজ্য হইবে: \n(ক) রাষ্ট্রপতি,',
+                '(৪) এই অনুচ্ছেদ নিম্নলিখিত পদসমূহে প্রযোজ্য হইবে: \n(ক) রাষ্ট্রপতি, \n(খ) প্রধানমন্ত্রী, (গ) স্পীকার বা ডেপুটি স্পীকার, ',
                 textAlign: TextAlign.justify,
               )),
             ],
