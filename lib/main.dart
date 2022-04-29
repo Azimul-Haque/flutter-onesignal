@@ -763,7 +763,15 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Text('এ. এইচ. এম. আজিমুল হক (রিফাত)'),
+            Text(
+              'এ. এইচ. এম. আজিমুল হক (রিফাত)',
+            ),
+
+            // if (await canLaunch("https://orbachinujbuk.com")) {
+            //   await launch("https://orbachinujbuk.com");
+            // } else {
+            //   throw 'Could not launch!';
+            // }
             SizedBox(
               height: 5,
             ),
