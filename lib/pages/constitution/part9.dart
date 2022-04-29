@@ -209,7 +209,7 @@ class PartNine extends StatelessWidget {
           ),
           Divider(),
           ExpansionTile(
-            title: Text('১৪১। বার্ষিক রিপোর্ট'),
+            title: Text('১৪১ক। জরুরী-অবস্থা ঘোষণা'),
             children: <Widget>[
               ListTile(
                   title: SelectableText(
@@ -232,7 +232,7 @@ class PartNine extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "১৪১ক। জরুরী-অবস্থা ঘোষণা \n\n১৪১খ। জরুরী-অবস্থার সময় সংবিধানের কতিপয় অনুচ্ছেদের বিধান স্থগিতকরণ \n\n১৪১গ। জরুরী-অবস্থার সময় মৌলিক অধিকারসমূহ স্থগিতকরণ",
+                " \n\n১৪১খ। জরুরী-অবস্থার সময় সংবিধানের কতিপয় অনুচ্ছেদের বিধান স্থগিতকরণ \n\n১৪১গ। জরুরী-অবস্থার সময় মৌলিক অধিকারসমূহ স্থগিতকরণ",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
