@@ -119,11 +119,11 @@ class PartEight extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text('১৩১। প্রজাতন্ত্রের হিসাব-রক্ষার আকার ও পদ্ধতি'),
+            title: Text('১৩২। সংসদে মহা হিসাব-নিরীক্ষকের রিপোর্ট উপস্থাপন'),
             children: <Widget>[
               ListTile(
                   title: SelectableText(
-                '১৩১। রাষ্ট্রপতির অনুমোদনক্রমে মহা হিসাব-নিরীক্ষক যেরূপ নির্ধারণ করিবেন, সেইরূপ আকার ও পদ্ধতিতে প্রজাতন্ত্রের হিসাব রক্ষিত হইবে।',
+                '১৩২। প্রজাতন্ত্রের হিসাব সম্পর্কিত মহা হিসাব-নিরীক্ষকের রিপোর্টসমূহ রাষ্ট্রপতির নিকট পেশ করা হইবে এবং রাষ্ট্রপতি তাহা সংসদে পেশ করিবার ব্যবস্থা করিবেন।',
                 textAlign: TextAlign.justify,
               )),
             ],
@@ -132,7 +132,7 @@ class PartEight extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                " \n\n \n\n \n\n \n\n \n\n১৩২। সংসদে মহা হিসাব-নিরীক্ষকের রিপোর্ট উপস্থাপন",
+                " \n\n \n\n \n\n \n\n \n\n",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
