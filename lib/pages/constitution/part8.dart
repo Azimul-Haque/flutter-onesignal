@@ -88,6 +88,11 @@ class PartEight extends StatelessWidget {
               )),
               ListTile(
                   title: SelectableText(
+                '(৩) মহা হিসাব-নিরীক্ষক রাষ্ট্রপতিকে উদ্দেশ করিয়া স্বাক্ষরযুক্ত পত্রযোগে স্বীয় পদ ত্যাগ করিতে পারিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+              ListTile(
+                  title: SelectableText(
                 '(৪) কর্মাবসানের পর মহা হিসাব-নিরীক্ষক প্রজাতন্ত্রের কর্মে অন্য কোন পদে নিযুক্ত হইবার যোগ্য হইবেন না।',
                 textAlign: TextAlign.justify,
               )),
