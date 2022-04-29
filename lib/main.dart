@@ -8,8 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
-import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
-    as slideDialog;
 import 'package:flutter_share/flutter_share.dart';
 import 'package:blinking_text/blinking_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
