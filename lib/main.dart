@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("ওয়েবসাইট দেখুন")
+                      Text("নির্মাতা")
                     ],
                   ),
                 ),
