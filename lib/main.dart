@@ -767,9 +767,9 @@ class _HomePageState extends State<HomePage> {
               'এ. এইচ. এম. আজিমুল হক (রিফাত)',
             ),
             TextButton(
-              style: TextButton.styleFrom(
-                textStyle: const TextStyle(fontSize: 20),
-              ),
+              // style: TextButton.styleFrom(
+              //   textStyle: const TextStyle(fontSize: 20),
+              // ),
               onPressed: () async {
                 if (await canLaunch("https://orbachinujbuk.com") != null) {
                   await launch("https://orbachinujbuk.com");
@@ -777,7 +777,7 @@ class _HomePageState extends State<HomePage> {
                   throw 'Could not launch!';
                 }
               },
-              child: const Text('এ. এইচ. এম. আজিমুল হক (রিফাত)'),
+              child: Text('এ. এইচ. এম. আজিমুল হক (রিফাত)'),
             ),
             SizedBox(
               height: 5,
