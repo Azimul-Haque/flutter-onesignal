@@ -154,7 +154,7 @@ class PartSeven extends StatelessWidget {
             ],
           ),
           ExpansionTile(
-            title: Text('১২৪। নির্বাচন সম্পর্কে সংসদের বিধান প্রণয়নের ক্ষমতা'),
+            title: Text('১২৫। নির্বাচনী আইন ও নির্বাচনের বৈধতা'),
             children: <Widget>[
               ListTile(
                   title: SelectableText(
@@ -167,7 +167,7 @@ class PartSeven extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                " \n\n \n\n \n\n \n\n \n\n \n\n \n\n১২৫। নির্বাচনী আইন ও নির্বাচনের বৈধতা \n\n১২৬। নির্বাচন কমিশনকে নির্বাহী কর্তৃপক্ষের সহায়তাদান",
+                " \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n১২৬। নির্বাচন কমিশনকে নির্বাহী কর্তৃপক্ষের সহায়তাদান",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
