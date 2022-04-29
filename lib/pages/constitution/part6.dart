@@ -357,6 +357,16 @@ class PartSix extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১১৪। অধস্তন আদালত-সমূহ প্রতিষ্ঠা'),
+            children: <Widget>[
+              ListTile(
+                  title: Text(
+                '১১৪। আইনের দ্বারা যেরূপ প্রতিষ্ঠিত হইবে, সুপ্রীম কোর্ট ব্যতীত সেইরূপ অন্যান্য অধস্তন আদালত থাকিবে।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
