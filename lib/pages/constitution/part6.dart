@@ -268,6 +268,21 @@ class PartSix extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১০৭। সুপ্রীম কোর্টের বিধি-প্রণয়ন-ক্ষমতা'),
+            children: <Widget>[
+              ListTile(
+                  title: Text(
+                '১০৭। (১) সংসদ কর্তৃক প্রণীত যে কোন আইন-সাপেক্ষে সুপ্রীম কোর্ট রাষ্ট্রপতির অনুমোদন লইয়া প্রত্যেক বিভাগের এবং অধঃস্তন যে কোন আদালতের রীতি ও পদ্ধতি-নিয়ন্ত্রণের জন্য বিধিসমূহ প্রণয়ন করিতে পারিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+              ListTile(
+                  title: Text(
+                '(২) সুপ্রীম কোর্ট এই অনুচ্ছেদের (১) দফা এবং এই সংবিধানের ১১৩ ও ১১৬ অনুচ্ছেদের অধীন দায়িত্বসমূহের ভার উক্ত আদালতের কোন একটি বিভাগকে কিংবা এক বা একাধিক বিচারককে অর্পণ করিতে পারিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
