@@ -377,6 +377,16 @@ class PartSix extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১১৬। অধস্তন আদালতসমূহের নিয়ন্ত্রণ ও শৃঙ্খলা'),
+            children: <Widget>[
+              ListTile(
+                  title: Text(
+                '১১৬। বিচার-কর্মবিভাগে নিযুক্ত ব্যক্তিদের এবং বিচারবিভাগীয় দায়িত্বপালনে রত ম্যাজিষ্ট্রেটদের নিয়ন্ত্রণ (কর্মস্থল- নির্ধারণ, পদোন্নতিদান ও ছুটি মঞ্জুরীসহ) ও শৃংখলাবিধান রাষ্ট্রপতির উপর ন্যস্ত থাকিবে এবং সুপ্রীম কোর্টের সহিত পরামর্শক্রমে রাষ্ট্রপতি কর্তৃক তাহা প্রযুক্ত হইবে।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
