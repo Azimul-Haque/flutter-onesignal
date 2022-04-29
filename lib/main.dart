@@ -763,7 +763,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Text("Version: 1.0.5",
+            Text("Version: " + _packageInfo.version,
                 style: TextStyle(color: Colors.black54, fontSize: 13)),
           ],
         ),
