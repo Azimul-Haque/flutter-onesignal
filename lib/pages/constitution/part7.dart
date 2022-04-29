@@ -33,6 +33,16 @@ class PartSeven extends StatelessWidget {
             height: 3,
           ),
           Divider(),
+          ExpansionTile(
+            title: Text('৯২ক। [বিলুপ্ত]'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '৯২ক। [কতিপয় ক্ষেত্রে ব্যয়ের কর্তৃত্ব প্রদান- সংবিধান (দ্বাদশ সংশোধন) আইন, ১৯৯১ (১৯৯১ সনের ২৮ নং আইন)- এর ১০ ধারাবলে বিলুপ্ত।]',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
