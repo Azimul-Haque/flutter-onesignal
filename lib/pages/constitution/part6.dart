@@ -37,7 +37,7 @@ class PartSix extends StatelessWidget {
             height: 3,
           ),
           Text(
-            "১ম পরিচ্ছেদঃ রাষ্ট্রপতি",
+            "১ম পরিচ্ছেদঃ সুপ্রীম কোর্ট",
             style: TextStyle(color: Colors.green[900], fontSize: 16),
             textAlign: TextAlign.center,
           ),
