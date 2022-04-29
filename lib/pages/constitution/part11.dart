@@ -154,11 +154,26 @@ class PartEleven extends StatelessWidget {
               )),
             ],
           ),
+          ExpansionTile(
+            title: Text('১৫০। ক্রান্তিকালীন ও অস্থায়ী বিধানাবলী'),
+            children: <Widget>[
+              ListTile(
+                  title: SelectableText(
+                '১৫০।(১) এই সংবিধানের অন্য কোন বিধান সত্ত্বেও ১৯৭২ সালের ১৬ই ডিসেম্বর তারিখে এই সংবিধান প্রবর্তনকালে সংবিধানের চতুর্থ তফসিলে বর্ণিত বিধানাবলী ক্রান্তিকালীন ও অস্থায়ী বিধানাবলী হিসাবে কার্যকর থাকিবে।',
+                textAlign: TextAlign.justify,
+              )),
+              ListTile(
+                  title: SelectableText(
+                '১৫০।(১) এই সংবিধানের অন্য কোন বিধান সত্ত্বেও ১৯৭২ সালের ১৬ই ডিসেম্বর তারিখে এই সংবিধান প্রবর্তনকালে সংবিধানের চতুর্থ তফসিলে বর্ণিত বিধানাবলী ক্রান্তিকালীন ও অস্থায়ী বিধানাবলী হিসাবে কার্যকর থাকিবে।',
+                textAlign: TextAlign.justify,
+              )),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
               Text(
-                "১৫০। ক্রান্তিকালীন ও অস্থায়ী বিধানাবলী \n\n১৫১। রহিতকরণ \n\n১৫২। ব্যাখ্যা \n\n১৫৩। প্রবর্তন, উল্লেখ ও নির্ভরযোগ্য পাঠ",
+                " \n\n১৫১। রহিতকরণ \n\n১৫২। ব্যাখ্যা \n\n১৫৩। প্রবর্তন, উল্লেখ ও নির্ভরযোগ্য পাঠ",
                 style:
                     TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
                 textAlign: TextAlign.justify,
