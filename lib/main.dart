@@ -802,7 +802,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Text('একটি Innova Tech Inc. পণ্য'),
             Text("Version: " + _packageInfo.version,
-                style: TextStyle(color: Colors.black54, fontSize: 13, fontFamily: DefaultTextStyle.of(context).style.fontFamily),
+                style: TextStyle(color: Colors.black54, fontSize: 13, fontFamily: ),
           ],
         ),
       ),
