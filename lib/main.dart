@@ -768,6 +768,8 @@ class _HomePageState extends State<HomePage> {
             // ),
             TextButton(
               onPressed: () async {
+                var url =
+                    'fb://facewebmodal/f?href=https://www.facebook.com/orbachinujbuk';
                 if (await canLaunch("https://www.facebook.com/orbachinujbuk") !=
                     null) {
                   await launch("https://www.facebook.com/orbachinujbuk");
