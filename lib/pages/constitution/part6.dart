@@ -41,6 +41,7 @@ class PartSix extends StatelessWidget {
             style: TextStyle(color: Colors.green[900], fontSize: 16),
             textAlign: TextAlign.center,
           ),
+          Divider(),
           ExpansionTile(
             title: Text('৯৪। সুপ্রীম কোর্ট প্রতিষ্ঠা'),
             children: <Widget>[
@@ -66,7 +67,6 @@ class PartSix extends StatelessWidget {
               )),
             ],
           ),
-          Divider(),
           Padding(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
