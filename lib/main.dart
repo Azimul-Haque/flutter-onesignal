@@ -239,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("নির্মাতা")
+                      Text("অ্যাপ নির্মাতা")
                     ],
                   ),
                 ),
@@ -363,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.only(
                         top: 10, left: 10, bottom: 2.5, right: 2.5),
                     child: _homeCard("constitution.png", "সংবিধান",
-                        "পুরো সংবিধান", '/constitution'),
+                        "বিস্তারিত সংবিধান", '/constitution'),
                   ),
                 ),
                 Expanded(
@@ -761,9 +761,12 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(
             //   height: 10,
             // ),
-            Text('নির্মাতা তথ্য'),
+            Text(
+              'অ্যাপ নির্মাতা',
+              style: TextStyle(fontSize: 18),
+            ),
             SizedBox(
-              height: 5,
+              height: 15,
             ),
             // Text(
             //   'এ. এইচ. এম. আজিমুল হক (রিফাত)',
@@ -773,7 +776,27 @@ class _HomePageState extends State<HomePage> {
               width: 130,
               height: 130,
             ),
-            TextButton(
+            // TextButton(
+            //   onPressed: () async {
+            //     var url =
+            //         'fb://facewebmodal/f?href=https://www.facebook.com/orbachinujbuk';
+            //     if (await canLaunch(url) != null) {
+            //       // await launch("https://www.facebook.com/orbachinujbuk");
+            //       await launch(
+            //         url,
+            //         universalLinksOnly: true,
+            //       );
+            //     } else {
+            //       throw 'Could not launch!';
+            //     }
+            //   },
+            //   child: Text(
+            //     'এ. এইচ. এম. আজিমুল হক (রিফাত)',
+            //     style: TextStyle(fontSize: 18, color: Colors.blue[900]),
+            //   ),
+            // ),
+            TextButton.icon(
+              // <-- TextButton
               onPressed: () async {
                 var url =
                     'fb://facewebmodal/f?href=https://www.facebook.com/orbachinujbuk';
@@ -787,21 +810,24 @@ class _HomePageState extends State<HomePage> {
                   throw 'Could not launch!';
                 }
               },
-              child: Text(
+              icon: Icon(
+                Icons.login_sharp,
+                size: 10.0,
+              ),
+              label: Text(
                 'এ. এইচ. এম. আজিমুল হক (রিফাত)',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.blue[900]),
               ),
             ),
-
             Text('প্রশাসন ক্যাডার, মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
             SizedBox(
               height: 5,
             ),
             Text('সহকারী পরিচালক, প্রধানমন্ত্রীর কার্যালয়'),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
-            Text('একটি Innova Tech Inc. পণ্য'),
+            // Text('একটি Innova Tech Inc. পণ্য'),
             Text("Version: " + _packageInfo.version,
                 style: TextStyle(color: Colors.black54, fontSize: 13))
           ],
