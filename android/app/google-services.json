@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "177713684894",
+    "firebase_url": "https://bcs-constitution.firebaseio.com",
+    "project_id": "bcs-constitution",
+    "storage_bucket": "bcs-constitution.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177713684894:android:87aa1dba402906307f768f",
+        "android_client_info": {
+          "package_name": "com.orbachinujbuk.bcs_constitution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177713684894-p1mr87l2bkcpttf1hdvjcii3mtam68ol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB34UADRIDdDhk_i9Yr9U-IlHjXoSaID-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177713684894-p1mr87l2bkcpttf1hdvjcii3mtam68ol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
