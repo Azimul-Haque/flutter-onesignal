@@ -145,6 +145,7 @@ class _HomePageState extends State<HomePage> {
     var versionData = await http.get(serviceUR);
     versionFromServer = json.decode(versionData.body.toString());
     // print(versionFromServer);
+    // print(_packageInfo.version);
     if (versionFromServer != _packageInfo.version) {
       setState(() {
         updateVisibilityTag = true;
@@ -841,22 +842,51 @@ class _HomePageState extends State<HomePage> {
 
   // onesignal configuration
   void configOneSignal() {
-    OneSignal.shared.init("d5202a9d-fc79-4e35-990c-bfc18333fafa");
+    //Remove this method to stop OneSignal Debugging
     OneSignal.shared
-        .setInFocusDisplayType(OSNotificationDisplayType.notification);
+        .setLogLevel(OSLogLevel.verbose, OSLogLevel.none); // eta apatoto off...
+
+    OneSignal.shared.setAppId("d5202a9d-fc79-4e35-990c-bfc18333fafa");
+
+    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt.
+    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+      // print("Accepted permission: $accepted");
+    });
+
     OneSignal.shared
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      if (result.notification.payload.additionalData.values.first == 'update') {
+      if (result.notification.additionalData.values.first == 'update') {
         Route route = MaterialPageRoute(builder: (context) => UpdateQstnPage());
         Navigator.push(context, route);
       } else {
         Route route = MaterialPageRoute(
             builder: (context) => NotificationPage([
-                  result.notification.payload.title,
-                  result.notification.payload.additionalData.values.first
+                  result.notification.title,
+                  result.notification.additionalData.values.first
                 ]));
         Navigator.push(context, route);
       }
     });
+
+    // final status = await OneSignal.shared.getDeviceState();
+    // print(status.userId);
+
+    // OneSignal.shared.init("d5202a9d-fc79-4e35-990c-bfc18333fafa");
+    // OneSignal.shared
+    //     .setInFocusDisplayType(OSNotificationDisplayType.notification);
+    // OneSignal.shared
+    //     .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+    //   if (result.notification.payload.additionalData.values.first == 'update') {
+    //     Route route = MaterialPageRoute(builder: (context) => UpdateQstnPage());
+    //     Navigator.push(context, route);
+    //   } else {
+    //     Route route = MaterialPageRoute(
+    //         builder: (context) => NotificationPage([
+    //               result.notification.payload.title,
+    //               result.notification.payload.additionalData.values.first
+    //             ]));
+    //     Navigator.push(context, route);
+    //   }
+    // });
   }
 }

@@ -149,7 +149,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             sasetosstatus.setBool('isOsSwitched', value);
                             isOsSwitched = value;
                           });
-                          OneSignal.shared.setSubscription(isOsSwitched);
+                          OneSignal.shared.disablePush(!isOsSwitched);
                           print(isOsSwitched);
                         },
                         activeTrackColor: Colors.lightGreenAccent,

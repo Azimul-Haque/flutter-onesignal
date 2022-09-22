@@ -22,7 +22,9 @@ class _NotificationPageState extends State<NotificationPage> {
             IconButton(
               icon: Icon(Icons.check),
               onPressed: () async {
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, "/", (route) => false);
               },
               tooltip: "ঠিক আছে",
             ),

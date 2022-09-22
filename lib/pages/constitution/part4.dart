@@ -230,6 +230,11 @@ class PartFour extends StatelessWidget {
               )),
               ListTile(
                   title: Text(
+                '(৩) মন্ত্রিসভা যৌথভাবে সংসদের নিকট দায়ী থাকিবেন।',
+                textAlign: TextAlign.justify,
+              )),
+              ListTile(
+                  title: Text(
                 '(৪) সরকারের সকল নির্বাহী ব্যবস্থা রাষ্ট্রপতির নামে গৃহীত হইয়াছে বলিয়া প্রকাশ করা হইবে।',
                 textAlign: TextAlign.justify,
               )),
