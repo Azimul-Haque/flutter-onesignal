@@ -39,7 +39,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var _mySnackbar = SnackBar(
       content: Text(textForSnackbar),
     );
-    _globalKey.currentState.showSnackBar(_mySnackbar);
+    // _globalKey.currentState.showSnackBar(_mySnackbar);
+    ScaffoldMessenger.of(context).showSnackBar(_mySnackbar);
   }
 
   _getSynced(int lastId) async {
@@ -54,7 +55,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           _apiKey +
           "&last_id=" +
           lastId.toString(); // https://jsonplaceholder.typicode.com/posts
-      var jsonDataQuestions = await http.get(serviceURL);
+      var jsonDataQuestions = await http.get(Uri.parse(serviceURL));
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
       });
@@ -334,16 +335,20 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         ),
       ),
       actions: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text("রিপোর্ট করুন"),
-          color: Colors.green,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+          ),
           onPressed: () {
             handleReportSubmit(question);
           },
         ),
-        RaisedButton(
+        ElevatedButton(
           child: Text("ফিরে যান"),
-          color: Colors.white,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -371,7 +376,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        'https://killa.com.bd/onesignal/report/question/api',
+        Uri.parse('https://killa.com.bd/onesignal/report/question/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',

@@ -161,7 +161,7 @@ class _ExamPageState extends State<ExamPage> {
           title: Text("পরীক্ষা"),
           automaticallyImplyLeading: false,
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 formattedtime,
                 style: TextStyle(
@@ -274,9 +274,11 @@ class _ExamPageState extends State<ExamPage> {
         ),
       ),
       actions: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text("পরীক্ষা শুরু করুন"),
-          color: Colors.green,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+          ),
           onPressed: () {
             handleSubmit();
           },
@@ -307,9 +309,11 @@ class _ExamPageState extends State<ExamPage> {
         ],
       ),
       actions: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text("শেষ করুন"),
-          color: Colors.green,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+          ),
           onPressed: () async {
             if (_timer != null) {
               _timer.cancel();
@@ -348,9 +352,11 @@ class _ExamPageState extends State<ExamPage> {
             }
           },
         ),
-        RaisedButton(
+        ElevatedButton(
           child: Text("পরীক্ষা অবিরত রাখুন"),
-          color: Colors.white,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },

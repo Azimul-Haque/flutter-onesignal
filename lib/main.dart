@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/services.dart' show rootBundle;
+// import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
 // import 'package:http/http.dart' as http;
@@ -80,13 +80,6 @@ class _HomePageState extends State<HomePage> {
         chooserTitle: 'অ্যাপটি শেয়ার করুন!');
   }
 
-  _showSnackbar(String textForSnackbar) {
-    var _mySnackbar = SnackBar(
-      content: Text(textForSnackbar),
-    );
-    _globalKey.currentState.showSnackBar(_mySnackbar);
-  }
-
   // Future<bool> _getPosts() async {
   //   String serviceURL = "http://192.168.43.81:8000/broadcast"; // http://192.168.43.81:8000/broadcast
   //   var jsonDataPosts = await http.get(serviceURL);
@@ -142,7 +135,7 @@ class _HomePageState extends State<HomePage> {
       _packageInfo = info;
     });
     String serviceUR = "https://killa.com.bd/broadcast/version";
-    var versionData = await http.get(serviceUR);
+    var versionData = await http.get(Uri.parse(serviceUR));
     versionFromServer = json.decode(versionData.body.toString());
     // print(versionFromServer);
     // print(_packageInfo.version);
@@ -716,7 +709,7 @@ class _HomePageState extends State<HomePage> {
 
   showAlertDialog(BuildContext context, String msg) {
     // set up the button
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {},
     );
@@ -799,9 +792,22 @@ class _HomePageState extends State<HomePage> {
             TextButton.icon(
               // <-- TextButton
               onPressed: () async {
+                // var url =
+                //     'fb://facewebmodal/f?href=https://www.facebook.com/orbachinujbuk';
+                // if (await canLaunch(url) != null) {
+                //   // await launch("https://www.facebook.com/orbachinujbuk");
+                //   await launch(
+                //     url,
+                //     universalLinksOnly: true,
+                //   );
+                // } else {
+                //   throw 'Could not launch!';
+                // }
+
                 var url =
-                    'fb://facewebmodal/f?href=https://www.facebook.com/orbachinujbuk';
-                if (await canLaunch(url) != null) {
+                    'fb://profile/100001596964477'; // amaar facebook id eta...
+                if (await canLaunch(
+                    'https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution')) {
                   // await launch("https://www.facebook.com/orbachinujbuk");
                   await launch(
                     url,

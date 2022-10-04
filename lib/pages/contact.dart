@@ -32,7 +32,7 @@ class _ContactPageState extends State<ContactPage> {
     var _mySnackbar = SnackBar(
       content: Text(textForSnackbar),
     );
-    _globalKey.currentState.showSnackBar(_mySnackbar);
+    ScaffoldMessenger.of(context).showSnackBar(_mySnackbar);
   }
 
   var nameController = TextEditingController();
@@ -71,7 +71,7 @@ class _ContactPageState extends State<ContactPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        'https://killa.com.bd/onesignal/contact/api',
+        Uri.parse('https://killa.com.bd/onesignal/contact/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',

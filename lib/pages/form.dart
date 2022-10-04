@@ -27,7 +27,7 @@ class _FormPageState extends State<FormPage> {
     var _mySnackbar = SnackBar(
       content: Text(textForSnackbar),
     );
-    _globalKey.currentState.showSnackBar(_mySnackbar);
+    ScaffoldMessenger.of(context).showSnackBar(_mySnackbar);
   }
 
   var questionController = TextEditingController();
@@ -56,7 +56,7 @@ class _FormPageState extends State<FormPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        'https://killa.com.bd/onesignal/post/question/api',
+        Uri.parse('https://killa.com.bd/onesignal/post/question/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',

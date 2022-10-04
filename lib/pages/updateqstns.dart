@@ -21,7 +21,8 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
     var _mySnackbar = SnackBar(
       content: Text(textForSnackbar),
     );
-    _globalKey.currentState.showSnackBar(_mySnackbar);
+    // _globalKey.currentState.showSnackBar(_mySnackbar);
+    ScaffoldMessenger.of(context).showSnackBar(_mySnackbar);
   }
 
   _getSynced() async {
@@ -39,7 +40,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
           _apiKey +
           "&last_id=" +
           newquestions.length.toString();
-      var jsonDataQuestions = await http.get(serviceURL);
+      var jsonDataQuestions = await http.get(Uri.parse(serviceURL));
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
       });
@@ -110,7 +111,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
                 Padding(
                   padding:
                       EdgeInsets.only(top: 10, right: 30, bottom: 10, left: 30),
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -125,7 +126,11 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
                         ),
                       ],
                     ),
-                    color: Colors.green,
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green),
+                    ),
+                    // color: Colors.green,
                     onPressed: () {
                       _getSynced();
                     },
