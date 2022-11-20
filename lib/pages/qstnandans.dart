@@ -345,7 +345,10 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           },
         ),
         ElevatedButton(
-          child: Text("ফিরে যান"),
+          child: Text(
+            "ফিরে যান",
+            style: TextStyle(color: Colors.black87),
+          ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
           ),

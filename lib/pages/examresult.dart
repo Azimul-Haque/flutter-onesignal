@@ -78,13 +78,16 @@ class _ExamResultPageState extends State<ExamResultPage> {
                               ),
                             ]),
                       ),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Flexible(
                         flex: 2,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
                             CircularPercentIndicator(
-                              radius: 75.0,
+                              radius: 50.0,
                               lineWidth: 5.0,
                               animation: true,
                               animationDuration: 1200,

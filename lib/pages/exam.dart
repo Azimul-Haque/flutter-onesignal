@@ -353,7 +353,10 @@ class _ExamPageState extends State<ExamPage> {
           },
         ),
         ElevatedButton(
-          child: Text("পরীক্ষা অবিরত রাখুন"),
+          child: Text(
+            "পরীক্ষা অবিরত রাখুন",
+            style: TextStyle(color: Colors.black87),
+          ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
           ),
