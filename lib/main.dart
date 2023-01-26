@@ -826,11 +826,15 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 18, color: Colors.blue[900]),
               ),
             ),
-            Text('প্রশাসন ক্যাডার, মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
+            Text('সহকারী কমিশনার ও এক্সিকিউটিভ ম্যাজিস্ট্রেট'),
             SizedBox(
               height: 5,
             ),
-            Text('সহকারী পরিচালক, প্রধানমন্ত্রীর কার্যালয়'),
+            Text('মেধাক্রমঃ ৫ম, ৪০ তম বিসিএস'),
+            SizedBox(
+              height: 5,
+            ),
+            Text('সাবেক সহকারী পরিচালক, প্রধানমন্ত্রীর কার্যালয়'),
             SizedBox(
               height: 50,
             ),

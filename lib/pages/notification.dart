@@ -11,6 +11,7 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   var data;
   _NotificationPageState(this.data);
+  String answer = 'উত্তর দেখতে ট্যাপ করুন';
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +90,18 @@ class _NotificationPageState extends State<NotificationPage> {
                         )
                       ],
                     ),
-                    child: Text(
-                      data[1],
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    child:
+                        // Text(
+                        //   data[1],
+                        //   style: TextStyle(color: Colors.white, fontSize: 16),
+                        // ),
+                        InkWell(
+                      child: Text(answer),
+                      onTap: () {
+                        setState(() {
+                          answer = data[1];
+                        });
+                      },
                     ),
                   ),
                 ),

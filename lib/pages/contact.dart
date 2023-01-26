@@ -17,6 +17,7 @@ class _ContactPageState extends State<ContactPage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   var formKey = GlobalKey<FormState>();
   String userName = 'N/A';
+  String demoText = 'Hello';
 
   _showToast(String textToast) {
     Fluttertoast.showToast(
