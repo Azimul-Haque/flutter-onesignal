@@ -96,7 +96,10 @@ class _NotificationPageState extends State<NotificationPage> {
                         //   style: TextStyle(color: Colors.white, fontSize: 16),
                         // ),
                         InkWell(
-                      child: Text(answer),
+                      child: Text(
+                        answer,
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
                       onTap: () {
                         setState(() {
                           answer = data[1];
