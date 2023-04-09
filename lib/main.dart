@@ -853,8 +853,8 @@ class _HomePageState extends State<HomePage> {
   // onesignal configuration
   void configOneSignal() {
     //Remove this method to stop OneSignal Debugging
-    OneSignal.shared
-        .setLogLevel(OSLogLevel.verbose, OSLogLevel.none); // eta apatoto off...
+    // OneSignal.shared
+    //     .setLogLevel(OSLogLevel.verbose, OSLogLevel.none); // eta apatoto off...
 
     OneSignal.shared.setAppId("d5202a9d-fc79-4e35-990c-bfc18333fafa");
 
@@ -875,6 +875,16 @@ class _HomePageState extends State<HomePage> {
                   result.notification.additionalData.values.first
                 ]));
         Navigator.push(context, route);
+      }
+    });
+
+    OneSignal.shared.getDeviceState().then((deviceState) {
+      // var devicestate = deviceState!.jsonRepresentation();
+      // print(devicestate);
+      if (deviceState.pushDisabled == true ||
+          deviceState.subscribed == false ||
+          deviceState.hasNotificationPermission == false) {
+        OneSignal.shared.addTrigger("showPrompt", "true");
       }
     });
 
