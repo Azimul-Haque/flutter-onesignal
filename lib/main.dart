@@ -236,21 +236,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 PopupMenuItem(
-                  value: "website",
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.code,
-                        color: Colors.black87,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("অ্যাপ নির্মাতা")
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
                   value: "bcsexamaid",
                   child: Row(
                     children: <Widget>[
@@ -262,6 +247,21 @@ class _HomePageState extends State<HomePage> {
                         width: 10,
                       ),
                       Text("বিসিএস এক্সাম এইড!")
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "website",
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.code,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("অ্যাপ নির্মাতা")
                     ],
                   ),
                 ),
