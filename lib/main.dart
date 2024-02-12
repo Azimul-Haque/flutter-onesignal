@@ -187,6 +187,14 @@ class _HomePageState extends State<HomePage> {
                   _showDialog();
                   break;
                 case 'bcsexamaid':
+                  if (await canLaunch(
+                      "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution")) {
+                    await launch(
+                        "https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution");
+                  } else {
+                    throw 'Could not launch!';
+                  }
+                  break;
                 default:
               }
             },
