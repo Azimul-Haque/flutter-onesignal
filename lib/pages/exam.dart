@@ -223,7 +223,7 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   showExamDialog() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(milliseconds: 500));
     AlertDialog alert = AlertDialog(
       title: Center(child: Text('সংবিধান থেকে পরীক্ষা')),
       content: Form(
