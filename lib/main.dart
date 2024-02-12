@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: <Widget>[
                       Icon(
-                        Icons.code,
+                        Icons.checklist,
                         color: Colors.black87,
                       ),
                       SizedBox(
