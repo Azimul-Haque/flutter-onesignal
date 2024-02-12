@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("অ্যাপ নির্মাতা")
+                      Text("বিসিএস এক্সাম এইড!")
                     ],
                   ),
                 ),
