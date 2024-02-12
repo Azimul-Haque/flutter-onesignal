@@ -13,6 +13,7 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   int _counter = 0;
   String formattedtime = '00:00:00';
   Timer _timer = Timer(Duration(milliseconds: 1), () {});
