@@ -296,84 +296,84 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   showAlertDialog() {
-    // AlertDialog alert = AlertDialog(
-    //   title: Center(child: Text('পরীক্ষা শেষ করবেন?')),
-    //   content: Row(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     crossAxisAlignment: CrossAxisAlignment.center,
-    //     children: <Widget>[
-    //       Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
-    //       // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
-    //     ],
-    //   ),
-    //   actions: <Widget>[
-    //     ElevatedButton(
-    //       child: Text("শেষ করুন"),
-    //       style: ButtonStyle(
-    //         backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-    //       ),
-    //       onPressed: () async {
-    //         // ignore: unnecessary_null_comparison
-    //         if (_timer != null) {
-    //           _timer.cancel();
-    //         }
-    //         setState(() {
-    //           formattedtime = '00:00:00';
-    //         });
+    AlertDialog alert = AlertDialog(
+      title: Center(child: Text('পরীক্ষা শেষ করবেন?')),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
+          // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
+        ],
+      ),
+      actions: <Widget>[
+        ElevatedButton(
+          child: Text("শেষ করুন"),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+          ),
+          onPressed: () async {
+            // ignore: unnecessary_null_comparison
+            if (_timer != null) {
+              _timer.cancel();
+            }
+            setState(() {
+              formattedtime = '00:00:00';
+            });
 
-    //         if (questions.length > 0) {
-    //           showLoadingDialog();
-    //           await Future.delayed(Duration(seconds: 1));
-    //           Navigator.of(context).pop(); // close the loading dialogue
-    //         }
-    //         Navigator.of(context).pop(); // close the alert dialogue
-    //         Navigator.pop(context); // close the page
+            if (questions.length > 0) {
+              showLoadingDialog();
+              await Future.delayed(Duration(seconds: 1));
+              Navigator.of(context).pop(); // close the loading dialogue
+            }
+            Navigator.of(context).pop(); // close the alert dialogue
+            Navigator.pop(context); // close the page
 
-    //         // open new page
-    //         if (questions.length > 0) {
-    //           var totalmarks = rightanswer - wronganswer * 0.5;
-    //           _insertExam(questions.length, duration, rightanswer, wronganswer);
-    //           Route route = MaterialPageRoute(
-    //               builder: (context) => ExamResultPage([
-    //                     questions,
-    //                     duration,
-    //                     rightanswer,
-    //                     wronganswer,
-    //                     totalmarks,
-    //                     myOptionsListMap,
-    //                     optionsSelected
-    //                   ]));
-    //           Navigator.push(context, route);
+            // open new page
+            if (questions.length > 0) {
+              var totalmarks = rightanswer - wronganswer * 0.5;
+              _insertExam(questions.length, duration, rightanswer, wronganswer);
+              Route route = MaterialPageRoute(
+                  builder: (context) => ExamResultPage([
+                        questions,
+                        duration,
+                        rightanswer,
+                        wronganswer,
+                        totalmarks,
+                        myOptionsListMap,
+                        optionsSelected
+                      ]));
+              Navigator.push(context, route);
 
-    //           // just call it
-    //           http.get(Uri.parse(
-    //               'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
-    //         }
-    //       },
-    //     ),
-    //     ElevatedButton(
-    //       child: Text(
-    //         "পরীক্ষা অবিরত রাখুন",
-    //         style: TextStyle(color: Colors.black87),
-    //       ),
-    //       style: ButtonStyle(
-    //         backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-    //       ),
-    //       onPressed: () {
-    //         Navigator.of(context).pop();
-    //       },
-    //     ),
-    //   ],
-    // );
+              // just call it
+              http.get(Uri.parse(
+                  'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
+            }
+          },
+        ),
+        ElevatedButton(
+          child: Text(
+            "পরীক্ষা অবিরত রাখুন",
+            style: TextStyle(color: Colors.black87),
+          ),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
 
-    // // show the dialog
-    // showDialog(
-    //   context: context,
-    //   barrierDismissible: false,
-    //   builder: (BuildContext context) {
-    //     return alert;
-    //   },
-    // );
+    // show the dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   showLoadingDialog() {
