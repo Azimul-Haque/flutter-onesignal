@@ -185,8 +185,8 @@ class _HomePageState extends State<HomePage> {
                   break;
                 case 'website':
                   _showDialog();
-                case 'bcsexamaid':
                   break;
+                case 'bcsexamaid':
                 default:
               }
             },
