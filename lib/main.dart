@@ -191,7 +191,6 @@ class _HomePageState extends State<HomePage> {
                       'https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution';
                   var url = 'fb://group/641923351277913';
                   if (await canLaunchUrl(Uri.parse(hiturl))) {
-                    // await launch("https://www.facebook.com/orbachinujbuk");
                     await launchUrl(
                       Uri.parse(url),
                       // universalLinksOnly: true,
