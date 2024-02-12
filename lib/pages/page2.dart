@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../globals.dart';
 
+// ignore: must_be_immutable
 class PageTwo extends StatefulWidget {
   var data;
   PageTwo(this.data);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../globals.dart';
 
+// ignore: must_be_immutable
 class NotificationPage extends StatefulWidget {
   var data;
   NotificationPage(this.data);
@@ -48,7 +49,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey[350],
+                          color: Colors.grey.shade300,
                           blurRadius:
                               1.0, // has the effect of softening the shadow
                           spreadRadius:

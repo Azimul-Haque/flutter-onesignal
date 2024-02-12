@@ -36,9 +36,9 @@ class _FormPageState extends State<FormPage> {
   var question, answer;
 
   void handleSubmit() {
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState!.validate()) {
       showAlertDialog(context);
-      formKey.currentState.save();
+      formKey.currentState!.save();
       this.postQuestion(this.question, this.answer);
     }
   }
@@ -56,7 +56,8 @@ class _FormPageState extends State<FormPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        Uri.parse('https://killa.com.bd/onesignal/post/question/api'),
+        Uri.parse(
+            'https://constitution.orbachinujbuk.com/onesignal/post/question/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',
@@ -147,7 +148,7 @@ class _FormPageState extends State<FormPage> {
                             labelText: "প্রশ্ন",
                           ),
                           validator: (value) {
-                            if (value.length == 0) {
+                            if (value!.length == 0) {
                               return "প্রশ্ন পূরণ আবশ্যক";
                             }
                             return null;
@@ -179,7 +180,7 @@ class _FormPageState extends State<FormPage> {
                             labelText: "উত্তর",
                           ),
                           validator: (value) {
-                            if (value.length == 0) {
+                            if (value!.length == 0) {
                               return "উত্তর পূরণ আবশ্যক";
                             }
                             return null;

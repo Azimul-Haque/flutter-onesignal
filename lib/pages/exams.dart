@@ -14,9 +14,9 @@ class _ExamsPageState extends State<ExamsPage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
-  ExamHelper _examHelper;
+  late ExamHelper _examHelper;
   List<ExamModel> exams = [];
-  bool isLoading;
+  late bool isLoading;
 
   Future<Null> refreshList() async {
     setState(() {

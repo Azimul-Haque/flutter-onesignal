@@ -11,7 +11,7 @@ final String columnWrongAnswer = "wronganswer";
 final String columnCreatedAt = "createdat";
 
 class ExamModel {
-  int id;
+  int? id;
   final int totalqstn;
   final int duration;
   final int rightanswer;
@@ -20,11 +20,11 @@ class ExamModel {
 
   ExamModel(
       {this.id,
-      this.totalqstn,
-      this.duration,
-      this.rightanswer,
-      this.wronganswer,
-      this.createdat});
+      required this.totalqstn,
+      required this.duration,
+      required this.rightanswer,
+      required this.wronganswer,
+      required this.createdat});
 
   Map<String, dynamic> toMap() {
     return {
@@ -39,16 +39,16 @@ class ExamModel {
 }
 
 class ExamHelper {
-  Database db;
+  late Database db;
 
   ExamHelper() {
     initDatabase();
   }
 
   Future<Database> get database async {
-    if (null != database) {
-      return db;
-    }
+    // if (null != database) {
+    //   return db;
+    // }
     db = await initDatabase();
     return db;
   }

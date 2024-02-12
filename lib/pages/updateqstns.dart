@@ -13,9 +13,9 @@ class UpdateQstnPage extends StatefulWidget {
 
 class _UpdateQstnPageState extends State<UpdateQstnPage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  QuestionHelper _questionHelper;
+  late QuestionHelper _questionHelper;
   List syncquestions = [];
-  QuestionsModel currentQuestion;
+  late QuestionsModel currentQuestion;
 
   _showSnackbar(String textForSnackbar) {
     var _mySnackbar = SnackBar(
@@ -36,10 +36,11 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
       var newquestions = await _questionHelper.getAllQuestion();
 
       String _apiKey = "rifat2020";
-      String serviceURL = "https://killa.com.bd/broadcast?api_key=" +
-          _apiKey +
-          "&last_id=" +
-          newquestions.length.toString();
+      String serviceURL =
+          "https://constitution.orbachinujbuk.com/broadcast?api_key=" +
+              _apiKey +
+              "&last_id=" +
+              newquestions.length.toString();
       var jsonDataQuestions = await http.get(Uri.parse(serviceURL));
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -60,7 +61,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
       } else {
         _showSnackbar(countinsertion.toString() +
             " টি প্রশ্ন হালনাগাদ করা হয়েছে! (" +
-            (jsonDataQuestions.contentLength / 1000).toStringAsFixed(2) +
+            (jsonDataQuestions.contentLength! / 1000).toStringAsFixed(2) +
             "KB)");
         Navigator.of(context).pop();
       }

@@ -7,7 +7,7 @@ import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
-  QuestionAnswerPage({Key key}) : super(key: key);
+  QuestionAnswerPage({Key? key}) : super(key: key);
   @override
   _QuestionAnswerPageState createState() => _QuestionAnswerPageState();
 }
@@ -17,11 +17,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
 
-  QuestionHelper _questionHelper;
+  late QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
   List syncquestions = [];
-  QuestionsModel currentQuestion;
-  bool isLoading;
+  late QuestionsModel currentQuestion;
+  late bool isLoading;
 
   var qstnReportController = TextEditingController();
 
@@ -51,10 +51,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     try {
       int countinsertion = 0;
       String _apiKey = "rifat2020";
-      String serviceURL = "https://killa.com.bd/broadcast?api_key=" +
-          _apiKey +
-          "&last_id=" +
-          lastId.toString(); // https://jsonplaceholder.typicode.com/posts
+      String serviceURL =
+          "https://constitution.orbachinujbuk.com/broadcast?api_key=" +
+              _apiKey +
+              "&last_id=" +
+              lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(Uri.parse(serviceURL));
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -75,7 +76,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         _showSnackbar("নতুন " +
             countinsertion.toString() +
             "  টি প্রশ্ন যোগ হয়েছে! (" +
-            (jsonDataQuestions.contentLength / 1000).toStringAsFixed(2) +
+            (jsonDataQuestions.contentLength! / 1000).toStringAsFixed(2) +
             "KB)");
       }
     } catch (_) {
@@ -374,12 +375,13 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     var data = {
       'question': question.question,
       'answer': question.answer,
-      'report': qstnReportController.text ?? 'N/A',
+      'report': qstnReportController.text,
     };
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        Uri.parse('https://killa.com.bd/onesignal/report/question/api'),
+        Uri.parse(
+            'https://constitution.orbachinujbuk.com/onesignal/report/question/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',

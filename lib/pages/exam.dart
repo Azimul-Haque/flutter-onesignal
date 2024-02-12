@@ -15,8 +15,8 @@ class ExamPage extends StatefulWidget {
 class _ExamPageState extends State<ExamPage> {
   int _counter = 0;
   String formattedtime = '00:00:00';
-  Timer _timer;
-  bool isLoading;
+  late Timer _timer;
+  late bool isLoading;
 
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
@@ -25,7 +25,7 @@ class _ExamPageState extends State<ExamPage> {
   var questionamnt = '0';
   var duration = '0';
 
-  QuestionHelper _questionHelper;
+  late QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
   Map myOptionsMap = {};
   Map myOptionsListMap = {};
@@ -35,13 +35,14 @@ class _ExamPageState extends State<ExamPage> {
   int rightanswer = 0;
   int wronganswer = 0;
 
-  ExamHelper _examHelper;
-  ExamModel currentExam;
+  late ExamHelper _examHelper;
+  late ExamModel currentExam;
 
   void _startTimer(tmrdrtn) {
     setState(() {
-      _counter = int.tryParse(tmrdrtn) * 60; // convert into seconds
+      _counter = int.tryParse(tmrdrtn)! * 60; // convert into seconds
     });
+    // ignore: unnecessary_null_comparison
     if (_timer != null) {
       _timer.cancel();
     }
@@ -70,7 +71,7 @@ class _ExamPageState extends State<ExamPage> {
 
           // just call it
           http.get(Uri.parse(
-              'https://killa.com.bd/onesignal/examcount/complete/api'));
+              'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
         }
       });
       var now = Duration(seconds: _counter);
@@ -117,14 +118,14 @@ class _ExamPageState extends State<ExamPage> {
       // close the popup... KAAJ ACHE KINTU, APATOT COMMENTED...
     }
     // just call it
-    http.get(
-        Uri.parse('https://killa.com.bd/onesignal/examcount/initiate/api'));
+    http.get(Uri.parse(
+        'https://constitution.orbachinujbuk.com/onesignal/examcount/initiate/api'));
   }
 
   void handleSubmit() {
-    if (examFormKey.currentState.validate()) {
+    if (examFormKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
-      examFormKey.currentState.save();
+      examFormKey.currentState!.save();
       _loadDB(this.questionamnt, this.duration);
     }
   }
@@ -152,10 +153,7 @@ class _ExamPageState extends State<ExamPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        showAlertDialog();
-        return null;
-      },
+      onWillPop: showAlertDialog(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("পরীক্ষা"),
@@ -236,17 +234,17 @@ class _ExamPageState extends State<ExamPage> {
                   labelText: "প্রশ্নের সংখ্যা",
                 ),
                 validator: (value) {
-                  if (value.length == 0) {
+                  if (value!.length == 0) {
                     return "প্রশ্নের সংখ্যা পূরণ আবশ্যক";
-                  } else if (int.tryParse(value) <= 0) {
+                  } else if (int.tryParse(value)! <= 0) {
                     return "প্রশ্ন ০ থেকে বেশি সেট করতে হবে!";
-                  } else if (int.tryParse(value) > 50) {
+                  } else if (int.tryParse(value)! > 50) {
                     return "৫০ টির বেশি প্রশ্ন সেট করতে পারবেন না!";
                   }
                   return null;
                 },
                 onSaved: (value) {
-                  this.questionamnt = value;
+                  this.questionamnt = value!;
                 },
               ),
               TextFormField(
@@ -256,17 +254,17 @@ class _ExamPageState extends State<ExamPage> {
                   labelText: "সময় (মিনিট)",
                 ),
                 validator: (value) {
-                  if (value.length == 0) {
+                  if (value!.length == 0) {
                     return "সময় পূরণ আবশ্যক";
-                  } else if (int.tryParse(value) <= 0) {
+                  } else if (int.tryParse(value)! <= 0) {
                     return "সময় ০ থেকে বেশি সেট করতে হবে!";
-                  } else if (int.tryParse(value) > 15) {
+                  } else if (int.tryParse(value)! > 15) {
                     return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
                   }
                   return null;
                 },
                 onSaved: (value) {
-                  this.duration = value;
+                  this.duration = value!;
                 },
               ),
             ],
@@ -315,6 +313,7 @@ class _ExamPageState extends State<ExamPage> {
             backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
           ),
           onPressed: () async {
+            // ignore: unnecessary_null_comparison
             if (_timer != null) {
               _timer.cancel();
             }
@@ -348,7 +347,7 @@ class _ExamPageState extends State<ExamPage> {
 
               // just call it
               http.get(Uri.parse(
-                  'https://killa.com.bd/onesignal/examcount/complete/api'));
+                  'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
             }
           },
         ),

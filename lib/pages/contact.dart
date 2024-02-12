@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../globals.dart';
 
+// ignore: must_be_immutable
 class ContactPage extends StatefulWidget {
   var data;
   ContactPage(this.data);
@@ -43,9 +44,9 @@ class _ContactPageState extends State<ContactPage> {
   var name, email, message;
 
   void handleSubmit() {
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState!.validate()) {
       showAlertDialog(context);
-      formKey.currentState.save();
+      formKey.currentState!.save();
       this.postMessage(this.name, this.email, this.message);
     }
   }
@@ -72,7 +73,8 @@ class _ContactPageState extends State<ContactPage> {
     try {
       FocusScope.of(context).unfocus(); // hide the keyboard
       http.Response response = await http.post(
-        Uri.parse('https://killa.com.bd/onesignal/contact/api'),
+        Uri.parse(
+            'https://constitution.orbachinujbuk.com/onesignal/contact/api'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=utf-8',
           'Accept': 'application/json',
@@ -176,7 +178,7 @@ class _ContactPageState extends State<ContactPage> {
                           controller: nameController,
                           maxLength: 100,
                           validator: (value) {
-                            if (value.length == 0) {
+                            if (value!.length == 0) {
                               return "নাম পূরণ আবশ্যক";
                             }
                             return null;
@@ -198,7 +200,7 @@ class _ContactPageState extends State<ContactPage> {
                                 borderRadius: BorderRadius.circular(5)),
                           ),
                           validator: (value) {
-                            if (value.length == 0) {
+                            if (value!.length == 0) {
                               return "ইমেইল পূরণ আবশ্যক";
                             }
                             return null;
@@ -222,7 +224,7 @@ class _ContactPageState extends State<ContactPage> {
                                 borderRadius: BorderRadius.circular(5)),
                           ),
                           validator: (value) {
-                            if (value.length == 0) {
+                            if (value!.length == 0) {
                               return "মতামত পূরণ আবশ্যক";
                             }
                             return null;

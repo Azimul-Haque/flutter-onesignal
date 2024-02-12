@@ -7,7 +7,7 @@ import 'package:project1/models/QuestionsModel.dart';
 import '../globals.dart';
 
 class FavoritesPage extends StatefulWidget {
-  FavoritesPage({Key key}) : super(key: key);
+  FavoritesPage({Key? key}) : super(key: key);
   @override
   _FavoritesPageState createState() => _FavoritesPageState();
 }
@@ -17,11 +17,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
   GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
 
-  QuestionHelper _questionHelper;
+  late QuestionHelper _questionHelper;
   List<QuestionsModel> questions = [];
   List syncquestions = [];
-  QuestionsModel currentQuestion;
-  bool isLoading;
+  late QuestionsModel currentQuestion;
+  late bool isLoading;
   Future<Null> refreshList() async {
     setState(() {
       isLoading = true;
@@ -46,8 +46,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
     });
     try {
       int countinsertion = 0;
-      String serviceURL = "https://killa.com.bd/broadcast/rifat2020/" +
-          lastId.toString(); // https://jsonplaceholder.typicode.com/posts
+      String serviceURL =
+          "https://constitution.orbachinujbuk.com/broadcast?api_key=rifat2020&last_id=" +
+              lastId.toString(); // https://jsonplaceholder.typicode.com/posts
       var jsonDataQuestions = await http.get(Uri.parse(serviceURL));
       setState(() {
         syncquestions = json.decode(jsonDataQuestions.body.toString());
@@ -68,7 +69,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         _showSnackbar("নতুন " +
             countinsertion.toString() +
             "  টি প্রশ্ন যোগ হয়েছে! (" +
-            (jsonDataQuestions.contentLength / 1000).ceil().toString() +
+            (jsonDataQuestions.contentLength! / 1000).ceil().toString() +
             "KB)");
       }
     } catch (_) {

@@ -10,14 +10,18 @@ final String columnIncAnswers = "incanswer";
 final String columnIsFav = "isfav";
 
 class QuestionsModel {
-  int id;
+  int? id;
   final String question;
   final String answer;
   final String incanswer;
-  final int isfav;
+  final int? isfav;
 
   QuestionsModel(
-      {this.id, this.question, this.answer, this.incanswer, this.isfav});
+      {this.id,
+      required this.question,
+      required this.answer,
+      required this.incanswer,
+      this.isfav});
 
   Map<String, dynamic> toMap() {
     return {
@@ -31,16 +35,16 @@ class QuestionsModel {
 }
 
 class QuestionHelper {
-  Database db;
+  late Database db;
 
   QuestionHelper() {
     initDatabase();
   }
 
   Future<Database> get database async {
-    if (null != database) {
-      return db;
-    }
+    // if (null != database) {
+    //   return db;
+    // }
     db = await initDatabase();
     return db;
   }

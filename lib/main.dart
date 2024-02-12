@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, deprecated_member_use
+
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter/services.dart' show rootBundle;
@@ -7,7 +9,8 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:url_launcher/url_launcher.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:slide_popup_dialog/slide_popup_dialog.dart' as slideDialog;
+import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
+    as slideDialog;
 import 'package:flutter_share/flutter_share.dart';
 import 'package:blinking_text/blinking_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -55,7 +58,7 @@ void main() {
 }
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -134,7 +137,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _packageInfo = info;
     });
-    String serviceUR = "https://killa.com.bd/broadcast/version";
+    String serviceUR =
+        "https://constitution.orbachinujbuk.com/broadcast/version";
     var versionData = await http.get(Uri.parse(serviceUR));
     versionFromServer = json.decode(versionData.body.toString());
     // print(versionFromServer);
@@ -257,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       gradient: new LinearGradient(
                         colors: [
-                          Colors.green[800],
+                          Colors.green.shade800,
                           Colors.lightGreen,
                         ],
                         begin: const FractionalOffset(0.0, 0.0),
@@ -697,7 +701,7 @@ class _HomePageState extends State<HomePage> {
 
   BoxShadow _boxShadow1() {
     return BoxShadow(
-      color: Colors.grey[700],
+      color: Colors.grey.shade700,
       blurRadius: 10.0, // has the effect of softening the shadow
       spreadRadius: 1.0, // has the effect of extending the shadow
       offset: Offset(
@@ -865,14 +869,14 @@ class _HomePageState extends State<HomePage> {
 
     OneSignal.shared
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      if (result.notification.additionalData.values.first == 'update') {
+      if (result.notification.additionalData!.values.first == 'update') {
         Route route = MaterialPageRoute(builder: (context) => UpdateQstnPage());
         Navigator.push(context, route);
       } else {
         Route route = MaterialPageRoute(
             builder: (context) => NotificationPage([
                   result.notification.title,
-                  result.notification.additionalData.values.first
+                  result.notification.additionalData!.values.first
                 ]));
         Navigator.push(context, route);
       }
@@ -881,7 +885,7 @@ class _HomePageState extends State<HomePage> {
     OneSignal.shared.getDeviceState().then((deviceState) {
       // var devicestate = deviceState!.jsonRepresentation();
       // print(devicestate);
-      if (deviceState.pushDisabled == true ||
+      if (deviceState!.pushDisabled == true ||
           deviceState.subscribed == false ||
           deviceState.hasNotificationPermission == false) {
         OneSignal.shared.addTrigger("showPrompt", "true");

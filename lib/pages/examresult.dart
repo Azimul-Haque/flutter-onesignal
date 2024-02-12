@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../globals.dart';
 
 import 'package:percent_indicator/percent_indicator.dart';
 
+// ignore: must_be_immutable
 class ExamResultPage extends StatefulWidget {
   var data;
   ExamResultPage(this.data);
