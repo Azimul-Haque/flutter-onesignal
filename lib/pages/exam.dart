@@ -48,7 +48,7 @@ class _ExamPageState extends State<ExamPage> {
     // if (_timer != null) {
     //   _timer.cancel();
     // }
-    _timer = Timer.periodic(Duration(milliseconds: 500), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_counter > 1) {
           _counter--;
