@@ -15,7 +15,7 @@ class ExamPage extends StatefulWidget {
 class _ExamPageState extends State<ExamPage> {
   int _counter = 0;
   String formattedtime = '00:00:00';
-  late Timer _timer;
+  Timer _timer = Timer(Duration(milliseconds: 1), () {});
   bool isLoading = true;
 
   var examFormKey = GlobalKey<FormState>();
