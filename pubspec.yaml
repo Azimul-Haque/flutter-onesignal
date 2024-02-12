@@ -85,7 +85,7 @@ flutter:
       - asset: assets/fonts/kalpurush.ttf
 
   dependency_overrides:
-    - package_info_plus: any
+    package_info_plus: any
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
