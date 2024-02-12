@@ -184,11 +184,6 @@ class _HomePageState extends State<HomePage> {
                   }
                   break;
                 case 'website':
-                  // if (await canLaunch("https://orbachinujbuk.com")) {
-                  //   await launch("https://orbachinujbuk.com");
-                  // } else {
-                  //   throw 'Could not launch!';
-                  // }
                   _showDialog();
                   break;
                 default:
