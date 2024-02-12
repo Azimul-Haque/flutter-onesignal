@@ -86,7 +86,7 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   _loadDB(amnt, drtn) async {
-    await Future.delayed(Duration(seconds: 1)); // THIS LITLE LINE!!!
+    await Future.delayed(Duration(milliseconds: 500)); // THIS LITLE LINE!!!
 
     var newquestions =
         await _questionHelper.getSomeQuestions(amnt); // kaaj ache...
