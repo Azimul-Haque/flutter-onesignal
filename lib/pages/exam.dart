@@ -158,6 +158,7 @@ class _ExamPageState extends State<ExamPage> {
         return showAlertDialog();
       },
       child: Scaffold(
+        key: _scaffoldkey,
         appBar: AppBar(
           title: Text("পরীক্ষা"),
           automaticallyImplyLeading: false,
