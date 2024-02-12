@@ -38,10 +38,10 @@ dependencies:
   blinking_text: ^1.0.1+2
   package_info_plus: ^1.4.3+1
 
-dependency_overrides:
-  package_info_plus: ^4.0.1
-  wakelock_windows: any
-  win32: any
+# dependency_overrides:
+#   package_info_plus: ^4.0.1
+#   wakelock_windows: any
+#   win32: any
 
 dev_dependencies:
   flutter_test:
