@@ -154,7 +154,9 @@ class _ExamPageState extends State<ExamPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: showAlertDialog(),
+      onWillPop: () async {
+        return showAlertDialog();
+      },
       child: Scaffold(
         appBar: AppBar(
           title: Text("পরীক্ষা"),
