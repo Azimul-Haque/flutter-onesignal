@@ -16,7 +16,7 @@ class _ExamPageState extends State<ExamPage> {
   int _counter = 0;
   String formattedtime = '00:00:00';
   late Timer _timer;
-  late bool isLoading;
+  bool isLoading = true;
 
   var examFormKey = GlobalKey<FormState>();
   var qstnAmntController = TextEditingController();
@@ -38,14 +38,15 @@ class _ExamPageState extends State<ExamPage> {
   late ExamHelper _examHelper;
   late ExamModel currentExam;
 
-  void _startTimer(tmrdrtn) {
+  Future<void> _startTimer(tmrdrtn) async {
+    await Future.delayed(Duration(milliseconds: 500)); // THIS LITLE LINE!!!
     setState(() {
       _counter = int.tryParse(tmrdrtn)! * 60; // convert into seconds
     });
-    // ignore: unnecessary_null_comparison
-    if (_timer != null) {
-      _timer.cancel();
-    }
+
+    // if (_timer != null) {
+    //   _timer.cancel();
+    // }
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_counter > 1) {
@@ -258,8 +259,8 @@ class _ExamPageState extends State<ExamPage> {
                     return "সময় পূরণ আবশ্যক";
                   } else if (int.tryParse(value)! <= 0) {
                     return "সময় ০ থেকে বেশি সেট করতে হবে!";
-                  } else if (int.tryParse(value)! > 15) {
-                    return "সময় ১৫ মিনিটের বেশি দেওয়া যাবে না!";
+                  } else if (int.tryParse(value)! > 20) {
+                    return "সময় ২০ মিনিটের বেশি দেওয়া যাবে না!";
                   }
                   return null;
                 },
@@ -295,85 +296,84 @@ class _ExamPageState extends State<ExamPage> {
   }
 
   showAlertDialog() {
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Center(child: Text('পরীক্ষা শেষ করবেন?')),
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
-          // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
-        ],
-      ),
-      actions: <Widget>[
-        ElevatedButton(
-          child: Text("শেষ করুন"),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-          ),
-          onPressed: () async {
-            // ignore: unnecessary_null_comparison
-            if (_timer != null) {
-              _timer.cancel();
-            }
-            setState(() {
-              formattedtime = '00:00:00';
-            });
+    // AlertDialog alert = AlertDialog(
+    //   title: Center(child: Text('পরীক্ষা শেষ করবেন?')),
+    //   content: Row(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     crossAxisAlignment: CrossAxisAlignment.center,
+    //     children: <Widget>[
+    //       Text('আপনি কী পরীক্ষা শেষ করতে চান?'),
+    //       // (1==1) ? CircularProgressIndicator() : CircularProgressIndicator(),
+    //     ],
+    //   ),
+    //   actions: <Widget>[
+    //     ElevatedButton(
+    //       child: Text("শেষ করুন"),
+    //       style: ButtonStyle(
+    //         backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+    //       ),
+    //       onPressed: () async {
+    //         // ignore: unnecessary_null_comparison
+    //         if (_timer != null) {
+    //           _timer.cancel();
+    //         }
+    //         setState(() {
+    //           formattedtime = '00:00:00';
+    //         });
 
-            if (questions.length > 0) {
-              showLoadingDialog();
-              await Future.delayed(Duration(seconds: 1));
-              Navigator.of(context).pop(); // close the loading dialogue
-            }
-            Navigator.of(context).pop(); // close the alert dialogue
-            Navigator.pop(context); // close the page
+    //         if (questions.length > 0) {
+    //           showLoadingDialog();
+    //           await Future.delayed(Duration(seconds: 1));
+    //           Navigator.of(context).pop(); // close the loading dialogue
+    //         }
+    //         Navigator.of(context).pop(); // close the alert dialogue
+    //         Navigator.pop(context); // close the page
 
-            // open new page
-            if (questions.length > 0) {
-              var totalmarks = rightanswer - wronganswer * 0.5;
-              _insertExam(questions.length, duration, rightanswer, wronganswer);
-              Route route = MaterialPageRoute(
-                  builder: (context) => ExamResultPage([
-                        questions,
-                        duration,
-                        rightanswer,
-                        wronganswer,
-                        totalmarks,
-                        myOptionsListMap,
-                        optionsSelected
-                      ]));
-              Navigator.push(context, route);
+    //         // open new page
+    //         if (questions.length > 0) {
+    //           var totalmarks = rightanswer - wronganswer * 0.5;
+    //           _insertExam(questions.length, duration, rightanswer, wronganswer);
+    //           Route route = MaterialPageRoute(
+    //               builder: (context) => ExamResultPage([
+    //                     questions,
+    //                     duration,
+    //                     rightanswer,
+    //                     wronganswer,
+    //                     totalmarks,
+    //                     myOptionsListMap,
+    //                     optionsSelected
+    //                   ]));
+    //           Navigator.push(context, route);
 
-              // just call it
-              http.get(Uri.parse(
-                  'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
-            }
-          },
-        ),
-        ElevatedButton(
-          child: Text(
-            "পরীক্ষা অবিরত রাখুন",
-            style: TextStyle(color: Colors.black87),
-          ),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
+    //           // just call it
+    //           http.get(Uri.parse(
+    //               'https://constitution.orbachinujbuk.com/onesignal/examcount/complete/api'));
+    //         }
+    //       },
+    //     ),
+    //     ElevatedButton(
+    //       child: Text(
+    //         "পরীক্ষা অবিরত রাখুন",
+    //         style: TextStyle(color: Colors.black87),
+    //       ),
+    //       style: ButtonStyle(
+    //         backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+    //       ),
+    //       onPressed: () {
+    //         Navigator.of(context).pop();
+    //       },
+    //     ),
+    //   ],
+    // );
 
-    // show the dialog
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+    // // show the dialog
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+    //   builder: (BuildContext context) {
+    //     return alert;
+    //   },
+    // );
   }
 
   showLoadingDialog() {
