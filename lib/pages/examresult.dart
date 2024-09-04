@@ -254,7 +254,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
                     ['selected' + _qstn.id.toString()], //_qstn.answer,
                 value: data[5]['list' + _qstn.id.toString()][i],
                 title: Text(data[5]['list' + _qstn.id.toString()][i]),
-                onChanged: (val) {},
+                onChanged: (null),
                 activeColor: Colors.green,
               ),
             ),
