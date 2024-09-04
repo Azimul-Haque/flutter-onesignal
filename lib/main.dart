@@ -884,13 +884,12 @@ class _HomePageState extends State<HomePage> {
     // OneSignal.shared
     //     .setLogLevel(OSLogLevel.verbose, OSLogLevel.none); // eta apatoto off...
 
-    OneSignal.initialize("d5202a9d-fc79-4e35-990c-bfc18333fafa");
+    OneSignal.shared.setAppId("d5202a9d-fc79-4e35-990c-bfc18333fafa");
 
     // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt.
-    OneSignal.consentRequired(true);
-    // shared.promptUserForPushNotificationPermission().then((accepted) {
-    //   // print("Accepted permission: $accepted");
-    // });
+    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+      // print("Accepted permission: $accepted");
+    });
 
     OneSignal.shared
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
