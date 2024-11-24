@@ -76,9 +76,9 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> shareThisApp() async {
     Share.share(
-        'সংবিধান সারথি অ্যাপটি শেয়ার করুন! https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution',
-        subject: "শেয়ার করুন",
-        text: "শেয়ার করুন");
+      'সংবিধান সারথি অ্যাপটি শেয়ার করুন! https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution',
+      subject: "শেয়ার করুন",
+    );
   }
 
   // Future<bool> _getPosts() async {
