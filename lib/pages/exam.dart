@@ -315,8 +315,8 @@ class _ExamPageState extends State<ExamPage> {
         ElevatedButton(
           child: Text("শেষ করুন"),
           style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.yellow,
-            backgroundColor: Colors.red, // foreground
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.green, // foreground
           ),
           onPressed: () async {
             // ignore: unnecessary_null_comparison
