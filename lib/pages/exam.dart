@@ -316,7 +316,8 @@ class _ExamPageState extends State<ExamPage> {
           child: Text("শেষ করুন"),
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
-              textStyle: TextStyle(color: Colors.amber)),
+              textStyle: TextStyle(color: Colors.amber
+              ),
           onPressed: () async {
             // ignore: unnecessary_null_comparison
             if (_timer != null) {
