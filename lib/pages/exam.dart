@@ -313,6 +313,9 @@ class _ExamPageState extends State<ExamPage> {
       ),
       actions: <Widget>[
         ElevatedButton(
+          style: ButtonStyle(
+            textStyle: TextStyle(color: Colors.amber),
+          ),
           child: Text("শেষ করুন"),
           style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
