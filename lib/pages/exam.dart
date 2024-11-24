@@ -280,8 +280,9 @@ class _ExamPageState extends State<ExamPage> {
       actions: <Widget>[
         ElevatedButton(
           child: Text("পরীক্ষা শুরু করুন"),
-          style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.green, // foreground
           ),
           onPressed: () {
             handleSubmit();
