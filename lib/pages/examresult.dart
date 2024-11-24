@@ -129,6 +129,7 @@ class _ExamResultPageState extends State<ExamResultPage> {
             itemCount: data[0].length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
+                color: Colors.white,
                 child: ListTile(
                     title: Text(data[0][index].question),
                     subtitle: Column(

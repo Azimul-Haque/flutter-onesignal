@@ -129,7 +129,7 @@ class _UpdateQstnPageState extends State<UpdateQstnPage> {
                     ),
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
+                          WidgetStateProperty.all<Color>(Colors.green),
                     ),
                     // color: Colors.green,
                     onPressed: () {

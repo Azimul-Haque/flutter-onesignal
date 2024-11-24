@@ -11,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
     as slideDialog;
-import 'package:flutter_share/flutter_share.dart';
 import 'package:blinking_text/blinking_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:http/http.dart' as http;
@@ -31,6 +30,7 @@ import 'package:project1/pages/updateqstns.dart';
 import 'package:project1/pages/settings.dart';
 import 'package:project1/pages/contact.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 import 'globals.dart';
 
 void main() {
@@ -74,13 +74,10 @@ class _HomePageState extends State<HomePage> {
   bool updateVisibilityTag = false;
   String versionFromServer = "";
 
-  Future<void> share() async {
-    await FlutterShare.share(
-        title: 'শেয়ার করুন',
-        text: 'সংবিধান সারথি',
-        linkUrl:
-            'https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution',
-        chooserTitle: 'অ্যাপটি শেয়ার করুন!');
+  Future<void> shareThisApp() async {
+    Share.share(
+        'সংবিধান সারথি অ্যাপটি শেয়ার করুন! https://play.google.com/store/apps/details?id=com.orbachinujbuk.bcs_constitution',
+        subject: "শেয়ার করুন");
   }
 
   // Future<bool> _getPosts() async {
@@ -340,6 +337,7 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.only(
                           top: 0, left: 10, bottom: 0, right: 10),
                       child: Card(
+                        color: Colors.white,
                         child: ListTile(
                           leading: CircleAvatar(
                             child:
@@ -580,13 +578,7 @@ class _HomePageState extends State<HomePage> {
           title: Text("শেয়ার করুন"),
           onTap: () {
             Navigator.pop(context);
-            share();
-            // final RenderBox box = context.findRenderObject();
-            // Share.share("https://orbachinujbuk.com/",
-            //   subject: "অ্যাপটি শেয়ার করুন!",
-            //   sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
-            // );
-            // Share.share('check out my website https://example.com', subject: 'Look what I made!');
+            shareThisApp();
           },
         ),
       ],
@@ -596,6 +588,7 @@ class _HomePageState extends State<HomePage> {
   Widget _homeCard(
       String image, String title, String takenby, String routename) {
     return Card(
+      color: Colors.white,
       child: Stack(
         children: <Widget>[
           Column(

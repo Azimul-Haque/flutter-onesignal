@@ -195,6 +195,7 @@ class _ExamPageState extends State<ExamPage> {
               itemCount: questions.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
+                  color: Colors.white,
                   child: ListTile(
                     // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                     title: Text(questions[index].question),
@@ -280,7 +281,7 @@ class _ExamPageState extends State<ExamPage> {
         ElevatedButton(
           child: Text("পরীক্ষা শুরু করুন"),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
           ),
           onPressed: () {
             handleSubmit();
@@ -314,7 +315,7 @@ class _ExamPageState extends State<ExamPage> {
         ElevatedButton(
           child: Text("শেষ করুন"),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
           ),
           onPressed: () async {
             // ignore: unnecessary_null_comparison
@@ -361,7 +362,7 @@ class _ExamPageState extends State<ExamPage> {
             style: TextStyle(color: Colors.black87),
           ),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
           ),
           onPressed: () {
             Navigator.of(context).pop();

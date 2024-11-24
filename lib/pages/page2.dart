@@ -83,7 +83,7 @@ class _PageTwoState extends State<PageTwo> {
               child: Text("Go Back"),
               style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.lightBlue),
+                    WidgetStateProperty.all<Color>(Colors.lightBlue),
               ),
               // hoverElevation: 5,
               onPressed: () {

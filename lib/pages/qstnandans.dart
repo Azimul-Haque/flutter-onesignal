@@ -210,6 +210,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                 itemCount: questions.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
+                    color: Colors.white,
                     child: ListTile(
                       // leading: CircleAvatar(child: Text(questions[index].question[0]),),
                       title: Text(questions[index].question),
@@ -339,7 +340,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         ElevatedButton(
           child: Text("রিপোর্ট করুন"),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
           ),
           onPressed: () {
             handleReportSubmit(question);
@@ -351,7 +352,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
             style: TextStyle(color: Colors.black87),
           ),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
           ),
           onPressed: () {
             Navigator.of(context).pop();

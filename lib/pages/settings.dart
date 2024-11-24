@@ -150,7 +150,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             isOsSwitched = value;
                           });
                           OneSignal.shared.disablePush(!isOsSwitched);
-                          print(isOsSwitched);
+                          // print(isOsSwitched);
                         },
                         activeTrackColor: Colors.lightGreenAccent,
                         activeColor: Colors.green,

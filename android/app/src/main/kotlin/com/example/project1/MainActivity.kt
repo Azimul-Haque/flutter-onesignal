@@ -1,4 +1,4 @@
-package com.example.project1
+package com.orbachinujbuk.bcs_constitution
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
