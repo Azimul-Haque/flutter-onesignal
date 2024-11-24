@@ -315,9 +315,9 @@ class _ExamPageState extends State<ExamPage> {
         ElevatedButton(
           child: Text("শেষ করুন"),
           style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
-              textStyle: TextStyle(color: Colors.amber
-              ),
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
+            textStyle: TextStyle(WidgetStateProperty.all<Color>(Colors.green)),
+          ),
           onPressed: () async {
             // ignore: unnecessary_null_comparison
             if (_timer != null) {
