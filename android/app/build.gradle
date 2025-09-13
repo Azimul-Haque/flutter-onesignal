@@ -106,8 +106,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion "34.0.0"
+    compileSdkVersion 35
+    buildToolsVersion "35.0.0"
 
     namespace("com.orbachinujbuk.bcs_constitution")
 
@@ -128,8 +128,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.orbachinujbuk.bcs_constitution"
-        minSdkVersion 21
-        targetSdkVersion 34
+        minSdkVersion 23
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
